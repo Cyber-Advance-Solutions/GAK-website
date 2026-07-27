@@ -7,8 +7,10 @@ import { useEffect, useState } from "react";
 import { Phone, Mail, ChevronDown, X } from "lucide-react";
 import { NAV, type NavItem, type MegaEntry } from "@/lib/data";
 
-const hasMega = (i: NavItem): i is Extract<NavItem, { mega: MegaEntry[] }> => "mega" in i;
-const hasFly = (m: MegaEntry): m is Extract<MegaEntry, { fly: unknown }> => "fly" in m;
+const hasMega = (i: NavItem): i is Extract<NavItem, { mega: MegaEntry[] }> =>
+  "mega" in i;
+const hasFly = (m: MegaEntry): m is Extract<MegaEntry, { fly: unknown }> =>
+  "fly" in m;
 
 export default function Header() {
   const pathname = usePathname();
@@ -29,14 +31,23 @@ export default function Header() {
       <div className="util">
         <div className="wrap">
           <div className="util-left">
-            <Link className="u-hide" href="/contact"><Phone size={14} strokeWidth={1.75} aria-hidden /> +92 53 9239 XXX</Link>
+            <Link className="u-hide" href="/contact">
+              <Phone size={14} strokeWidth={1.75} aria-hidden /> 053-9240263
+            </Link>
             <span className="dot u-hide" />
-            <Link className="u-hide" href="/contact"><Mail size={14} strokeWidth={1.75} aria-hidden /> principal@gakcampus.edu.pk</Link>
+            <Link className="u-hide" href="/contact">
+              <Mail size={14} strokeWidth={1.75} aria-hidden />{" "}
+              principal@gakcampus.edu.pk
+            </Link>
           </div>
           <div className="util-right">
-            <Link href="/links">LMS — Teachers</Link>
+            <a href="https://apms.pk" target="_blank">
+              LMS — Teachers
+            </a>
             <span className="dot" />
-            <Link href="/links">LMS — Students</Link>
+            <a href="https://student.apms.pk" target="_blank">
+              LMS — Students
+            </a>
             <span className="dot" />
             <Link href="/links">FBISE</Link>
           </div>
@@ -47,7 +58,12 @@ export default function Header() {
       <header className="main">
         <div className="wrap nav">
           <Link className="brand" href="/">
-            <Image src="/logo.svg" alt="APS&C GAK Campus Kharian Cantt logo" width={56} height={56} />
+            <Image
+              src="/logo.svg"
+              alt="APS&C GAK Campus Kharian Cantt logo"
+              width={56}
+              height={56}
+            />
             <div className="brand-txt">
               <div className="nm">APS&amp;C GAK Campus</div>
               <div className="sub">Kharian Cantt</div>
@@ -60,10 +76,17 @@ export default function Header() {
                 <div
                   key={item.label}
                   className={`navitem ${openMega === i ? "open" : ""}`}
-                  onMouseEnter={() => window.innerWidth > 1080 && setOpenMega(i)}
-                  onMouseLeave={() => window.innerWidth > 1080 && (setOpenMega(null), setOpenFly(null))}
+                  onMouseEnter={() =>
+                    window.innerWidth > 1080 && setOpenMega(i)
+                  }
+                  onMouseLeave={() =>
+                    window.innerWidth > 1080 &&
+                    (setOpenMega(null), setOpenFly(null))
+                  }
                 >
-                  <button onClick={() => setOpenMega(openMega === i ? null : i)}>
+                  <button
+                    onClick={() => setOpenMega(openMega === i ? null : i)}
+                  >
                     {item.label} <i className="caret" />
                   </button>
                   <div className={`mega ${item.alignRight ? "r" : ""}`}>
@@ -77,7 +100,9 @@ export default function Header() {
                             className="flytrigger"
                             onClick={(e) => {
                               e.stopPropagation();
-                              setOpenFly(openFly === `${i}-${j}` ? null : `${i}-${j}`);
+                              setOpenFly(
+                                openFly === `${i}-${j}` ? null : `${i}-${j}`,
+                              );
                             }}
                           >
                             {m.label} <i className="chev" />
@@ -94,7 +119,7 @@ export default function Header() {
                         <Link key={m.label} href={m.href}>
                           {m.label}
                         </Link>
-                      )
+                      ),
                     )}
                   </div>
                 </div>
@@ -104,22 +129,31 @@ export default function Header() {
                     href={item.href}
                     style={
                       pathname.startsWith(item.href) && item.href !== "/"
-                        ? { background: "var(--green-tint)", color: "var(--green-700)" }
+                        ? {
+                            background: "var(--green-tint)",
+                            color: "var(--green-700)",
+                          }
                         : undefined
                     }
                   >
                     {item.label}
                   </Link>
                 </div>
-              )
+              ),
             )}
           </nav>
 
           <Link className="cta-apply deskonly" href="/admissions">
             Apply for Admission
           </Link>
-          <button className="burger" aria-label="Open menu" onClick={() => setDrawer((d) => !d)}>
-            <span /><span /><span />
+          <button
+            className="burger"
+            aria-label="Open menu"
+            onClick={() => setDrawer((d) => !d)}
+          >
+            <span />
+            <span />
+            <span />
           </button>
         </div>
       </header>
@@ -128,46 +162,108 @@ export default function Header() {
       <div className={`drawer ${drawer ? "open" : ""}`}>
         <div className="scrim" onClick={() => setDrawer(false)} />
         <div className="panel">
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: 18,
+            }}
+          >
             <Link className="brand" href="/" onClick={() => setDrawer(false)}>
-              <Image src="/logo.svg" alt="APS&C GAK Campus Kharian Cantt logo" width={42} height={42} style={{ width: 42, height: 42 }} />
-              <div className="brand-txt"><div className="nm" style={{ fontSize: ".9rem" }}>GAK Campus</div></div>
+              <Image
+                src="/logo.svg"
+                alt="APS&C GAK Campus Kharian Cantt logo"
+                width={42}
+                height={42}
+                style={{ width: 42, height: 42 }}
+              />
+              <div className="brand-txt">
+                <div className="nm" style={{ fontSize: ".9rem" }}>
+                  GAK Campus
+                </div>
+              </div>
             </Link>
-            <button onClick={() => setDrawer(false)} aria-label="Close menu" style={{ color: "var(--green-800)", display: "grid", placeItems: "center" }}><X size={24} strokeWidth={1.75} /></button>
+            <button
+              onClick={() => setDrawer(false)}
+              aria-label="Close menu"
+              style={{
+                color: "var(--green-800)",
+                display: "grid",
+                placeItems: "center",
+              }}
+            >
+              <X size={24} strokeWidth={1.75} />
+            </button>
           </div>
-          <Link className="cta-apply" style={{ display: "block", textAlign: "center", marginBottom: 16 }} href="/admissions" onClick={() => setDrawer(false)}>
+          <Link
+            className="cta-apply"
+            style={{ display: "block", textAlign: "center", marginBottom: 16 }}
+            href="/admissions"
+            onClick={() => setDrawer(false)}
+          >
             Apply for Admission
           </Link>
           {NAV.map((item, i) =>
             hasMega(item) ? (
-              <div className={`dgroup ${openGroups[i] ? "open" : ""}`} key={item.label}>
-                <button onClick={() => setOpenGroups((g) => ({ ...g, [i]: !g[i] }))}>
+              <div
+                className={`dgroup ${openGroups[i] ? "open" : ""}`}
+                key={item.label}
+              >
+                <button
+                  onClick={() => setOpenGroups((g) => ({ ...g, [i]: !g[i] }))}
+                >
                   {item.label}
-                  <ChevronDown size={18} strokeWidth={1.75} aria-hidden style={{ transition: "transform .2s", transform: openGroups[i] ? "rotate(180deg)" : "none" }} />
+                  <ChevronDown
+                    size={18}
+                    strokeWidth={1.75}
+                    aria-hidden
+                    style={{
+                      transition: "transform .2s",
+                      transform: openGroups[i] ? "rotate(180deg)" : "none",
+                    }}
+                  />
                 </button>
                 <div className="dsub">
                   {item.mega.map((m) =>
-                    hasFly(m)
-                      ? m.fly.map((f) => (
-                          <Link key={f.label} href={f.href} onClick={() => setDrawer(false)}>
-                            {f.label}
-                          </Link>
-                        ))
-                      : (
-                        <Link key={m.label} href={m.href} onClick={() => setDrawer(false)}>
-                          {m.label}
+                    hasFly(m) ? (
+                      m.fly.map((f) => (
+                        <Link
+                          key={f.label}
+                          href={f.href}
+                          onClick={() => setDrawer(false)}
+                        >
+                          {f.label}
                         </Link>
-                      )
+                      ))
+                    ) : (
+                      <Link
+                        key={m.label}
+                        href={m.href}
+                        onClick={() => setDrawer(false)}
+                      >
+                        {m.label}
+                      </Link>
+                    ),
                   )}
                 </div>
               </div>
             ) : (
               <div className="dgroup" key={item.label}>
-                <Link href={item.href} onClick={() => setDrawer(false)} style={{ display: "block", padding: "13px 4px", fontWeight: 600, color: "var(--green-900)" }}>
+                <Link
+                  href={item.href}
+                  onClick={() => setDrawer(false)}
+                  style={{
+                    display: "block",
+                    padding: "13px 4px",
+                    fontWeight: 600,
+                    color: "var(--green-900)",
+                  }}
+                >
                   {item.label}
                 </Link>
               </div>
-            )
+            ),
           )}
         </div>
       </div>

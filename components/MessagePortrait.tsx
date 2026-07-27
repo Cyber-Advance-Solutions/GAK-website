@@ -8,7 +8,7 @@ type Props = {
   cta?: { label: string; href: string };
 };
 
-/** Full-width portrait above a multi-paragraph leadership message. */
+/** Portrait + plate beside a multi-paragraph leadership message. */
 export default function MessagePortrait({
   leader,
   cta = { label: "About the school", href: "/about" },
@@ -23,7 +23,7 @@ export default function MessagePortrait({
             src={leader.image}
             alt={leader.imageAlt}
             fill
-            sizes="(max-width: 1200px) 100vw, 1200px"
+            sizes="(max-width: 840px) 100vw, 40vw"
             priority
             className="msgport-img"
           />

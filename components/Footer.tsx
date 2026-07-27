@@ -20,8 +20,8 @@ const PARENTS = [
 const CONNECT = [
   ["Contact Us", "/contact"],
   ["Careers", "/hr"],
-  ["Student LMS", "/links"],
-  ["Teacher LMS", "/links"],
+  ["Student LMS", "https://student.apms.pk"],
+  ["Teacher LMS", "https://apms.pk"],
   ["Feedback", "/feedback"],
 ];
 
@@ -66,11 +66,20 @@ function FooterCol({ title, links }: { title: string; links: string[][] }) {
     <div>
       <h5>{title}</h5>
       <ul>
-        {links.map(([label, href]) => (
-          <li key={label + href}>
-            <Link href={href}>{label}</Link>
-          </li>
-        ))}
+        {links.map(([label, href]) => {
+          const external = href.startsWith("http");
+          return (
+            <li key={label + href}>
+              {external ? (
+                <a href={href} target="_blank" rel="noopener noreferrer">
+                  {label}
+                </a>
+              ) : (
+                <Link href={href}>{label}</Link>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
