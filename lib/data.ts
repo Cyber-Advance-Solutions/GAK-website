@@ -24,9 +24,9 @@ export const NAV: NavItem[] = [
       {
         label: "Messages",
         fly: [
-          { label: "Chairman's Message", href: "/messages" },
-          { label: "Vice Chairman's Message", href: "/messages" },
-          { label: "Principal's Message", href: "/messages" },
+          { label: "Chairman's Message", href: "/messages/chairman" },
+          { label: "Vice Chairman's Message", href: "/messages/vice-chairman" },
+          { label: "Principal's Message", href: "/messages/principal" },
         ],
       },
       {

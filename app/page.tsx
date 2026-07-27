@@ -45,7 +45,7 @@ export default function HomePage() {
           <blockquote>We build character before we build careers. Discipline here is a gift, not a burden — and every child is seen, known and guided.</blockquote>
           <div className="qb-foot">
             <div className="qb-who"><div className="nm">Brig (R) Asad Khan</div><div className="rl">Principal, GAK Campus</div></div>
-            <Link className="btn-ghost dark" href="/messages">Read all messages</Link>
+            <Link className="btn-ghost dark" href="/messages/principal">Read full message</Link>
           </div>
         </div>
       </div></section>

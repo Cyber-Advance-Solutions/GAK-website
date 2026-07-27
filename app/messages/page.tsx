@@ -1,16 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import { BANNER } from "@/lib/images";
+import { MESSAGES } from "@/lib/messages";
 
 export const metadata = { title: "Messages" };
-
-const LEADERS = [
-  { ph: "MG", nm: "Maj Gen (R) Tariq Mahmood", role: "Chairman, APSACS", msg: "The Army Public Schools & Colleges System stands for merit, discipline and equal opportunity. At GAK, we carry that mission forward — preparing students to serve the nation with knowledge and integrity." },
-  { ph: "SR", nm: "Brig (R) Saima Riaz", role: "Vice Chairman", msg: "Our strength lies in balance — rigorous academics paired with sports, arts and character. Every child at GAK is seen, supported and challenged to reach their fullest potential." },
-  { ph: "AK", nm: "Brig (R) Asad Khan", role: "Principal, GAK Campus", msg: "To our students and parents: this campus is your second home. We promise an environment where curiosity is celebrated, effort is rewarded and discipline is a gift, not a burden." },
-];
 
 export default function MessagesPage() {
   return (
@@ -24,18 +20,34 @@ export default function MessagesPage() {
       />
       <section className="sec">
         <div className="wrap">
-          <SectionHead eyebrow="From the desk of" title="Words from our leadership" />
-          {LEADERS.map((l, i) => (
-            <div className={`msgblock ${i % 2 === 1 ? "alt" : ""}`} key={l.nm}>
-              <div className="mb-portrait">{l.ph}</div>
-              <div className="mb-body">
-                <blockquote>&ldquo;{l.msg}&rdquo;</blockquote>
-                <div className="mb-name">{l.nm}</div>
-                <div className="mb-role">{l.role}</div>
-              </div>
-            </div>
-          ))}
-          <Link className="link-arrow" href="/about">More about the school <ArrowRight size={16} /></Link>
+          <SectionHead
+            eyebrow="From the desk of"
+            title="Words from our leadership"
+            intro="Read each message in full — Chairman, Vice Chairman, and Principal."
+          />
+          <div className="msglinks">
+            {MESSAGES.map((m) => (
+              <Link className="msglink" href={m.href} key={m.slug}>
+                <div className="msglink-media">
+                  <Image
+                    src={m.image}
+                    alt={m.imageAlt}
+                    fill
+                    sizes="(max-width: 760px) 100vw, 33vw"
+                    className="msglink-img"
+                  />
+                </div>
+                <div className="msglink-body">
+                  <span className="eyebrow">{m.eyebrow}</span>
+                  <h3 className="h-md">{m.title}</h3>
+                  <p>{m.name} · {m.role}</p>
+                  <span className="more">
+                    Read message <ArrowRight size={15} />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </>

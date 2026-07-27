@@ -590,13 +590,40 @@ footer ul li a:hover{color:var(--gold-300);padding-left:3px}
 .filerow .f-dl{margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:var(--green-tint);color:var(--green-700);font-weight:700;font-size:.78rem;padding:8px 14px;border-radius:8px;transition:.18s}
 .filerow .f-dl:hover{background:var(--green-700);color:#fff}
 
-.msgblock{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);padding:32px;margin-bottom:22px}
-.msgblock.alt{grid-template-columns:1fr auto}.msgblock.alt .mb-portrait{order:2}
-@media(max-width:680px){.msgblock,.msgblock.alt{grid-template-columns:1fr}.msgblock.alt .mb-portrait{order:0}}
-.mb-portrait{width:120px;height:120px;border-radius:50%;background:var(--green-tint);border:3px solid var(--gold-300);display:grid;place-items:center;font-size:2rem;font-weight:800;color:var(--green-700)}
-.mb-body blockquote{font-size:1.05rem;line-height:1.7;color:var(--ink-soft)}
-.mb-body .mb-name{margin-top:14px;font-weight:800;color:var(--green-900)}
-.mb-body .mb-role{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-600);font-weight:700}
+/* ---------- message portrait (individual leader pages) ---------- */
+.msgport{display:flex;flex-direction:column;gap:40px}
+.msgport-media{position:relative;width:100%;padding-bottom:22px}
+.msgport-frame{position:relative;width:100%;height:clamp(440px,62vw,680px);border-radius:var(--r);overflow:hidden;border:1px solid var(--line-strong);box-shadow:var(--shadow-md);background:linear-gradient(160deg,var(--green-700),var(--green-900))}
+.msgport-img{object-fit:cover;object-position:center top}
+.msgport-plate{position:absolute;left:22px;bottom:0;display:flex;align-items:center;gap:14px;padding:14px 20px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-sm);box-shadow:var(--shadow-md)}
+.msgport-mark{flex:none;color:var(--gold-600)}
+.msgport-name{display:block;font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--green-900)}
+.msgport-role{display:block;font-size:.74rem;color:var(--ink-soft)}
+.msgport-body{width:100%;display:flex;flex-direction:column;align-items:stretch}
+.msgport-body > .eyebrow{width:100%;justify-content:center}
+.msgport-heading{margin:14px 0 18px;text-align:center}
+.msgport-para{color:var(--ink-soft);line-height:1.75}
+.msgport-para + .msgport-para{margin-top:18px}
+.msgport-cta{align-self:center;margin-top:28px}
+@media(max-width:640px){
+  .msgport{gap:28px}
+  .msgport-frame{height:clamp(300px,72vw,440px)}
+  .msgport-plate{left:14px;padding:12px 14px}
+}
+
+/* ---------- messages hub links ---------- */
+.msglinks{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.msglinks{grid-template-columns:1fr}}
+.msglink{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+.msglink:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.msglink-media{position:relative;aspect-ratio:16/10;background:linear-gradient(160deg,var(--green-700),var(--green-900))}
+.msglink-img{object-fit:cover}
+.msglink-body{padding:22px 22px 26px}
+.msglink-body .eyebrow{margin-bottom:10px}
+.msglink-body h3{margin-bottom:8px}
+.msglink-body p{font-size:.9rem;color:var(--ink-soft);margin-bottom:14px}
+.msglink-body .more{display:inline-flex;align-items:center;gap:7px;color:var(--green-700);font-weight:700;font-size:.86rem}
+.msglink:hover .more{gap:11px}
 
 .faqcats{display:flex;flex-direction:column;gap:4px}
 .faqcat{text-align:left;padding:10px 12px;border-radius:9px;font-size:.9rem;font-weight:600;color:var(--ink-soft);transition:.15s}
