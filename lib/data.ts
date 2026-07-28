@@ -46,9 +46,12 @@ export const NAV: NavItem[] = [
         label: "Sections",
         fly: [
           { label: "Pre-School", href: "/sections/pre" },
-          { label: "Middle School", href: "/sections/middle" },
-          { label: "Senior School", href: "/sections/senior" },
-          { label: "APSIS · Cambridge", href: "/sections/apsis" },
+          { label: "Junior Section", href: "/sections/junior" },
+          { label: "Middle Girls Section", href: "/sections/middle-girls" },
+          { label: "Middle Boys Section", href: "/sections/middle-boys" },
+          { label: "Senior Girls Section", href: "/sections/senior-girls" },
+          { label: "Senior Boys Section", href: "/sections/senior-boys" },
+          { label: "APSIS", href: "/sections/apsis" },
         ],
       },
       { label: "Scholarships & Incentives", href: "/scholarships" },
@@ -127,7 +130,14 @@ export const NAV: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-export type SectionKey = "pre" | "middle" | "senior" | "apsis";
+export type SectionKey =
+  | "pre"
+  | "junior"
+  | "middle-girls"
+  | "middle-boys"
+  | "senior-girls"
+  | "senior-boys"
+  | "apsis";
 export type SectionData = {
   name: string;
   sub: string;
@@ -145,21 +155,42 @@ export const SECTIONS: Record<SectionKey, SectionData> = {
     head: "Mrs. Rabia Tariq",
     headMsg:
       "Our Pre-School nurtures curiosity through play-based, child-centred learning in a warm and secure environment.",
-    extra: "Same structure followed for Junior Section.",
   },
-  middle: {
-    name: "Middle School",
-    sub: "Classes VI – VIII",
+  junior: {
+    name: "Junior Section",
+    sub: "Classes I – V",
+    head: "Mrs. Sadia Khan",
+    headMsg:
+      "The Junior Section builds early academic discipline and strong literacy and numeracy foundations, preparing students for the transition into Middle School.",
+  },
+  "middle-girls": {
+    name: "Middle Girls Section",
+    sub: "Classes VI – VIII (Girls)",
+    head: "Mrs. Ayesha Imran",
+    headMsg:
+      "The middle years build strong academic foundations and study habits that carry our girls confidently into the board classes.",
+  },
+  "middle-boys": {
+    name: "Middle Boys Section",
+    sub: "Classes VI – VIII (Boys)",
     head: "Mr. Imran Shah",
     headMsg:
-      "The middle years build strong academic foundations and study habits that carry students confidently into the board classes.",
+      "The middle years build strong academic foundations and study habits that carry our boys confidently into the board classes.",
   },
-  senior: {
-    name: "Senior School",
-    sub: "FBISE — Classes IX – XII",
+  "senior-girls": {
+    name: "Senior Girls Section",
+    sub: "FBISE — Classes IX – XII (Girls)",
     head: "Mrs. Farah Naz",
     headMsg:
-      "Our senior school delivers rigorous, board-focused teaching with consistent top results in FBISE examinations.",
+      "Our senior girls' school delivers rigorous, board-focused teaching with consistent top results in FBISE examinations.",
+    board: true,
+  },
+  "senior-boys": {
+    name: "Senior Boys Section",
+    sub: "FBISE — Classes IX – XII (Boys)",
+    head: "Mr. Tariq Mehmood",
+    headMsg:
+      "Our senior boys' school delivers rigorous, board-focused teaching with consistent top results in FBISE examinations.",
     board: true,
   },
   apsis: {

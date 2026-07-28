@@ -12,12 +12,27 @@ const CURRICULUM: Record<SectionKey, string[]> = {
     "Phonics, storytelling and motor-skills development",
     "Islamiat, social skills and structured free play",
   ],
-  middle: [
+  junior: [
+    "National curriculum foundations across core subjects",
+    "Structured literacy, numeracy and Islamiat",
+    "House activities and early co-curricular exposure",
+  ],
+  "middle-girls": [
     "National curriculum across core subjects",
     "Computer studies and general science",
     "Study-skills, assessments and house activities",
   ],
-  senior: [
+  "middle-boys": [
+    "National curriculum across core subjects",
+    "Computer studies and general science",
+    "Study-skills, assessments and house activities",
+  ],
+  "senior-girls": [
+    "FBISE board curriculum (IX–XII)",
+    "Science, Pre-Medical, Pre-Engineering and ICS groups",
+    "Regular tests, practicals and board preparation",
+  ],
+  "senior-boys": [
     "FBISE board curriculum (IX–XII)",
     "Science, Pre-Medical, Pre-Engineering and ICS groups",
     "Regular tests, practicals and board preparation",

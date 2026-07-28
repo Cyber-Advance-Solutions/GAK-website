@@ -26,7 +26,7 @@ export default function HomePage() {
           <Link className="link-arrow" href="/about">More about the school <ArrowRight size={16} /></Link>
         </div>
         <div className="streams">
-          <Link className="streamcard" href="/sections/senior">
+          <Link className="streamcard" href="/sections/senior-girls">
             <div className="sc-img" style={{ backgroundImage: "url(/hero2.jpg)" }}><span className="sc-tag">National</span></div>
             <div className="sc-bd"><h3>APSACS · FBISE</h3><p>The national curriculum from Pre-School to Intermediate, with consistently strong board results.</p><span className="more">Explore stream <ArrowRight size={15} /></span></div>
           </Link>

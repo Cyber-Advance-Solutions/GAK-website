@@ -88,7 +88,7 @@ export default function AboutPage() {
         <div className="wrap">
           <SectionHead eyebrow="Two pathways" title="One campus, two academic streams" />
           <div className="streams">
-            <Link className="streamcard" href="/sections/senior">
+            <Link className="streamcard" href="/sections/senior-girls">
               <div className="sc-img" style={{ backgroundImage: "url(/hero2.jpg)" }}><span className="sc-tag">National</span></div>
               <div className="sc-bd"><h3>APSACS · FBISE</h3><p>The national curriculum from Pre-School to Intermediate, with consistently strong board results.</p><span className="more">Explore stream <ArrowRight size={15} /></span></div>
             </Link>

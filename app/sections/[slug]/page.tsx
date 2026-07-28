@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import SectionDetail from "@/components/SectionDetail";
+import MiddleBoysSection from "@/components/MiddleBoysSection";
 import { SECTIONS, type SectionKey } from "@/lib/data";
 
 export function generateStaticParams() {
@@ -16,5 +17,6 @@ export default async function SectionPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const data = SECTIONS[slug as SectionKey];
   if (!data) notFound();
+  if (slug === "middle-boys") return <MiddleBoysSection />;
   return <SectionDetail data={data} slug={slug as SectionKey} />;
 }
