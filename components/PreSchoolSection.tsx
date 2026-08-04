@@ -121,32 +121,32 @@ const CLASSES = [
   { label: "Pre-I", photo: IMG("esy-3.jpg") },
 ];
 
-const ACTIVITIES: [string, string][] = [
-  ["", "Ball Game"],
-  ["", "Cultural Day"],
-  ["", "Hand Printing"],
-  ["", "Family Tree"],
-  ["", "Free Hand Painting"],
-  ["", "Green Awareness"],
-  ["", "Drama Competition"],
-  ["", "Kashmir Day"],
-  ["", "Health & Hygiene"],
-  ["", "Labour Day"],
-  ["", "Mark e Haq"],
-  ["", "Math Shapes"],
-  ["", "Red Colour Day"],
-  ["", "Naat Competition"],
-  ["", "Rhyme Competition"],
-  ["", "Salad Making"],
-  ["", "Season"],
-  ["", "Solid Waste"],
-  ["", "Sow a Seed"],
-  ["", "Sports Day"],
-  ["", "Symbol of Pak"],
-  ["", "World Mental Health Day"],
-  ["", "World Wild Life"],
-  ["", "Youm e Qaumi Azme Taleem"],
-  ["", "Darma Competition"],
+const ACTIVITIES: { label: string; photo: string }[] = [
+  { label: "Ball Game", photo: IMG("ball-game.png") },
+  { label: "Cultural Day", photo: IMG("cultural-day.png") },
+  { label: "Hand Printing", photo: IMG("hand-printing.png") },
+  { label: "Family Tree", photo: IMG("family-tree.png") },
+  { label: "Free Hand Painting", photo: IMG("free-hand-painting.png") },
+  { label: "Green Awareness", photo: IMG("green-awareness.png") },
+  { label: "Drama Competition", photo: IMG("drama-competition.png") },
+  { label: "Drama Competition", photo: IMG("drama-competition2.jpg") },
+  { label: "Kashmir Day", photo: IMG("kashmir-day.jpg") },
+  { label: "Health & Hygiene", photo: IMG("health-hygiene.jpg") },
+  { label: "Labour Day", photo: IMG("labour-day.jpg") },
+  { label: "Marka-e-Haq", photo: IMG("mark-e-haq.jpg") },
+  { label: "Math Shapes", photo: IMG("math-shapes.jpg") },
+  { label: "Red Colour Day", photo: IMG("red-color-day.jpg") },
+  { label: "Naat Competition", photo: IMG("naat-competition.jpg") },
+  { label: "Rhyme Competition", photo: IMG("rhyme-competition.jpg") },
+  { label: "Salad Making", photo: IMG("salad-making.jpg") },
+  { label: "Season", photo: IMG("season.jpg") },
+  { label: "Solid Waste", photo: IMG("solid-waste.jpg") },
+  { label: "Sow a Seed", photo: IMG("sow-seed.jpg") },
+  { label: "Sports Day", photo: IMG("sports-day.jpg") },
+  { label: "Symbol of Pakistan", photo: IMG("symbol-of-pak.jpg") },
+  { label: "World Mental Health Day", photo: IMG("world-mental.jpg") },
+  { label: "World Wild Life", photo: IMG("world-wild-life.jpg") },
+  { label: "Youm-e-Qaumi Azm-e-Taleem", photo: IMG("youme-koume-azam.jpg") },
 ];
 
 const HIGH_ACHIEVERS: Staff[] = [
@@ -285,7 +285,7 @@ export default function PreSchoolSection() {
             <div className="quoteband" style={{ borderRadius: "var(--r)" }}>
               <div className="qb" style={{ padding: 32 }}>
                 <div className="qb-portrait" style={{ width: 110, height: 110, position: "relative", overflow: "hidden", backgroundColor: '#f0f0f0' }}>
-                  <Image src={HEAD.photo} alt={HEAD.name} fill sizes="110px" style={{ borderRadius: "50%" }} />
+                  <Image src={HEAD.photo} alt={HEAD.name} fill sizes="110px" style={{ borderRadius: "50%", objectFit: "cover" }} />
                 </div>
                 <div className="qb-body">
                   <span className="eyebrow">Message from the Section Head</span>
@@ -358,15 +358,15 @@ export default function PreSchoolSection() {
           {/* Activities */}
           <section>
             <SectionHead eyebrow="Curriculum" title="Activities" />
-            <div className="tbl-wrap">
-              <table className="tbl">
-                <thead><tr><th>Sr.</th><th>Date</th><th>Event</th></tr></thead>
-                <tbody>
-                  {ACTIVITIES.map(([date, ev], i) => (
-                    <tr key={i}><td>{i + 1}</td><td>{date}</td><td>{ev}</td></tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="classgrid">
+              {ACTIVITIES.map((a) => (
+                <div className="figure" key={a.label + a.photo}>
+                  <div className="fimg" style={{ backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Image src={a.photo} alt={a.label} fill sizes="(max-width: 820px) 100vw, 33vw" />
+                  </div>
+                  <figcaption style={{ fontSize: '0.9rem', lineHeight: '1.2' }}>{a.label}</figcaption>
+                </div>
+              ))}
             </div>
           </section>
 
