@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Building2, Monitor, ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { Editorial, FactCard } from "@/components/Editorial";
 import SectionHead from "@/components/SectionHead";
@@ -152,6 +152,105 @@ const ACTIVITIES = [
   { label: "Effective Use of Smart Boards", photo: IMG("smart-boards-2.png") },
 ];
 
+const ACHIEVEMENTS_HRCA_ENG_SCI: Staff[] = [
+  { name: "Maaz Amir", qualification: "Gold Medalist", joined: "", photo: IMG("maaz-amir.png") },
+  { name: "Chaudhry M. Khan", qualification: "Bronze Medalist", joined: "", photo: IMG("chaudhry-m-khan.png") },
+  { name: "Muhammad Waleed", qualification: "Silver Medalist", joined: "", photo: IMG("muhammad-waleed.png") },
+  { name: "Muhammad Sadaan", qualification: "Gold Medalist", joined: "", photo: IMG("muhammad-sadaan.png") },
+];
+
+const ACHIEVEMENTS_ICATS_MATH: Staff[] = [
+  { name: "Khrain Fatima", qualification: "Gold Medalist", joined: "", photo: IMG("khrain-fatima.png") },
+  { name: "Aroush Fatima", qualification: "Bronze Medalist", joined: "", photo: IMG("aroush-fatima.png") },
+  { name: "Ahmed Almas", qualification: "Gold Medalist", joined: "", photo: IMG("ahmed-almas.png") },
+  { name: "Ayesha Zeeshan", qualification: "Gold Medalist", joined: "", photo: IMG("ayesha-zeeshan.png") },
+];
+
+const ACHIEVEMENTS_HRCA_MATH_GK: Staff[] = [
+  { name: "M. Ruhan", qualification: "Gold Medalist", joined: "", photo: IMG("m-ruhan.png") },
+  { name: "M. Saad Ismail", qualification: "Gold Medalist", joined: "", photo: IMG("m-saad-ismail.png") },
+  { name: "Abrish Ihsan", qualification: "Gold Medalist", joined: "", photo: IMG("abrish-ihsan.png") },
+  { name: "M. Ibrahim", qualification: "Silver Medalist", joined: "", photo: IMG("m-ibrahim.png") },
+  { name: "Aroush Fatima", qualification: "Gold Medalist", joined: "", photo: IMG("aroush-fatima.png") },
+  { name: "Ch. Ayan Mubasher", qualification: "Silver Medalist", joined: "", photo: IMG("ayan-mubasher.png") },
+  { name: "M. Azan Gazi", qualification: "Gold Medalist", joined: "", photo: IMG("m-azan-gazi.png") },
+  { name: "Hareem Fatima", qualification: "Gold Medalist", joined: "", photo: IMG("hareem-fatima.png") },
+  { name: "Rubas Afzal", qualification: "Silver Medalist", joined: "", photo: IMG("rubas-afzal.png") },
+  { name: "Maria Ahsan", qualification: "Silver Medalist", joined: "", photo: IMG("maria-ahsan.png") },
+  { name: "Abdul Rafay", qualification: "Gold Medalist", joined: "", photo: IMG("abdul-rafay.png") },
+  { name: "Ammar Yasar", qualification: "Gold Medalist", joined: "", photo: IMG("ammar-yasar.png") },
+  { name: "M. Bin Waseem", qualification: "Bronze Medalist", joined: "", photo: IMG("m-bin-waseem.png") },
+  { name: "Summaiya Noor", qualification: "Silver Medalist", joined: "", photo: IMG("summaiya-noor.png") },
+  { name: "Hafsa Yasir", qualification: "Gold Medalist", joined: "", photo: IMG("hafsa-yasir.png") },
+  { name: "Ayan akmal", qualification: "Silver Medalist", joined: "", photo: IMG("ayan-akmal.png") },
+  { name: "Raja Dewan Maqsood", qualification: "Silver Medalist", joined: "", photo: IMG("raja-dewan-maqsood.png") },
+  { name: "Abdul Raay Arshad", qualification: "Silver Medalist", joined: "", photo: IMG("abdul-raay-arshad.png") },
+  { name: "Zimal Basit", qualification: "Gold Medalist", joined: "", photo: IMG("zimal-basit.png") },
+  { name: "Mashaim Aktar", qualification: "Gold Medalist", joined: "", photo: IMG("mashaim.png") },
+  { name: "Umaima Saif", qualification: "Gold Medalist", joined: "", photo: IMG("umaima-saif.png") },
+  { name: "M. Zayyan", qualification: "Gold Medalist", joined: "", photo: IMG("m-zayyan.png") },
+  { name: "M. Ibrahim", qualification: "Gold Medalist", joined: "", photo: IMG("m-ibrahim2.png") },
+  { name: "Anaya Fatima", qualification: "Gold Medallist", role: "Rainbow Creative Writing", joined: "", photo: IMG("anaya-fatima.png") },
+];
+
+const UPCOMING: [string, string][] = [
+  ["14th Aug, 26", "Independence Day"],
+  ["15th Aug, 26", "Orientation Day For Parents"],
+  ["24th -28th Aug, 26", "SDGs Awareness Week"],
+  ["25th Aug, 26", "12th Rabi-ul-Awal"],
+  ["26th - 28th Aug,26", "Election Campaign Days"],
+  ["31st Aug, 26", "Investiture Ceremony & Announcement of Houses"],
+  ["2nd Sep,26", "Inter-House Naat and Qirat Competition"],
+  ["6th Sep, 26", "Defence Day / Youm-e-Shuhada"],
+  ["8th Sep, 26", "International Literacy Day"],
+  ["21st Sep,26", "International Peace day"],
+  ["28th Sep- 3rd Oct, 26", "Intra-Regional Sports Competition"],
+  ["3rd Oct 26", "APSACS Foundation Day"],
+  ["5th Oct,26", "World Teachers' Day"],
+  ["6th - 9th Oct, 26", "Health and Hygiene Week"],
+  ["10th Oct,26", "World Mental Health Day"],
+  ["15th Oct,26", "Global Hand Washing Day"],
+  ["16th Oct,26", "World Food Day"],
+  ["29th Oct, 26", "Mega Drama Competition"],
+  ["9th Nov,26", "Iqbal Day"],
+  ["11th Nov, 26", "Inter- House Debate Competition"],
+  ["16th Nov,26", "International Day of Tolerance"],
+  ["20th Nov,26", "World Children's Day"],
+  ["23rd - 27th Nov, 26", "Civic Awareness and Community Service Week"],
+  ["3rd Dec,26", "International Day of Persons with Disabilities"],
+  ["7th -11th Dec 26", "Civic Awarness & Communities Service Week"],
+  ["16th Dec,26", "Youm-e-Qaumi Azm-e-Taleem"],
+  ["25th Dec,26", "Quaid's Day"],
+  ["27th Jan,27", "Inter house Art & Craft Competition"],
+  ["5th Feb,27", "Kashmir Day"],
+  ["8th -12 Feb, 27", "Science and Technology Week"],
+  ["3rd Mar,27", "World Wildlife Day"],
+  ["8th Mar,27", "International Women's Day"],
+  ["8th - 12th Mar,27", "Eid-ul-Fitr"],
+  ["22nd March, 27", "World Water Day"],
+  ["23rd March, 27", "Pakistan Day"],
+  ["13th - 16th April,27", "Inter- House Sports Competition"],
+  ["22nd- 23rd April,27", "Literature Festival"],
+  ["29th April, 27", "Inter- House Quiz Competition"],
+  ["1st May,27", "Labour Day"],
+  ["10th May, 27", "Youm -e- Maraka-e- Haq"],
+  ["15th - 18th May, 27", "Eid- ul - Adha"],
+  ["24th May, 27", "International Day of the Markhor"],
+  ["28th May, 27", "Youm-e-Takbeer"]
+];
+
+const FACILITIES_CAMPUS = [
+  "Spacious, Well-Equipped Classrooms designed with ample natural lighting, ergonomic seating, whiteboards, and subject-specific teaching resources to create an effective learning environment.",
+  "Library & Resource Centre offering an extensive collection of Cambridge textbooks, reference materials, past examination papers, e-books, and quiet study spaces for independent learning and research.",
+  "Cambridge Student Common Room providing a comfortable and welcoming space for relaxing , break and self-study",
+  "Extensive Sports Facilities with spacious playing fields and grounds that encourage physical fitness, teamwork, and participation in a wide range of sports and recreational activities."
+];
+
+const FACILITIES_TECH = [
+  "Multimedia Classrooms equipped with interactive projectors, smart boards, high-speed internet, and integrated audio systems to support engaging digital lessons, educational videos, simulations, and access to Cambridge online resources.",
+  "Dedicated Computer & ICT Laboratories featuring modern computer systems and licensed software to support Computer Science, ICT, coding, research, and technology-based learning."
+];
+
 function StaffCard({ s }: { s: Staff }) {
   return (
     <div className="staffcard">
@@ -298,6 +397,146 @@ export default function APSISSection() {
                 </div>
               ))}
             </div>
+          </section>
+
+          {/* Achievements */}
+          <section>
+            <SectionHead eyebrow="Recognition" title="High Achievers' APSIS Kharian" />
+            
+            <div style={{ marginBottom: "3rem" }}>
+              <h4 style={{ textAlign: "center", marginBottom: "1rem" }}>Co-Curricular Activities<br />HRCA English & Science Quiz Competition (2025-26)</h4>
+              <div className="staffgrid">
+                {ACHIEVEMENTS_HRCA_ENG_SCI.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
+              </div>
+            </div>
+
+            <div style={{ marginBottom: "3rem" }}>
+              <h4 style={{ textAlign: "center", marginBottom: "1rem" }}>ICATS Mathematics Contest 2025</h4>
+              <div className="staffgrid">
+                {ACHIEVEMENTS_ICATS_MATH.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
+              </div>
+            </div>
+
+            <div style={{ marginBottom: "3rem" }}>
+              <h4 style={{ textAlign: "center", marginBottom: "1rem" }}>HRCA Math & GK Quiz Competition 2025</h4>
+              <div className="staffgrid">
+                {ACHIEVEMENTS_HRCA_MATH_GK.map((s, i) => <StaffCard key={s.name + s.photo + i} s={s} />)}
+              </div>
+            </div>
+          </section>
+
+          {/* Upcoming events */}
+          <section>
+            <SectionHead eyebrow="Look ahead" title="Up-Coming Events" />
+            <div className="tbl-wrap">
+              <table className="tbl">
+                <thead><tr><th>Sr#</th><th>DATE</th><th>EVENTS</th></tr></thead>
+                <tbody>
+                  {UPCOMING.map(([date, ev], i) => (
+                    <tr key={i}><td>{i + 1}</td><td>{date}</td><td>{ev}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* Uniform */}
+          <section>
+            <SectionHead eyebrow="Campus" title="Uniform" />
+            <div className="grid g2">
+              <div>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '4/5', backgroundColor: '#f9f9f9', borderRadius: 'var(--r)', overflow: 'hidden', marginBottom: '1rem' }}>
+                  <Image src={IMG("girls-uniform.jpg")} alt="APS Cambridge Girls Uniform" fill style={{ objectFit: 'contain' }} />
+                </div>
+                <h4 style={{ textAlign: "center", color: 'var(--ink)' }}>APS Cambridge Girls Uniform</h4>
+              </div>
+              <div>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '4/5', backgroundColor: '#f9f9f9', borderRadius: 'var(--r)', overflow: 'hidden', marginBottom: '1rem' }}>
+                  <Image src={IMG("boys-uniform.png")} alt="APS Cambridge Boys Uniform" fill style={{ objectFit: 'contain' }} />
+                </div>
+                <h4 style={{ textAlign: "center", color: 'var(--ink)' }}>APS Cambridge Boys Uniform</h4>
+              </div>
+            </div>
+          </section>
+
+          {/* Cambridge Results */}
+          <section>
+            <SectionHead eyebrow="Academics" title="Cambridge Results" />
+            <div style={{ marginBottom: "2rem" }}>
+              <h3 style={{ textAlign: "center", marginBottom: "1.5rem", fontSize: "1.8rem", color: "var(--ink)", fontWeight: 700 }}>Session 2024 &ndash; 2025</h3>
+              
+              <div className="tbl-wrap" style={{ marginBottom: "2rem" }}>
+                <table className="tbl" style={{ textAlign: "center" }}>
+                  <thead>
+                    <tr>
+                      <th style={{ textAlign: "center" }}>A*</th>
+                      <th style={{ textAlign: "center" }}>A</th>
+                      <th style={{ textAlign: "center" }}>B</th>
+                      <th style={{ textAlign: "center" }}>C</th>
+                      <th style={{ textAlign: "center" }}>D</th>
+                      <th style={{ textAlign: "center" }}>E</th>
+                      <th style={{ textAlign: "center" }}>U</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>06</td>
+                      <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>09</td>
+                      <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>14</td>
+                      <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>07</td>
+                      <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>00</td>
+                      <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>00</td>
+                      <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="prose" style={{ maxWidth: "650px", margin: "0 auto 3rem auto" }}>
+                <ul style={{ listStyleType: "square" }}>
+                  <li style={{ display: "flex", justifyContent: "space-between" }}>
+                    <span>Students Appeared in <strong>CIEs May/ June, 2024 &ndash; 2025 Class OI:</strong></span>
+                    <span style={{ fontWeight: 600 }}>03</span>
+                  </li>
+                  <li style={{ display: "flex", justifyContent: "space-between" }}>
+                    <span>Students Appeared in <strong>CIEs May/ June, 2024 &ndash; 2025 Class OII:</strong></span>
+                    <span style={{ fontWeight: 600 }}>04</span>
+                  </li>
+                  <li style={{ display: "flex", justifyContent: "space-between" }}>
+                    <span>Students Appeared in <strong>CIEs May/ June, 2024 &ndash; 2025 Class OIII:</strong></span>
+                    <span style={{ fontWeight: 600 }}>04</span>
+                  </li>
+                  <li style={{ display: "flex", justifyContent: "space-between", marginTop: "1rem", borderTop: "1px solid var(--border)" }}>
+                    <span>Total Number of Students Appeared:</span>
+                    <span style={{ fontWeight: 600 }}>11</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div style={{ position: 'relative', width: '100%', height: 'auto', minHeight: '400px', borderRadius: 'var(--r)', overflow: 'hidden', marginBottom: '2rem' }}>
+              <Image src={IMG("result-diagram.png")} alt="Cambridge Results Diagram" fill style={{ objectFit: 'contain' }} />
+            </div>
+          </section>
+
+          {/* Facilities */}
+          <section>
+            <SectionHead eyebrow="Campus" title="Facilities" />
+            <div className="grid g2">
+              <div>
+                <h3 style={{ marginBottom: 12, fontSize: "1.05rem", display: "flex", alignItems: "center", gap: 8 }}>
+                  <Building2 size={18} strokeWidth={1.8} /> Campus & Infrastructure
+                </h3>
+                <div className="prose"><ul>{FACILITIES_CAMPUS.map((f) => <li key={f}>{f}</li>)}</ul></div>
+              </div>
+              <div>
+                <h3 style={{ marginBottom: 12, fontSize: "1.05rem", display: "flex", alignItems: "center", gap: 8 }}>
+                  <Monitor size={18} strokeWidth={1.8} /> Technology & Learning
+                </h3>
+                <div className="prose"><ul>{FACILITIES_TECH.map((f) => <li key={f}>{f}</li>)}</ul></div>
+              </div>
+            </div>
+            <Link className="link-arrow" href="/admissions" style={{ marginTop: "2rem", display: "flex" }}>Apply for admission <ArrowRight size={16} /></Link>
           </section>
         </Editorial>
       </section>

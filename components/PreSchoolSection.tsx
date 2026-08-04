@@ -411,7 +411,7 @@ export default function PreSchoolSection() {
                 <div className="prose"><ul>{FACILITIES_ACADEMIC.map((f) => <li key={f}>{f}</li>)}</ul></div>
               </div>
             </div>
-            <Link className="link-arrow" href="/admissions" style={{ marginTop: "2rem", display: "inline-block" }}>Apply for admission <ArrowRight size={16} /></Link>
+            <Link className="link-arrow" href="/admissions" style={{ marginTop: "2rem", display: "flex" }}>Apply for admission <ArrowRight size={16} /></Link>
           </section>
         </Editorial>
       </section>
