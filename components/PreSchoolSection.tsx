@@ -122,58 +122,31 @@ const CLASSES = [
 ];
 
 const ACTIVITIES: [string, string][] = [
-  ["4th April, 26", "Orientation Day for Parents"],
-  ["22nd April, 26", "Investiture Ceremony"],
-  ["24-25th April, 26", "Literature Festival"],
-  ["27th-30th April, 26", "Inter-House Sports Competition"],
-  ["1st May, 26", "Labour Day Holiday"],
-  ["6th May, 26", "Inter-House Quiz Competition"],
-  ["10th May, 26", "Youm-e-Marka-e-Haq"],
-  ["11th-15th May, 26", "Health & Hygiene Week"],
-  ["24th May, 26", "International Day of the Markhor"],
-  ["27th-29th May, 26", "Eid-ul-Adha"],
-  ["28th May, 26", "Youm-e-Takbeer"],
-  ["1st June-9th Aug, 26", "Summer Vacations"],
-  ["24-25th June, 26", "Ashura"],
-  ["14th Aug, 26", "Independence Day"],
-  ["24th-28th Aug, 26", "SDGs Awareness Week"],
-  ["25th Aug, 26", "Rabi-ul-Awal"],
-  ["2nd Sep, 26", "Inter-House Naat & Qirat Competition"],
-  ["6th Sep, 26", "Defence Day"],
-  ["8th Sep, 26", "International Literacy Day"],
-  ["21st Sep, 26", "International Peace Day"],
-  ["28th Sep-3rd Oct, 26", "Intra-Regional Sports Competition"],
-  ["3rd Oct, 26", "APSACS Foundation Day"],
-  ["5th Oct, 26", "World Teachers Day"],
-  ["10th Oct, 26", "World Mental Health Day"],
-  ["15th Oct, 26", "Global Handwashing Day"],
-  ["16th Oct, 26", "World Food Day"],
-  ["9th Nov, 26", "Iqbal Day"],
-  ["16th Nov, 26", "International Day of Tolerance"],
-  ["20th Nov, 26", "World Children's Day"],
-  ["25th Nov, 26", "Inter-House Debate Competition"],
-  ["3rd Dec, 26", "International Day of Disability"],
-  ["7th-11th Dec, 26", "Civic Awareness & Community Service Week"],
-  ["16th Dec, 26", "Youm-e-Qaumi Azm-e-Taleem"],
-  ["25th Dec, 26", "Quaid's Day & Christmas"],
-  ["27th Jan, 27", "Inter-House Art & Craft Competition"],
-  ["5th Feb, 27", "Kashmir Day"],
-  ["8th-12th Feb, 27", "Science & Technology Week"],
-  ["3rd March, 27", "World Wildlife Day"],
-  ["5th March, 27", "Gratitude Day"],
-  ["8th March, 27", "International Women's Day"],
-  ["10th-12th March, 27", "Eid-ul-Fitr"],
-  ["22nd March, 27", "World Water Day"],
-  ["23rd March, 27", "Pakistan Day"],
-  ["29th March-2nd April, 27", "Result Preparation Day"],
-  ["29th March-2nd April, 27", "Book Bank Week"],
-  ["3rd April, 27", "Final Result & Prize Distribution"],
-  ["8th-10th April, 27", "Teachers' Preparation Day"],
-  ["12th April, 27", "New Academic Session"],
-  ["22nd April, 26", "Investiture Ceremony"],
-  ["24-25th April, 26", "Literature Festival"],
-  ["27th-30th April, 26", "Inter-House Sports Competition"],
-  ["", "Drama Family"],
+  ["", "Ball Game"],
+  ["", "Cultural Day"],
+  ["", "Hand Printing"],
+  ["", "Family Tree"],
+  ["", "Free Hand Painting"],
+  ["", "Green Awareness"],
+  ["", "Drama Competition"],
+  ["", "Kashmir Day"],
+  ["", "Health & Hygiene"],
+  ["", "Labour Day"],
+  ["", "Mark e Haq"],
+  ["", "Math Shapes"],
+  ["", "Red Colour Day"],
+  ["", "Naat Competition"],
+  ["", "Rhyme Competition"],
+  ["", "Salad Making"],
+  ["", "Season"],
+  ["", "Solid Waste"],
+  ["", "Sow a Seed"],
+  ["", "Sports Day"],
+  ["", "Symbol of Pak"],
+  ["", "World Mental Health Day"],
+  ["", "World Wild Life"],
+  ["", "Youm e Qaumi Azme Taleem"],
+  ["", "Darma Competition"],
 ];
 
 const HIGH_ACHIEVERS: Staff[] = [
@@ -405,7 +378,7 @@ export default function PreSchoolSection() {
             </div>
           </section>
 
-          {/* Upcoming events */}
+          {/* Upcoming events — hidden until real data is available
           <section>
             <SectionHead eyebrow="Look ahead" title="Upcoming Events" />
             <div className="tbl-wrap">
@@ -419,6 +392,7 @@ export default function PreSchoolSection() {
               </table>
             </div>
           </section>
+          */}
 
           {/* Facilities */}
           <section>
