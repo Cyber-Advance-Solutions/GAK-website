@@ -187,19 +187,22 @@ const DEPARTMENTS: { name: string; teachers: Staff[] }[] = [
 ];
 
 const FACILITIES_CAMPUS = [
-  "Spacious, well-ventilated classrooms with modern teaching aids and interactive smart boards.",
-  "Fully equipped science laboratories — Physics, Chemistry, and Biology — for hands-on experimentation.",
-  "Dedicated Computer laboratory with modern systems for ICT and programming.",
-  "Library stocked with FBISE-aligned textbooks, reference materials, and past examination papers.",
-  "Extensive sports grounds encouraging physical fitness and team-building activities.",
+  "14 Spacious Classrooms equipped with comfortable furniture, proper ventilation, and modern teaching aids to create an engaging learning atmosphere.",
+  "1 x Well-Equipped Computer Lab that promotes ICT integration in education, enabling students to develop essential digital literacy and technology skills.",
+  "State-of-the-Art Science Laboratories designed for advanced experimentation and inquiry-based learning.",
+  "Large Playground offering ample space for sports, physical activities, and recreational programs that encourage teamwork and healthy lifestyles.",
+  "Cold Water Facility with water coolers installed across the campus to ensure students have access to clean and chilled drinking water throughout the day.",
+  "Clean and Hygienic Environment with well-maintained classrooms, washrooms, and campus facilities.",
+  "Safe and Secure Campus with a disciplined environment that ensures the well-being and safety of every student.",
 ];
 
 const FACILITIES_ACADEMIC = [
-  "Board-focused, structured curriculum aligned with FBISE standards for Classes IX–XII.",
-  "Experienced subject-specialist faculty committed to holistic student development.",
-  "Regular mock examinations and assessments to build exam readiness.",
-  "Co-curricular activities integrated into the academic calendar for well-rounded growth.",
-  "Strong result track record in FBISE examinations.",
+  "Highly Competent Faculty Members who are experienced, qualified, and committed to nurturing students through innovative teaching methods and individualized guidance.",
+  "Interactive Learning Environment that encourages critical thinking, creativity, collaboration, and active student participation.",
+  "Well-Organized Assessment System to monitor academic progress and provide timely feedback for continuous improvement.",
+  "Co-Curricular Activities including debates, quizzes, science exhibitions, literary competitions, and cultural events to foster confidence and leadership skills.",
+  "Character Building and Moral Education integrated into daily school life to develop responsible, respectful, and ethical individuals.",
+  "Career and Academic Guidance to help students identify their strengths and prepare for future educational opportunities.",
 ];
 
 function StaffCard({ s }: { s: Staff }) {
@@ -269,7 +272,7 @@ export default function SeniorGirlsSection() {
           {/* Section Head Message */}
           <section>
             <div className="quoteband" style={{ borderRadius: "var(--r)" }}>
-              <div className="qb" style={{ padding: 32 }}>
+              <div className="qb" style={{ padding: 32, alignItems: 'flex-start' }}>
                 <div className="qb-portrait" style={{ width: 110, height: 110, position: "relative", overflow: "hidden", backgroundColor: '#f0f0f0', borderRadius: "50%", flexShrink: 0 }}>
                   <Image src={SECTION_HEAD.photo} alt={SECTION_HEAD.name} fill sizes="110px" style={{ objectFit: 'cover' }} />
                 </div>
@@ -415,9 +418,110 @@ export default function SeniorGirlsSection() {
             </div>
           </section>
 
+          {/* CCA Activities */}
+          <section>
+            <SectionHead eyebrow="Co-Curricular" title="CCA Activities" />
+            <div className="tbl-wrap">
+              <table className="tbl">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Class IX</th>
+                    <th>Class X</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>22<sup>nd</sup> April, 2026</td><td>Investiture Ceremony</td><td style={{ textAlign: "center" }}>---</td></tr>
+                  <tr><td>1<sup>st</sup> May, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Labor Day</td></tr>
+                  <tr><td>6<sup>th</sup> May, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Contagious Disease Awareness Day</td></tr>
+                  <tr><td>10<sup>th</sup> May, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Youm-e-Marka-e-Haq</td></tr>
+                  <tr><td>15<sup>th</sup> – 16<sup>th</sup> May, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Literature Festival</td></tr>
+                  <tr><td>20<sup>th</sup> May, 2026</td><td style={{ textAlign: "center" }}>---</td><td>Investiture Ceremony</td></tr>
+                  <tr><td>18<sup>th</sup> – 22<sup>nd</sup> May, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>SDGs Awareness Week</td></tr>
+                  <tr><td>20<sup>th</sup> May, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Youm-e-Takbeer</td></tr>
+                  <tr><td>24–25<sup>th</sup> June, 2026 Ashura</td><td colSpan={2} style={{ textAlign: "center" }}>24–25<sup>th</sup> June, 2026 Ashura</td></tr>
+                  <tr><td>5<sup>th</sup> August 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Investiture Ceremony</td></tr>
+                  <tr><td>12<sup>th</sup> August, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>International Youth Day</td></tr>
+                  <tr><td>14<sup>th</sup> August, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Independence Day</td></tr>
+                  <tr><td>21<sup>st</sup> – 22<sup>nd</sup> August 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Literature Festival</td></tr>
+                  <tr><td>25<sup>th</sup> August, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>12 Rabi ul Awal</td></tr>
+                  <tr><td>6<sup>th</sup> September, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Defense Day / Youm e Shuhada</td></tr>
+                  <tr><td>8<sup>th</sup> September, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>International Literacy Day</td></tr>
+                  <tr><td>21<sup>st</sup> September, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>International Peace Day</td></tr>
+                  <tr><td>28<sup>th</sup> September – 3<sup>rd</sup> October, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Intra-Regional Sports Competition (G-III)</td></tr>
+                  <tr><td>30<sup>th</sup> September, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Mega Naat &amp; Qirat Competition</td></tr>
+                  <tr><td>3<sup>rd</sup> October, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>APSACS Foundation Day</td></tr>
+                  <tr><td>5<sup>th</sup> October, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>World Teachers Day</td></tr>
+                  <tr><td>7<sup>th</sup> October, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Parliamentary Style Debate</td></tr>
+                  <tr><td>10<sup>th</sup> October, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>World Mental Health Day</td></tr>
+                  <tr><td>15<sup>th</sup> October, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Anti-Drug Awareness Day</td></tr>
+                  <tr><td>9<sup>th</sup> November, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Iqbal Day</td></tr>
+                  <tr><td>16<sup>th</sup> November, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>International Day of Tolerance</td></tr>
+                  <tr><td>16<sup>th</sup> – 21<sup>st</sup> November, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Inter Zonal Sports Competition</td></tr>
+                  <tr><td>23<sup>rd</sup> – 27<sup>th</sup> November, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Civic Awareness and Community Service Week</td></tr>
+                  <tr><td>1<sup>st</sup> – 4<sup>th</sup> December, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Science &amp; Technology Week</td></tr>
+                  <tr><td>3<sup>rd</sup> December, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>International Day of Persons with Disabilities</td></tr>
+                  <tr><td>11<sup>th</sup> – 13<sup>th</sup> December, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>AMUN</td></tr>
+                  <tr><td>16<sup>th</sup> December, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Youm-e-Qoumi Azm-e-Taleem</td></tr>
+                  <tr><td>25<sup>th</sup> December, 2026</td><td colSpan={2} style={{ textAlign: "center" }}>Quaid&rsquo;s Day</td></tr>
+                  <tr><td>11<sup>th</sup> – 16<sup>th</sup> January, 2027</td><td colSpan={2} style={{ textAlign: "center" }}>APSACS Sports Championship (G III)</td></tr>
+                  <tr><td>5<sup>th</sup> February, 2027</td><td colSpan={2} style={{ textAlign: "center" }}>Kashmir Day</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* CCA Plan */}
+          <section>
+            <SectionHead eyebrow="Co-Curricular" title="CCA Plan" />
+            <div className="tbl-wrap">
+              <table className="tbl">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>CCA Plan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>29<sup>th</sup> July, 2026</td><td style={{ textAlign: "center" }}>Contagious Disease Awareness Day</td></tr>
+                  <tr><td>5<sup>th</sup> August, 2026</td><td style={{ textAlign: "center" }}>Investiture Ceremony</td></tr>
+                  <tr><td>12<sup>th</sup> August, 2026</td><td style={{ textAlign: "center" }}>International Youth Day</td></tr>
+                  <tr><td>14<sup>th</sup> August 2026</td><td style={{ textAlign: "center" }}>Independence Day</td></tr>
+                  <tr><td>21<sup>st</sup> – 22<sup>nd</sup> August, 2026</td><td style={{ textAlign: "center" }}>Literature Festival</td></tr>
+                  <tr><td>24<sup>th</sup> – 28<sup>th</sup> August, 2026</td><td style={{ textAlign: "center" }}>SDGs Awareness Week</td></tr>
+                  <tr><td>25<sup>th</sup> August, 2026</td><td style={{ textAlign: "center" }}>12 Rabi ul Awal</td></tr>
+                  <tr><td>6<sup>th</sup> September, 2026</td><td style={{ textAlign: "center" }}>Defense Day / Youm e Shuhada</td></tr>
+                  <tr><td>8<sup>th</sup> September, 2026</td><td style={{ textAlign: "center" }}>International Literacy Day</td></tr>
+                  <tr><td>21<sup>st</sup> September, 2026</td><td style={{ textAlign: "center" }}>International Peace Day</td></tr>
+                  <tr><td>28<sup>th</sup> September – 3<sup>rd</sup> October, 2026</td><td style={{ textAlign: "center" }}>Intra-Regional Sports Competition (G-III)</td></tr>
+                  <tr><td>30<sup>th</sup> September, 2026</td><td style={{ textAlign: "center" }}>Mega Naat &amp; Qirat Competition</td></tr>
+                  <tr><td>3<sup>rd</sup> October, 2026</td><td style={{ textAlign: "center" }}>APSACS Foundation Day</td></tr>
+                  <tr><td>5<sup>th</sup> October 2026</td><td style={{ textAlign: "center" }}>World Teachers Day</td></tr>
+                  <tr><td>7<sup>th</sup> October, 2026</td><td style={{ textAlign: "center" }}>Parliamentary Style Debate</td></tr>
+                  <tr><td>10<sup>th</sup> October 2026</td><td style={{ textAlign: "center" }}>World Mental Health</td></tr>
+                  <tr><td>15<sup>th</sup> October, 2026</td><td style={{ textAlign: "center" }}>Anti-Drug Awareness Day</td></tr>
+                  <tr><td>9<sup>th</sup> November, 2026</td><td style={{ textAlign: "center" }}>Iqbal Day</td></tr>
+                  <tr><td>16<sup>th</sup> November, 2026</td><td style={{ textAlign: "center" }}>International Day of Tolerance</td></tr>
+                  <tr><td>16<sup>th</sup> – 21<sup>st</sup> November, 2026</td><td style={{ textAlign: "center" }}>Inter Zonal Sports Competition</td></tr>
+                  <tr><td>23<sup>rd</sup> – 27<sup>th</sup> November, 2026</td><td style={{ textAlign: "center" }}>Civic Awareness and Community Service Week</td></tr>
+                  <tr><td>3<sup>rd</sup> December, 2026</td><td style={{ textAlign: "center" }}>International Day of Persons with Disabilities</td></tr>
+                  <tr><td>16<sup>th</sup> December, 2026</td><td style={{ textAlign: "center" }}>Youm-e-Qoumi Azm-e-Taleem</td></tr>
+                  <tr><td>11<sup>th</sup> – 16<sup>th</sup> January, 2027</td><td style={{ textAlign: "center" }}>APSACS Sports Championship (G-III)</td></tr>
+                  <tr><td>29<sup>th</sup> – 31<sup>st</sup> January, 2027</td><td style={{ textAlign: "center" }}>AMUN</td></tr>
+                  <tr><td>5<sup>th</sup> February, 2027</td><td style={{ textAlign: "center" }}>Kashmir Day</td></tr>
+                  <tr><td>8<sup>th</sup> – 12<sup>th</sup> February, 2027</td><td style={{ textAlign: "center" }}>Science &amp; Tech Week</td></tr>
+                  <tr><td>23<sup>rd</sup> March, 2027</td><td style={{ textAlign: "center" }}>Pakistan Day</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
           {/* Facilities */}
           <section>
-            <SectionHead eyebrow="Campus" title="Facilities" />
+            <SectionHead eyebrow="Campus" title="Senior Girls Wing Facilities" />
+            <p style={{ marginBottom: "1.5rem", color: "var(--ink-soft)" }}>
+              Our Senior Girls Wing provides a dynamic, safe, and student-centered learning environment designed to support academic excellence and holistic development.
+            </p>
             <div className="grid g2">
               <div>
                 <h3 style={{ marginBottom: 12, fontSize: "1.05rem", display: "flex", alignItems: "center", gap: 8 }}>
@@ -427,7 +531,7 @@ export default function SeniorGirlsSection() {
               </div>
               <div>
                 <h3 style={{ marginBottom: 12, fontSize: "1.05rem", display: "flex", alignItems: "center", gap: 8 }}>
-                  <BookOpen size={18} strokeWidth={1.8} /> Academic Framework
+                  <BookOpen size={18} strokeWidth={1.8} /> Academic &amp; Student Development
                 </h3>
                 <div className="prose"><ul>{FACILITIES_ACADEMIC.map((f) => <li key={f}>{f}</li>)}</ul></div>
               </div>
