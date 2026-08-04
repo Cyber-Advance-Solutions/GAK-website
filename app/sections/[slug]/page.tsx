@@ -3,6 +3,7 @@ import SectionDetail from "@/components/SectionDetail";
 import MiddleBoysSection from "@/components/MiddleBoysSection";
 import PreSchoolSection from "@/components/PreSchoolSection";
 import APSISSection from "@/components/APSISSection";
+import SeniorGirlsSection from "@/components/SeniorGirlsSection";
 import { SECTIONS, type SectionKey } from "@/lib/data";
 
 export function generateStaticParams() {
@@ -22,5 +23,6 @@ export default async function SectionPage({ params }: { params: Promise<{ slug: 
   if (slug === "middle-boys") return <MiddleBoysSection />;
   if (slug === "pre") return <PreSchoolSection />;
   if (slug === "apsis") return <APSISSection />;
+  if (slug === "senior-girls") return <SeniorGirlsSection />;
   return <SectionDetail data={data} slug={slug as SectionKey} />;
 }

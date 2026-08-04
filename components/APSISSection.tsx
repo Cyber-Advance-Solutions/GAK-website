@@ -308,7 +308,7 @@ export default function APSISSection() {
           {/* Vice Principal Message */}
           <section>
             <div className="quoteband" style={{ borderRadius: "var(--r)", marginBottom: "3rem" }}>
-              <div className="qb" style={{ padding: 32 }}>
+              <div className="qb" style={{ padding: 32, alignItems: 'flex-start' }}>
                 <div className="qb-portrait" style={{ width: 110, height: 110, position: "relative", overflow: "hidden", backgroundColor: '#f0f0f0', borderRadius: "50%", flexShrink: 0 }}>
                   <Image src={VICE_PRINCIPAL.photo} alt={VICE_PRINCIPAL.name} fill sizes="110px" style={{ objectFit: 'cover' }} />
                 </div>
