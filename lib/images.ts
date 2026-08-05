@@ -6,8 +6,13 @@ export const BANNER: Record<string, string> = {
   links: "/hero1.jpg", "quick-links": "/hero2.jpg", faqs: "/hero3.jpg",
   chatbot: "/hero1.jpg", contact: "/hero2.jpg", downloads: "/hero3.jpg",
   feedback: "/hero1.jpg",
+  gallery: "/hero3.jpg",
   pre: "/hero1.jpg", junior: "/hero2.jpg",
   "middle-girls": "/hero2.jpg", "middle-boys": "/hero2.jpg",
   "senior-girls": "/hero3.jpg", "senior-boys": "/hero3.jpg",
   apsis: "/hero1.jpg",
 };
+
+export const GALLERY_IMAGES = Array.from({ length: 91 }, (_, i) =>
+  `/gallery/${String(i + 1).padStart(2, "0")}.jpeg`
+);

@@ -127,6 +127,7 @@ export const NAV: NavItem[] = [
       { label: "Feedback / Complaints", href: "/feedback" },
     ],
   },
+  { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
 
