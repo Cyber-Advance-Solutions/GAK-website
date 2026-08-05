@@ -123,7 +123,17 @@ function StaffCard({ s }: { s: Staff }) {
   return (
     <div className="staffcard">
       <div className="sf-ph">
-        <Image src={s.photo} alt={s.name} fill sizes="84px" />
+        <Image
+          src={s.photo}
+          alt={s.name}
+          fill
+          sizes="84px"
+          style={
+            s.name === "Mr. Abdul Jabbar"
+              ? { objectPosition: "top" }
+              : undefined
+          }
+        />
       </div>
       <div className="sf-nm">{s.name}</div>
       {s.role && <div className="sf-role">{s.role}</div>}
@@ -225,6 +235,131 @@ export default function SeniorBoysSection() {
                 </div>
               </div>
             ))}
+          </section>
+
+          {/* Top Students */}
+          <section>
+            <SectionHead eyebrow="Recognition" title="Top Students" />
+
+            <div style={{ marginBottom: "3rem" }}>
+              <h3 style={{ textAlign: "center", marginBottom: "1.5rem" }}>Top 3 Students — SSC II 2025</h3>
+              <div className="tbl-wrap">
+                <table className="tbl" style={{ textAlign: "center" }}>
+                  <thead>
+                    <tr>
+                      <th>Ser</th>
+                      <th>Name</th>
+                      <th>Father&rsquo;s Name &amp; Occupation</th>
+                      <th>Marks Obtained (out of 1100)</th>
+                      <th>Group</th>
+                      <th>Overall %</th>
+                      <th>Photo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Muhammad Suleman Shoaib</td>
+                      <td>Shoaib Rauf — GAK Teacher</td>
+                      <td>1036</td>
+                      <td>Science</td>
+                      <td>94.18%</td>
+                      <td>
+                        <div style={{ width: 64, height: 80, position: "relative", margin: "0 auto", borderRadius: 4, overflow: "hidden", backgroundColor: "#f0f0f0" }}>
+                          <Image src={IMG("suleman-shoaib.jpg")} alt="Muhammad Suleman Shoaib" fill sizes="64px" style={{ objectFit: "cover" }} />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Jawad Ahmed</td>
+                      <td>Sajid Iqbal — JCO</td>
+                      <td>1034</td>
+                      <td>Science</td>
+                      <td>94.00%</td>
+                      <td>
+                        <div style={{ width: 64, height: 80, position: "relative", margin: "0 auto", borderRadius: 4, overflow: "hidden", backgroundColor: "#f0f0f0" }}>
+                          <Image src={IMG("jawad-ahmed.png")} alt="Jawad Ahmed" fill sizes="64px" style={{ objectFit: "cover" }} />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Muhammad Ahmed Sarfraz</td>
+                      <td>Muhammad Sarfraz — GAK Teacher</td>
+                      <td>1033</td>
+                      <td>Science</td>
+                      <td>93.91%</td>
+                      <td>
+                        <div style={{ width: 64, height: 80, position: "relative", margin: "0 auto", borderRadius: 4, overflow: "hidden", backgroundColor: "#f0f0f0" }}>
+                          <Image src={IMG("ahmed-sarfraz.jpg")} alt="Muhammad Ahmed Sarfraz" fill sizes="64px" style={{ objectFit: "cover" }} />
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div style={{ marginBottom: "3rem" }}>
+              <h3 style={{ textAlign: "center", marginBottom: "1.5rem" }}>Top 3 Students — HSSC II 2025</h3>
+              <div className="tbl-wrap">
+                <table className="tbl" style={{ textAlign: "center" }}>
+                  <thead>
+                    <tr>
+                      <th>Ser</th>
+                      <th>Name</th>
+                      <th>Father&rsquo;s Name &amp; Occupation</th>
+                      <th>Marks Obtained</th>
+                      <th>Group</th>
+                      <th>Overall %</th>
+                      <th>Photo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Muhammad Talha Moazzam</td>
+                      <td>Muhammad Moazzam Sikandar — AO</td>
+                      <td>1012</td>
+                      <td>Pre Medical</td>
+                      <td>92.00%</td>
+                      <td>
+                        <div style={{ width: 64, height: 80, position: "relative", margin: "0 auto", borderRadius: 4, overflow: "hidden", backgroundColor: "#f0f0f0" }}>
+                          <Image src={IMG("talha-moazzam.png")} alt="Muhammad Talha Moazzam" fill sizes="64px" style={{ objectFit: "cover" }} />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Rohail Amjad</td>
+                      <td>Amjad Ali — Civil</td>
+                      <td>1005</td>
+                      <td>Pre Medical</td>
+                      <td>91.36%</td>
+                      <td>
+                        <div style={{ width: 64, height: 80, position: "relative", margin: "0 auto", borderRadius: 4, overflow: "hidden", backgroundColor: "#f0f0f0" }}>
+                          <Image src={IMG("rohail-amjad.png")} alt="Rohail Amjad" fill sizes="64px" style={{ objectFit: "cover" }} />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Abdullah Noor</td>
+                      <td>Muhammad Saleem — Retd. Sldr.</td>
+                      <td>1002</td>
+                      <td>Pre-Engineering</td>
+                      <td>91.09%</td>
+                      <td>
+                        <div style={{ width: 64, height: 80, position: "relative", margin: "0 auto", borderRadius: 4, overflow: "hidden", backgroundColor: "#f0f0f0" }}>
+                          <Image src={IMG("abdullah-noor.png")} alt="Abdullah Noor" fill sizes="64px" style={{ objectFit: "cover" }} />
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </section>
 
           {/* Academic Schedule Class IX-X */}
