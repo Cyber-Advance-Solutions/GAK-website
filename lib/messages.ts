@@ -23,9 +23,9 @@ export const MESSAGES: MessageLeader[] = [
     title: "Chairman's Message",
     heading: "Excellence is never inherited —\nit is sustained.",
     intro: "A message from the Chairman on character, governance, and the lasting purpose of Garrison Academy.",
-    name: "Maj Gen (R) Tariq Mahmood",
+    name: "Major General Bilal Mahmud, General Officer Commanding 37 Div, Chairman BOGs GAK",
     role: "Chairman, APSACS",
-    image: "/hero1.jpg",
+    image: "/chairman.jpeg",
     imageAlt: "Chairman, APSACS",
     initials: "TM",
     message: [
@@ -45,9 +45,9 @@ export const MESSAGES: MessageLeader[] = [
     title: "Vice Chairman's Message",
     heading: "Education's highest calling\nis the quality of thought.",
     intro: "A message from the Vice Chairman on intellect, character, and the distinctly human purpose of schooling.",
-    name: "Brig (R) Saima Riaz",
+    name: "Patron in Chief, Lieutenant General Nauman Zakria",
     role: "Vice Chairman",
-    image: "/hero2.jpg",
+    image: "/vicechairman.jpeg",
     imageAlt: "Vice Chairman",
     initials: "SR",
     message: [
@@ -73,13 +73,12 @@ export const MESSAGES: MessageLeader[] = [
     imageAlt: "Principal, GAK Campus",
     initials: "AK",
     message: [
-      "One day, our students will leave these classrooms for places we may never see. They will enter universities, workplaces, communities, and families where no examination paper will tell them what to do, no teacher will stand beside them, and no textbook will provide every answer.",
-      "In those moments, what will guide them? Will they have the discipline to think independently when opinions are louder than evidence? Will they possess the integrity to choose what is right over what is easy? Will they adapt with confidence when the familiar no longer exists? Will they recognise that lasting success is built not through individual brilliance alone, but through trust, collaboration, and shared purpose? These questions define the true work of a school.",
-      "At Garrison Academy, we believe our responsibility extends far beyond imparting knowledge. Facts may become outdated, technology will evolve, and professions will transform in ways we cannot yet predict. Yet the ability to think critically, lead with character, embrace change with resilience, and work collaboratively will always remain relevant. These are the qualities that enable individuals not only to succeed in a changing world, but also to shape it.",
-      "This belief is reflected in our vision: to develop capable individuals who think independently, act responsibly, and thrive confidently in a rapidly evolving world. It also underpins our Strategic Framework, which encourages every member of our community to embrace four enduring commitments: think critically, act righteously, adapt bravely, and work together. These are not annual themes or inspiring phrases; they are the daily habits that shape character, guide decisions, and prepare our students for lives of purpose and contribution.",
-      "As you explore the pages of this magazine, I invite you to look beyond the achievements they celebrate. Every success reflects something deeper: a question thoughtfully explored, a challenge courageously accepted, a mistake transformed into learning, a team united by a common purpose, or a quiet act of integrity that may never receive public recognition. Such moments rarely make headlines, yet they define the character of an institution.",
-      "A school's greatest accomplishment is not measured by the trophies displayed in its corridors or the examination results published each year. It is measured by the kind of people who leave its gates—individuals whose knowledge is guided by wisdom, whose ambition is balanced by responsibility, and whose success contributes to something greater than themselves.",
-      "If, years from now, our graduates are remembered as thoughtful citizens, principled leaders, adaptable professionals, and compassionate human beings, we will know that our work has truly mattered. The future is not something we simply await; it is something we shape—one learner, one decision, and one meaningful action at a time.",
+      "Welcome to Garrison Academy Kharian",
+      "It is my privilege to welcome you to Garrison Academy Kharian, an institution where academic excellence, character, and leadership grow together with purpose and pride.",
+      "We believe that true education goes beyond textbooks and examinations. It is about shaping thoughtful, confident, and responsible individuals who are prepared to meet the challenges of a rapidly changing world with integrity, resilience, and vision. At Garrison Academy Kharian, every child is given the opportunity to learn, lead, and excel in an environment that is disciplined, caring, and intellectually stimulating.",
+      "Our dedicated faculty remains committed to high standards of teaching and learning, while our broad range of academic, co-curricular, and character-building opportunities ensures the holistic development of every student. We take pride in nurturing a culture of achievement, innovation, respect, and continuous improvement.",
+      "As Principal, I am deeply committed to ensuring that Garrison Academy Kharian continues to stand as a beacon of quality education, where young minds are inspired, values are strengthened, and futures are shaped with confidence.",
+      "I invite you to explore our website and discover the spirit, excellence, and aspirations that define our school community."
     ],
   },
 ];

@@ -591,7 +591,7 @@ footer ul li a:hover{color:var(--gold-300);padding-left:3px}
 .filerow .f-dl:hover{background:var(--green-700);color:#fff}
 
 /* ---------- message portrait (individual leader pages) ---------- */
-.msgport{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+.msgport{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
 @media(max-width:840px){.msgport{grid-template-columns:1fr;gap:36px}}
 .msgport-media{position:relative;padding-bottom:18px}
 .msgport-frame{position:relative;aspect-ratio:4/5;width:100%;height:auto;border-radius:var(--r);overflow:hidden;border:1px solid var(--line-strong);box-shadow:var(--shadow-md);background:linear-gradient(160deg,var(--green-700),var(--green-900))}
