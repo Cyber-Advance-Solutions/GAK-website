@@ -266,6 +266,7 @@ export default function MiddleBoysSection() {
         >
           {/* Section head message */}
           <section>
+             <SectionHead eyebrow="Leadership" title="Section Head" />
             <div className="quoteband" style={{ borderRadius: "var(--r)" }}>
               <div className="qb" style={{ padding: 32 }}>
                 <div className="qb-portrait" style={{ width: 110, height: 110, position: "relative", overflow: "hidden" }}>

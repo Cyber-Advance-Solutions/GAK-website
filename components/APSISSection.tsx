@@ -307,12 +307,13 @@ export default function APSISSection() {
         >
           {/* Vice Principal Message */}
           <section>
+            <SectionHead eyebrow="Leadership" title="Vice Principal" />
             <div className="quoteband" style={{ borderRadius: "var(--r)", marginBottom: "3rem" }}>
               <div className="qb" style={{ padding: 32, alignItems: 'flex-start' }}>
                 <div className="qb-portrait" style={{ width: 110, height: 110, position: "relative", overflow: "hidden", backgroundColor: '#f0f0f0', borderRadius: "50%", flexShrink: 0 }}>
                   <Image src={VICE_PRINCIPAL.photo} alt={VICE_PRINCIPAL.name} fill sizes="110px" style={{ objectFit: 'cover' }} />
                 </div>
-                
+
                 <div className="qb-body">
                   <span className="eyebrow">Message from the Vice Principal</span>
                   <blockquote style={{ fontSize: "1.1rem", borderLeft: 'none', paddingLeft: 0, marginTop: '1rem', fontStyle: 'normal' }}>
@@ -368,7 +369,7 @@ export default function APSISSection() {
               {CLASSES.map((c) => (
                 <div className="figure" key={c.label}>
                   <div className="fimg" style={{ backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                     <Image src={c.photo} alt={c.label} fill sizes="(max-width: 820px) 100vw, 33vw" />
+                    <Image src={c.photo} alt={c.label} fill sizes="(max-width: 820px) 100vw, 33vw" />
                   </div>
                   <figcaption><GraduationCap size={15} strokeWidth={1.8} /> {c.label}</figcaption>
                 </div>
@@ -391,7 +392,7 @@ export default function APSISSection() {
               {ACTIVITIES.map((a) => (
                 <div className="figure" key={a.label + a.photo}>
                   <div className="fimg" style={{ backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                     <Image src={a.photo} alt={a.label} fill sizes="(max-width: 820px) 100vw, 33vw" />
+                    <Image src={a.photo} alt={a.label} fill sizes="(max-width: 820px) 100vw, 33vw" />
                   </div>
                   <figcaption style={{ fontSize: '0.9rem', lineHeight: '1.2' }}>{a.label}</figcaption>
                 </div>
@@ -402,7 +403,7 @@ export default function APSISSection() {
           {/* Achievements */}
           <section>
             <SectionHead eyebrow="Recognition" title="High Achievers' APSIS Kharian" />
-            
+
             <div style={{ marginBottom: "3rem" }}>
               <h4 style={{ textAlign: "center", marginBottom: "1rem" }}>Co-Curricular Activities<br />HRCA English & Science Quiz Competition (2025-26)</h4>
               <div className="staffgrid">
@@ -464,7 +465,7 @@ export default function APSISSection() {
             <SectionHead eyebrow="Academics" title="Cambridge Results" />
             <div style={{ marginBottom: "2rem" }}>
               <h3 style={{ textAlign: "center", marginBottom: "1.5rem", fontSize: "1.8rem", color: "var(--ink)", fontWeight: 700 }}>Session 2024 &ndash; 2025</h3>
-              
+
               <div className="tbl-wrap" style={{ marginBottom: "2rem" }}>
                 <table className="tbl" style={{ textAlign: "center" }}>
                   <thead>

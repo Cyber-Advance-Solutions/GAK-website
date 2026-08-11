@@ -11,15 +11,15 @@ const IMG = (name: string) => `/sections/pre-school/${name}`;
 type Staff = { name: string; role?: string; qualification: string; joined: string; photo: string };
 
 const HEAD: Staff = {
-  name: "Mrs. Rabia Tariq",
-  role: "Section Head",
-  qualification: "Qualification",
-  joined: "",
+  name: "Farhat Jabeen",
+  role: "Section Head Pre School",
+  qualification: "M.A Eng",
+  joined: "28th April,2005",
   photo: IMG("section-head.jpg"),
 };
 
 const DEPUTY_HEADS: Staff[] = [
-  { name: "Deputy Head Name", role: "Deputy Section Head", qualification: "Qualification", joined: "Date", photo: IMG("deputy-section-head.png") },
+  { name: "Sayeda Mushtaq", role: "Deputy Section Head", qualification: "M.A History", joined: "3rd March,2025", photo: IMG("deputy-section-head.png") },
 ];
 
 const COORDINATORS: Staff[] = [
@@ -282,15 +282,27 @@ export default function PreSchoolSection() {
         >
           {/* Section head message */}
           <section>
+            <SectionHead eyebrow="Leadership" title="Section Head" />
             <div className="quoteband" style={{ borderRadius: "var(--r)" }}>
-              <div className="qb" style={{ padding: 32 }}>
+              <div className="qb" style={{ padding: 32, alignItems: 'flex-start' }}>
                 <div className="qb-portrait" style={{ width: 110, height: 110, position: "relative", overflow: "hidden", backgroundColor: '#f0f0f0' }}>
                   <Image src={HEAD.photo} alt={HEAD.name} fill sizes="110px" style={{ borderRadius: "50%", objectFit: "cover" }} />
                 </div>
                 <div className="qb-body">
                   <span className="eyebrow">Message from the Section Head</span>
                   <blockquote style={{ fontSize: "1.15rem" }}>
-                    {data.headMsg}
+                    <p>
+                      The Pre-School Section at Army Public School & College GAK Campus holds a rich history of nurturing young minds that dates back to its inception as Toddler Nursery in 1972. Over the decades, our institution evolved into Kehkashaan Academy in 1986, joined the Army Public Schools network in 1990, and established its identity at the GAK Campus in 2000. Built on this 50-year legacy of educational care, our early childhood programme lays a strong foundation for lifelong learning, character, and confidence.
+                    </p>
+                    <p style={{ marginTop: '1rem' }}>
+                      Housed in a safe, vibrant, and child-centered environment, our Pre-School features engaging classrooms and stimulating learning spaces where young learners feel valued, inspired, and encouraged to explore their full potential. We believe that every child is unique and deserves the opportunity to learn, grow, and thrive at their own pace.
+                    </p>
+                    <p style={{ marginTop: '1rem' }}>
+                      Our dedicated team of educators is committed to delivering a nurturing education that fosters curiosity, creativity, effective communication, and strong moral values. Through play-based learning, interactive activities, and a supportive school culture, we empower our youngest learners to build independence and empathy.
+                    </p>
+                    <p style={{ marginTop: '1rem' }}>
+                      At APS&C GAK Campus, we believe a strong partnership between home and school is essential for a child's success. Together with our parents, we are committed to building confident, compassionate, and responsible learners who are joyful, curious, and well-prepared for the future.
+                    </p>
                   </blockquote>
                   <div className="qb-foot">
                     <div className="qb-who"><div className="nm">{HEAD.name}</div><div className="rl">{HEAD.role}</div></div>
@@ -302,7 +314,7 @@ export default function PreSchoolSection() {
 
           {/* Deputy section heads */}
           <section>
-            <SectionHead eyebrow="Leadership" title="Deputy Section Heads" />
+            <SectionHead eyebrow="Leadership" title="Deputy Section Head" />
             <div className="staffgrid">
               {DEPUTY_HEADS.map((s) => <StaffCard key={s.name} s={s} />)}
             </div>
