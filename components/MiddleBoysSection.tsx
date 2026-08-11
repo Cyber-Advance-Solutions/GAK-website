@@ -245,7 +245,7 @@ export default function MiddleBoysSection() {
                 title="Section facts"
                 rows={[
                   ["Section head", HEAD.name],
-                  ["Classes", "VI – VIII"],
+                  ["Classes", "IV – VIII"],
                   ["Stream", "APSACS · FBISE"],
                   ["Timings", "7:45 AM – 1:45 PM"],
                 ]}

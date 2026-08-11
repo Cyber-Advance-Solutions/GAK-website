@@ -159,21 +159,21 @@ export const SECTIONS: Record<SectionKey, SectionData> = {
   },
   junior: {
     name: "Junior Section",
-    sub: "Classes I – V",
+    sub: "Classes I – III",
     head: "Mrs. Sadia Khan",
     headMsg:
       "The Junior Section builds early academic discipline and strong literacy and numeracy foundations, preparing students for the transition into Middle School.",
   },
   "middle-girls": {
     name: "Middle Girls Section",
-    sub: "Classes VI – VIII (Girls)",
+    sub: "Classes IV – VIII (Girls)",
     head: "Mrs. Ayesha Imran",
     headMsg:
       "The middle years build strong academic foundations and study habits that carry our girls confidently into the board classes.",
   },
   "middle-boys": {
     name: "Middle Boys Section",
-    sub: "Classes VI – VIII (Boys)",
+    sub: "Classes IV – VIII (Boys)",
     head: "Mr. Imran Shah",
     headMsg:
       "The middle years build strong academic foundations and study habits that carry our boys confidently into the board classes.",
