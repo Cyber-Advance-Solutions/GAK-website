@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Trophy, Building2, GraduationCap } from "lucide-react";
+import { ArrowRight, Trophy, GraduationCap } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { Editorial, FactCard } from "@/components/Editorial";
 import SectionHead from "@/components/SectionHead";
@@ -215,15 +215,22 @@ const UPCOMING: [string, string][] = [
   ["12th April, 27", "New Academic Session"],
 ];
 
-const FACILITIES_CAMPUS = [
-  "Visitors Room",
-  "Art Room",
-  "Library",
-];
-
-const FACILITIES_ACADEMIC: string[] = [
-  "Play-based, child-centred learning",
-  "Warm and secure environment",
+const FACILITIES: { name: string; description: string; photos: string[] }[] = [
+  {
+    name: "Visitors Room",
+    description: "A welcoming and comfortable reception area designed to receive parents and guests in a warm, professional setting.",
+    photos: [IMG("visitor-room1.jpg"), IMG("visitor-room2.jpg")],
+  },
+  {
+    name: "Art Room",
+    description: "A vibrant, fully equipped art room that sparks creativity through painting, crafts, and hands-on artistic expression for our young learners.",
+    photos: [IMG("art-room1.jpg"), IMG("art-room2.jpg")],
+  },
+  {
+    name: "Library",
+    description: "A dedicated reading space stocked with age-appropriate books and learning materials to nurture a love of reading from an early age.",
+    photos: [],
+  },
 ];
 
 function StaffCard({ s }: { s: Staff }) {
@@ -409,20 +416,23 @@ export default function PreSchoolSection() {
           {/* Facilities */}
           <section>
             <SectionHead eyebrow="Campus" title="Facilities" />
-            <div className="grid g2">
-              <div>
-                <h3 style={{ marginBottom: 12, fontSize: "1.05rem", display: "flex", alignItems: "center", gap: 8 }}>
-                  <Building2 size={18} strokeWidth={1.8} /> Campus & Infrastructure
-                </h3>
-                <div className="prose"><ul>{FACILITIES_CAMPUS.map((f) => <li key={f}>{f}</li>)}</ul></div>
+            {FACILITIES.map((f) => (
+              <div key={f.name} style={{ marginBottom: "2.5rem" }}>
+                <h3 style={{ marginBottom: "0.5rem" }}>{f.name}</h3>
+                <p style={{ color: "var(--ink-soft)", marginBottom: "1rem" }}>{f.description}</p>
+                {f.photos.length > 0 && (
+                  <div className="classgrid">
+                    {f.photos.map((photo, i) => (
+                      <div className="figure" key={photo}>
+                        <div className="fimg" style={{ backgroundColor: "#f0f0f0" }}>
+                          <Image src={photo} alt={`${f.name} ${i + 1}`} fill sizes="(max-width: 820px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-              <div>
-                <h3 style={{ marginBottom: 12, fontSize: "1.05rem", display: "flex", alignItems: "center", gap: 8 }}>
-                  <GraduationCap size={18} strokeWidth={1.8} /> Academic & Development Framework
-                </h3>
-                <div className="prose"><ul>{FACILITIES_ACADEMIC.map((f) => <li key={f}>{f}</li>)}</ul></div>
-              </div>
-            </div>
+            ))}
             <Link className="link-arrow" href="/admissions" style={{ marginTop: "2rem", display: "flex" }}>Apply for admission <ArrowRight size={16} /></Link>
           </section>
         </Editorial>
