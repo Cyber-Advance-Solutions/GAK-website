@@ -1,7 +1,7 @@
 // Leadership messages — one entry per dedicated message page.
 
 export type MessageLeader = {
-  slug: "chairman" | "vice-chairman" | "principal";
+  slug: "chairman" | "vice-chairman" | "principal" | "patron-in-chief";
   href: string;
   eyebrow: string;
   title: string;
@@ -16,6 +16,25 @@ export type MessageLeader = {
 };
 
 export const MESSAGES: MessageLeader[] = [
+  {
+    slug: "patron-in-chief",
+    href: "/messages/patron-in-chief",
+    eyebrow: "From the Patron in Chief's desk",
+    title: "Patron in Chief's Message",
+    heading: "Building the nation —\none school at a time.",
+    intro: "A message from the Patron in Chief on vision, service, and the enduring mission of APSACS.",
+    name: "Lieutenant General Nauman Zakria HI(M), SI, S Bt Commander 1 Corps",
+    role: "Patron in Chief, APSACS",
+    image: "/patron-in-chief.jpeg",
+    imageAlt: "Patron in Chief, APSACS",
+    initials: "PC",
+    message: [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+      "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.",
+    ],
+  },
   {
     slug: "chairman",
     href: "/messages/chairman",

@@ -24,6 +24,7 @@ export const NAV: NavItem[] = [
       {
         label: "Messages",
         fly: [
+          { label: "Patron in Chief", href: "/messages/patron-in-chief" },
           { label: "Chairman's Message", href: "/messages/chairman" },
           { label: "Vice Chairman's Message", href: "/messages/vice-chairman" },
           { label: "Principal's Message", href: "/messages/principal" },
