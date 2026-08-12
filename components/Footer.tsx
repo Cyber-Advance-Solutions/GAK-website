@@ -53,7 +53,8 @@ export default function Footer() {
           <FooterCol title="Connect" links={CONNECT} />
         </div>
         <div className="fbot">
-          <span>© 2026 APS&amp;C GAK Campus, Kharian Cantt. All rights reserved.</span>
+          {/* <span>© 2026 APS&amp;C GAK Campus, Kharian Cantt. All rights reserved.</span> */}
+          <span>IT Department, Garrison Academy Kharian Cantt, All Rights Reserved</span>
           <span className="urdu">رَبِّ زِدْنِي عِلْمًا</span>
         </div>
       </div>

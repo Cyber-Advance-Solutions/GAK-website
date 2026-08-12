@@ -2,6 +2,7 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import ChatWidget from "@/components/ChatWidget";
+import FacilitiesSwiper from "@/components/FacilitiesSwiper";
 import { ArrowRight, BookOpen, Layers, GraduationCap, Globe, Bell, CalendarDays, Download } from "lucide-react";
 
 export default function HomePage() {
@@ -68,7 +69,7 @@ export default function HomePage() {
         <div className="gallery">
           <div className="ga big" style={{ backgroundImage: "url(/hero3.jpg)" }}><span className="cap">Campus &amp; grounds</span></div>
           <div className="ga" style={{ backgroundImage: "url(/hero1.jpg)" }}><span className="cap">Classrooms</span></div>
-          <div className="ga" style={{ backgroundImage: "url(/hero2.jpg)" }}><span className="cap">Library</span></div>
+          <FacilitiesSwiper />
         </div>
       </div></section>
 
