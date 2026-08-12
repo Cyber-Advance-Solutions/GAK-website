@@ -282,6 +282,7 @@ export default function JuniorSection() {
         >
           {/* Section Head Message */}
           <section>
+            <SectionHead eyebrow="Leadership" title="Section Head" />
             <div className="quoteband" style={{ borderRadius: "var(--r)" }}>
               <div className="qb" style={{ padding: 32, alignItems: "flex-start" }}>
                 <div className="qb-portrait" style={{ width: 110, height: 110, position: "relative", overflow: "hidden", backgroundColor: "#f0f0f0", borderRadius: "50%", flexShrink: 0 }}>
