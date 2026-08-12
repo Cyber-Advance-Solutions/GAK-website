@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import ChatWidget from "@/components/ChatWidget";
 import FacilitiesSwiper from "@/components/FacilitiesSwiper";
-import { ArrowRight, BookOpen, Layers, GraduationCap, Globe, Bell, CalendarDays, Download } from "lucide-react";
+import { ArrowRight, BookOpen, Backpack, Layers, GraduationCap, Globe, Bell, CalendarDays, Download } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -57,9 +57,10 @@ export default function HomePage() {
         <div className="sec-head"><span className="eyebrow">Academic Pathway</span><h2 className="h-lg">A clear journey — from first steps to final exams.</h2></div>
         <div className="pathway">
           <div className="pw"><i className="pw-ic"><BookOpen size={24} /></i><div className="pw-n">Step 01</div><h4>Pre-School</h4><p>Play-based foundation years</p></div>
-          <div className="pw"><i className="pw-ic"><Layers size={24} /></i><div className="pw-n">Step 02</div><h4>Middle School</h4><p>Classes VI – VIII</p></div>
-          <div className="pw"><i className="pw-ic"><GraduationCap size={24} /></i><div className="pw-n">Step 03</div><h4>Senior School</h4><p>FBISE · IX – XII</p></div>
-          <div className="pw"><i className="pw-ic"><Globe size={24} /></i><div className="pw-n">Step 04</div><h4>APSIS</h4><p>Cambridge international</p></div>
+          <div className="pw"><i className="pw-ic"><Backpack size={24} /></i><div className="pw-n">Step 02</div><h4>Junior School</h4><p>Classes I – III</p></div>
+          <div className="pw"><i className="pw-ic"><Layers size={24} /></i><div className="pw-n">Step 03</div><h4>Middle School</h4><p>Classes IV – VIII</p></div>
+          <div className="pw"><i className="pw-ic"><GraduationCap size={24} /></i><div className="pw-n">Step 04</div><h4>Senior School</h4><p>FBISE · IX – XII</p></div>
+          <div className="pw"><i className="pw-ic"><Globe size={24} /></i><div className="pw-n">Step 05</div><h4>APSIS</h4><p>Cambridge international</p></div>
         </div>
       </div></section>
 
