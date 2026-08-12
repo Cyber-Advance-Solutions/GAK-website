@@ -52,7 +52,7 @@ export const NAV: NavItem[] = [
           { label: "Middle Boys Section", href: "/sections/middle-boys" },
           { label: "Senior Girls Section", href: "/sections/senior-girls" },
           { label: "Senior Boys Section", href: "/sections/senior-boys" },
-          { label: "Army Public School For International Study", href: "/sections/apsis" },
+          { label: "APSIS", href: "/sections/apsis" },
         ],
       },
       { label: "Scholarships & Incentives", href: "/scholarships" },
@@ -196,11 +196,11 @@ export const SECTIONS: Record<SectionKey, SectionData> = {
     board: true,
   },
   apsis: {
-    name: "Army Public School For International Study",
+    name: "APSIS",
     sub: "Cambridge International Stream",
     head: "Mr. Daniyal Rauf",
     headMsg:
-      "Army Public School For International Study offers a globally benchmarked Cambridge education, opening doors to universities at home and abroad.",
+      "APSIS offers a globally benchmarked Cambridge education, opening doors to universities at home and abroad.",
     cambridge: true,
   },
 };

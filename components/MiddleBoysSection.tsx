@@ -274,7 +274,7 @@ export default function MiddleBoysSection() {
                 </div>
                 <div className="qb-body">
                   <span className="eyebrow">Message from the Section Head</span>
-                  <blockquote style={{ fontSize: "1.15rem" }}>
+                  <blockquote style={{ fontSize: "0.85rem" }}>
                     Welcome to the Middle Boys Section, a place where curiosity turns into confidence and effort turns into achievement.
                     These are the years that shape not just knowledge, but character — where our students learn to think critically,
                     work collaboratively, and believe in their own potential. Our dedicated teachers walk alongside every child,

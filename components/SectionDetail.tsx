@@ -105,7 +105,7 @@ export default function SectionDetail({ data, slug }: { data: SectionData; slug:
                 </div>
                 <div className="qb-body">
                   <span className="eyebrow">Message from the section head</span>
-                  <blockquote style={{ fontSize: "1.3rem" }}>{data.headMsg}</blockquote>
+                  <blockquote style={{ fontSize: "0.85rem" }}>{data.headMsg}</blockquote>
                   <div className="qb-foot">
                     <div className="qb-who"><div className="nm">{data.head}</div><div className="rl">Head — {data.name}</div></div>
                   </div>

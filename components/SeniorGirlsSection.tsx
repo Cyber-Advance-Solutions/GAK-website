@@ -279,7 +279,7 @@ export default function SeniorGirlsSection() {
                 </div>
                 <div className="qb-body">
                   <span className="eyebrow">Message from the Section Head</span>
-                  <blockquote style={{ fontSize: "1.1rem", borderLeft: 'none', paddingLeft: 0, marginTop: '1rem', fontStyle: 'normal' }}>
+                  <blockquote style={{ fontSize: "0.85rem", borderLeft: 'none', paddingLeft: 0, marginTop: '1rem', fontStyle: 'normal' }}>
                     <p>It is my privilege to welcome you to the Senior Wing.</p>
                     <p style={{ marginTop: '1rem' }}>
                       Our mission is to maintain the highest benchmarks of academic quality, character development, and student performance. By aligning our curriculum with modern educational frameworks and providing robust support across academics and co-curricular pursuits, we prepare our students to excel in national and competitive landscapes.

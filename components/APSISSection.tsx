@@ -316,11 +316,11 @@ export default function APSISSection() {
 
                 <div className="qb-body">
                   <span className="eyebrow">Message from the Vice Principal</span>
-                  <blockquote style={{ fontSize: "1.1rem", borderLeft: 'none', paddingLeft: 0, marginTop: '1rem', fontStyle: 'normal' }}>
+                  <blockquote style={{ fontSize: "0.85rem", borderLeft: 'none', paddingLeft: 0, marginTop: '1rem', fontStyle: 'normal' }}>
                     <p>The Cambridge Stream at Army Public School for International Studies (APSIS) was established in 2020 with a vision to provide internationally benchmarked education that inspires academic excellence, critical thinking, and lifelong learning. Today, the programme proudly offers the Cambridge curriculum from Stage 1 to O Level III, providing students with a strong foundation for higher education and future success.</p>
                     <p style={{ marginTop: '1rem' }}>Now housed in a state-of-the-art campus featuring modern classrooms, well-equipped laboratories, and innovative learning spaces, the Cambridge Stream offers an environment where students are encouraged to explore, create, and excel.</p>
                     <p style={{ marginTop: '1rem' }}>Our dedicated faculty is committed to delivering a learner-centered education that develops confidence, curiosity, leadership, and global perspectives. Through rigorous academics, co-curricular opportunities, and a supportive school culture, we empower every learner to realize their full potential. Rather than remaining fixed in traditional approaches, we embrace innovation and welcome meaningful improvements, continually refining our educational practices to provide the highest quality learning experience for every student.</p>
-                    <p style={{ marginTop: '1.5rem', fontWeight: 600, textAlign: 'center', color: 'var(--green-700)' }}>At Army Public School For International Study, we are committed to shaping confident, responsible, and compassionate global citizens<br />Prepared to thrive in an ever-changing world!</p>
+                    <p style={{ marginTop: '1.5rem', fontWeight: 600, textAlign: 'center', color: 'var(--green-700)' }}>At APSIS, we are committed to shaping confident, responsible, and compassionate global citizens<br />Prepared to thrive in an ever-changing world!</p>
                   </blockquote>
                   <div className="qb-foot" style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap', marginTop: '2rem' }}>
                     <div className="qb-who">

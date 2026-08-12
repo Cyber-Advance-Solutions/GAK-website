@@ -297,7 +297,7 @@ export default function PreSchoolSection() {
                 </div>
                 <div className="qb-body">
                   <span className="eyebrow">Message from the Section Head</span>
-                  <blockquote style={{ fontSize: "1.15rem" }}>
+                  <blockquote style={{ fontSize: "0.85rem" }}>
                     <p>
                       The Pre-School Section at Army Public School & College Garrison Academy Kharian Cantt holds a rich history of nurturing young minds that dates back to its inception as Toddler Nursery in 1972. Over the decades, our institution evolved into Kehkashaan Academy in 1986, joined the Army Public Schools network in 1990, and established its identity at the Garrison Academy Kharian Cantt in 2000. Built on this 50-year legacy of educational care, our early childhood programme lays a strong foundation for lifelong learning, character, and confidence.
                     </p>

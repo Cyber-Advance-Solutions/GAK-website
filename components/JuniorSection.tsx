@@ -290,7 +290,7 @@ export default function JuniorSection() {
                 </div>
                 <div className="qb-body">
                   <span className="eyebrow">Message from the Section Head</span>
-                  <blockquote style={{ fontSize: "1.1rem", borderLeft: "none", paddingLeft: 0, marginTop: "1rem", fontStyle: "normal" }}>
+                  <blockquote style={{ fontSize: "0.85rem", borderLeft: "none", paddingLeft: 0, marginTop: "1rem", fontStyle: "normal" }}>
                     <p>Welcome to the Junior Section, where every child&rsquo;s learning journey begins with curiosity, confidence, and care. We believe that the early years are the foundation for lifelong learning, and our goal is to provide a safe, nurturing, and stimulating environment in which every child can thrive.</p>
                     <p style={{ marginTop: "1rem" }}>Our dedicated teachers inspire young minds through engaging, child-centered learning experiences that promote academic excellence, creativity, critical thinking, and strong moral values. We encourage our students to become confident communicators, responsible individuals, and compassionate members of society.</p>
                     <p style={{ marginTop: "1rem" }}>We value the strong partnership between school and home, recognizing that parents play an essential role in every child&rsquo;s success. Together, we strive to create meaningful learning experiences that help our children grow intellectually, socially, emotionally, and spiritually.</p>

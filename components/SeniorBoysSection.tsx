@@ -194,7 +194,7 @@ export default function SeniorBoysSection() {
                 </div>
                 <div className="qb-body">
                   <span className="eyebrow">Message from the Acting Section Head</span>
-                  <blockquote style={{ fontSize: "1.1rem", borderLeft: "none", paddingLeft: 0, marginTop: "1rem", fontStyle: "normal" }}>
+                  <blockquote style={{ fontSize: "0.85rem", borderLeft: "none", paddingLeft: 0, marginTop: "1rem", fontStyle: "normal" }}>
                     <p>Welcome to the Senior Boys Section.</p>
                     <p style={{ marginTop: "1rem" }}>
                       Where ambition meets excellence, and today&rsquo;s learners become tomorrow&rsquo;s leaders.

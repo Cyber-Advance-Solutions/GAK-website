@@ -78,7 +78,7 @@ export default function AdmissionsPage() {
       </section>
 
       <section className="sec" id="apply" style={{ scrollMarginTop: 150, background: "var(--paper-2)" }}>
-        <SectionHead eyebrow="Start now" title="Apply online" intro="Submit an admission request — our office will contact you with next steps." />
+        <div className="wrap"><SectionHead eyebrow="Start now" title="Apply online" intro="Submit an admission request — our office will contact you with next steps." /></div>
         <Editorial
           rail={
             <FactCard
@@ -93,19 +93,120 @@ export default function AdmissionsPage() {
           }
         >
           <div className="form">
-            <div className="frow">
-              <div className="field"><label>Student name <span className="req">*</span></label><input placeholder="Full name" /></div>
-              <div className="field"><label>Class applying for <span className="req">*</span></label><select><option>Pre-School</option><option>Prep – V</option><option>VI – VIII</option><option>IX (FBISE)</option><option>IX (APSIS / Cambridge)</option><option>XI</option></select></div>
+
+            {/* 1. Student's Particulars */}
+            <div className="field" style={{ marginBottom: 6 }}>
+              <label style={{ fontSize: "1rem", fontWeight: 700, color: "var(--green-900)" }}>1. Student&rsquo;s Particulars</label>
             </div>
-            <div className="frow">
-              <div className="field"><label>Date of birth</label><input type="date" /></div>
-              <div className="field"><label>Stream</label><select><option>APSACS (FBISE)</option><option>APSIS (Cambridge)</option></select></div>
+
+            <div className="field">
+              <label>a. Name of the Candidate <span className="req">*</span></label>
+              <input placeholder="Full name of the candidate" />
             </div>
-            <div className="field"><label>Guardian name <span className="req">*</span></label><input placeholder="Parent / guardian" /></div>
-            <div className="frow">
-              <div className="field"><label>Contact number <span className="req">*</span></label><input placeholder="03XX-XXXXXXX" /></div>
-              <div className="field"><label>Email</label><input placeholder="you@email.com" /></div>
+
+            <div className="field">
+              <label>b. Father&rsquo;s Name <span className="req">*</span></label>
+              <input placeholder="Father's full name" />
             </div>
+
+            <div className="field">
+              <label>c. Profession</label>
+              <input placeholder="Father's profession" />
+            </div>
+
+            <div className="frow">
+              <div className="field">
+                <label>d. Date of Birth <span className="req">*</span></label>
+                <input type="date" />
+              </div>
+              <div className="field">
+                <label>Form B (B-Form No.)</label>
+                <input placeholder="B-Form number" />
+              </div>
+            </div>
+
+            <div className="field">
+              <label>e. Gender <span className="req">*</span></label>
+              <select>
+                <option value="">Select gender</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+
+            <div className="field">
+              <label>f. Nationality &amp; Religion</label>
+              <input placeholder="e.g. Pakistani / Islam" />
+            </div>
+
+            <div className="field">
+              <label>g. Name &amp; Class of brothers or sisters already studying in GAK</label>
+              <input placeholder="Name — Class (leave blank if none)" />
+            </div>
+
+            <div className="field">
+              <label>h. Disability, if any</label>
+              <input placeholder="Describe any disability (leave blank if none)" />
+            </div>
+
+            {/* 2. Father's / Guardian's Particulars */}
+            <div className="field" style={{ marginBottom: 6, marginTop: 10 }}>
+              <label style={{ fontSize: "1rem", fontWeight: 700, color: "var(--green-900)" }}>2. Father&rsquo;s / Guardian&rsquo;s Particulars</label>
+            </div>
+
+            <div className="field">
+              <label>a. Name (Father / Guardian) <span className="req">*</span></label>
+              <input placeholder="Father's / Guardian's full name" />
+            </div>
+
+            <div className="frow">
+              <div className="field">
+                <label>b. Telephone Contact — Residence</label>
+                <input placeholder="Residence number" />
+              </div>
+              <div className="field">
+                <label>Office</label>
+                <input placeholder="Office number" />
+              </div>
+            </div>
+
+            {/* 3. Mother's Particulars */}
+            <div className="field" style={{ marginBottom: 6, marginTop: 10 }}>
+              <label style={{ fontSize: "1rem", fontWeight: 700, color: "var(--green-900)" }}>3. Mother&rsquo;s Particulars</label>
+            </div>
+
+            <div className="frow">
+              <div className="field">
+                <label>a. Name</label>
+                <input placeholder="Mother's full name" />
+              </div>
+              <div className="field">
+                <label>Occupation</label>
+                <input placeholder="Mother's occupation" />
+              </div>
+            </div>
+
+            <div className="field">
+              <label>b. Education</label>
+              <input placeholder="Mother's highest qualification" />
+            </div>
+
+            {/* 4. Present Address */}
+            <div className="field" style={{ marginBottom: 6, marginTop: 10 }}>
+              <label style={{ fontSize: "1rem", fontWeight: 700, color: "var(--green-900)" }}>4. Present Address <span className="req">*</span></label>
+            </div>
+            <div className="field">
+              <textarea placeholder="House no., Street, Area, City" style={{ minHeight: 80 }} />
+            </div>
+
+            {/* 5. Permanent Address */}
+            <div className="field" style={{ marginBottom: 6, marginTop: 10 }}>
+              <label style={{ fontSize: "1rem", fontWeight: 700, color: "var(--green-900)" }}>5. Permanent Address</label>
+            </div>
+            <div className="field">
+              <textarea placeholder="If different from present address" style={{ minHeight: 80 }} />
+            </div>
+
             <ToastButton msg="Admission request submitted — we'll be in touch soon!" className="btn-submit">Submit application</ToastButton>
             <p className="formnote">Prefer paper? <Link href="/downloads" style={{ color: "var(--green-700)", fontWeight: 700, textDecoration: "underline" }}>Download the registration form</Link>.</p>
           </div>

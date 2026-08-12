@@ -482,7 +482,7 @@ footer ul li a:hover{color:var(--gold-300);padding-left:3px}
 @media(max-width:760px){.quoteband .qb{grid-template-columns:1fr;gap:22px;padding:48px 24px}}
 .qb-portrait{width:128px;height:128px;border-radius:50%;background:var(--paper);border:3px solid var(--gold-300);display:grid;place-items:center;box-shadow:var(--shadow-md)}
 .qb-portrait span{font-size:2.4rem;font-weight:800;color:var(--green-700)}
-.qb-body blockquote{font-size:clamp(1.4rem,2.5vw,2rem);line-height:1.4;font-weight:700;color:var(--green-900);letter-spacing:-.02em;margin:14px 0 22px}
+.qb-body blockquote{font-size:clamp(1.4rem,2.5vw,2rem);line-height:1.4;font-weight:500;color:var(--green-900);letter-spacing:-.02em;margin:14px 0 22px}
 .qb-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .qb-who .nm{font-weight:800;color:var(--green-900);font-size:1.05rem}
 .qb-who .rl{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-600);font-weight:700}
