@@ -6,7 +6,7 @@ import { CHAT_QA } from "@/lib/data";
 
 type Msg = { from: "bot" | "user"; text: string };
 
-export default function Chatbot() {
+export default function Chatbot({ hideNote = false }: { hideNote?: boolean } = {}) {
   const [level, setLevel] = useState<keyof typeof CHAT_QA>("general");
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState<Msg[]>([
@@ -53,7 +53,7 @@ export default function Chatbot() {
           ))}
         </div>
 
-        <div className="body" ref={bodyRef}>
+        <div className="body" ref={bodyRef} style={hideNote ? { height: "260px" } : undefined}>
           {messages.map((m, i) => (
             <div key={i} className={`bub ${m.from}`}>
               {m.text}
@@ -87,12 +87,14 @@ export default function Chatbot() {
           </button>
         </form>
       </div>
-      <div className="note-box mt2 inline-ic" style={{ maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
-        <MessageSquare size={18} strokeWidth={1.75} aria-hidden />
-        <span>
-          The production chatbot ships with a <b>level-wise library of ~1,000 pre-defined queries</b> across sections; this prototype demonstrates the interaction.
-        </span>
-      </div>
+      {!hideNote && (
+        <div className="note-box mt2 inline-ic" style={{ maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+          <MessageSquare size={18} strokeWidth={1.75} aria-hidden />
+          <span>
+            The production chatbot ships with a <b>level-wise library of ~1,000 pre-defined queries</b> across sections; this prototype demonstrates the interaction.
+          </span>
+        </div>
+      )}
     </>
   );
 }

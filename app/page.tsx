@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
+import ChatWidget from "@/components/ChatWidget";
 import { ArrowRight, BookOpen, Layers, GraduationCap, Globe, Bell, CalendarDays, Download } from "lucide-react";
 
 export default function HomePage() {
@@ -101,6 +102,8 @@ export default function HomePage() {
         <p>Secure your child&rsquo;s seat at one of Kharian&rsquo;s most trusted institutions. Apply online in minutes or download the form.</p>
         <div className="cta-row"><Link className="btn-primary" href="/admissions">Begin Application</Link><Link className="btn-ghost" href="/downloads"><Download size={16} /> Download form</Link></div>
       </div></div></section>
+
+      <ChatWidget />
     </div>
   );
 }
