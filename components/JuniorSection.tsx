@@ -250,7 +250,7 @@ export default function JuniorSection() {
         eyebrow={data.sub}
         title={data.name}
         intro={data.headMsg}
-        image={IMG("iram-saeed-butt.jpg")}
+        image={IMG("class.jpg")}
         crumb={[{ label: "Quick Links", href: "/quick-links" }, { label: data.name }]}
       />
 
