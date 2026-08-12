@@ -147,6 +147,85 @@ const ACTIVITIES: { label: string; photo: string }[] = [
   { label: "Youm-e-Qaumi Azm-e-Taleem", photo: IMG("youme-qomi-azme-taleem.jpg") },
 ];
 
+const ACHV = (name: string) => `/sections/junior-section/achievers/${name}`;
+
+const HIGH_ACHIEVERS: Staff[] = [
+  // HRCA Science Quiz
+  { name: "M. Ismail Dar", role: "HRCA Science Quiz", qualification: "Cash Prize Rs. 20,000/-", joined: "", photo: ACHV("m-ismail-dar.png") },
+  { name: "Muhammad Rayan", role: "HRCA Science Quiz", qualification: "Cash Prize Rs. 30,000/-", joined: "", photo: ACHV("muhammad-rayan.png") },
+  { name: "Amina Qaisar", role: "HRCA Science Quiz", qualification: "Cash Prize Rs. 20,000/-", joined: "", photo: ACHV("amina-qaisar.png") },
+  { name: "Usman Ahmed", role: "HRCA Science Quiz", qualification: "Cash Prize Rs. 5,000/-", joined: "", photo: ACHV("usman-ahmed.png") },
+  { name: "Husnain Tahir", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("husnain-tahir.png") },
+  { name: "Mir Abdul Hadi", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("mir-abdul-hadi.png") },
+  { name: "Aqib Suleman", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("aqib-suleman.png") },
+  { name: "M. Musa Saqib", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("m-musa-saqib.png") },
+  { name: "Hafsa Saif", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("hafsa-saif.png") },
+  { name: "M. Aryaan Ahsan", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("m-aryaan-ahsan.png") },
+  { name: "M. Musshaf Yasir", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("m-musshaf-yasir.png") },
+  { name: "Ayesha Qadeer", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("ayesha-qadeer.png") },
+  { name: "Zehra Fatima", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("zahra-fatima.png") },
+  { name: "Ch. Muhammad Bilal", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("ch.-muhammad-bilal.png") },
+  { name: "M. Mohid Bin Amir", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("m-mohid-bin-amir.png") },
+  { name: "Ain Ali", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("ain-ali.png") },
+  { name: "Ali Rizwan", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("ali-rizwan.png") },
+  { name: "Faryal", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("faryal.png") },
+  { name: "Zirwa Fatima", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("zirwa-fatima.png") },
+  { name: "Khadija Zainab", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("khadija-zainab.png") },
+  { name: "Muhammad Subhan", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("muhammad-subhan.png") },
+  { name: "Muhammad Wali", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("muhammad-wali.png") },
+  { name: "Marium Faizan", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("marium-faizan.png") },
+  { name: "Hammad Barkat", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("hammad-barkat.png") },
+  { name: "Khuban Tahir", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("khuban-tahir.png") },
+  { name: "M. Mikael Tahir", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("m-mikael-tahir.png") },
+  { name: "Eshaal Nazir", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("eshaal-nazir.png") },
+  { name: "Khadija Noor", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("khadija-noor.png") },
+  { name: "Inshaal Saif", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("inshaal-saif.png") },
+  { name: "M. Ahmed", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("m-ahmed.png") },
+  { name: "M. Rohan Khan", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("m-rohan-khan.png") },
+  { name: "Manasseh Haroon", role: "HRCA Sci & Eng Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("manasseh-haroon.png") },
+  { name: "Husnain Tahir", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("husnain-tahir(1).png") },
+  { name: "Amina Jan", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("amina-jan.png") },
+  { name: "Marium Faizan", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("marium-faizanpng.png") },
+  { name: "Muhammad Mustafa", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("muhammad-mustafa.png") },
+  // HRCA English Quiz
+  { name: "Zainab Zeeshan", role: "HRCA English Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("zainab-zeeshan.png") },
+  { name: "Haniya Ashfaq", role: "HRCA English Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("haniya-ashfaq.png") },
+  { name: "Arwa Amin", role: "HRCA English Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("arwa-amin.png") },
+  { name: "Aminah Zeeshan", role: "HRCA English Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("aminah-zeeshanpng.png") },
+  { name: "Khadija Imran", role: "HRCA English Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("khadija-imran.png") },
+  { name: "Haniya Faizan", role: "HRCA English Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("haniya-faizan.png") },
+  { name: "Fiza Iman", role: "HRCA English Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("fiza-iman.png") },
+  { name: "Aleen Hoorain", role: "HRCA English Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("aleen-hoorain.png") },
+  { name: "M. Ayaan", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("m-ayaan.png") },
+  { name: "Abdur Rehman", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("abdur-rehman.png") },
+  { name: "Ayat Tasawur", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("ayat-tasawur.png") },
+  { name: "Ibrahim Zahid", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("ibrahim-zahid.png") },
+  { name: "Wali Muhammad", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("wali-muhammad.png") },
+  { name: "Abeeha Sadam", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("abeeha-sadam.png") },
+  { name: "Syed Raiq Abbas", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("syed-raiq-abbas.png") },
+  { name: "Jannat Zaman", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("jannat-zaman.png") },
+  { name: "Nabeeha Tayyab", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("nabeeha-tayyab.png") },
+  { name: "Zainab Ehsan", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("zainab-ehsan.png") },
+  { name: "Unaiza Haroon", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("unaiza-haroon.png") },
+  { name: "Dua Mudassar", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("dua-mudassar.png") },
+  { name: "Ishaq Ahmed", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("ishaq-ahmed.png") },
+  { name: "M. Musshaf Yasir", role: "HRCA English Quiz", qualification: "Silver Medal", joined: "", photo: ACHV("m-musshaf-yasir.png") },
+  // ICATS Mathematics Contest
+  { name: "Muhammad Ruhan", role: "ICATS Mathematics Contest", qualification: "", joined: "", photo: ACHV("muhammad-ruhan.png") },
+  { name: "Marium Faizan", role: "ICATS Mathematics Contest", qualification: "", joined: "", photo: ACHV("marium-faizan.png") },
+  { name: "Eshaal Fatima", role: "ICATS Mathematics Contest", qualification: "", joined: "", photo: ACHV("eshaal-fatima.png") },
+  { name: "Musa Faisal", role: "ICATS Mathematics Contest", qualification: "", joined: "", photo: ACHV("musa-faisal.png") },
+  { name: "Samavia Noor", role: "ICATS Mathematics Contest", qualification: "", joined: "", photo: ACHV("samavia-noor.png") },
+  { name: "Zainab Ehsan", role: "ICATS Mathematics Contest", qualification: "", joined: "", photo: ACHV("zainab-ehsan(1).png") },
+  { name: "Arham Sabir", role: "ICATS Mathematics Contest", qualification: "", joined: "", photo: ACHV("arham-sabir.png") },
+  { name: "Fatima Abdullah", role: "ICATS Mathematics Contest", qualification: "", joined: "", photo: ACHV("fatima-abdullah.png") },
+  { name: "Zoha Ali", role: "ICATS Mathematics Contest", qualification: "", joined: "", photo: ACHV("zoha-ali.png") },
+  { name: "Wali ur Rehman", role: "ICATS Mathematics Contest", qualification: "", joined: "", photo: ACHV("wali-ur-rehman.png") },
+  // Rainbow Art & Creative Writing
+  { name: "Sharmeen Sohail", role: "Rainbow Art & Creative Writing", qualification: "", joined: "", photo: ACHV("sharmeen-sohail.png") },
+  { name: "Umama Noor", role: "Rainbow Art & Creative Writing", qualification: "", joined: "", photo: ACHV("umama-noor.png") },
+];
+
 function StaffCard({ s }: { s: Staff }) {
   return (
     <div className="staffcard">
@@ -326,6 +405,14 @@ export default function JuniorSection() {
                   <figcaption style={{ fontSize: "0.9rem", lineHeight: "1.2" }}>{a.label}</figcaption>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* High Achievers */}
+          <section>
+            <SectionHead eyebrow="Recognition" title="High Achievers Junior Section" />
+            <div className="staffgrid">
+              {HIGH_ACHIEVERS.map((s, i) => <StaffCard key={s.name + s.photo + i} s={s} />)}
             </div>
           </section>
 
