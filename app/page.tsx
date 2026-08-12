@@ -29,7 +29,7 @@ export default function HomePage() {
         </div>
         <div className="streams">
           <Link className="streamcard" href="/sections/senior-girls">
-            <div className="sc-img" style={{ backgroundImage: "url(/hero2.jpg)" }}><span className="sc-tag">National</span></div>
+            <div className="sc-img" style={{ backgroundImage: "url(/adm-block.jpg)" }}><span className="sc-tag">National</span></div>
             <div className="sc-bd"><h3>APSACS · FBISE</h3><p>The national curriculum from Pre-School to Intermediate, with consistently strong board results.</p><span className="more">Explore stream <ArrowRight size={15} /></span></div>
           </Link>
           <Link className="streamcard" href="/sections/apsis">
@@ -41,12 +41,15 @@ export default function HomePage() {
 
       {/* principal quote band */}
       <section className="quoteband"><div className="wrap qb">
-        <div className="qb-portrait"><span>BK</span></div>
+        <div className="qb-portrait">
+          <img alt="principal" src="/principal.png" style={{ width: '100%', height: "100%", borderRadius: '50%', objectFit: "cover" }} />
+          {/* <span>BK</span> */}
+        </div>
         <div className="qb-body">
           <span className="eyebrow">From the Principal&rsquo;s Desk</span>
           <blockquote>We build character before we build careers. Discipline here is a gift, not a burden — and every child is seen, known and guided.</blockquote>
           <div className="qb-foot">
-            <div className="qb-who"><div className="nm">Brig (R) Asad Khan</div><div className="rl">Principal, GAK Campus</div></div>
+            <div className="qb-who"><div className="nm">Mrs Shahida Rehman Principal, Garrison Academy Kharian Cantt</div><div className="rl">Principal, GAK Campus</div></div>
             <Link className="btn-ghost dark" href="/messages/principal">Read full message</Link>
           </div>
         </div>
