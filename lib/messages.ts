@@ -47,7 +47,7 @@ export const MESSAGES: MessageLeader[] = [
     intro: "A message from the Vice Chairman on intellect, character, and the distinctly human purpose of schooling.",
     name: "Patron in Chief, Lieutenant General Nauman Zakria",
     role: "Vice Chairman",
-    image: "/vicechairman.jpeg",
+    image: "/vicechairman.png",
     imageAlt: "Vice Chairman",
     initials: "SR",
     message: [
@@ -67,9 +67,9 @@ export const MESSAGES: MessageLeader[] = [
     title: "Principal's Message",
     heading: "We shape the future —\none learner at a time.",
     intro: "A message from the Principal on character, critical thought, and the true work of a school.",
-    name: "Brig (R) Asad Khan",
+    name: "Mrs Shahida Rehman",
     role: "Principal, GAK Campus",
-    image: "/hero3.jpg",
+    image: "/principal.png",
     imageAlt: "Principal, GAK Campus",
     initials: "AK",
     message: [
