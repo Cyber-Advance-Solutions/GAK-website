@@ -66,7 +66,7 @@ const DEPARTMENTS: { name: string; teachers: Staff[] }[] = [
       { name: "Ms. Sana Salim", qualification: "BS Hons Mathematics", joined: "", photo: IMG("sana-salim.jpg") },
       { name: "Ms. Rabia Munir", qualification: "BS Hons Bio Technology", joined: "", photo: IMG("rabia-munir.jpg") },
       { name: "Ms. Zartasha Usman", qualification: "MSc Mathematics", joined: "", photo: IMG("zartasha-usman.jpg") },
-      { name: "Ms. Saima Munir", qualification: "MSc Psychology", joined: "", photo: IMG("saima-munir.jpg") },
+      // { name: "Ms. Saima Munir", qualification: "MSc Psychology", joined: "", photo: IMG("saima-munir.jpg") },
       { name: "Ms. Fozia Shabbir", qualification: "BS Hons Accounting & Finance", joined: "", photo: IMG("fozia-shabbir.jpg") },
       { name: "Ms. Hira Kanwar", qualification: "BSCS", joined: "", photo: IMG("hira-kanwar.jpg") },
       { name: "Ms. Amrana Bibi", qualification: "BS IT", joined: "", photo: IMG("amrana-bibi.jpg") },
@@ -318,14 +318,31 @@ export default function JuniorSection() {
           {/* Faculty by Department */}
           <section>
             <SectionHead eyebrow="Our Teachers" title="Faculty by Department" />
-            {DEPARTMENTS.map((d) => (
-              <div className="deptblock" key={d.name} style={{ marginBottom: 34 }}>
-                <h3>{d.name}</h3>
-                <div className="staffgrid">
-                  {d.teachers.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
+            {DEPARTMENTS.map((d) => {
+              const coordinators = d.teachers.filter((s) => s.role?.toLowerCase().includes("coordinator"));
+              const teachers = d.teachers.filter((s) => !s.role?.toLowerCase().includes("coordinator"));
+              return (
+                <div className="deptblock" key={d.name} style={{ marginBottom: 34 }}>
+                  <h3>{d.name}</h3>
+                  {coordinators.length > 0 && (
+                    <>
+                      <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-600)", marginBottom: 10, marginTop: 4 }}>Coordinator</div>
+                      <div className="staffgrid" style={{ marginBottom: teachers.length > 0 ? 18 : 0 }}>
+                        {coordinators.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
+                      </div>
+                    </>
+                  )}
+                  {teachers.length > 0 && (
+                    <>
+                      {coordinators.length > 0 && <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-600)", marginBottom: 10 }}>Teachers</div>}
+                      <div className="staffgrid">
+                        {teachers.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
+                      </div>
+                    </>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </section>
 
           {/* Classes */}
