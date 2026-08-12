@@ -31,7 +31,7 @@ export default function OrganogramPage() {
       <PageHero
         eyebrow="Structure"
         title="School organogram"
-        intro="How GAK Campus is organised — academic leadership and administrative governance."
+        intro="How Garrison Academy Kharian Cantt is organised — academic leadership and administrative governance."
         image={BANNER.organogram}
         crumb={[{ label: "Organogram" }]}
       />

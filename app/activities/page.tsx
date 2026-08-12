@@ -40,7 +40,7 @@ export default function ActivitiesPage() {
       <PageHero
         eyebrow="Beyond the classroom"
         title="Activities"
-        intro="A full calendar of academic, sporting and co-curricular life at GAK Campus."
+        intro="A full calendar of academic, sporting and co-curricular life at Garrison Academy Kharian Cantt."
         image={BANNER.activities}
         crumb={[{ label: "Activities" }]}
       />

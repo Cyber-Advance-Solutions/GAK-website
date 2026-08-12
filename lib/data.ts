@@ -1,4 +1,4 @@
-// Central content/data for GAK Campus website (V2).
+// Central content/data for Garrison Academy Kharian Cantt website (V2).
 // In production these would be served from a CMS / admin panel.
 
 export type Leaf = { label: string; href: string };

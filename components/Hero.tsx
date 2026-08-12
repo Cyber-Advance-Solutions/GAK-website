@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-/* Swap these with real GAK campus photos any time — same order, same names. */
+/* Swap these with real Garrison Academy Kharian Cantt photos any time — same order, same names. */
 const SLIDES = ["/hero1.jpg", "/hero2.jpg", "/hero3.jpg", "hero4.jpg", "/hero5.jpg", "/hero6.jpg", "/hero7.jpg"];
 
 export default function Hero() {

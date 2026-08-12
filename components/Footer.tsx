@@ -34,7 +34,7 @@ export default function Footer() {
             <div className="fbrand">
               <Image src="/logo.svg" alt="APS&C GAK Campus Kharian Cantt logo" width={52} height={52} />
               <div>
-                <div className="nm">APS&amp;C GAK Campus</div>
+                <div className="nm">APS&amp;C Garrison Academy</div>
                 <div className="sub">Kharian Cantt</div>
               </div>
             </div>

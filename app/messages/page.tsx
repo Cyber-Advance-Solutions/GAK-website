@@ -14,7 +14,7 @@ export default function MessagesPage() {
       <PageHero
         eyebrow="Leadership"
         title="Messages"
-        intro="Guidance and vision from the leadership of the Army Public Schools & Colleges System and GAK Campus."
+        intro="Guidance and vision from the leadership of the Army Public Schools & Colleges System and Garrison Academy Kharian Cantt."
         image={BANNER.messages}
         crumb={[{ label: "Messages" }]}
       />

@@ -25,7 +25,7 @@ export default function HrPage() {
       <PageHero
         eyebrow="Join our team"
         title="HR & careers"
-        intro="Current openings, how to apply, and recruitment advertisements at GAK Campus."
+        intro="Current openings, how to apply, and recruitment advertisements at Garrison Academy Kharian Cantt."
         image={BANNER.hr}
         crumb={[{ label: "HR Management" }]}
       />

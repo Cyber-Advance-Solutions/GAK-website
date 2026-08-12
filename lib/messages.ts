@@ -87,9 +87,9 @@ export const MESSAGES: MessageLeader[] = [
     heading: "We shape the future —\none learner at a time.",
     intro: "A message from the Principal on character, critical thought, and the true work of a school.",
     name: "Mrs Shahida Rehman Principal, Garrison Academy Kharian Cantt",
-    role: "Principal, GAK Campus",
+    role: "Principal, Garrison Academy Kharian Cantt",
     image: "/principal.png",
-    imageAlt: "Principal, GAK Campus",
+    imageAlt: "Principal, Garrison Academy Kharian Cantt",
     initials: "AK",
     message: [
       "Welcome to Garrison Academy Kharian",

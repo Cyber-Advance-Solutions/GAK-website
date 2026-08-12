@@ -26,7 +26,7 @@ const INFO: [React.ReactNode, string, React.ReactNode][] = [
     <MapPin key="l" size={20} strokeWidth={1.8} />,
     "Campus",
     <>
-      GAK Campus, Kharian Cantt<span>Gujrat, Punjab</span>
+      Garrison Academy, Kharian Cantt<span>Gujrat, Punjab</span>
     </>,
   ],
   [
@@ -67,7 +67,7 @@ export default function ContactPage() {
                 <div>
                   <MapPin size={28} strokeWidth={1.6} />
                   <div style={{ fontWeight: 700, marginTop: 6 }}>
-                    GAK Campus, Kharian Cantt
+                    Garrison Academy, Kharian Cantt
                   </div>
                   <div style={{ fontSize: ".8rem", color: "var(--ink-soft)" }}>
                     Google Maps embed in production

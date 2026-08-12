@@ -22,9 +22,9 @@ export default function HomePage() {
       {/* welcome + two streams */}
       <section className="sec"><div className="wrap welcome">
         <div className="welcome-copy">
-          <span className="eyebrow">Welcome to GAK Campus</span>
+          <span className="eyebrow">Welcome to Garrison Academy Kharian Cantt</span>
           <h2 className="h-lg">One disciplined campus,<br/>two academic streams.</h2>
-          <p>Since 1985, GAK Campus has educated the children of Kharian Cantt with the values of the Army Public Schools &amp; Colleges System — academic rigour, character and genuine care. Choose the pathway that fits your child.</p>
+          <p>Since 1985, Garrison Academy Kharian Cantt has educated the children of Kharian Cantt with the values of the Army Public Schools &amp; Colleges System — academic rigour, character and genuine care. Choose the pathway that fits your child.</p>
           <Link className="link-arrow" href="/about">More about the school <ArrowRight size={16} /></Link>
         </div>
         <div className="streams">
@@ -49,7 +49,7 @@ export default function HomePage() {
           <span className="eyebrow">From the Principal&rsquo;s Desk</span>
           <blockquote>We build character before we build careers. Discipline here is a gift, not a burden — and every child is seen, known and guided.</blockquote>
           <div className="qb-foot">
-            <div className="qb-who"><div className="nm">Mrs Shahida Rehman Principal, Garrison Academy Kharian Cantt</div><div className="rl">Principal, GAK Campus</div></div>
+            <div className="qb-who"><div className="nm">Mrs Shahida Rehman Principal, Garrison Academy Kharian Cantt</div><div className="rl">Principal, Garrison Academy Kharian Cantt</div></div>
             <Link className="btn-ghost dark" href="/messages/principal">Read full message</Link>
           </div>
         </div>

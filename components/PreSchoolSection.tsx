@@ -299,7 +299,7 @@ export default function PreSchoolSection() {
                   <span className="eyebrow">Message from the Section Head</span>
                   <blockquote style={{ fontSize: "1.15rem" }}>
                     <p>
-                      The Pre-School Section at Army Public School & College GAK Campus holds a rich history of nurturing young minds that dates back to its inception as Toddler Nursery in 1972. Over the decades, our institution evolved into Kehkashaan Academy in 1986, joined the Army Public Schools network in 1990, and established its identity at the GAK Campus in 2000. Built on this 50-year legacy of educational care, our early childhood programme lays a strong foundation for lifelong learning, character, and confidence.
+                      The Pre-School Section at Army Public School & College Garrison Academy Kharian Cantt holds a rich history of nurturing young minds that dates back to its inception as Toddler Nursery in 1972. Over the decades, our institution evolved into Kehkashaan Academy in 1986, joined the Army Public Schools network in 1990, and established its identity at the Garrison Academy Kharian Cantt in 2000. Built on this 50-year legacy of educational care, our early childhood programme lays a strong foundation for lifelong learning, character, and confidence.
                     </p>
                     <p style={{ marginTop: '1rem' }}>
                       Housed in a safe, vibrant, and child-centered environment, our Pre-School features engaging classrooms and stimulating learning spaces where young learners feel valued, inspired, and encouraged to explore their full potential. We believe that every child is unique and deserves the opportunity to learn, grow, and thrive at their own pace.
@@ -308,7 +308,7 @@ export default function PreSchoolSection() {
                       Our dedicated team of educators is committed to delivering a nurturing education that fosters curiosity, creativity, effective communication, and strong moral values. Through play-based learning, interactive activities, and a supportive school culture, we empower our youngest learners to build independence and empathy.
                     </p>
                     <p style={{ marginTop: '1rem' }}>
-                      At APS&C GAK Campus, we believe a strong partnership between home and school is essential for a child's success. Together with our parents, we are committed to building confident, compassionate, and responsible learners who are joyful, curious, and well-prepared for the future.
+                      At APS&C Garrison Academy Kharian Cantt, we believe a strong partnership between home and school is essential for a child's success. Together with our parents, we are committed to building confident, compassionate, and responsible learners who are joyful, curious, and well-prepared for the future.
                     </p>
                   </blockquote>
                   <div className="qb-foot">

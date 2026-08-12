@@ -42,7 +42,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="Our story"
-        title="About GAK Campus"
+        title="About Garrison Academy Kharian Cantt"
         intro="Four decades of educating Kharian Cantt — heritage, leadership, conduct and facilities."
         image={BANNER.about}
         crumb={[{ label: "About Us" }]}
@@ -54,7 +54,7 @@ export default function AboutPage() {
           <SectionHead eyebrow="Our heritage" title="A legacy since 1985" />
           <div className="splitimg">
             <div className="prose">
-              <p>Established in 1985 within Kharian Cantonment, the Army Public School &amp; College, GAK Campus began as a modest institution serving the families of the garrison. Over four decades it has grown into one of the region&apos;s most respected schools — educating thousands across Pre-School, Middle, Senior and the Cambridge-aligned APSIS stream.</p>
+              <p>Established in 1985 within Kharian Cantonment, the Army Public School &amp; College, Garrison Academy Kharian Cantt began as a modest institution serving the families of the garrison. Over four decades it has grown into one of the region&apos;s most respected schools — educating thousands across Pre-School, Middle, Senior and the Cambridge-aligned APSIS stream.</p>
               <p>Today the campus operates under the Army Public Schools &amp; Colleges System (APSACS), combining the discipline of a cantonment institution with modern, child-centred pedagogy.</p>
             </div>
             <div className="fig" style={{ backgroundImage: "url(/hero3.jpg)" }} />
@@ -102,7 +102,7 @@ export default function AboutPage() {
 
       <section className="sec" id="leadership" style={{ scrollMarginTop: 150, background: "var(--paper-2)" }}>
         <div className="wrap">
-          <SectionHead eyebrow="Leadership" title="Principals through the years" intro="Every Principal who has led GAK Campus, with their years of service." />
+          <SectionHead eyebrow="Leadership" title="Principals through the years" intro="Every Principal who has led Garrison Academy Kharian Cantt, with their years of service." />
           <div className="grid g4">
             {PRINCIPALS.map(([ph, nm, role]) => (
               <div className="card person" key={nm}><div className="ph">{ph}</div><div className="nm">{nm}</div><div className="role">{role}</div></div>

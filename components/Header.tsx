@@ -65,7 +65,7 @@ export default function Header() {
               height={56}
             />
             <div className="brand-txt">
-              <div className="nm">APS&amp;C GAK Campus</div>
+              <div className="nm">APS&amp;C Garrison Academy</div>
               <div className="sub">Kharian Cantt</div>
             </div>
           </Link>
@@ -180,7 +180,7 @@ export default function Header() {
               />
               <div className="brand-txt">
                 <div className="nm" style={{ fontSize: ".9rem" }}>
-                  GAK Campus
+                  Garrison Academy Kharian Cantt
                 </div>
               </div>
             </Link>
