@@ -38,6 +38,7 @@ export const NAV: NavItem[] = [
         ],
       },
       { label: "Alumni — AMULNI", href: "/alumni" },
+      { label: "History", href: "/history" },
     ],
   },
   {
