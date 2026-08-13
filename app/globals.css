@@ -377,7 +377,7 @@ footer ul li a:hover{color:var(--gold-300);padding-left:3px}
 @media(max-width:620px){.pagehero{min-height:296px}.pagehero-copy{padding:40px 24px 30px}}
 
 /* ---------- editorial two-column (sticky rail + main) ---------- */
-.editorial{display:grid;grid-template-columns:252px 1fr;gap:48px;align-items:start}
+.editorial{display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:start}
 @media(max-width:900px){.editorial{grid-template-columns:1fr;gap:28px}}
 .rail{position:sticky;top:104px;align-self:start;display:flex;flex-direction:column;gap:18px}
 @media(max-width:900px){.rail{position:static;top:auto}}
