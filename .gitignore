@@ -5,7 +5,7 @@
 .DS_Store
 *.pem
 npm-debug.log*
-.env*
 next-env.d.ts
 .vercel
 /.turbo
+config.bat
