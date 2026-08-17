@@ -1,5 +1,6 @@
 import PageHero from "@/components/PageHero";
-import MessagePortrait from "@/components/MessagePortrait";
+import Image from "next/image";
+import { Flame } from "lucide-react";
 import { BANNER } from "@/lib/images";
 import { getMessage } from "@/lib/messages";
 
@@ -22,7 +23,27 @@ export default function PatronInChiefMessagePage() {
       />
       <section className="sec">
         <div className="wrap">
-          <MessagePortrait leader={leader} />
+          <div style={{ maxWidth: 480, margin: "0 auto" }}>
+            <div className="msgport-media">
+              <div className="msgport-frame">
+                <Image
+                  src={leader.image}
+                  alt={leader.imageAlt}
+                  fill
+                  sizes="(max-width: 840px) 100vw, 40vw"
+                  priority
+                  className="msgport-img"
+                />
+              </div>
+              <div className="msgport-plate">
+                <Flame className="msgport-mark" size={26} strokeWidth={1.75} />
+                <div>
+                  <span className="msgport-name">{leader.name}</span>
+                  <span className="msgport-role">{leader.role}</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>

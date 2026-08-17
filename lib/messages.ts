@@ -20,7 +20,7 @@ export const MESSAGES: MessageLeader[] = [
     slug: "patron-in-chief",
     href: "/messages/patron-in-chief",
     eyebrow: "From the Patron in Chief's desk",
-    title: "Patron in Chief's Message",
+    title: "Patron in Chief",
     heading: "Building the nation —\none school at a time.",
     intro: "A message from the Patron in Chief on vision, service, and the enduring mission of APSACS.",
     name: "Lieutenant General Nauman Zakria HI(M), SI, S Bt Commander 1 Corps",
