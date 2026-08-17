@@ -65,7 +65,7 @@ export default function Header() {
               height={56}
             />
             <div className="brand-txt">
-              <div className="nm">APS&amp;C Garrison Academy</div>
+              <div className="nm">Garrison Academy</div>
               <div className="sub">Kharian Cantt</div>
             </div>
           </Link>

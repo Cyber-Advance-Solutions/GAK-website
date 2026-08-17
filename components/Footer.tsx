@@ -34,7 +34,9 @@ export default function Footer() {
             <div className="fbrand">
               <Image src="/logo.svg" alt="APS&C GAK Campus Kharian Cantt logo" width={52} height={52} />
               <div>
-                <div className="nm">APS&amp;C Garrison Academy</div>
+                <div className="nm">
+                  {/* Army Public Schools &amp; Colleges  */}
+                  Garrison Academy</div>
                 <div className="sub">Kharian Cantt</div>
               </div>
             </div>
@@ -54,7 +56,7 @@ export default function Footer() {
         </div>
         <div className="fbot">
           {/* <span>© 2026 APS&amp;C GAK Campus, Kharian Cantt. All rights reserved.</span> */}
-          <span>IT Department, Garrison Academy Kharian Cantt, All Rights Reserved</span>
+          <span>IT Department, Garrison Academy Kharian Cantt, All Rights Reserved © {new Date().getFullYear()}</span>
           <span className="urdu">رَبِّ زِدْنِي عِلْمًا</span>
         </div>
       </div>
