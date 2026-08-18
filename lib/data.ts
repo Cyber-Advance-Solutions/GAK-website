@@ -119,9 +119,9 @@ export const NAV: NavItem[] = [
       {
         label: "External Links",
         fly: [
-          { label: "LMS — Teachers", href: "/links" },
-          { label: "LMS — Students", href: "/links" },
-          { label: "FBISE", href: "/links" },
+          { label: "AIS Portal for Teachers", href: "/links" },
+          { label: "AIS Portal for Students", href: "/links" },
+          { label: "FBISE", href: "http://www.fbise.edu.pk/" },
           { label: "Social Media", href: "/links" },
         ],
       },
