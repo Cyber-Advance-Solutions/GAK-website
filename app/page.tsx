@@ -4,6 +4,7 @@ import Marquee from "@/components/Marquee";
 import ChatWidget from "@/components/ChatWidget";
 import FacilitiesSwiper from "@/components/FacilitiesSwiper";
 import { ArrowRight, BookOpen, Backpack, Layers, GraduationCap, Globe, Bell, CalendarDays, Download } from "lucide-react";
+import ClassroomsSwiper from "@/components/ClassroomsSwiper";
 
 export default function HomePage() {
   return (
@@ -72,7 +73,7 @@ export default function HomePage() {
         <div className="sec-head"><span className="eyebrow">Campus Life</span><h2 className="h-lg">Where learning feels like belonging.</h2></div>
         <div className="gallery">
           <div className="ga big" style={{ backgroundImage: "url(/hero3.jpg)" }}><span className="cap">Campus &amp; grounds</span></div>
-          <div className="ga" style={{ backgroundImage: "url(/hero1.jpg)" }}><span className="cap">Classrooms</span></div>
+          <ClassroomsSwiper />
           <FacilitiesSwiper />
         </div>
       </div></section>

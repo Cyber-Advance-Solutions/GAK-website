@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 /* Swap these with real Garrison Academy Kharian Cantt photos any time — same order, same names. */
-const SLIDES = ["/hero1.jpg", "/hero2.jpg", "/hero3.jpg", "hero4.jpg", "/hero5.jpg", "/hero6.jpg", "/hero7.jpg", "/hero8.jpg", "/hero9.jpg", "/hero10.jpg", "/hero11.jpg"];
+const SLIDES = ["/hero1.jpg", "/hero2.png", "/hero3.png", "hero4.jpg", "/hero5.png", "/hero6.jpg", "/hero7.jpg", "/hero8.jpg", "/hero9.jpg", "/hero10.jpg", "/hero11.jpg", "/hero12.jpg", "/hero13.jpg"];
 
 export default function Hero() {
   const [i, setI] = useState(0);
