@@ -43,16 +43,18 @@ export function ToastButton({
   className,
   children,
   as = "button",
+  ...props
 }: {
   msg: string;
   className?: string;
   children: ReactNode;
   as?: ElementType;
+  [key: string]: any;
 }) {
   const toast = useToast();
   const Cmp = as;
   return (
-    <Cmp className={className} onClick={() => toast(msg)} role="button" tabIndex={0}>
+    <Cmp className={className} onClick={() => toast(msg)} role="button" tabIndex={0} {...props}>
       {children}
     </Cmp>
   );

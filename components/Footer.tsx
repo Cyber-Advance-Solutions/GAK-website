@@ -45,8 +45,8 @@ export default function Footer() {
               discipline and character since 1985.
             </p>
             <div className="fsoc">
-              <ToastButton as="a" msg="Opening Facebook…" className=""><Facebook size={18} /></ToastButton>
-              <ToastButton as="a" msg="Opening Instagram…" className=""><Instagram size={18} /></ToastButton>
+              <ToastButton href="https://www.facebook.com/share/19GmMrHryd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" as="a" msg="Opening Facebook…" className=""><Facebook size={18} /></ToastButton>
+              <ToastButton href="https://www.instagram.com/garrisonacademy_gak_official?igsh=dXh6Nm5xb2V3MHB2&utm_source=qr" target="_blank" rel="noopener noreferrer" as="a" msg="Opening Instagram…" className=""><Instagram size={18} /></ToastButton>
               <ToastButton as="a" msg="Opening YouTube…" className=""><Youtube size={18} /></ToastButton>
             </div>
           </div>
