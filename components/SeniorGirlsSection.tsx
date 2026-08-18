@@ -184,6 +184,12 @@ const DEPARTMENTS: { name: string; teachers: Staff[] }[] = [
       { name: "Mr. Shabbir Shah", role: "Teacher", qualification: "MSC Physical Health Education", joined: "01 Jul 2026", photo: IMG("shabbir-shah.jpg") },
     ],
   },
+  {
+    name: "Fine Arts Department",
+    teachers: [
+      { name: "Ms. Ramsha Siddquie", role: "Teacher", qualification: "BS Fine Arts", joined: "01 Jul 2025", photo: IMG("ramsha-siddquie.jpg") },
+    ],
+  },
 ];
 
 const FACILITIES_CAMPUS = [
@@ -308,12 +314,12 @@ export default function SeniorGirlsSection() {
           </section>
 
           {/* CCA Coordinator */}
-          <section>
+          {/* <section>
             <SectionHead eyebrow="Leadership" title="CCA Coordinator" />
             <div className="staffgrid">
               <StaffCard s={CCA_COORDINATOR} />
             </div>
-          </section>
+          </section> */}
 
           {/* Subject Coordinators */}
           <section>

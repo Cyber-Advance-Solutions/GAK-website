@@ -84,11 +84,11 @@ const DEPARTMENTS: { name: string; teachers: Staff[] }[] = [
       { name: "Ms. Faryal Azad", qualification: "MA Urdu", joined: "", photo: IMG("faryal-azad.jpg") },
       { name: "Ms. Ramsha Liaqat", qualification: "B.Ed Hons", joined: "", photo: IMG("ramsha-liaqat.jpg") },
       { name: "Ms. Syeda Sabiqa Talib", qualification: "MA Urdu", joined: "", photo: IMG("syeda-sabiqa-talib.jpg") },
-      { name: "Ms. Fozia Naeem", qualification: "B.A, B.Ed", joined: "", photo: IMG("fozia-naeem.jpg") },
+      // { name: "Ms. Fozia Naeem", qualification: "B.A, B.Ed", joined: "", photo: IMG("fozia-naeem.jpg") },
       { name: "Ms. Zoya Qamar", qualification: "MA Urdu", joined: "", photo: IMG("zoya-qamar.jpg") },
       { name: "Ms. Tahira Inayat", qualification: "MA Urdu, Physical Education, M.Ed", joined: "", photo: IMG("tahira-inayat.jpg") },
       { name: "Ms. Kashifa Abbas", qualification: "MA Education, B.Ed", joined: "", photo: IMG("kashifa-abbas.jpg") },
-      { name: "Ms. Saba Awais", qualification: "B.Com, B.Ed", joined: "", photo: IMG("saba-awais.jpg") },
+      // { name: "Ms. Saba Awais", qualification: "B.Com, B.Ed", joined: "", photo: IMG("saba-awais.jpg") },
     ],
   },
   {
@@ -113,7 +113,7 @@ const DEPARTMENTS: { name: string; teachers: Staff[] }[] = [
 const CLASSES = [
   { label: "Class 1", photos: [IMG("class1-1.jpg"), IMG("class1-2.jpg"), IMG("class1-3.jpg"), IMG("class.jpg")] },
   { label: "Class 2", photos: [IMG("class2-1.jpg"), IMG("class2-2.jpg")] },
-  { label: "Class 3", photos: [IMG("class3-1.jpg"), IMG("class3-2.jpg"), IMG("class3-3.jpg"), IMG("class2-3.jpg")] },
+  { label: "Class 3", photos: [IMG("class3-1.jpg"), IMG("class3-2.jpg"), IMG("class3-3.jpg")] },
 ];
 
 const ACTIVITIES: { label: string; photo: string }[] = [
@@ -151,8 +151,8 @@ const ACHV = (name: string) => `/sections/junior-section/achievers/${name}`;
 
 const HIGH_ACHIEVERS: Staff[] = [
   // HRCA Science Quiz
-  { name: "M. Ismail Dar", role: "HRCA Science Quiz", qualification: "Cash Prize Rs. 20,000/-", joined: "", photo: ACHV("m-ismail-dar.png") },
-  { name: "Muhammad Rayan", role: "HRCA Science Quiz", qualification: "Cash Prize Rs. 30,000/-", joined: "", photo: ACHV("muhammad-rayan.png") },
+  { name: "M. Ismail Dar", role: "HRCA Science Quiz", qualification: "Cash Prize Rs. 50,000/-", joined: "", photo: ACHV("m-ismail-dar.png") },
+  { name: "Muhammad Rayan", role: "HRCA English Quiz", qualification: "Cash Prize Rs. 50,000/-", joined: "", photo: ACHV("muhammad-rayan.png") },
   { name: "Amina Qaisar", role: "HRCA Science Quiz", qualification: "Cash Prize Rs. 20,000/-", joined: "", photo: ACHV("amina-qaisar.png") },
   { name: "Usman Ahmed", role: "HRCA Science Quiz", qualification: "Cash Prize Rs. 5,000/-", joined: "", photo: ACHV("usman-ahmed.png") },
   { name: "Husnain Tahir", role: "HRCA Science Quiz", qualification: "Gold Medal", joined: "", photo: ACHV("husnain-tahir.png") },

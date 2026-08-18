@@ -31,7 +31,7 @@ const DEPARTMENTS: { name: string; teachers: Staff[] }[] = [
     name: "English Department",
     teachers: [
       { name: "Mr. Shakeel Ahmed", role: "Teacher", qualification: "MA English, B.Com", joined: "01 Sep 2006", photo: IMG("shakeel-ahmed.jpg") },
-      { name: "Mr. Ahmed Masood Sadiq", role: "Subject Coordinator (English)", qualification: "MA English", joined: "24 Aug 2012", photo: IMG("ahmed-masood.jpg") },
+      // { name: "Mr. Ahmed Masood Sadiq", role: "Subject Coordinator (English)", qualification: "MA English", joined: "24 Aug 2012", photo: IMG("ahmed-masood.jpg") },
       { name: "Mr. Zeeshan Imtiaz", role: "Teacher", qualification: "MA English", joined: "21 Nov 2022", photo: IMG("zeeshan-imtiaz.png") },
     ],
   },
@@ -92,12 +92,12 @@ const DEPARTMENTS: { name: string; teachers: Staff[] }[] = [
       { name: "Ms. Mehwish Jadoon", role: "Subject Coordinator (Biology)", qualification: "PhD Clinical Medical Biochemistry, M.Phil Bio Chem, CHPE (NUMS)", joined: "01 Oct 2025", photo: IMG("mehwish-jadoon.jpg") },
     ],
   },
-  {
-    name: "Pakistan Studies Department",
-    teachers: [
-      { name: "Mr. Hafiz Atta Ul Munim Bukhari", role: "Subject Coordinator (Pak Studies)", qualification: "MA History", joined: "02 May 2025", photo: IMG("hafiz-atta-ul-munim-bukhari.jpg") },
-    ],
-  },
+  // {
+  //   name: "Pakistan Studies Department",
+  //   teachers: [
+  //     { name: "Mr. Hafiz Atta Ul Munim Bukhari", role: "Subject Coordinator (Pak Studies)", qualification: "MA History", joined: "02 May 2025", photo: IMG("hafiz-atta-ul-munim-bukhari.jpg") },
+  //   ],
+  // },
 ];
 
 const FACILITIES_CAMPUS = [
