@@ -113,7 +113,7 @@ export const NAV: NavItem[] = [
         label: "HR & Careers",
         fly: [
           { label: "Staff Hiring", href: "/hr" },
-          { label: "Advertisements", href: "/hr" },
+          { label: "Advertisements", href: "/hr/advertisements" },
         ],
       },
       {

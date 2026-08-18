@@ -40,7 +40,7 @@ export default function HrPage() {
                 <div style={{ flex: 1 }}>
                   <h3 style={{ fontSize: "1.06rem", marginBottom: 6 }}>{pos}</h3>
                   <p style={{ marginBottom: 12 }}>{sec} · <span className={`pill ${c}`}>{type}</span></p>
-                  <ToastButton as="a" msg="Opening the Google application form…" className="dl-btn">Apply now</ToastButton>
+                  <ToastButton href="https://forms.gle/iy8apUyxxnmKGfrf8" target="_blank" rel="noopener noreferrer" as="a" msg="Opening the Google application form…" className="dl-btn">Apply now</ToastButton>
                 </div>
               </div>
             ))}
@@ -59,7 +59,7 @@ export default function HrPage() {
         </div>
       </section>
 
-      <section className="sec">
+      <section className="sec" style={{ background: "var(--paper-2)" }}>
         <div className="wrap" style={{ maxWidth: 720 }}>
           <SectionHead eyebrow="Quick apply" title="Send your application" />
           <div className="form">
