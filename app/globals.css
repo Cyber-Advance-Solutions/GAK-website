@@ -127,7 +127,7 @@ nav.links{display:flex;align-items:center;gap:4px}
 
 /* ---------- marquee (ported from V3 — same dark palette) ---------- */
 .marquee{border-top:1px solid #ffffff14;border-bottom:1px solid #ffffff14;background:var(--green-900);overflow:hidden;padding:20px 0}
-.mq-track{display:flex;white-space:nowrap;width:max-content;animation:mq 32s linear infinite}
+.mq-track{display:flex;white-space:nowrap;width:max-content;animation:mq 600s linear infinite}
 .marquee:hover .mq-track{animation-play-state:paused}
 .mq-track span{font-family:var(--display);font-weight:700;font-size:1.5rem;color:#f5efdc;padding:0 28px;display:inline-flex;align-items:center;gap:28px}
 .mq-track span::after{content:"\2726";color:#ef6a2c;font-size:.9rem}

@@ -92,9 +92,9 @@ export default function HomePage() {
         <div className="npanel">
           <div className="np-h"><i className="np-ic"><CalendarDays size={22} /></i><div><span className="eyebrow">Upcoming</span><h3 className="h-md">Events &amp; Activities</h3></div></div>
           <ul className="eventlist">
-            <li><div className="dchip"><b>18</b><span>JUN</span></div><div className="ev"><div className="et">Inter-house Sports Gala</div><div className="es">Main ground · 8:00 AM</div></div></li>
-            <li><div className="dchip"><b>24</b><span>JUN</span></div><div className="ev"><div className="et">Science &amp; Innovation Fair</div><div className="es">Senior block · 9:30 AM</div></div></li>
-            <li><div className="dchip"><b>02</b><span>JUL</span></div><div className="ev"><div className="et">Annual Prize Distribution</div><div className="es">Auditorium · 10:00 AM</div></div></li>
+            <li><div className="dchip"><b>14</b><span>AUG</span></div><div className="ev"><div className="et">Independence Day 🇵🇰</div><div className="es">All Sections · Proud Pakistani Programme</div></div></li>
+            <li><div className="dchip"><b>15</b><span>AUG</span></div><div className="ev"><div className="et">Orientation Day</div><div className="es">APSIS Grade I–VIII · Parents</div></div></li>
+            <li><div className="dchip"><b>24</b><span>AUG</span></div><div className="ev"><div className="et">SDGs Awareness Week</div><div className="es">Junior, Middle &amp; Senior Sections</div></div></li>
           </ul>
           <Link className="link-arrow" href="/activities">Full calendar <ArrowRight size={16} /></Link>
         </div>
