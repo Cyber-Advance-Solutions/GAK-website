@@ -37,7 +37,7 @@ export default function Hero() {
             grow and <span className="c">lead.</span>
           </h1>
           <p className="hsub">
-            Educating Kharian Cantt since 1985 — disciplined, well-rounded learning
+            Educating Kharian Cantt since 1972 — disciplined, well-rounded learning
             from Pre-School through the FBISE and Cambridge streams.
           </p>
           <div className="hero-cta">

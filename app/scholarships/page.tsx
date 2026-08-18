@@ -26,6 +26,12 @@ const INCENTIVES: [string, string, string][] = [
   ["Sibling", "Two or more enrolled", "Concession per APSACS policy"],
 ];
 
+const BOARD_INCENTIVES: [string, string, string][] = [
+  ["Criteria-I", "95% and Above Marks in Board Examinations", "Complete tuition fee to be waived off for the entire succeeding academic session (waiver of 85% tuition fee, if stipulated % is obtained after improvement papers)."],
+  ["Criteria-II", "90-95% Marks in Board Examination", "Waiver of 40% tuition fee for the complete succeeding session - (waiver of 30% fee, if stipulated % is obtained after improvement papers)."],
+  ["Criteria-III", "Special Cases (High achievers who permanently leave during an ongoing session)", "Lump-sum payment of Rs 20,000 (for 95% & above) and Rs 10,000 (for 90-95% marks)."],
+];
+
 export default function ScholarshipsPage() {
   return (
     <>
@@ -62,9 +68,15 @@ export default function ScholarshipsPage() {
       <section className="sec">
         <div className="wrap">
           <SectionHead eyebrow="At a glance" title="Incentive structure" />
-          <div className="tbl-wrap"><table className="tbl">
+          <div className="tbl-wrap" style={{ marginBottom: 48 }}><table className="tbl">
             <thead><tr><th>Award</th><th>Eligibility</th><th>Benefit</th></tr></thead>
             <tbody>{INCENTIVES.map(([a, e, b]) => (<tr key={a}><td>{a}</td><td>{e}</td><td>{b}</td></tr>))}</tbody>
+          </table></div>
+
+          <SectionHead eyebrow="Board Classes" title="GAK Scholarship Policy (Classes IX-XII)" />
+          <div className="tbl-wrap"><table className="tbl">
+            <thead><tr><th>Criteria</th><th>Marks / Condition</th><th>Scholarship / Incentive</th></tr></thead>
+            <tbody>{BOARD_INCENTIVES.map(([a, e, b]) => (<tr key={a}><td><strong>{a}</strong></td><td>{e}</td><td>{b}</td></tr>))}</tbody>
           </table></div>
         </div>
       </section>
