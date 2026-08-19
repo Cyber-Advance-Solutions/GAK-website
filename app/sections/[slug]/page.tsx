@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import SectionDetail from "@/components/SectionDetail";
 import MiddleBoysSection from "@/components/MiddleBoysSection";
+import MiddleGirlsSection from "@/components/MiddleGirlsSection";
 import PreSchoolSection from "@/components/PreSchoolSection";
 import APSISSection from "@/components/APSISSection";
 import SeniorGirlsSection from "@/components/SeniorGirlsSection";
@@ -23,6 +24,7 @@ export default async function SectionPage({ params }: { params: Promise<{ slug: 
   const data = SECTIONS[slug as SectionKey];
   if (!data) notFound();
   if (slug === "middle-boys") return <MiddleBoysSection />;
+  if (slug === "middle-girls") return <MiddleGirlsSection />;
   if (slug === "pre") return <PreSchoolSection />;
   if (slug === "junior") return <JuniorSection />;
   if (slug === "apsis") return <APSISSection />;
