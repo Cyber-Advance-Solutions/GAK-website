@@ -34,7 +34,7 @@ export default function HomePage() {
             <div className="sc-bd"><h3>APSACS · FBISE</h3><p>The national curriculum from Pre-School to Intermediate, with consistently strong board results.</p><span className="more">Explore stream <ArrowRight size={15} /></span></div>
           </Link>
           <Link className="streamcard" href="/sections/apsis">
-            <div className="sc-img" style={{ backgroundImage: "url(/hero1.jpg)" }}><span className="sc-tag alt">International</span></div>
+            <div className="sc-img" style={{ backgroundImage: "url(/apsis.jpg)" }}><span className="sc-tag alt">International</span></div>
             <div className="sc-bd"><h3>APSIS · Cambridge</h3><p>A globally benchmarked Cambridge pathway, opening doors to universities at home and abroad.</p><span className="more">Explore stream <ArrowRight size={15} /></span></div>
           </Link>
         </div>
@@ -50,7 +50,7 @@ export default function HomePage() {
           <span className="eyebrow">From the Principal&rsquo;s Desk</span>
           <blockquote>We build character before we build careers. Discipline here is a gift, not a burden — and every child is seen, known and guided.</blockquote>
           <div className="qb-foot">
-            <div className="qb-who"><div className="nm">Mrs Shahida Rehman, Garrison Academy Kharian Cantt</div><div className="rl">Principal, Garrison Academy Kharian Cantt</div></div>
+            <div className="qb-who"><div className="nm">Mrs Shahida Rehman</div><div className="rl">Principal, Garrison Academy Kharian Cantt</div></div>
             <Link className="btn-ghost dark" href="/messages/principal">Read full message</Link>
           </div>
         </div>

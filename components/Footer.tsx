@@ -42,7 +42,7 @@ export default function Footer() {
             </div>
             <p>
               An Army Public Schools &amp; Colleges System institution committed to knowledge,
-              discipline and character since 1985.
+              discipline and character since 1972.
             </p>
             <div className="fsoc">
               <ToastButton href="https://www.facebook.com/share/19GmMrHryd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" as="a" msg="Opening Facebook…" className=""><Facebook size={18} /></ToastButton>
