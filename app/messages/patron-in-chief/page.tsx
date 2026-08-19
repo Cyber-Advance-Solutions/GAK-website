@@ -35,7 +35,7 @@ export default function PatronInChiefMessagePage() {
                   className="msgport-img"
                 />
               </div>
-              <div className="msgport-plate">
+              <div className="msgport-plate" style={{ padding: '14px 10px' }} >
                 <Flame className="msgport-mark" size={26} strokeWidth={1.75} />
                 <div>
                   <span className="msgport-name">{leader.name}</span>

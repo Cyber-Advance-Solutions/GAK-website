@@ -14,7 +14,7 @@ export default function HomePage() {
 
       {/* slim stat strip */}
       <section className="statstrip"><div className="wrap ssrow">
-        <div className="ss"><div className="n">1985</div><div className="l">Established</div></div>
+        <div className="ss"><div className="n">1972</div><div className="l">Established</div></div>
         <div className="ss"><div className="n">3,200<span>+</span></div><div className="l">Students enrolled</div></div>
         <div className="ss"><div className="n">2</div><div className="l">Academic streams</div></div>
         <div className="ss"><div className="n">98<span>%</span></div><div className="l">FBISE pass rate</div></div>
