@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 export default function FacilitiesSwiper() {
-  const images = ["/hero2.jpg", "/hero2.jpg", "/hero2.jpg"];
+  const images = ["/hero2.png", "/hero2.png", "/hero2.png"];
 
   return (
     <div className="ga facilities-swiper" style={{ background: 'none' }}>

@@ -6,11 +6,11 @@ import { BANNER } from "@/lib/images";
 
 export const metadata = { title: "Important & External Links" };
 
-const LINKS: [React.ReactNode, string, string, string][] = [
+const LINKS: [React.ReactNode, string, string, string, string?][] = [
   [<BookOpen key="a" size={22} strokeWidth={1.8} />, "APSACS LMS — Teachers", "Staff portal for lesson planning, attendance and result entry.", "Opening apms.pk …"],
   [<GraduationCap key="b" size={22} strokeWidth={1.8} />, "APSACS LMS — Students", "Student portal for assignments, resources and progress.", "Opening student.apms.pk …"],
-  [<ScrollText key="c" size={22} strokeWidth={1.8} />, "FBISE", "Federal Board results, datesheets and notifications.", "Opening fbise.edu.pk …"],
-  [<Share2 key="d" size={22} strokeWidth={1.8} />, "GAK social media", "Official updates, photos and announcements.", "Opening social media…"],
+  [<ScrollText key="c" size={22} strokeWidth={1.8} />, "FBISE", "Federal Board results, datesheets and notifications.", "Opening fbise.edu.pk …", "http://www.fbise.edu.pk/"],
+  [<Share2 key="d" size={22} strokeWidth={1.8} />, "GAK social media", "Official updates, photos and announcements.", "Opening social media…", "https://www.facebook.com/share/19GmMrHryd/?mibextid=wwXIfr"],
 ];
 
 export default function LinksPage() {
@@ -27,8 +27,16 @@ export default function LinksPage() {
         <div className="wrap">
           <SectionHead eyebrow="Portals" title="Everything you need, one click away" />
           <div className="linkcards">
-            {LINKS.map(([ic, t, d, msg]) => (
-              <ToastButton as="a" key={t} msg={msg} className="linkcard">
+            {LINKS.map(([ic, t, d, msg, href]) => (
+              <ToastButton 
+                as="a" 
+                key={t} 
+                msg={msg} 
+                className="linkcard"
+                href={href}
+                target={href ? "_blank" : undefined}
+                rel={href ? "noopener noreferrer" : undefined}
+              >
                 <div className="lc-ic">{ic}</div>
                 <div>
                   <h4 style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>{t} <ExternalLink size={14} strokeWidth={1.8} /></h4>
