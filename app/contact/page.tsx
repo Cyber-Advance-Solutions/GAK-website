@@ -63,15 +63,15 @@ export default function ContactPage() {
                   </div>
                 </div>
               ))}
-              <div className="mapph">
-                <div>
-                  <MapPin size={28} strokeWidth={1.6} />
-                  <div style={{ fontWeight: 700, marginTop: 6 }}>
-                    Garrison Academy, Kharian Cantt
-                  </div>
-                  <div style={{ fontSize: ".8rem", color: "var(--ink-soft)" }}>
-                    Google Maps embed in production
-                  </div>
+              <div className="mapph p-0" style={{ padding: '0px' }}>
+                <div style={{ height: '100%' }}>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.8612717120473!2d73.8870625!3d32.79593750000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391fa1a84b06ee73%3A0xb778b46716848759!2sAPS%26C%20Garrison%20Academy%20Kharian%20Cantt%20Campus!5e0!3m2!1sen!2s!4v1787220416663!5m2!1sen!2s"
+                    style={{ border:'0', height: '100%', width: '100%' }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  ></iframe>
                 </div>
               </div>
             </div>
