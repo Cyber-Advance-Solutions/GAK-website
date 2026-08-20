@@ -275,8 +275,9 @@ function UniformList({ items }: { items: string[] }) {
   );
 }
 
-export default function UniformPage({ searchParams }: { searchParams: { tab?: string } }) {
-  const activeTab = searchParams.tab || "APSACS";
+export default async function UniformPage({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
+  const { tab } = await searchParams;
+  const activeTab = tab || "APSACS";
 
   return (
     <div className="bg-paper min-h-screen pb-16">
