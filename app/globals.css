@@ -100,7 +100,71 @@ nav.links{display:flex;align-items:center;gap:4px}
 .view.active{display:block;animation:fade .45s ease}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-/* ---------- hero (V2 slideshow) ---------- */
+/* ---------- hero — cinematic slideshow ---------- */
+.hero-cinema{position:relative;min-height:100svh;overflow:hidden;background:#071a19}
+@media(max-width:920px){.hero-cinema{min-height:60svh}}
+
+/* ── slide layers ── */
+.hslide{position:absolute;inset:0;will-change:opacity}
+.hslide-in{z-index:2;animation:hfade-in var(--transition,1400ms) ease forwards}
+.hslide-out{z-index:1;animation:hfade-out var(--transition,1400ms) ease forwards}
+@keyframes hfade-in{from{opacity:0}to{opacity:1}}
+@keyframes hfade-out{from{opacity:1}to{opacity:0}}
+
+/* ── image pane inside each slide ── */
+.hslide-img{
+  position:absolute;inset:-8%;/* extra bleed for pan headroom */
+  background-size:cover;
+  background-position:center;
+  will-change:transform;
+  animation:var(--anim,hero-zoom-in) 7s cubic-bezier(.25,.46,.45,.94) forwards;
+}
+
+/* ── cinematic motion keyframes ── */
+@keyframes hero-zoom-in{
+  from{transform:scale(1.0) translate(0,0)}
+  to  {transform:scale(1.18) translate(0,0)}
+}
+@keyframes hero-zoom-out{
+  from{transform:scale(1.18) translate(0,0)}
+  to  {transform:scale(1.0) translate(0,0)}
+}
+@keyframes hero-pan-right{
+  from{transform:scale(1.12) translate(-3%,0)}
+  to  {transform:scale(1.12) translate(3%,0)}
+}
+@keyframes hero-pan-left{
+  from{transform:scale(1.12) translate(3%,0)}
+  to  {transform:scale(1.12) translate(-3%,0)}
+}
+@keyframes hero-zoom-in-tl{
+  from{transform:scale(1.0) translate(2%,2%)}
+  to  {transform:scale(1.2) translate(-2%,-2%)}
+}
+
+/* ── vignette (no text overlay) ── */
+.h-vignette{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(0,0,0,.55) 0%, transparent 70%),
+    radial-gradient(ellipse at 50% 0%,   rgba(0,0,0,.35) 0%, transparent 60%);
+}
+
+/* ── progress bar ── */
+.h-progress{position:absolute;bottom:0;left:0;right:0;z-index:5;height:3px;background:rgba(255,255,255,.15)}
+.h-progress-bar{
+  height:100%;background:var(--gold-400);
+  animation:hprog var(--dur,6000ms) linear forwards;
+  transform-origin:left;
+}
+@keyframes hprog{from{width:0}to{width:100%}}
+
+/* ── dots ── */
+.hero-dots{position:absolute;z-index:5;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:10px}
+.hero-dots .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.38);transition:.3s;cursor:pointer;border:none;padding:0;flex-shrink:0}
+.hero-dots .dot.active{width:28px;border-radius:4px;background:var(--gold-400)}
+
+/* keep old .hero class working for any other usages */
 .hero{position:relative;min-height:612px;display:flex;align-items:center;color:#fff;overflow:hidden}
 .hero .slides{position:absolute;inset:0;z-index:0}
 .hero .slide{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#0d3a38;opacity:0;transition:opacity 1.3s ease}
@@ -116,13 +180,6 @@ nav.links{display:flex;align-items:center;gap:4px}
 .hero h1 .c{color:var(--gold-300)}
 .hero p.hsub{color:rgba(255,255,255,.88);font-size:1.12rem;max-width:46ch;margin:22px 0 0}
 .hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}
-.btn-primary{background:var(--gold-500);color:#fff;padding:14px 26px;border-radius:11px;font-weight:700;font-size:.94rem;box-shadow:0 12px 28px rgba(163,86,43,.42);transition:transform .18s,background .18s}
-.btn-primary:hover{background:var(--gold-600);transform:translateY(-2px)}
-.btn-ghost{border:1.5px solid rgba(255,255,255,.5);color:#fff;padding:14px 24px;border-radius:11px;font-weight:700;font-size:.94rem;transition:.2s;display:inline-flex;align-items:center;gap:8px}
-.btn-ghost:hover{background:rgba(255,255,255,.12);border-color:var(--gold-300)}
-.hero-dots{position:absolute;z-index:4;bottom:26px;left:0;right:0;display:flex;justify-content:center;gap:10px}
-.hero-dots .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.42);transition:.25s;cursor:pointer;border:none;padding:0}
-.hero-dots .dot.active{width:26px;border-radius:5px;background:var(--gold-400)}
 @media(max-width:920px){.hero{min-height:520px}.hero .wrap{padding:74px 24px 84px}}
 
 /* ---------- marquee (ported from V3 — same dark palette) ---------- */
@@ -726,6 +783,10 @@ footer ul li a:hover{color:var(--gold-300);padding-left:3px}
 
 .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .ctaband .btn-ghost{display:inline-flex;align-items:center;gap:8px;border-color:rgba(255,255,255,.5)}
+.btn-primary{background:var(--gold-500);color:#fff;padding:14px 26px;border-radius:11px;font-weight:700;font-size:.94rem;box-shadow:0 12px 28px rgba(163,86,43,.42);transition:transform .18s,background .18s}
+.btn-primary:hover{background:var(--gold-600);transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.5);color:#fff;padding:14px 24px;border-radius:11px;font-weight:700;font-size:.94rem;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-ghost:hover{background:rgba(255,255,255,.12);border-color:var(--gold-300)}
 
 /* ===== V2 inner-page system ===== */
 /* inner-page section heads are left-aligned (design-system default is centered;
