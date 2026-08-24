@@ -14,11 +14,11 @@ export const NAV: NavItem[] = [
       {
         label: "About Us",
         fly: [
-          { label: "History", href: "/about" },
-          { label: "The Founder", href: "/about" },
-          { label: "Principals", href: "/about" },
-          { label: "Code of Conduct", href: "/about" },
-          { label: "Facilities", href: "/about" },
+          { label: "History", href: "/about/history" },
+          { label: "The Founder", href: "/about/founder" },
+          { label: "Principals", href: "/about/principals" },
+          { label: "Code of Conduct", href: "/about/code-of-conduct" },
+          { label: "Facilities", href: "/about/facilities" },
         ],
       },
       {
