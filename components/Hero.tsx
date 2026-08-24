@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 /* Swap these with real Garrison Academy Kharian Cantt photos any time — same order, same names. */
@@ -26,29 +25,6 @@ export default function Hero() {
         ))}
         <div className="tex" />
         <div className="ov" />
-      </div>
-
-      <div className="wrap">
-        <div className="hcopy">
-          <span className="eyebrow">Army Public School &amp; College</span>
-          <h1 className="h-xl">
-            A calm place to learn,
-            <br />
-            grow and <span className="c">lead.</span>
-          </h1>
-          <p className="hsub">
-            Educating Kharian Cantt since 1972 — disciplined, well-rounded learning
-            from Pre-School through the FBISE and Cambridge streams.
-          </p>
-          <div className="hero-cta">
-            <Link className="btn-primary" href="/admissions">
-              Apply for Admission
-            </Link>
-            <Link className="btn-ghost" href="/about">
-              Explore the campus →
-            </Link>
-          </div>
-        </div>
       </div>
 
       <div className="hero-dots">

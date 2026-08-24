@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
+import OverviewSection from "@/components/OverviewSection";
 import ChatWidget from "@/components/ChatWidget";
 import FacilitiesSwiper from "@/components/FacilitiesSwiper";
 import { ArrowRight, BookOpen, Backpack, Layers, GraduationCap, Globe, Bell, CalendarDays, Download } from "lucide-react";
@@ -11,14 +12,15 @@ export default function HomePage() {
     <div className="home-v2">
       <Hero />
       <Marquee />
+      <OverviewSection />
 
       {/* slim stat strip */}
-      <section className="statstrip"><div className="wrap ssrow">
+      {/* <section className="statstrip"><div className="wrap ssrow">
         <div className="ss"><div className="n">1972</div><div className="l">Established</div></div>
         <div className="ss"><div className="n">3,200<span>+</span></div><div className="l">Students enrolled</div></div>
         <div className="ss"><div className="n">2</div><div className="l">Academic streams</div></div>
         <div className="ss"><div className="n">98<span>%</span></div><div className="l">FBISE pass rate</div></div>
-      </div></section>
+      </div></section> */}
 
       {/* welcome + two streams */}
       <section className="sec"><div className="wrap welcome">

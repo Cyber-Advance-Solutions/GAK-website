@@ -133,6 +133,190 @@ nav.links{display:flex;align-items:center;gap:4px}
 .mq-track span::after{content:"\2726";color:#ef6a2c;font-size:.9rem}
 @keyframes mq{to{transform:translateX(-50%)}}
 
+/* ---------- overview section ---------- */
+.overview-sec{
+  padding:88px 0;
+  background:var(--paper);
+  position:relative;
+  overflow:hidden;
+}
+.overview-sec::before{
+  content:"";
+  position:absolute;
+  top:-120px;right:-140px;
+  width:560px;height:560px;
+  background:radial-gradient(circle,rgba(15,94,92,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+/* two-column grid */
+.ov-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:72px;
+  align-items:center;
+}
+/* ── scroll animation ── */
+.overview-sec .ov-media,
+.overview-sec .ov-body{
+  opacity:0;
+  transform:translateY(36px);
+  transition:opacity .75s ease,transform .75s ease;
+}
+.overview-sec .ov-body{transition-delay:.18s}
+.ov-visible .ov-media,
+.ov-visible .ov-body{opacity:1;transform:none}
+
+/* ── video thumbnail ── */
+.ov-media{position:relative}
+.ov-thumb{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:0 28px 72px rgba(10,43,42,.22);
+  aspect-ratio:16/10;
+}
+.ov-thumb-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s ease}
+.ov-thumb:hover .ov-thumb-img{transform:scale(1.04)}
+.ov-thumb-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(10,43,42,.55) 0%,rgba(10,43,42,.2) 100%);
+  transition:background .35s;
+}
+.ov-thumb:hover .ov-thumb-overlay{background:linear-gradient(135deg,rgba(10,43,42,.45) 0%,rgba(10,43,42,.12) 100%)}
+/* play button */
+.ov-play-btn{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:74px;height:74px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-500),var(--gold-600));
+  display:grid;place-items:center;
+  box-shadow:0 12px 40px rgba(163,86,43,.55);
+  transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .28s;
+  z-index:2;
+}
+.ov-play-btn svg{margin-left:4px}
+.ov-thumb:hover .ov-play-btn{
+  transform:translate(-50%,-50%) scale(1.14);
+  box-shadow:0 20px 56px rgba(163,86,43,.65);
+}
+/* pulse rings */
+.ov-ring{
+  position:absolute;top:50%;left:50%;
+  border-radius:50%;
+  border:2px solid rgba(192,106,60,.45);
+  transform:translate(-50%,-50%) scale(1);
+  animation:ov-pulse 2.6s ease-out infinite;
+  pointer-events:none;
+}
+.ov-ring-1{width:110px;height:110px;animation-delay:0s}
+.ov-ring-2{width:150px;height:150px;animation-delay:.9s}
+@keyframes ov-pulse{
+  0%{opacity:.8;transform:translate(-50%,-50%) scale(.85)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.6)}
+}
+/* floating year badge */
+.ov-badge{
+  position:absolute;
+  bottom:-22px;right:-22px;
+  background:var(--green-900);
+  color:#fff;
+  border-radius:16px;
+  padding:18px 24px;
+  box-shadow:0 16px 40px rgba(10,43,42,.3);
+  text-align:center;
+  min-width:110px;
+}
+.ov-badge-year{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-300);font-weight:700}
+.ov-badge-num{display:block;font-family:var(--display);font-size:2.2rem;font-weight:800;line-height:1;color:#fff;margin:4px 0 2px}
+.ov-badge-label{display:block;font-size:.68rem;color:#9bbab6;letter-spacing:.04em}
+
+/* ── text side ── */
+.ov-body{display:flex;flex-direction:column;gap:0}
+.ov-body .eyebrow{margin-bottom:18px}
+.ov-headline{color:var(--green-900);margin-bottom:20px}
+.ov-accent{color:var(--gold-500)}
+.ov-desc{color:var(--ink-soft);font-size:1.06rem;line-height:1.78;max-width:52ch;margin-bottom:32px}
+/* mini stats row */
+.ov-stats{
+  display:flex;align-items:center;gap:0;
+  background:var(--cream);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:22px 28px;
+  margin-bottom:36px;
+}
+.ov-stat{text-align:center;flex:1}
+.ov-stat-n{font-family:var(--display);font-size:1.9rem;font-weight:800;color:var(--green-800);line-height:1}
+.ov-stat-n span{font-size:1.3rem;color:var(--gold-500)}
+.ov-stat-l{font-size:.74rem;color:var(--ink-soft);letter-spacing:.03em;margin-top:5px;text-transform:uppercase;font-weight:600}
+.ov-stat-divider{width:1px;height:44px;background:var(--line-strong);flex:none}
+/* CTA row */
+.ov-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.ov-link-arrow{
+  font-weight:700;font-size:.94rem;
+  color:var(--green-800);
+  display:inline-flex;align-items:center;gap:8px;
+  transition:color .2s,gap .2s;
+}
+.ov-link-arrow:hover{color:var(--gold-600);gap:14px}
+
+/* ── responsive ── */
+@media(max-width:900px){
+  .ov-grid{grid-template-columns:1fr;gap:48px}
+  .ov-badge{bottom:-18px;right:16px}
+  .overview-sec{padding:64px 0}
+}
+@media(max-width:560px){
+  .ov-stats{flex-direction:column;gap:18px}
+  .ov-stat-divider{width:44px;height:1px}
+  .ov-badge{position:static;margin-top:24px;display:inline-flex;gap:10px;align-items:center;border-radius:12px}
+  .ov-badge-num{font-size:1.5rem}
+}
+
+/* ---------- video modal ---------- */
+.vid-modal-scrim{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(4,18,18,.82);
+  backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;
+  animation:modal-in .28s ease;
+  padding:20px;
+}
+@keyframes modal-in{from{opacity:0}to{opacity:1}}
+.vid-modal-box{
+  position:relative;
+  width:100%;max-width:860px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 40px 100px rgba(0,0,0,.6);
+  background:#000;
+  animation:modal-box-in .32s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes modal-box-in{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+.vid-modal-close{
+  position:absolute;top:14px;right:14px;
+  z-index:10;
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.15);
+  color:#fff;
+  display:grid;place-items:center;
+  transition:background .2s,transform .2s;
+  backdrop-filter:blur(6px);
+}
+.vid-modal-close:hover{background:rgba(255,255,255,.28);transform:scale(1.1)}
+.vid-modal-player{aspect-ratio:16/9;position:relative;background:#0a2b2a}
+.vid-modal-player iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+/* placeholder shown until real YouTube URL is wired */
+.vid-placeholder{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:16px;color:rgba(255,255,255,.6);
+  font-size:.92rem;letter-spacing:.04em;
+}
+.vid-placeholder svg{opacity:.7}
+
 /* ---------- notification ticker ---------- */
 .ticker{background:var(--green-800);color:#e6f1ef;overflow:hidden}
 .ticker .wrap{display:flex;align-items:center;gap:16px;height:46px}
