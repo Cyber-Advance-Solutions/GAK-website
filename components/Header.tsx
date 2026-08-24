@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Phone, Mail, ChevronDown, X } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { NAV, type NavItem, type MegaEntry } from "@/lib/data";
 
 const hasMega = (i: NavItem): i is Extract<NavItem, { mega: MegaEntry[] }> =>
@@ -36,20 +37,24 @@ export default function Header() {
             </Link>
             <span className="dot u-hide" />
             <Link className="u-hide" href="/contact">
+              <FaWhatsapp size={14} strokeWidth={1.75} aria-hidden /> 0330-4250111
+            </Link>
+            <span className="dot u-hide" />
+            <Link className="u-hide" href="/contact">
               <Mail size={14} strokeWidth={1.75} aria-hidden />{" "}
-              principal@gakcampus.edu.pk
+              gakhrn@gmail.com
             </Link>
           </div>
           <div className="util-right">
             <a href="https://apms.pk" target="_blank">
-              LMS — Teachers
+              AIS Portals — Teachers
             </a>
             <span className="dot" />
             <a href="https://student.apms.pk" target="_blank">
-              LMS — Students
+              AIS Portals — Students
             </a>
-            <span className="dot" />
-            <Link href="/links">FBISE</Link>
+            {/* <span className="dot" /> */}
+            {/* <Link href="/links">FBISE</Link> */}
           </div>
         </div>
       </div>

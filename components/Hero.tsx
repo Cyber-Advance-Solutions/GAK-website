@@ -15,8 +15,7 @@ const SLIDES = [
   "/hero10.png",
   "/hero11.jpg",
   "/hero12.jpg",
-  "/hero13.jpg",
-  "/hero14.png",
+  "/hero13.png",
 ];
 
 // Each slide gets a distinct cinematic motion — cycles through so every

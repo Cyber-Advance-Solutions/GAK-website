@@ -8,6 +8,7 @@ export type NavItem =
   | { label: string; mega: MegaEntry[]; alignRight?: boolean };
 
 export const NAV: NavItem[] = [
+  { label: "Home", href: "/" },
   {
     label: "About",
     mega: [
