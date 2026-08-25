@@ -133,7 +133,7 @@ export const NAV: NavItem[] = [
         label: "Admission Request",
         fly: [
           { label: "Apply Online", href: "/admissions" },
-          { label: "Download Form", href: "/downloads" },
+          { label: "Download Form", href: "/downloads/forms" },
         ],
       },
       { label: "Admission Process", href: "/admissions" },
@@ -148,10 +148,10 @@ export const NAV: NavItem[] = [
       {
         label: "Downloads",
         fly: [
-          { label: "Notifications", href: "/downloads" },
-          { label: "Circulars", href: "/downloads" },
-          { label: "Past Papers", href: "/downloads" },
-          { label: "Admission Form", href: "/downloads" },
+          { label: "Notifications", href: "/downloads/notifications" },
+          { label: "Circulars", href: "/downloads/circulars" },
+          { label: "Past Papers", href: "/downloads/past-papers" },
+          { label: "Forms", href: "/downloads/forms" },
         ],
       },
       { label: "FAQs", href: "/faqs" },
@@ -273,7 +273,7 @@ export const HOME_GRID: { href: string; label: string; icon: string; desc: strin
   { href: "/faqs", label: "FAQs", icon: "❓", desc: "Common questions" },
   { href: "/chatbot", label: "Chatbot", icon: "◎", desc: "Instant answers" },
   { href: "/contact", label: "Contact Us", icon: "📍", desc: "Numbers, email, map" },
-  { href: "/downloads", label: "Downloads", icon: "↓", desc: "Forms & circulars" },
+  { href: "/downloads/notifications", label: "Downloads", icon: "↓", desc: "Forms & circulars" },
   { href: "/feedback", label: "Feedback", icon: "✍️", desc: "Complaints & suggestions" },
 ];
 
