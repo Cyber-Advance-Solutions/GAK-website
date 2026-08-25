@@ -5,7 +5,6 @@ import PageHero from "@/components/PageHero";
 import { Editorial, FactCard } from "@/components/Editorial";
 import SectionHead from "@/components/SectionHead";
 import StaffCard from "@/components/pre-school/StaffCard";
-import PreSchoolSubNav from "@/components/pre-school/PreSchoolSubNav";
 import { SECTIONS } from "@/lib/data";
 import {
   HEAD,
@@ -139,8 +138,6 @@ export default function PreSchoolSubPage({ sub }: { sub: PreSub }) {
           { label: sub.label },
         ]}
       />
-
-      <PreSchoolSubNav />
 
       <section className="sec">
         <Editorial

@@ -4,7 +4,8 @@
 import { PRE_SUBPAGES } from "@/lib/pre-school-data";
 
 export type Leaf = { label: string; href: string };
-export type MegaEntry = Leaf | { label: string; fly: Leaf[] };
+export type FlyEntry = Leaf | { label: string; fly: Leaf[] };
+export type MegaEntry = Leaf | { label: string; fly: FlyEntry[] };
 export type NavItem =
   | Leaf
   | { label: string; mega: MegaEntry[]; alignRight?: boolean };
@@ -49,20 +50,19 @@ export const NAV: NavItem[] = [
       {
         label: "Sections",
         fly: [
-          { label: "Pre-School", href: "/sections/pre" },
+          {
+            label: "Pre-School",
+            fly: [
+              { label: "Section Head", href: "/sections/pre" },
+              ...PRE_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/pre/${p.slug}` })),
+            ],
+          },
           { label: "Junior Section", href: "/sections/junior" },
           { label: "Middle Girls Section", href: "/sections/middle-girls" },
           { label: "Middle Boys Section", href: "/sections/middle-boys" },
           { label: "Senior Girls Section", href: "/sections/senior-girls" },
           { label: "Senior Boys Section", href: "/sections/senior-boys" },
           { label: "APSIS", href: "/sections/apsis" },
-        ],
-      },
-      {
-        label: "Pre-School",
-        fly: [
-          { label: "Section Head", href: "/sections/pre" },
-          ...PRE_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/pre/${p.slug}` })),
         ],
       },
       { label: "Scholarships & Incentives", href: "/scholarships" },

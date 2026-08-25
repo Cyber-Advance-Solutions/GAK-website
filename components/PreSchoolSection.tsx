@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { Editorial, FactCard } from "@/components/Editorial";
 import SectionHead from "@/components/SectionHead";
-import PreSchoolSubNav from "@/components/pre-school/PreSchoolSubNav";
 import { SECTIONS, type SectionKey } from "@/lib/data";
 import { HEAD, CLASSES, PRE_SUBPAGES } from "@/lib/pre-school-data";
 
@@ -21,8 +20,6 @@ export default function PreSchoolSection() {
         image={CLASSES[0].photo}
         crumb={[{ label: "Quick Links", href: "/quick-links" }, { label: data.name }]}
       />
-
-      <PreSchoolSubNav />
 
       <section className="sec">
         <Editorial
