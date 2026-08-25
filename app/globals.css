@@ -541,6 +541,76 @@ nav.links{display:flex;align-items:center;gap:4px}
 .tabpane{display:none;animation:fade .35s}
 .tabpane.active{display:block}
 
+/* ---------- organogram image viewer ---------- */
+.org-img-tile{
+  position:relative;cursor:zoom-in;border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow-md);
+  background:var(--paper);
+}
+.org-img-tile:focus-visible{outline:2px solid var(--gold-500);outline-offset:3px}
+.org-img-preview{width:100%;height:auto;display:block;transition:transform .4s ease}
+.org-img-tile:hover .org-img-preview{transform:scale(1.015)}
+.org-img-overlay{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  background:rgba(10,43,42,.55);color:#fff;
+  opacity:0;transition:opacity .25s;
+  font-weight:600;font-size:.88rem;letter-spacing:.04em;
+  backdrop-filter:blur(2px);
+}
+.org-img-tile:hover .org-img-overlay{opacity:1}
+
+/* lightbox scrim */
+.org-lightbox-scrim{
+  position:fixed;inset:0;z-index:300;
+  background:rgba(4,18,18,.92);
+  backdrop-filter:blur(10px);
+  display:flex;flex-direction:column;
+  animation:modal-in .22s ease;
+}
+
+/* toolbar */
+.org-lb-toolbar{
+  position:relative;z-index:2;
+  display:flex;align-items:center;gap:6px;
+  padding:14px 20px;
+  background:rgba(10,43,42,.6);
+  border-bottom:1px solid rgba(255,255,255,.1);
+  flex-shrink:0;
+}
+.org-lb-btn{
+  width:38px;height:38px;border-radius:9px;
+  background:rgba(255,255,255,.1);color:#fff;
+  display:grid;place-items:center;
+  border:none;cursor:pointer;
+  transition:background .18s,transform .18s;
+}
+.org-lb-btn:hover{background:rgba(255,255,255,.22);transform:scale(1.08)}
+.org-lb-close{margin-left:auto;background:rgba(192,85,47,.35)}
+.org-lb-close:hover{background:var(--flame)}
+.org-lb-scale{
+  font-family:var(--insc);font-size:.82rem;font-weight:700;
+  color:var(--gold-300);letter-spacing:.08em;
+  min-width:46px;text-align:center;
+}
+
+/* scrollable canvas */
+.org-lb-canvas{
+  flex:1;overflow:auto;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:32px;
+}
+.org-lb-img{
+  display:block;
+  max-width:none;
+  width:auto;height:auto;
+  transition:transform .2s ease;
+  transform-origin:top center;
+  border-radius:12px;
+  box-shadow:0 32px 80px rgba(0,0,0,.6);
+}
+@media(max-width:600px){.org-lb-canvas{padding:16px}}
+
 /* prose */
 .prose p{margin-bottom:16px;color:var(--ink-soft)}
 .prose h3{margin:26px 0 10px}
