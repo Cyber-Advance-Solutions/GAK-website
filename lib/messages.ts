@@ -43,7 +43,7 @@ export const MESSAGES: MessageLeader[] = [
     heading: "Excellence is never inherited —\nit is sustained.",
     intro: "A message from the Chairman on character, governance, and the lasting purpose of Garrison Academy.",
     name: "Major General Bilal Mahmud, General Officer Commanding 37 Div",
-    role: "Chairman BOGs GAK",
+    role: "Chairman Board of Governors GAK",
     image: "/chairman.jpeg",
     imageAlt: "Chairman, APSACS",
     initials: "TM",
