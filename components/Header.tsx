@@ -6,23 +6,27 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Phone, Mail, ChevronDown, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { NAV, type NavItem, type MegaEntry } from "@/lib/data";
+import { NAV, type NavItem, type MegaEntry, type FlyEntry } from "@/lib/data";
 
 const hasMega = (i: NavItem): i is Extract<NavItem, { mega: MegaEntry[] }> =>
   "mega" in i;
 const hasFly = (m: MegaEntry): m is Extract<MegaEntry, { fly: unknown }> =>
   "fly" in m;
+const hasSubFly = (f: FlyEntry): f is Extract<FlyEntry, { fly: unknown }> =>
+  "fly" in f;
 
 export default function Header() {
   const pathname = usePathname();
   const [openMega, setOpenMega] = useState<number | null>(null);
   const [openFly, setOpenFly] = useState<string | null>(null);
+  const [openSubFly, setOpenSubFly] = useState<string | null>(null);
   const [drawer, setDrawer] = useState(false);
   const [openGroups, setOpenGroups] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
     setOpenMega(null);
     setOpenFly(null);
+    setOpenSubFly(null);
     setDrawer(false);
   }, [pathname]);
 
@@ -86,7 +90,7 @@ export default function Header() {
                   }
                   onMouseLeave={() =>
                     window.innerWidth > 1080 &&
-                    (setOpenMega(null), setOpenFly(null))
+                    (setOpenMega(null), setOpenFly(null), setOpenSubFly(null))
                   }
                 >
                   <button
@@ -105,6 +109,7 @@ export default function Header() {
                             className="flytrigger"
                             onClick={(e) => {
                               e.stopPropagation();
+                              setOpenSubFly(null);
                               setOpenFly(
                                 openFly === `${i}-${j}` ? null : `${i}-${j}`,
                               );
@@ -113,11 +118,37 @@ export default function Header() {
                             {m.label} <i className="chev" />
                           </button>
                           <div className="flyout">
-                            {m.fly.map((f) => (
-                              <Link key={f.label} href={f.href}>
-                                {f.label}
-                              </Link>
-                            ))}
+                            {m.fly.map((f, k) =>
+                              hasSubFly(f) ? (
+                                <div
+                                  key={f.label}
+                                  className={`flyparent ${openSubFly === `${i}-${j}-${k}` ? "open" : ""}`}
+                                >
+                                  <button
+                                    className="flytrigger"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      setOpenSubFly(
+                                        openSubFly === `${i}-${j}-${k}` ? null : `${i}-${j}-${k}`,
+                                      );
+                                    }}
+                                  >
+                                    {f.label} <i className="chev" />
+                                  </button>
+                                  <div className="flyout">
+                                    {f.fly.map((sf) => (
+                                      <Link key={sf.label} href={sf.href}>
+                                        {sf.label}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              ) : (
+                                <Link key={f.label} href={f.href}>
+                                  {f.label}
+                                </Link>
+                              ),
+                            )}
                           </div>
                         </div>
                       ) : (
@@ -232,15 +263,40 @@ export default function Header() {
                 <div className="dsub">
                   {item.mega.map((m) =>
                     hasFly(m) ? (
-                      m.fly.map((f) => (
-                        <Link
-                          key={f.label}
-                          href={f.href}
-                          onClick={() => setDrawer(false)}
-                        >
-                          {f.label}
-                        </Link>
-                      ))
+                      m.fly.map((f) =>
+                        hasSubFly(f) ? (
+                          <div key={f.label} style={{ marginLeft: 10 }}>
+                            <div
+                              style={{
+                                padding: "9px 6px",
+                                fontWeight: 600,
+                                fontSize: ".86rem",
+                                color: "var(--green-900)",
+                              }}
+                            >
+                              {f.label}
+                            </div>
+                            {f.fly.map((sf) => (
+                              <Link
+                                key={sf.label}
+                                href={sf.href}
+                                onClick={() => setDrawer(false)}
+                                style={{ paddingLeft: 18 }}
+                              >
+                                {sf.label}
+                              </Link>
+                            ))}
+                          </div>
+                        ) : (
+                          <Link
+                            key={f.label}
+                            href={f.href}
+                            onClick={() => setDrawer(false)}
+                          >
+                            {f.label}
+                          </Link>
+                        ),
+                      )
                     ) : (
                       <Link
                         key={m.label}

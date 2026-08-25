@@ -114,7 +114,7 @@ const principalsList = [
   {
     name: "Ms Tallat Azeem Ch",
     role: "Founder Principal",
-    period: "(1972-1973)",
+    period: "(1970's-1973)",
     image: "/history/tallat-azeem2.png" // using tallat-azeem2.png or tallat-azeem.png, assuming tallat-azeem.png might be the timeline one and tallat-azeem2.png is the portrait. Let's use tallat-azeem.png just in case, wait, let me just use tallat-azeem2.png.
   },
   {

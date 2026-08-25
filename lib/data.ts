@@ -1,8 +1,17 @@
 // Central content/data for Garrison Academy Kharian Cantt website (V2).
 // In production these would be served from a CMS / admin panel.
 
+import { PRE_SUBPAGES } from "@/lib/pre-school-data";
+import { JUNIOR_SUBPAGES } from "@/lib/junior-data";
+import { MIDDLE_GIRLS_SUBPAGES } from "@/lib/middle-girls-data";
+import { MIDDLE_BOYS_SUBPAGES } from "@/lib/middle-boys-data";
+import { SENIOR_GIRLS_SUBPAGES } from "@/lib/senior-girls-data";
+import { SENIOR_BOYS_SUBPAGES } from "@/lib/senior-boys-data";
+import { APSIS_SUBPAGES } from "@/lib/apsis-data";
+
 export type Leaf = { label: string; href: string };
-export type MegaEntry = Leaf | { label: string; fly: Leaf[] };
+export type FlyEntry = Leaf | { label: string; fly: Leaf[] };
+export type MegaEntry = Leaf | { label: string; fly: FlyEntry[] };
 export type NavItem =
   | Leaf
   | { label: string; mega: MegaEntry[]; alignRight?: boolean };
@@ -15,11 +24,11 @@ export const NAV: NavItem[] = [
       {
         label: "About Us",
         fly: [
-          { label: "History", href: "/about" },
-          { label: "The Founder", href: "/about" },
-          { label: "Principals", href: "/about" },
-          { label: "Code of Conduct", href: "/about" },
-          { label: "Facilities", href: "/about" },
+          { label: "History", href: "/about/history" },
+          { label: "The Founder", href: "/about/founder" },
+          { label: "Principals", href: "/about/principals" },
+          { label: "Code of Conduct", href: "/about/code-of-conduct" },
+          { label: "Facilities", href: "/about/facilities" },
         ],
       },
       {
@@ -48,13 +57,55 @@ export const NAV: NavItem[] = [
       {
         label: "Sections",
         fly: [
-          { label: "Pre-School", href: "/sections/pre" },
-          { label: "Junior Section", href: "/sections/junior" },
-          { label: "Middle Girls Section", href: "/sections/middle-girls" },
-          { label: "Middle Boys Section", href: "/sections/middle-boys" },
-          { label: "Senior Girls Section", href: "/sections/senior-girls" },
-          { label: "Senior Boys Section", href: "/sections/senior-boys" },
-          { label: "APSIS", href: "/sections/apsis" },
+          {
+            label: "Pre-School",
+            fly: [
+              { label: "Section Head", href: "/sections/pre" },
+              ...PRE_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/pre/${p.slug}` })),
+            ],
+          },
+          {
+            label: "Junior Section",
+            fly: [
+              { label: "Section Head", href: "/sections/junior" },
+              ...JUNIOR_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/junior/${p.slug}` })),
+            ],
+          },
+          {
+            label: "Middle Girls Section",
+            fly: [
+              { label: "Section Head", href: "/sections/middle-girls" },
+              ...MIDDLE_GIRLS_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/middle-girls/${p.slug}` })),
+            ],
+          },
+          {
+            label: "Middle Boys Section",
+            fly: [
+              { label: "Section Head", href: "/sections/middle-boys" },
+              ...MIDDLE_BOYS_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/middle-boys/${p.slug}` })),
+            ],
+          },
+          {
+            label: "Senior Girls Section",
+            fly: [
+              { label: "Section Head", href: "/sections/senior-girls" },
+              ...SENIOR_GIRLS_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/senior-girls/${p.slug}` })),
+            ],
+          },
+          {
+            label: "Senior Boys Section",
+            fly: [
+              { label: "Acting Section Head", href: "/sections/senior-boys" },
+              ...SENIOR_BOYS_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/senior-boys/${p.slug}` })),
+            ],
+          },
+          {
+            label: "APSIS",
+            fly: [
+              { label: "Vice Principal", href: "/sections/apsis" },
+              ...APSIS_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/apsis/${p.slug}` })),
+            ],
+          },
         ],
       },
       { label: "Scholarships & Incentives", href: "/scholarships" },

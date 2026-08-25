@@ -35,7 +35,7 @@ const FACILITIES: [React.ReactNode, string, string][] = [
 ];
 
 const PRINCIPALS: [string, string, string, string][] = [
-  ["TC", "Ms Tallat Azeem Ch", "1972 – 1973", "/history/tallat-azeem2.png"],
+  ["TC", "Ms Tallat Azeem Ch", "1970's – 1973", "/history/tallat-azeem2.png"],
   ["NR", "Mrs. Najm Rao", "1982 – 1985", "/history/najam-rao.png"],
   ["HH", "Mrs. Humaira Munir Hafeez", "Jan – Jun 1986", "/history/humaira-muneer-hafeez.png"],
   ["SM", "Mrs. Sehba Musharraf", "Aug – Sept 1986", "/history/sehba-musharraf.png"],

@@ -1,6 +1,8 @@
 // Placeholder banners — replace these files in /public with real GAK photos (same names).
 export const BANNER: Record<string, string> = {
-  about: "/hero3.png", messages: "/hero1.jpg", organogram: "/hero2.png",
+  about: "/hero3.png", "about-founder": "/hero1.jpg", "about-principals": "/hero2.png",
+  "about-code-of-conduct": "/hero3.png", "about-facilities": "/hero1.jpg",
+  messages: "/hero1.jpg", organogram: "/hero2.png",
   admissions: "/hero1.jpg", scholarships: "/hero2.png", uniform: "/hero3.png",
   alumni: "/hero1.jpg", activities: "/hero3.png", hr: "/hero2.png",
   links: "/hero1.jpg", "quick-links": "/hero2.png", faqs: "/hero3.png",
