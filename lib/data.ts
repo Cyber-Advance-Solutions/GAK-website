@@ -5,6 +5,9 @@ import { PRE_SUBPAGES } from "@/lib/pre-school-data";
 import { JUNIOR_SUBPAGES } from "@/lib/junior-data";
 import { MIDDLE_GIRLS_SUBPAGES } from "@/lib/middle-girls-data";
 import { MIDDLE_BOYS_SUBPAGES } from "@/lib/middle-boys-data";
+import { SENIOR_GIRLS_SUBPAGES } from "@/lib/senior-girls-data";
+import { SENIOR_BOYS_SUBPAGES } from "@/lib/senior-boys-data";
+import { APSIS_SUBPAGES } from "@/lib/apsis-data";
 
 export type Leaf = { label: string; href: string };
 export type FlyEntry = Leaf | { label: string; fly: Leaf[] };
@@ -81,9 +84,27 @@ export const NAV: NavItem[] = [
               ...MIDDLE_BOYS_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/middle-boys/${p.slug}` })),
             ],
           },
-          { label: "Senior Girls Section", href: "/sections/senior-girls" },
-          { label: "Senior Boys Section", href: "/sections/senior-boys" },
-          { label: "APSIS", href: "/sections/apsis" },
+          {
+            label: "Senior Girls Section",
+            fly: [
+              { label: "Section Head", href: "/sections/senior-girls" },
+              ...SENIOR_GIRLS_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/senior-girls/${p.slug}` })),
+            ],
+          },
+          {
+            label: "Senior Boys Section",
+            fly: [
+              { label: "Acting Section Head", href: "/sections/senior-boys" },
+              ...SENIOR_BOYS_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/senior-boys/${p.slug}` })),
+            ],
+          },
+          {
+            label: "APSIS",
+            fly: [
+              { label: "Vice Principal", href: "/sections/apsis" },
+              ...APSIS_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/apsis/${p.slug}` })),
+            ],
+          },
         ],
       },
       { label: "Scholarships & Incentives", href: "/scholarships" },
