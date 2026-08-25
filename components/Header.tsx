@@ -8,6 +8,7 @@ import { Phone, Mail, ChevronDown, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { NAV, type NavItem, type MegaEntry, type FlyEntry } from "@/lib/data";
 
+
 const hasMega = (i: NavItem): i is Extract<NavItem, { mega: MegaEntry[] }> =>
   "mega" in i;
 const hasFly = (m: MegaEntry): m is Extract<MegaEntry, { fly: unknown }> =>
