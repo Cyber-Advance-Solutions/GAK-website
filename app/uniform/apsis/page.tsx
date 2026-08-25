@@ -1,0 +1,183 @@
+import { Info } from "lucide-react";
+import PageHero from "@/components/PageHero";
+import { BANNER } from "@/lib/images";
+
+export const metadata = { title: "APSIS Uniform — School Uniform" };
+
+const APSIS_UNIFORM_DATA = [
+  {
+    level: "Play Group & Nursery",
+    details: "No Uniform"
+  },
+  {
+    level: "Kindergarten to Class V",
+    summer: {
+      girls: [
+        "Olive green sleeveless Tunic with APSIS logo + full sleeves beige blouse with round baby collar",
+        "Beige socks",
+        "Black buckle shoes",
+        "Black joggers or trainers for sports"
+      ],
+      boys: [
+        "Olive green full sleeved shirt with APSIS logo",
+        "Beige trouser",
+        "APSIS tie",
+        "Black belt",
+        "Beige socks",
+        "Black Oxford shoes with laces",
+        "Black joggers or trainers for sports"
+      ]
+    },
+    winter: {
+      girls: [
+        "Olive green sleeveless Tunic with APSIS logo + full sleeves beige blouse with round baby collar",
+        "Beige leggings",
+        "Olive green cardigan",
+        "Olive green blazer with APSIS logo",
+        "Beige socks",
+        "Black buckle shoes",
+        "Black joggers or trainers for sports"
+      ],
+      boys: [
+        "Olive green full sleeved shirt with APSIS logo",
+        "Beige trouser",
+        "Olive green V neck sleeveless sweater",
+        "APSIS tie",
+        "Olive green blazer with APSIS monogram",
+        "Black belt",
+        "Beige socks",
+        "Black Oxford shoes with laces",
+        "Black joggers or trainers for sports"
+      ]
+    }
+  },
+  {
+    level: "Classes VI - VIII, O & A Levels",
+    summer: {
+      girls: [
+        "Olive green full sleeved kameez with APSIS monogram",
+        "Beige shalwar",
+        "Olive green/beige dupatta with maroon stripes & writing",
+        "Beige socks",
+        "Black buckle shoes",
+        "Black joggers or trainers for sports"
+      ],
+      boys: [
+        "Olive green full sleeved shirt with APSIS monogram",
+        "Beige trouser",
+        "Olive green/beige tie with maroon stripes & writing",
+        "Black belt",
+        "Beige socks",
+        "Black Oxford shoes with laces",
+        "Black joggers or trainers for sports"
+      ]
+    },
+    winter: {
+      girls: [
+        "Olive green full sleeved kameez with APSIS monogram",
+        "Beige shalwar",
+        "Olive green V neck sleeveless sweater",
+        "Olive green blazer with APSIS monogram",
+        "Olive green/beige dupatta with maroon stripes & writing",
+        "Beige socks",
+        "Black buckle shoes",
+        "Black joggers or trainers for sports"
+      ],
+      boys: [
+        "Olive green full sleeved shirt with APSIS monogram",
+        "Beige trouser",
+        "Olive green V neck sleeveless sweater",
+        "Olive green/beige tie with maroon stripes & writing",
+        "Olive green blazer with APSIS monogram",
+        "Black belt",
+        "Beige socks",
+        "Black Oxford shoes with laces",
+        "Black joggers or trainers for sports"
+      ]
+    }
+  }
+];
+
+function UniformList({ items }: { items: string[] }) {
+  return (
+    <ul className="list-disc pl-5 space-y-2 mt-3 text-[15px] text-gray-700 font-body">
+      {items.map((item, idx) => (
+        <li key={idx} className="leading-relaxed">{item}</li>
+      ))}
+    </ul>
+  );
+}
+
+export default function UniformAPSISPage() {
+  return (
+    <div className="bg-paper min-h-screen pb-16">
+      <PageHero
+        eyebrow="Dress code"
+        title="School uniform"
+        intro="Official Uniform guidelines for all levels."
+        image={BANNER.uniform}
+        crumb={[{ label: "School Uniform", href: "/uniform" }, { label: "APSIS" }]}
+      />
+
+      <section className="max-w-5xl mx-auto px-4 lg:px-8 mt-16">
+        <div>
+          <div className="bg-green-50 border border-green-200 p-6 rounded-xl mb-12 flex items-start gap-4">
+            <Info className="text-green-700 shrink-0 mt-1" size={24} />
+            <div className="text-green-900 font-body">
+              <p className="font-bold mb-2">APSIS School Uniform</p>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>APSIS Uniform (all levels) must be displayed in the School Reception Area.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="space-y-16">
+            {APSIS_UNIFORM_DATA.map((section, idx) => (
+              <div key={idx} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div className="bg-green-900 px-6 py-4">
+                  <h2 className="text-2xl font-display text-white">{section.level}</h2>
+                </div>
+
+                <div className="p-6 md:p-8">
+                  {section.details ? (
+                    <p className="text-gray-700 font-body text-lg">{section.details}</p>
+                  ) : (
+                    <div className="space-y-10">
+                      <div>
+                        <h3 className="text-xl font-bold text-flame mb-6 border-b pb-2">Summer Uniform</h3>
+                        <div className="grid md:grid-cols-2 gap-8">
+                          <div className="bg-gray-50 p-6 rounded-xl">
+                            <h4 className="font-bold text-lg text-green-800 mb-2">Girls</h4>
+                            <UniformList items={section.summer!.girls} />
+                          </div>
+                          <div className="bg-gray-50 p-6 rounded-xl">
+                            <h4 className="font-bold text-lg text-green-800 mb-2">Boys</h4>
+                            <UniformList items={section.summer!.boys} />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-green-800 mb-6 border-b pb-2">Winter Uniform</h3>
+                        <div className="grid md:grid-cols-2 gap-8">
+                          <div className="bg-gray-50 p-6 rounded-xl border border-green-100">
+                            <h4 className="font-bold text-lg text-green-800 mb-2">Girls</h4>
+                            <UniformList items={section.winter!.girls} />
+                          </div>
+                          <div className="bg-gray-50 p-6 rounded-xl border border-green-100">
+                            <h4 className="font-bold text-lg text-green-800 mb-2">Boys</h4>
+                            <UniformList items={section.winter!.boys} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

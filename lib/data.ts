@@ -112,16 +112,16 @@ export const NAV: NavItem[] = [
       {
         label: "School Uniform",
         fly: [
-          { label: "APSACS Stream", href: "/uniform" },
-          { label: "APSIS Stream", href: "/uniform" },
+          { label: "APSACS Stream", href: "/uniform/apsacs" },
+          { label: "APSIS Stream", href: "/uniform/apsis" },
         ],
       },
       {
         label: "Activities",
         fly: [
-          { label: "Academics", href: "/activities" },
-          { label: "Sports", href: "/activities" },
-          { label: "Co-curricular", href: "/activities" },
+          { label: "Academics", href: "/activities/academics" },
+          { label: "Sports", href: "/activities/sports" },
+          { label: "Co-curricular", href: "/activities/co-curricular" },
         ],
       },
     ],
