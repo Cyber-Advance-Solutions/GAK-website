@@ -1,6 +1,5 @@
 "use client";
-
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 const SLIDES = [
   "/hero1.jpg",
@@ -8,7 +7,6 @@ const SLIDES = [
   "/hero3.png",
   "/hero4.jpg",
   "/hero5.png",
-  // "/hero6.jpg",
   "/hero7.jpg",
   "/hero8.jpg",
   "/hero9.png",
@@ -18,97 +16,98 @@ const SLIDES = [
   "/hero13.png",
 ];
 
-// Each slide gets a distinct cinematic motion — cycles through so every
-// image feels different even as the deck loops.
-const ANIMS = [
-  "hero-zoom-in",
-  "hero-pan-right",
-  "hero-zoom-out",
-  "hero-pan-left",
-  "hero-zoom-in-tl",
-  "hero-pan-right",
-  "hero-zoom-in",
-  "hero-zoom-out",
-  "hero-pan-left",
-  "hero-zoom-in-tl",
-  "hero-pan-right",
-  "hero-zoom-in",
-  "hero-pan-left",
-  "hero-zoom-out",
+// Cinematic ken-burns motions assigned per slide
+const MOTIONS = [
+  "kb-zoom-in",
+  "kb-pan-right",
+  "kb-zoom-out",
+  "kb-pan-left",
+  "kb-zoom-in-tl",
+  "kb-pan-right",
+  "kb-zoom-in",
+  "kb-zoom-out",
+  "kb-pan-left",
+  "kb-zoom-in-tl",
+  "kb-pan-right",
+  "kb-zoom-in",
 ] as const;
 
-const SLIDE_DURATION = 2000; // ms each slide stays
-const TRANSITION_MS = 1400;  // cross-fade duration
+const SLIDE_DURATION = 4000; // ms visible
+const FADE_DURATION  = 900;  // ms crossfade
 
 export default function Hero() {
-  const [current, setCurrent] = useState(0);
-  const [prev, setPrev]       = useState<number | null>(null);
-  const timerRef              = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [cur, setCur]   = useState(0);
+  const [prev, setPrev] = useState<number | null>(null);
+  const timerRef        = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const goTo = (next: number) => {
-    setPrev(current);
-    setCurrent(next);
-  };
+  const advance = useCallback((from: number) => {
+    const next = (from + 1) % SLIDES.length;
+    setPrev(from);
+    setCur(next);
+  }, []);
 
   useEffect(() => {
-    timerRef.current = setTimeout(() => {
-      goTo((current + 1) % SLIDES.length);
-    }, SLIDE_DURATION);
+    timerRef.current = setTimeout(() => advance(cur), SLIDE_DURATION);
     return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [current]);
+  }, [cur, advance]);
 
-  // Clear the "prev" layer after the cross-fade completes
+  // Clean up prev after fade completes
   useEffect(() => {
     if (prev === null) return;
-    const t = setTimeout(() => setPrev(null), TRANSITION_MS + 100);
+    const t = setTimeout(() => setPrev(null), FADE_DURATION + 80);
     return () => clearTimeout(t);
   }, [prev]);
 
+  const jumpTo = (idx: number) => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    setPrev(cur);
+    setCur(idx);
+  };
+
   return (
-    <section className="hero hero-cinema">
-      {/* slide layers */}
+    <section className="montage-hero">
+      {/* ── image layers ── */}
       {SLIDES.map((src, k) => {
-        const isActive = k === current;
+        const isActive = k === cur;
         const isPrev   = k === prev;
         if (!isActive && !isPrev) return null;
         return (
           <div
             key={src}
-            className={`hslide ${isActive ? "hslide-in" : "hslide-out"}`}
-            style={{ "--anim": ANIMS[k % ANIMS.length] } as React.CSSProperties}
+            className={`montage-layer ${isActive ? "montage-in" : "montage-out"}`}
+            style={{ "--fade-dur": `${FADE_DURATION}ms` } as React.CSSProperties}
           >
             <div
-              className="hslide-img"
+              className={`montage-img ${MOTIONS[k % MOTIONS.length]}`}
               style={{ backgroundImage: `url(${src})` }}
             />
           </div>
         );
       })}
 
-      {/* subtle vignette overlay — no text */}
-      <div className="h-vignette" />
+      {/* ── dark cinematic gradient ── */}
+      <div className="montage-gradient" />
 
-      {/* progress bar */}
-      <div className="h-progress">
+      {/* ── scan-line texture ── */}
+      <div className="montage-scanlines" />
+
+      {/* ── progress bar ── */}
+      <div className="montage-progress">
         <div
-          className="h-progress-bar"
-          key={current}
+          className="montage-progress-fill"
+          key={cur}
           style={{ "--dur": `${SLIDE_DURATION}ms` } as React.CSSProperties}
         />
       </div>
 
-      {/* dot nav */}
-      <div className="hero-dots">
+      {/* ── dot navigation ── */}
+      <div className="montage-dots">
         {SLIDES.map((_, k) => (
           <button
             key={k}
-            className={`dot ${k === current ? "active" : ""}`}
+            className={`montage-dot ${k === cur ? "active" : ""}`}
             aria-label={`Slide ${k + 1}`}
-            onClick={() => {
-              if (timerRef.current) clearTimeout(timerRef.current);
-              goTo(k);
-            }}
+            onClick={() => jumpTo(k)}
           />
         ))}
       </div>

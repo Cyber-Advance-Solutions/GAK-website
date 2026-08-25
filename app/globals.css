@@ -100,71 +100,184 @@ nav.links{display:flex;align-items:center;gap:4px}
 .view.active{display:block;animation:fade .45s ease}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-/* ---------- hero — cinematic slideshow ---------- */
+/* ---------- MONTAGE HERO — custom cinematic slideshow ---------- */
+.montage-hero{
+  position:relative;
+  width:100%;
+  min-height:100svh;
+  overflow:hidden;
+  background:#071a19;
+  isolation:isolate;
+}
+@media(max-width:920px){.montage-hero{min-height:70svh}}
+
+/* ── image layers ── */
+.montage-layer{
+  position:absolute;inset:0;
+  will-change:opacity;
+}
+.montage-in{
+  z-index:2;
+  animation:montage-fade-in var(--fade-dur,900ms) ease forwards;
+}
+.montage-out{
+  z-index:1;
+  animation:montage-fade-out var(--fade-dur,900ms) ease forwards;
+}
+@keyframes montage-fade-in{from{opacity:0}to{opacity:1}}
+@keyframes montage-fade-out{from{opacity:1}to{opacity:0}}
+
+/* ── image with ken-burns ── */
+.montage-img{
+  position:absolute;
+  inset:-10%;
+  background-size:cover;
+  background-position:center;
+  will-change:transform;
+}
+/* 6 distinct cinematic motions */
+.kb-zoom-in     {animation:kb-zoom-in     6s cubic-bezier(.25,.46,.45,.94) forwards}
+.kb-zoom-out    {animation:kb-zoom-out    6s cubic-bezier(.25,.46,.45,.94) forwards}
+.kb-pan-right   {animation:kb-pan-right   6s cubic-bezier(.25,.46,.45,.94) forwards}
+.kb-pan-left    {animation:kb-pan-left    6s cubic-bezier(.25,.46,.45,.94) forwards}
+.kb-zoom-in-tl  {animation:kb-zoom-in-tl  6s cubic-bezier(.25,.46,.45,.94) forwards}
+.kb-zoom-out-br {animation:kb-zoom-out-br 6s cubic-bezier(.25,.46,.45,.94) forwards}
+@keyframes kb-zoom-in     {from{transform:scale(1.0) translate(0,0)}to{transform:scale(1.18) translate(0,0)}}
+@keyframes kb-zoom-out    {from{transform:scale(1.18) translate(0,0)}to{transform:scale(1.0) translate(0,0)}}
+@keyframes kb-pan-right   {from{transform:scale(1.12) translate(-4%,0)}to{transform:scale(1.12) translate(4%,0)}}
+@keyframes kb-pan-left    {from{transform:scale(1.12) translate(4%,0)}to{transform:scale(1.12) translate(-4%,0)}}
+@keyframes kb-zoom-in-tl  {from{transform:scale(1.0) translate(3%,3%)}to{transform:scale(1.22) translate(-3%,-3%)}}
+@keyframes kb-zoom-out-br {from{transform:scale(1.22) translate(-3%,-3%)}to{transform:scale(1.0) translate(3%,3%)}}
+
+/* ── cinematic gradient overlay ── */
+.montage-gradient{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:
+    linear-gradient(90deg, rgba(5,20,19,.85) 0%, rgba(5,20,19,.55) 50%, rgba(5,20,19,.2) 100%),
+    linear-gradient(0deg, rgba(5,20,19,.8) 0%, transparent 55%);
+}
+
+/* ── scanlines texture for cinematic feel ── */
+.montage-scanlines{
+  position:absolute;inset:0;z-index:4;pointer-events:none;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.04) 2px,rgba(0,0,0,.04) 4px);
+  opacity:.6;
+}
+
+/* ── text copy overlay ── */
+.montage-copy{
+  position:absolute;z-index:5;
+  inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 clamp(28px,7vw,120px) 60px;
+  pointer-events:none;
+}
+.montage-label{
+  font-family:var(--insc);
+  font-size:clamp(.7rem,.9vw,.85rem);
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--gold-300);
+  font-weight:700;
+  opacity:0;
+  animation:m-label-in .7s .1s ease forwards;
+}
+.montage-headline{
+  display:flex;flex-direction:column;
+  margin-top:16px;
+  overflow:hidden;
+}
+.montage-hl-top{
+  font-family:var(--display);
+  font-size:clamp(3rem,9vw,8.5rem);
+  font-weight:900;
+  line-height:.88;
+  color:#fff;
+  letter-spacing:-.04em;
+  text-transform:uppercase;
+  opacity:0;
+  transform:translateY(60px) skewY(4deg);
+  animation:m-line-in .65s .15s cubic-bezier(.16,1,.3,1) forwards;
+}
+.montage-hl-bot{
+  font-family:var(--display);
+  font-size:clamp(3rem,9vw,8.5rem);
+  font-weight:900;
+  line-height:.88;
+  letter-spacing:-.04em;
+  text-transform:uppercase;
+  color:transparent;
+  -webkit-text-stroke:2px var(--gold-400);
+  text-stroke:2px var(--gold-400);
+  opacity:0;
+  transform:translateY(70px) skewY(4deg);
+  animation:m-line-in .65s .3s cubic-bezier(.16,1,.3,1) forwards;
+}
+.montage-bar{
+  width:60px;height:3px;
+  background:var(--gold-400);
+  margin-top:22px;
+  opacity:0;
+  transform:scaleX(0);
+  transform-origin:left;
+  animation:m-bar-in .5s .55s ease forwards;
+}
+@keyframes m-label-in{to{opacity:1}}
+@keyframes m-line-in{to{opacity:1;transform:translateY(0) skewY(0)}}
+@keyframes m-bar-in{to{opacity:1;transform:scaleX(1)}}
+
+/* ── progress bar ── */
+.montage-progress{
+  position:absolute;bottom:0;left:0;right:0;z-index:8;
+  height:3px;background:rgba(255,255,255,.12);
+}
+.montage-progress-fill{
+  height:100%;background:var(--gold-400);
+  width:0;
+  animation:montage-prog var(--dur,4000ms) linear forwards;
+}
+@keyframes montage-prog{from{width:0}to{width:100%}}
+
+/* ── dot navigation ── */
+.montage-dots{
+  position:absolute;z-index:8;
+  bottom:22px;right:clamp(28px,7vw,120px);
+  display:flex;flex-direction:column;gap:8px;
+  align-items:center;
+}
+.montage-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(255,255,255,.32);
+  border:none;padding:0;cursor:pointer;
+  transition:background .3s, height .3s, border-radius .3s;
+  flex-shrink:0;
+}
+.montage-dot.active{
+  height:28px;border-radius:4px;
+  background:var(--gold-400);
+}
+
+/* keep old .hero class working for any other usages */
 .hero-cinema{position:relative;min-height:100svh;overflow:hidden;background:#071a19}
 @media(max-width:920px){.hero-cinema{min-height:60svh}}
-
-/* ── slide layers ── */
 .hslide{position:absolute;inset:0;will-change:opacity}
 .hslide-in{z-index:2;animation:hfade-in var(--transition,1400ms) ease forwards}
 .hslide-out{z-index:1;animation:hfade-out var(--transition,1400ms) ease forwards}
 @keyframes hfade-in{from{opacity:0}to{opacity:1}}
 @keyframes hfade-out{from{opacity:1}to{opacity:0}}
-
-/* ── image pane inside each slide ── */
-.hslide-img{
-  position:absolute;inset:-8%;/* extra bleed for pan headroom */
-  background-size:cover;
-  background-position:center;
-  will-change:transform;
-  animation:var(--anim,hero-zoom-in) 7s cubic-bezier(.25,.46,.45,.94) forwards;
-}
-
-/* ── cinematic motion keyframes ── */
-@keyframes hero-zoom-in{
-  from{transform:scale(1.0) translate(0,0)}
-  to  {transform:scale(1.18) translate(0,0)}
-}
-@keyframes hero-zoom-out{
-  from{transform:scale(1.18) translate(0,0)}
-  to  {transform:scale(1.0) translate(0,0)}
-}
-@keyframes hero-pan-right{
-  from{transform:scale(1.12) translate(-3%,0)}
-  to  {transform:scale(1.12) translate(3%,0)}
-}
-@keyframes hero-pan-left{
-  from{transform:scale(1.12) translate(3%,0)}
-  to  {transform:scale(1.12) translate(-3%,0)}
-}
-@keyframes hero-zoom-in-tl{
-  from{transform:scale(1.0) translate(2%,2%)}
-  to  {transform:scale(1.2) translate(-2%,-2%)}
-}
-
-/* ── vignette (no text overlay) ── */
-.h-vignette{
-  position:absolute;inset:0;z-index:3;pointer-events:none;
-  background:
-    radial-gradient(ellipse at 50% 100%, rgba(0,0,0,.55) 0%, transparent 70%),
-    radial-gradient(ellipse at 50% 0%,   rgba(0,0,0,.35) 0%, transparent 60%);
-}
-
-/* ── progress bar ── */
+.hslide-img{position:absolute;inset:-8%;background-size:cover;background-position:center;will-change:transform;animation:var(--anim,hero-zoom-in) 7s cubic-bezier(.25,.46,.45,.94) forwards}
+@keyframes hero-zoom-in{from{transform:scale(1.0) translate(0,0)}to{transform:scale(1.18) translate(0,0)}}
+@keyframes hero-zoom-out{from{transform:scale(1.18) translate(0,0)}to{transform:scale(1.0) translate(0,0)}}
+@keyframes hero-pan-right{from{transform:scale(1.12) translate(-3%,0)}to{transform:scale(1.12) translate(3%,0)}}
+@keyframes hero-pan-left{from{transform:scale(1.12) translate(3%,0)}to{transform:scale(1.12) translate(-3%,0)}}
+@keyframes hero-zoom-in-tl{from{transform:scale(1.0) translate(2%,2%)}to{transform:scale(1.2) translate(-2%,-2%)}}
+.h-vignette{position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(ellipse at 50% 100%, rgba(0,0,0,.55) 0%, transparent 70%),radial-gradient(ellipse at 50% 0%, rgba(0,0,0,.35) 0%, transparent 60%)}
 .h-progress{position:absolute;bottom:0;left:0;right:0;z-index:5;height:3px;background:rgba(255,255,255,.15)}
-.h-progress-bar{
-  height:100%;background:var(--gold-400);
-  animation:hprog var(--dur,6000ms) linear forwards;
-  transform-origin:left;
-}
+.h-progress-bar{height:100%;background:var(--gold-400);animation:hprog var(--dur,6000ms) linear forwards;transform-origin:left}
 @keyframes hprog{from{width:0}to{width:100%}}
-
-/* ── dots ── */
 .hero-dots{position:absolute;z-index:5;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:10px}
 .hero-dots .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.38);transition:.3s;cursor:pointer;border:none;padding:0;flex-shrink:0}
 .hero-dots .dot.active{width:28px;border-radius:4px;background:var(--gold-400)}
-
-/* keep old .hero class working for any other usages */
 .hero{position:relative;min-height:612px;display:flex;align-items:center;color:#fff;overflow:hidden}
 .hero .slides{position:absolute;inset:0;z-index:0}
 .hero .slide{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#0d3a38;opacity:0;transition:opacity 1.3s ease}
@@ -181,6 +294,7 @@ nav.links{display:flex;align-items:center;gap:4px}
 .hero p.hsub{color:rgba(255,255,255,.88);font-size:1.12rem;max-width:46ch;margin:22px 0 0}
 .hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}
 @media(max-width:920px){.hero{min-height:520px}.hero .wrap{padding:74px 24px 84px}}
+
 
 /* ---------- marquee (ported from V3 — same dark palette) ---------- */
 .marquee{border-top:1px solid #ffffff14;border-bottom:1px solid #ffffff14;background:var(--green-900);overflow:hidden;padding:20px 0}

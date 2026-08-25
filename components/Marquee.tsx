@@ -13,7 +13,7 @@ const WORDS = [
   
   "PRE-SECTION",
   "AUGUST",
-  "14 Aug – Independence Day 🇵🇰",
+  "14 Aug – Independence Day",
   "21 Aug – Green Colour Day",
   "21 Aug – Singing National Song",
   "25 Aug – 12th Rabi-ul-Awal",
@@ -28,7 +28,7 @@ const WORDS = [
 
   "JUNIOR SECTION",
   "AUGUST",
-  "14 Aug – Independence Day 🇵🇰",
+  "14 Aug – Independence Day",
   "24–28 Aug – SDGs Awareness Week",
   "25 Aug – 12th Rabi-ul-Awal",
   "SEPTEMBER",
@@ -39,7 +39,7 @@ const WORDS = [
 
   "MIDDLE SECTION",
   "AUGUST",
-  "14 Aug – Independence Day 🇵🇰",
+  "14 Aug – Independence Day",
   "24–28 Aug – SDGs Awareness Week",
   "25 Aug – Rabi-ul-Awal",
   "SEPTEMBER",
@@ -51,7 +51,7 @@ const WORDS = [
 
   "APSIS – GRADE I–V",
   "AUGUST",
-  "14 Aug – Independence Day 🇵🇰",
+  "14 Aug – Independence Day",
   "15 Aug – Orientation Day for Parents",
   "24–28 Aug – SDGs Awareness Week",
   "25 Aug – 12th Rabi-ul-Awal",
@@ -65,7 +65,7 @@ const WORDS = [
 
   "APSIS – GRADE VI–VIII",
   "AUGUST",
-  "14 Aug – Independence Day 🇵🇰",
+  "14 Aug – Independence Day",
   "15 Aug – Orientation Day for Parents",
   "24–28 Aug – SDGs Awareness Week",
   "25 Aug – 12th Rabi-ul-Awal",
@@ -81,7 +81,7 @@ const WORDS = [
   "SENIOR SECTION – GIRLS",
   "AUGUST",
   "12 Aug – International Youth Day",
-  "14 Aug – Independence Day 🇵🇰",
+  "14 Aug – Independence Day",
   "21–22 Aug – Literature Festival",
   "24–28 Aug – SDGs Awareness Week",
   "25 Aug – 12th Rabi-ul-Awal",
