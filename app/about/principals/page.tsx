@@ -30,7 +30,7 @@ export default function PrincipalsPage() {
       <PageHero
         eyebrow="Leadership"
         title="Principals Through the Years"
-        intro="Every Principal who has led Garrison Academy Kharian Cantt since 1970, with their years of service."
+        intro="Every Principal who has led Garrison Academy Kharian Cantt since 1970's, with their years of service."
         image={BANNER["about-principals"]}
         crumb={[{ label: "About Us", href: "/about" }, { label: "Principals" }]}
       />
@@ -43,7 +43,7 @@ export default function PrincipalsPage() {
               <div className="card person" key={nm + role}>
                 <div className="ph" style={{ position: "relative", overflow: "hidden" }}>
                   {img ? (
-                    <Image src={img} alt={nm} fill className="object-cover object-top" />
+                    <img src={img} alt={nm} className="object-cover object-top" />
                   ) : (
                     ph
                   )}
