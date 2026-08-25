@@ -1,8 +1,10 @@
 // Shared content for the Pre-School section (main page + its sub-pages).
 
+import type { Staff } from "@/lib/staff";
+
 export const IMG = (name: string) => `/sections/pre-school/${name}`;
 
-export type Staff = { name: string; role?: string; qualification: string; joined: string; photo: string };
+export type { Staff };
 
 export const HEAD: Staff = {
   name: "Farhat Jabeen",

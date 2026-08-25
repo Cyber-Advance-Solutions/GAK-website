@@ -4,7 +4,7 @@ import { ArrowRight, GraduationCap } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { Editorial, FactCard } from "@/components/Editorial";
 import SectionHead from "@/components/SectionHead";
-import StaffCard from "@/components/pre-school/StaffCard";
+import StaffCard from "@/components/StaffCard";
 import { SECTIONS } from "@/lib/data";
 import {
   HEAD,

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Staff } from "@/lib/pre-school-data";
+import type { Staff } from "@/lib/staff";
 
 export default function StaffCard({ s }: { s: Staff }) {
   return (
@@ -9,7 +9,7 @@ export default function StaffCard({ s }: { s: Staff }) {
       </div>
       <div className="sf-nm">{s.name}</div>
       {s.role && <div className="sf-role">{s.role}</div>}
-      <div className="sf-q">{s.qualification}</div>
+      {s.qualification && <div className="sf-q">{s.qualification}</div>}
       {s.joined && <div className="sf-j">Joined {s.joined}</div>}
     </div>
   );

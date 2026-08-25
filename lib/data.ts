@@ -2,6 +2,7 @@
 // In production these would be served from a CMS / admin panel.
 
 import { PRE_SUBPAGES } from "@/lib/pre-school-data";
+import { JUNIOR_SUBPAGES } from "@/lib/junior-data";
 
 export type Leaf = { label: string; href: string };
 export type FlyEntry = Leaf | { label: string; fly: Leaf[] };
@@ -57,7 +58,13 @@ export const NAV: NavItem[] = [
               ...PRE_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/pre/${p.slug}` })),
             ],
           },
-          { label: "Junior Section", href: "/sections/junior" },
+          {
+            label: "Junior Section",
+            fly: [
+              { label: "Section Head", href: "/sections/junior" },
+              ...JUNIOR_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/junior/${p.slug}` })),
+            ],
+          },
           { label: "Middle Girls Section", href: "/sections/middle-girls" },
           { label: "Middle Boys Section", href: "/sections/middle-boys" },
           { label: "Senior Girls Section", href: "/sections/senior-girls" },
