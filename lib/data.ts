@@ -1,6 +1,8 @@
 // Central content/data for Garrison Academy Kharian Cantt website (V2).
 // In production these would be served from a CMS / admin panel.
 
+import { PRE_SUBPAGES } from "@/lib/pre-school-data";
+
 export type Leaf = { label: string; href: string };
 export type MegaEntry = Leaf | { label: string; fly: Leaf[] };
 export type NavItem =
@@ -54,6 +56,13 @@ export const NAV: NavItem[] = [
           { label: "Senior Girls Section", href: "/sections/senior-girls" },
           { label: "Senior Boys Section", href: "/sections/senior-boys" },
           { label: "APSIS", href: "/sections/apsis" },
+        ],
+      },
+      {
+        label: "Pre-School",
+        fly: [
+          { label: "Section Head", href: "/sections/pre" },
+          ...PRE_SUBPAGES.map((p) => ({ label: p.label, href: `/sections/pre/${p.slug}` })),
         ],
       },
       { label: "Scholarships & Incentives", href: "/scholarships" },
