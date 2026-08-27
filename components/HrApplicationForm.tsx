@@ -33,6 +33,7 @@ export default function HrApplicationForm() {
     const [qualification, setQualification] = useState("");
 
     return (
+        // This application emails will be sent to gakhrn@gmail.com
         <form className="form">
             <div className="frow">
                 <div className="field">

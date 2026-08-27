@@ -24,7 +24,9 @@ export default function FeedbackPage() {
         crumb={[{ label: "Feedback / Complaints" }]}
       />
       <section className="sec">
-        <SectionHead eyebrow="Your voice matters" title="Tell us what's on your mind" />
+        <div className="wrap">
+          <SectionHead eyebrow="Your voice matters" title="Tell us what's on your mind" />
+        </div>
         <Editorial
           rail={
             <div className="factcard">
@@ -38,6 +40,7 @@ export default function FeedbackPage() {
             </div>
           }
         >
+          {/* the Feedback form to submit to: principal.gak@gmail.com */}
           <div className="form">
             <div className="frow">
               <div className="field"><label>Your name</label><input placeholder="Optional — you may stay anonymous" /></div>
