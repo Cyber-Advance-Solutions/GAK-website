@@ -80,7 +80,7 @@ export default function PreSchoolSection() {
           </section>
 
           {/* Explore the rest of the Pre-School section */}
-          <section>
+          {/* <section>
             <SectionHead eyebrow="Explore" title="More about Pre-School" />
             <div className="linkcards">
               {PRE_SUBPAGES.map((p) => (
@@ -90,7 +90,7 @@ export default function PreSchoolSection() {
                 </Link>
               ))}
             </div>
-          </section>
+          </section> */}
         </Editorial>
       </section>
     </>

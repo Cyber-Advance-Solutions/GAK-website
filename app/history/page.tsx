@@ -4,7 +4,7 @@ import PageHero from "@/components/PageHero";
 
 const timelineEvents = [
   {
-    year: "1970",
+    year: "1970's",
     title: "Toddlers' Nursery",
     principal: "Ms Tallat Azeem Ch",
     principalImage: "/history/tallat-azeem.png",

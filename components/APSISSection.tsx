@@ -76,7 +76,7 @@ export default function APSISSection() {
           </section>
 
           {/* Explore the rest of the APSIS Section */}
-          <section>
+          {/* <section>
             <SectionHead eyebrow="Explore" title="More about APSIS" />
             <div className="linkcards">
               {APSIS_SUBPAGES.map((p) => (
@@ -86,7 +86,7 @@ export default function APSISSection() {
                 </Link>
               ))}
             </div>
-          </section>
+          </section> */}
         </Editorial>
       </section>
     </>

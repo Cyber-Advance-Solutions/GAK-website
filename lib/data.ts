@@ -133,18 +133,12 @@ export const NAV: NavItem[] = [
         label: "Admission Request",
         fly: [
           { label: "Apply Online", href: "/admissions" },
+          { label: "Admission Process", href: "/admissions/process" },
+          { label: "Admission Criteria", href: "/admissions/criteria" },
+          { label: "Test Schedule", href: "/admissions/schedule" },
           { label: "Download Form", href: "/downloads/forms" },
         ],
       },
-      { label: "Admission Process", href: "/admissions" },
-      {
-        label: "Criteria",
-        fly: [
-          { label: "Board Classes", href: "/admissions" },
-          { label: "Non-Board Classes", href: "/admissions" },
-        ],
-      },
-      { label: "Test Schedule", href: "/admissions" },
       {
         label: "Downloads",
         fly: [

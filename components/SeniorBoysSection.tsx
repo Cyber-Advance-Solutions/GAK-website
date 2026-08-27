@@ -82,7 +82,7 @@ export default function SeniorBoysSection() {
           </section>
 
           {/* Explore the rest of the Senior Boys Section */}
-          <section>
+          {/* <section>
             <SectionHead eyebrow="Explore" title="More about Senior Boys Section" />
             <div className="linkcards">
               {SENIOR_BOYS_SUBPAGES.map((p) => (
@@ -92,7 +92,7 @@ export default function SeniorBoysSection() {
                 </Link>
               ))}
             </div>
-          </section>
+          </section> */}
         </Editorial>
       </section>
     </>

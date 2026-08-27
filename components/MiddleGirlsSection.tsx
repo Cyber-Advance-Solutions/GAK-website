@@ -77,7 +77,7 @@ export default function MiddleGirlsSection() {
           </section>
 
           {/* Explore the rest of the Middle Girls Section */}
-          <section>
+          {/* <section>
             <SectionHead eyebrow="Explore" title="More about Middle Girls Section" />
             <div className="linkcards">
               {MIDDLE_GIRLS_SUBPAGES.map((p) => (
@@ -87,7 +87,7 @@ export default function MiddleGirlsSection() {
                 </Link>
               ))}
             </div>
-          </section>
+          </section> */}
         </Editorial>
       </section>
     </>

@@ -70,7 +70,7 @@ export default function Header() {
         <div className="wrap nav">
           <Link className="brand" href="/">
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="APS&C GAK Campus Kharian Cantt logo"
               width={56}
               height={56}

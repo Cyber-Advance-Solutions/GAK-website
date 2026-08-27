@@ -75,7 +75,7 @@ export default function JuniorSection() {
           </section>
 
           {/* Explore the rest of the Junior Section */}
-          <section>
+          {/* <section>
             <SectionHead eyebrow="Explore" title="More about Junior Section" />
             <div className="linkcards">
               {JUNIOR_SUBPAGES.map((p) => (
@@ -85,7 +85,7 @@ export default function JuniorSection() {
                 </Link>
               ))}
             </div>
-          </section>
+          </section> */}
         </Editorial>
       </section>
     </>

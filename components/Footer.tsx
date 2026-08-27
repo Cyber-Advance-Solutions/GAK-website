@@ -32,7 +32,7 @@ export default function Footer() {
         <div className="fgrid">
           <div className="ft">
             <div className="fbrand">
-              <Image src="/logo.svg" alt="APS&C GAK Campus Kharian Cantt logo" width={52} height={52} />
+              <Image src="/logo.png" alt="APS&C GAK Campus Kharian Cantt logo" width={52} height={52} />
               <div>
                 <div className="nm">
                   {/* Army Public Schools &amp; Colleges  */}
