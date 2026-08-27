@@ -2,6 +2,7 @@ import { Briefcase, ClipboardList, GraduationCap, CheckCircle2 } from "lucide-re
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import { ToastButton } from "@/components/Toast";
+import HrApplicationForm from "@/components/HrApplicationForm";
 import { BANNER } from "@/lib/images";
 
 export const metadata = { title: "HR & Careers" };
@@ -15,7 +16,7 @@ const OPENINGS: [string, string, string, string][] = [
 
 const HOW: [React.ReactNode, string, string][] = [
   [<ClipboardList key="1" size={20} strokeWidth={1.8} />, "Find a role", "Review current openings and the requirements for each post."],
-  [<GraduationCap key="2" size={20} strokeWidth={1.8} />, "Submit the form", "Apply through the official Google Form linked against the vacancy."],
+  [<GraduationCap key="2" size={20} strokeWidth={1.8} />, "Submit the form", "Complete the application form below with your academic and professional details."],
   [<CheckCircle2 key="3" size={20} strokeWidth={1.8} />, "Demo & interview", "Shortlisted candidates are invited for a demo lesson and interview."],
 ];
 
@@ -40,7 +41,7 @@ export default function HrPage() {
                 <div style={{ flex: 1 }}>
                   <h3 style={{ fontSize: "1.06rem", marginBottom: 6 }}>{pos}</h3>
                   <p style={{ marginBottom: 12 }}>{sec} · <span className={`pill ${c}`}>{type}</span></p>
-                  <ToastButton href="https://forms.gle/iy8apUyxxnmKGfrf8" target="_blank" rel="noopener noreferrer" as="a" msg="Opening the Google application form…" className="dl-btn">Apply now</ToastButton>
+                  <ToastButton href="#application-form" as="a" msg="Scroll down to the application form…" className="dl-btn">Apply now</ToastButton>
                 </div>
               </div>
             ))}
@@ -59,24 +60,12 @@ export default function HrPage() {
         </div>
       </section>
 
-      <section className="sec" style={{ background: "var(--paper-2)" }}>
-        <div className="wrap" style={{ maxWidth: 720 }}>
-          <SectionHead eyebrow="Quick apply" title="Send your application" />
-          <div className="form">
-            <div className="frow">
-              <div className="field"><label>Full name <span className="req">*</span></label><input placeholder="Your name" /></div>
-              <div className="field"><label>Applying for <span className="req">*</span></label><select>{OPENINGS.map(([p]) => <option key={p}>{p}</option>)}</select></div>
-            </div>
-            <div className="frow">
-              <div className="field"><label>Contact number <span className="req">*</span></label><input placeholder="03XX-XXXXXXX" /></div>
-              <div className="field"><label>Email</label><input placeholder="you@email.com" /></div>
-            </div>
-            <div className="field"><label>Highest qualification</label><input placeholder="e.g. M.Sc Mathematics" /></div>
-            <div className="field"><label>Cover note</label><textarea placeholder="Tell us briefly about your experience…" /></div>
-            <ToastButton msg="Application received — our HR team will be in touch." className="btn-submit">Submit application</ToastButton>
-          </div>
-        </div>
-      </section>
+      <section className="sec" id="application-form" style={{ background: "var(--paper-2)", scrollMarginTop: 110 }}>
+        <div className="wrap">
+          <SectionHead eyebrow="Quick apply" title="Send your application" intro="Complete all required fields. Our HR team will review your application and contact shortlisted candidates." />
+          <HrApplicationForm />
+        </div >
+      </section >
     </>
   );
 }
