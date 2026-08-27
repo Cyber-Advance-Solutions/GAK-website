@@ -32,8 +32,8 @@ const MOTIONS = [
   "kb-zoom-out",
 ] as const;
 
-const SLIDE_DURATION = 4000; // ms visible
-const FADE_DURATION  = 900;  // ms crossfade
+const SLIDE_DURATION = 6000; // ms visible
+const FADE_DURATION  = 300;  // ms crossfade
 
 export default function Hero() {
   const [cur, setCur]   = useState(0);
