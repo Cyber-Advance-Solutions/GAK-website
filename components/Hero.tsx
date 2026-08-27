@@ -18,18 +18,18 @@ const SLIDES = [
 
 // Cinematic ken-burns motions assigned per slide
 const MOTIONS = [
-  "kb-zoom-in",
+  "kb-zoom-out",
   "kb-pan-right",
   "kb-zoom-out",
   "kb-pan-left",
-  "kb-zoom-in-tl",
+  "kb-zoom-out",
   "kb-pan-right",
-  "kb-zoom-in",
+  "kb-zoom-out",
   "kb-zoom-out",
   "kb-pan-left",
-  "kb-zoom-in-tl",
+  "kb-zoom-out",
   "kb-pan-right",
-  "kb-zoom-in",
+  "kb-zoom-out",
 ] as const;
 
 const SLIDE_DURATION = 4000; // ms visible
