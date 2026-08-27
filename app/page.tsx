@@ -31,11 +31,11 @@ export default function HomePage() {
           <Link className="link-arrow" href="/about">More about the school <ArrowRight size={16} /></Link>
         </div>
         <div className="streams">
-          <Link className="streamcard" href="/sections/senior-girls">
+          <Link className="streamcard" href="/streams/apsac">
             <div className="sc-img" style={{ backgroundImage: "url(/adm-block.jpg)" }}><span className="sc-tag">National</span></div>
             <div className="sc-bd"><h3>APSAC</h3><p>The national curriculum from Pre-School to Intermediate, with consistently strong board results.</p><span className="more">Explore stream <ArrowRight size={15} /></span></div>
           </Link>
-          <Link className="streamcard" href="/sections/apsis">
+          <Link className="streamcard" href="/streams/apsis">
             <div className="sc-img" style={{ backgroundImage: "url(/apsis.jpg)" }}><span className="sc-tag alt">International</span></div>
             <div className="sc-bd"><h3>APSIS</h3><p>A globally benchmarked Cambridge pathway, opening doors to universities at home and abroad.</p><span className="more">Explore stream <ArrowRight size={15} /></span></div>
           </Link>
@@ -62,11 +62,11 @@ export default function HomePage() {
       <section className="sec"><div className="wrap">
         <div className="sec-head"><span className="eyebrow">Academic Pathway</span><h2 className="h-lg">A clear journey — from first steps to final exams.</h2></div>
         <div className="pathway">
-          <div className="pw"><i className="pw-ic"><BookOpen size={24} /></i><div className="pw-n">Step 01</div><h4>Pre-School</h4><p>Play-based foundation years</p></div>
-          <div className="pw"><i className="pw-ic"><Backpack size={24} /></i><div className="pw-n">Step 02</div><h4>Junior School</h4><p>Classes I – III</p></div>
-          <div className="pw"><i className="pw-ic"><Layers size={24} /></i><div className="pw-n">Step 03</div><h4>Middle School</h4><p>Classes IV – VIII</p></div>
-          <div className="pw"><i className="pw-ic"><GraduationCap size={24} /></i><div className="pw-n">Step 04</div><h4>Senior School</h4><p>FBISE · IX – XII</p></div>
-          <div className="pw"><i className="pw-ic"><Globe size={24} /></i><div className="pw-n">Step 05</div><h4>APSIS</h4><p>Cambridge international</p></div>
+          <Link href="/sections/pre" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}><i className="pw-ic"><BookOpen size={24} /></i><div className="pw-n">Step 01</div><h4>Pre-School</h4><p>Play-based foundation years</p></Link>
+          <Link href="/sections/junior" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}><i className="pw-ic"><Backpack size={24} /></i><div className="pw-n">Step 02</div><h4>Junior School</h4><p>Classes I – III</p></Link>
+          <Link href="/sections/middle-boys" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}><i className="pw-ic"><Layers size={24} /></i><div className="pw-n">Step 03</div><h4>Middle School</h4><p>Classes IV – VIII</p></Link>
+          <Link href="/sections/senior-boys" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}><i className="pw-ic"><GraduationCap size={24} /></i><div className="pw-n">Step 04</div><h4>Senior School</h4><p>FBISE · IX – XII</p></Link>
+          <Link href="/sections/apsis" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}><i className="pw-ic"><Globe size={24} /></i><div className="pw-n">Step 05</div><h4>APSIS</h4><p>Cambridge international</p></Link>
         </div>
       </div></section>
 
