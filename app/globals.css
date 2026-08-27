@@ -104,7 +104,7 @@ nav.links{display:flex;align-items:center;gap:4px}
 .montage-hero{
   position:relative;
   width:100%;
-  min-height:100svh;
+  min-height:82vh;
   overflow:hidden;
   background:#071a19;
   isolation:isolate;
