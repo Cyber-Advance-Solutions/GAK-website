@@ -173,8 +173,8 @@ export const NAV: NavItem[] = [
         fly: [
           { label: "AIS Portal for Teachers", href: "/links" },
           { label: "AIS Portal for Students", href: "/links" },
-          { label: "FBISE", href: "http://www.fbise.edu.pk/" },
-          { label: "Social Media", href: "/links" },
+          { label: "FBISE Official Website", href: "http://www.fbise.edu.pk/" },
+          { label: "Social Media Pages of GAK", href: "/links" },
         ],
       },
       { label: "Chatbot", href: "/chatbot" },

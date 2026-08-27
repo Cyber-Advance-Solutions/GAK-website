@@ -15,6 +15,7 @@ const hasFly = (m: MegaEntry): m is Extract<MegaEntry, { fly: unknown }> =>
   "fly" in m;
 const hasSubFly = (f: FlyEntry): f is Extract<FlyEntry, { fly: unknown }> =>
   "fly" in f;
+const isExternalHref = (href: string) => /^https?:\/\//.test(href);
 
 export default function Header() {
   const pathname = usePathname();
@@ -138,14 +139,24 @@ export default function Header() {
                                   </button>
                                   <div className="flyout">
                                     {f.fly.map((sf) => (
-                                      <Link key={sf.label} href={sf.href}>
+                                      <Link
+                                        key={sf.label}
+                                        href={sf.href}
+                                        target={isExternalHref(sf.href) ? "_blank" : undefined}
+                                        rel={isExternalHref(sf.href) ? "noopener noreferrer" : undefined}
+                                      >
                                         {sf.label}
                                       </Link>
                                     ))}
                                   </div>
                                 </div>
                               ) : (
-                                <Link key={f.label} href={f.href}>
+                                <Link
+                                  key={f.label}
+                                  href={f.href}
+                                  target={isExternalHref(f.href) ? "_blank" : undefined}
+                                  rel={isExternalHref(f.href) ? "noopener noreferrer" : undefined}
+                                >
                                   {f.label}
                                 </Link>
                               ),
@@ -283,6 +294,8 @@ export default function Header() {
                                 href={sf.href}
                                 onClick={() => setDrawer(false)}
                                 style={{ paddingLeft: 18 }}
+                                target={isExternalHref(sf.href) ? "_blank" : undefined}
+                                rel={isExternalHref(sf.href) ? "noopener noreferrer" : undefined}
                               >
                                 {sf.label}
                               </Link>
@@ -293,6 +306,8 @@ export default function Header() {
                             key={f.label}
                             href={f.href}
                             onClick={() => setDrawer(false)}
+                            target={isExternalHref(f.href) ? "_blank" : undefined}
+                            rel={isExternalHref(f.href) ? "noopener noreferrer" : undefined}
                           >
                             {f.label}
                           </Link>

@@ -120,7 +120,7 @@ export default function AlumniPage() {
 
       <section className="sec">
         <div className="wrap">
-          <SectionHead eyebrow="APSACS Alumni" title="Shuhada & Distinguished Professionals" />
+          <SectionHead eyebrow="APSACS Alumni" title="Shuhada & Distinguished Professionals" mw='100%'/>
           <div className="tbl-wrap" style={{ maxHeight: "600px", overflowY: "auto" }}>
             <table className="tbl">
               <thead style={{ position: "sticky", top: 0, background: "var(--bg)", zIndex: 1 }}>
