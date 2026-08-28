@@ -13,6 +13,7 @@ export const BANNER: Record<string, string> = {
   "middle-girls": "/hero2.png", "middle-boys": "/hero2.png",
   "senior-girls": "/hero3.png", "senior-boys": "/hero3.png",
   apsis: "/apsis.jpg",apsac: "/adm-block.jpg",
+  "student-council": "/hero3.png",
 };
 
 export const GALLERY_IMAGES = Array.from({ length: 91 }, (_, i) =>

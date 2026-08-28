@@ -124,6 +124,7 @@ export const NAV: NavItem[] = [
           { label: "Co-curricular", href: "/activities/co-curricular" },
         ],
       },
+      { label: "Student Council", href: "/student-council" },
     ],
   },
   {

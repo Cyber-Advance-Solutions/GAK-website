@@ -34,6 +34,15 @@ export default function AdmissionsPage() {
         >
           <div className="form">
 
+            <div className="field">
+              <label>Admission Stream <span className="req">*</span></label>
+              <select>
+                <option value="">Select stream</option>
+                <option>APSAC Stream</option>
+                <option>APSIS Stream</option>
+              </select>
+            </div>
+
             {/* 1. Student's Particulars */}
             <div className="field" style={{ marginBottom: 6 }}>
               <label style={{ fontSize: "1rem", fontWeight: 700, color: "var(--green-900)" }}>1. Student&rsquo;s Particulars</label>
