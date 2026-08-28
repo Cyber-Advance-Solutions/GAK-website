@@ -68,7 +68,7 @@ export default function SectionDetail({ data, slug }: { data: SectionData; slug:
                   ["Section head", data.head],
                   ["Classes", data.sub],
                   ["Stream", streamBadge],
-                  ["Timings", "7:45 AM – 1:45 PM"],
+                  ["Timings", "7:30 AM – 1:30 PM"],
                 ]}
               />
               <div className="factcard">
