@@ -20,8 +20,8 @@ const PARENTS = [
 const CONNECT = [
   ["Contact Us", "/contact"],
   ["Careers", "/hr"],
-  ["Student LMS", "https://student.apms.pk"],
-  ["Teacher LMS", "https://apms.pk"],
+  ["Facebook", "https://www.facebook.com/share/19GmMrHryd/?mibextid=wwXIfr"],
+  ["Instagram", "https://www.instagram.com/garrisonacademy_gak_official?igsh=dXh6Nm5xb2V3MHB2&utm_source=qr"],
   ["Feedback", "/feedback"],
 ];
 
