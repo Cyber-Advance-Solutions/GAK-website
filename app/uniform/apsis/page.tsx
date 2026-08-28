@@ -115,7 +115,7 @@ export default function UniformAPSISPage() {
         eyebrow="Dress code"
         title="School uniform"
         intro="Official Uniform guidelines for all levels."
-        image={BANNER.uniform}
+        image={BANNER.apsis}
         crumb={[{ label: "School Uniform", href: "/uniform" }, { label: "APSIS" }]}
       />
 
