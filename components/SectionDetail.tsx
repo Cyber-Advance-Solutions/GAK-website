@@ -118,8 +118,8 @@ export default function SectionDetail({ data, slug }: { data: SectionData; slug:
             <SectionHead eyebrow="Campus life" title={`Inside ${data.name}`} />
             <div className="gallery">
               <div className="ga big" style={{ backgroundImage: `url(${BANNER[slug]})` }}><span className="cap">{data.name}</span></div>
-              <div className="ga" style={{ backgroundImage: "url(/hero1.jpg)" }}><span className="cap">Classrooms</span></div>
-              <div className="ga" style={{ backgroundImage: "url(/hero2.jpg)" }}><span className="cap">Library</span></div>
+              <div className="ga" style={{ backgroundImage: "url(/hero1.png)" }}><span className="cap">Classrooms</span></div>
+              <div className="ga" style={{ backgroundImage: "url(/hero2.png)" }}><span className="cap">Library</span></div>
             </div>
             <Link className="link-arrow" href="/admissions">Apply for admission <ArrowRight size={16} /></Link>
           </section>

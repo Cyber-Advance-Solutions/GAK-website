@@ -40,7 +40,7 @@ export default function AboutHistoryPage() {
               <p>Established in 1970's within Kharian Cantonment as Toddlers&apos; Nursery, the institution evolved into Kehkashan Academy and eventually Army Public School &amp; College, Garrison Academy Kharian Cantt. Over five decades it has grown into one of the region&apos;s most respected schools — educating thousands across Pre-School, Middle, Senior and the Cambridge-aligned APSIS stream.</p>
               <p>Today the campus operates under the Army Public Schools &amp; Colleges System (APSACS), combining the discipline of a cantonment institution with modern, child-centred pedagogy.</p>
             </div>
-            <div className="fig" style={{ backgroundImage: "url(/hero1.jpg)" }} />
+            <div className="fig" style={{ backgroundImage: "url(/hero1.png)" }} />
           </div>
           <div className="timeline" style={{ marginTop: 40 }}>
             {MILESTONES.map(([yr, txt]) => (

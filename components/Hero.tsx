@@ -2,17 +2,17 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
 const SLIDES = [
-  "/hero1.jpg",
+  "/hero1.png",
   "/hero2.png",
   "/hero3.png",
-  "/hero4.jpg",
+  "/hero4.png",
   "/hero5.png",
-  "/hero7.jpg",
-  "/hero8.jpg",
+  "/hero7.png",
+  "/hero8.png",
   "/hero9.png",
   "/hero10.png",
-  "/hero11.jpg",
-  "/hero12.jpg",
+  "/hero11.png",
+  "/hero12.png",
   "/hero13.png",
 ];
 
@@ -33,7 +33,7 @@ const MOTIONS = [
 ] as const;
 
 const SLIDE_DURATION = 6000; // ms visible
-const FADE_DURATION  = 300;  // ms crossfade
+const FADE_DURATION  = 200;  // ms crossfade
 
 export default function Hero() {
   const [cur, setCur]   = useState(0);

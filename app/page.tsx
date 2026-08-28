@@ -35,7 +35,7 @@ export default function HomePage() {
             <div className="sc-img" style={{ backgroundImage: "url(/adm-block.jpg)" }}><span className="sc-tag">National</span></div>
             <div className="sc-bd"><h3>APSAC</h3><p>The national curriculum from Pre-School to Intermediate, with consistently strong board results.</p><span className="more">Explore stream <ArrowRight size={15} /></span></div>
           </Link>
-          <Link className="streamcard" href="/streams/apsis">
+          <Link className="streamcard" href="/sections/apsis">
             <div className="sc-img" style={{ backgroundImage: "url(/apsis.jpg)" }}><span className="sc-tag alt">International</span></div>
             <div className="sc-bd"><h3>APSIS</h3><p>A globally benchmarked Cambridge pathway, opening doors to universities at home and abroad.</p><span className="more">Explore stream <ArrowRight size={15} /></span></div>
           </Link>

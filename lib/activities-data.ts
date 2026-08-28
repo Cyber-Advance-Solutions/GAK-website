@@ -1,7 +1,7 @@
 // Shared content for the Activities page and its sub-pages.
 
 export const SPORTS = ["Cricket", "Football", "Hockey", "Athletics", "Basketball", "Badminton", "Table Tennis", "Taekwondo"];
-export const SPORT_IMG = ["/hero3.jpg", "/hero1.jpg", "/hero2.jpg"];
+export const SPORT_IMG = ["/hero3.jpg", "/hero1.png", "/hero2.png"];
 
 export const ACADEMIC: [string, string][] = [
   ["Science Olympiad", "Inter-house competition fostering scientific inquiry and innovation."],

@@ -16,11 +16,25 @@ export default function ApsacStreamPage() {
         crumb={[{ label: "Streams" }, { label: "APSAC" }]}
       />
 
+      <section className="sec" style={{ background: "var(--paper-2)" }}>
+        <div className="wrap">
+          <div className="splitimg">
+            <div className="prose">
+              <span className="eyebrow">About the APSAC experience</span>
+              <h2 className="h-lg mb-8">Learning with purpose, growing with confidence.</h2>
+              <p>APSAC brings together strong academic foundations, thoughtful guidance, and opportunities for every student to discover their strengths.</p>
+              <p>This space will include more information about the stream, its learning environment, and the experiences that shape our students.</p>
+            </div>
+            <div className="fig" style={{ backgroundImage: `url(${BANNER.apsac})` }} />
+          </div>
+        </div>
+      </section>
+
       <section className="sec" style={{ minHeight: "60vh" }}>
         <div className="wrap">
           <div className="sec-head">
             <span className="eyebrow">Academic Pathway</span>
-            <h2 className="h-lg">A clear journey — from first steps to final exams.</h2>
+            <h2 className="h-lg mb-8">A clear journey — from first steps to final exams.</h2>
           </div>
           <div className="pathway">
             <Link href="/sections/pre" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}>
@@ -56,6 +70,7 @@ export default function ApsacStreamPage() {
           </div>
         </div>
       </section>
+
     </>
   );
 }

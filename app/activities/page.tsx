@@ -37,7 +37,7 @@ export default function ActivitiesPage() {
           <SectionHead eyebrow="Campus life" title="Moments from the year" />
           <div className="gallery">
             <div className="ga big" style={{ backgroundImage: "url(/hero3.jpg)" }}><span className="cap">Sports gala</span></div>
-            <div className="ga" style={{ backgroundImage: "url(/hero1.jpg)" }}><span className="cap">Science fair</span></div>
+            <div className="ga" style={{ backgroundImage: "url(/hero1.png)" }}><span className="cap">Science fair</span></div>
             <div className="ga" style={{ backgroundImage: "url(/hero2.jpg)" }}><span className="cap">Prize day</span></div>
           </div>
         </div>
