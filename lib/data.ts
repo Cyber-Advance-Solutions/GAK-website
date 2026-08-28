@@ -24,7 +24,7 @@ export const NAV: NavItem[] = [
       {
         label: "About Us",
         fly: [
-          { label: "History", href: "/about/history" },
+          { label: "Overview", href: "/about" },
           { label: "The Founder", href: "/about/founder" },
           { label: "Principals", href: "/about/principals" },
           { label: "Code of Conduct", href: "/about/code-of-conduct" },
