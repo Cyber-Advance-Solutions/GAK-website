@@ -42,31 +42,42 @@ export default function ApsacStreamPage() {
               <div className="pw-n">Step 01</div>
               <h4>Pre-School</h4>
               <p>Play-based foundation years</p>
+              <div style={{ marginTop: "12px", fontSize: "0.8rem", color: "var(--ink-soft)", fontWeight: 500, lineHeight: 1.4 }}>
+                <div>Summer: 0730-1330 hrs</div>
+                <div>Winter: 0800-1400 hrs</div>
+              </div>
             </Link>
             <Link href="/sections/junior" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}>
               <i className="pw-ic"><Backpack size={24} /></i>
               <div className="pw-n">Step 02</div>
               <h4>Junior School</h4>
               <p>Classes I – III</p>
+              <div style={{ marginTop: "12px", fontSize: "0.8rem", color: "var(--ink-soft)", fontWeight: 500, lineHeight: 1.4 }}>
+                <div>Summer: 0730-1330 hrs</div>
+                <div>Winter: 0800-1400 hrs</div>
+              </div>
             </Link>
             <Link href="/sections/middle-boys" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}>
               <i className="pw-ic"><Layers size={24} /></i>
               <div className="pw-n">Step 03</div>
               <h4>Middle School</h4>
               <p>Classes IV – VIII</p>
+              <div style={{ marginTop: "12px", fontSize: "0.8rem", color: "var(--ink-soft)", fontWeight: 500, lineHeight: 1.4 }}>
+                <div>Summer: 0730-1330 hrs</div>
+                <div>Winter: 0800-1400 hrs</div>
+              </div>
             </Link>
             <Link href="/sections/senior-boys" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}>
               <i className="pw-ic"><GraduationCap size={24} /></i>
               <div className="pw-n">Step 04</div>
               <h4>Senior School</h4>
               <p>FBISE · IX – XII</p>
+              <div style={{ marginTop: "12px", fontSize: "0.8rem", color: "var(--ink-soft)", fontWeight: 500, lineHeight: 1.4 }}>
+                <div>Summer: 0730-1330 hrs</div>
+                <div>Winter: 0800-1400 hrs</div>
+              </div>
             </Link>
-            <Link href="/sections/apsis" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}>
-              <i className="pw-ic"><Globe size={24} /></i>
-              <div className="pw-n">Step 05</div>
-              <h4>APSIS</h4>
-              <p>Cambridge international</p>
-            </Link>
+
           </div>
         </div>
       </section>
