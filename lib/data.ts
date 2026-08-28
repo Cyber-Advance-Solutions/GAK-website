@@ -275,7 +275,7 @@ export const FAQ_DATA: Record<string, { label: string; items: { q: string; a: st
   gen: {
     label: "General",
     items: [
-      { q: "What are the school timings?", a: "School operates Monday–Friday, 7:45 AM to 1:45 PM, with adjusted winter timings announced via circular." },
+      { q: "What are the school timings?", a: "School operates Monday–Friday, 7:30 AM to 1:30 PM, with adjusted winter timings announced via circular." },
       { q: "Which streams does GAK offer?", a: "Two parallel streams — APSACS (FBISE national curriculum) and APSIS (Cambridge international)." },
       { q: "Is transport available?", a: "Yes, school transport covers major routes within and around Kharian Cantt. Details are shared at enrolment." },
     ],
@@ -319,7 +319,7 @@ export const CHAT_QA: Record<string, { label: string; qa: [string, string][] }> 
   general: {
     label: "General",
     qa: [
-      ["What are the school timings?", "School runs Mon–Fri, 7:45 AM–1:45 PM. Winter timings are announced via circular."],
+      ["What are the school timings?", "School runs Mon–Fri, 7:30 AM–1:30 PM. Winter timings are announced via circular."],
       ["Which streams do you offer?", "Two streams — APSACS (FBISE) and APSIS (Cambridge international)."],
       ["Is transport available?", "Yes, transport covers major routes in and around Kharian Cantt."],
     ],
