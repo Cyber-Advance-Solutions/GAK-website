@@ -27,7 +27,7 @@ export default function HomePage() {
         <div className="welcome-copy">
           <span className="eyebrow">Welcome to Garrison Academy Kharian Cantt</span>
           <h2 className="h-lg">One disciplined campus,<br/>two academic streams.</h2>
-          <p>Since 1985, Garrison Academy Kharian Cantt has educated the children of Kharian Cantt with the values of the Army Public Schools &amp; Colleges System — academic rigour, character and genuine care. Choose the pathway that fits your child.</p>
+          <p>Since 1970's, Garrison Academy Kharian Cantt has educated the children of Kharian Cantt with the values of the Army Public Schools &amp; Colleges System — academic rigour, character and genuine care. Choose the pathway that fits your child.</p>
           <Link className="link-arrow" href="/about">More about the school <ArrowRight size={16} /></Link>
         </div>
         <div className="streams">

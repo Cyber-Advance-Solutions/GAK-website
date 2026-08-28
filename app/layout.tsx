@@ -24,11 +24,11 @@ export const metadata: Metadata = {
     template: "%s · APS&C GAK Campus",
   },
   description:
-    "Army Public School & College, GAK Campus, Kharian Cantt — academic excellence, discipline and character since 1985. Admissions, sections, scholarships, downloads and more.",
+    "Army Public School & College, GAK Campus, Kharian Cantt — academic excellence, discipline and character since 1970's. Admissions, sections, scholarships, downloads and more.",
   metadataBase: new URL("https://gakcampus.edu.pk"),
   openGraph: {
     title: "Army Public School & College — GAK Campus, Kharian Cantt",
-    description: "Knowledge, discipline and character since 1985.",
+    description: "Knowledge, discipline and character since 1970's.",
     type: "website",
   },
 };

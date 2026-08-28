@@ -1,85 +1,190 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
-import { GraduationCap, Building2, ZoomIn, ZoomOut, X, Maximize2 } from "lucide-react";
+
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import Tabs from "@/components/Tabs";
 import { BANNER } from "@/lib/images";
 
+/* ── Types ─────────────────────────────────────────────────── */
+type NodeVariant = "primary" | "secondary" | "tertiary" | "leaf" | "accent";
 
-/* ── Lightbox ────────────────────────────────────────────── */
-function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
-  const [scale, setScale] = useState(1);
-
-  const zoomIn  = () => setScale(s => Math.min(s + 0.25, 4));
-  const zoomOut = () => setScale(s => Math.max(s - 0.25, 0.5));
-  const reset   = () => setScale(1);
-
-  // Close on Escape, zoom with keyboard
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      if (e.key === "+" || e.key === "=") zoomIn();
-      if (e.key === "-") zoomOut();
-      if (e.key === "0") reset();
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [onClose]);
-
-  // Prevent body scroll while open
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
-  }, []);
+/* ── Single node box ────────────────────────────────────────── */
+function OrgNode({
+  label,
+  variant = "tertiary",
+  sub,
+}: {
+  label: string;
+  variant?: NodeVariant;
+  sub?: string;
+}) {
+  const cls =
+    "org-node org-node--" + variant;
 
   return (
-    <div className="org-lightbox-scrim" onClick={onClose} role="dialog" aria-modal="true" aria-label={alt}>
-      {/* toolbar */}
-      <div className="org-lb-toolbar" onClick={e => e.stopPropagation()}>
-        <button className="org-lb-btn" onClick={zoomOut} title="Zoom out (-)"><ZoomOut size={18} /></button>
-        <span className="org-lb-scale">{Math.round(scale * 100)}%</span>
-        <button className="org-lb-btn" onClick={zoomIn} title="Zoom in (+)"><ZoomIn size={18} /></button>
-        <button className="org-lb-btn" onClick={reset} title="Reset (0)"><Maximize2 size={18} /></button>
-        <button className="org-lb-btn org-lb-close" onClick={onClose} title="Close (Esc)"><X size={20} /></button>
+    <div className={cls}>
+      <span className="org-node-label">{label}</span>
+      {sub && <span className="org-node-sub">{sub}</span>}
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ACADEMIC ORGANOGRAM
+   ═══════════════════════════════════════════════════════════════ */
+function AcademicOrg() {
+  const leftHeads  = ["Pre-School", "Junior Sec", "Middle Girls"];
+  const rightHeads = ["Middle Boys", "Senior Girls", "Senior Boys"];
+
+  return (
+    <div className="org-chart" aria-label="Academic Organogram">
+
+      {/* Row 0 — Principal */}
+      <div className="org-row">
+        <div className="org-col">
+          <OrgNode label="PRINCIPAL" variant="primary" />
+        </div>
+      </div>
+      <div className="org-vline" />
+
+      {/* Horizontal bar connecting Principal to 3 columns */}
+      <div className="org-h-connector">
+        <div className="org-h-connector-line" />
       </div>
 
-      {/* image wrapper — stops click from bubbling to scrim */}
-      <div className="org-lb-canvas" onClick={e => e.stopPropagation()}>
-        <img
-          src={src}
-          alt={alt}
-          className="org-lb-img"
-          style={{ transform: `scale(${scale})`, transformOrigin: "center center" }}
-          draggable={false}
-        />
+      {/* ── three-way split: Misc Appts | VP APSACS | VP APSIS ── */}
+      <div className="org-branch3">
+
+        {/* Left: Misc Appts + its 5 children */}
+        <div className="org-branch3-col">
+          <div className="org-vline" />
+          <OrgNode label="Misc Appts" variant="accent" />
+          {/* horizontal bar for 5 children */}
+          <div className="org-vline" />
+          <div className="org-children-bar" style={{ width: "100%" }} />
+          <div className="org-row org-row--5col">
+            {["REHC", "HOD IT", "COE", "CCA Coord", "CCA Coord"].map((n, i) => (
+              <div className="org-col" key={i}>
+                <div className="org-vline org-vline--short" />
+                <OrgNode label={n} variant="leaf" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Centre: VP APSACS + 6 section heads in bracket layout */}
+        <div className="org-branch3-col org-branch3-col--center">
+          <div className="org-vline" />
+          <OrgNode label="Vice Principal" sub="APSACS" variant="secondary" />
+          <div className="org-vline" />
+          {/* Bracket: vertical spine + 3 left, 3 right */}
+          <div className="org-bracket">
+            {/* Left column: arm is on RIGHT so it touches the centre spine */}
+            <div className="org-bracket-side org-bracket-side--left">
+              {leftHeads.map((sub) => (
+                <div className="org-bracket-item" key={sub}>
+                  <OrgNode label="Sec Head" sub={sub} variant="tertiary" />
+                  <div className="org-bracket-arm" />
+                </div>
+              ))}
+            </div>
+            {/* Centre vertical spine */}
+            <div className="org-bracket-spine" />
+            {/* Right column: arm is on LEFT so it touches the centre spine */}
+            <div className="org-bracket-side org-bracket-side--right">
+              {rightHeads.map((sub) => (
+                <div className="org-bracket-item" key={sub}>
+                  <div className="org-bracket-arm" />
+                  <OrgNode label="Sec Head" sub={sub} variant="tertiary" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Right: VP APSIS + Sec Head APSIS */}
+        <div className="org-branch3-col">
+          <div className="org-vline" />
+          <OrgNode label="Vice Principal" sub="APSIS" variant="secondary" />
+          <div className="org-vline" />
+          <OrgNode label="Sec Head" sub="APSIS" variant="tertiary" />
+        </div>
+
       </div>
     </div>
   );
 }
 
-/* ── Organogram image tile ───────────────────────────────── */
-function OrgImage({ src, alt }: { src: string; alt: string }) {
-  const [open, setOpen] = useState(false);
-  const close = useCallback(() => setOpen(false), []);
-
+/* ═══════════════════════════════════════════════════════════════
+   ADMINISTRATIVE ORGANOGRAM
+   ═══════════════════════════════════════════════════════════════ */
+function AdminOrg() {
   return (
-    <>
-      <div className="org-img-tile" onClick={() => setOpen(true)} role="button" tabIndex={0}
-        onKeyDown={e => e.key === "Enter" && setOpen(true)}>
-        <img src={src} alt={alt} className="org-img-preview" />
-        <div className="org-img-overlay">
-          <ZoomIn size={28} />
-          <span>Click to view full size</span>
+    <div className="org-chart" aria-label="Administrative Organogram">
+
+      {/* Row 0 — Principal */}
+      <div className="org-row">
+        <div className="org-col">
+          <OrgNode label="PRINCIPAL" variant="primary" />
         </div>
       </div>
-      {open && <Lightbox src={src} alt={alt} onClose={close} />}
-    </>
+      <div className="org-vline" />
+
+      {/* Row 1 — Vice Principal */}
+      <div className="org-row">
+        <div className="org-col">
+          <OrgNode label="Vice Principal" variant="secondary" />
+        </div>
+      </div>
+
+      {/* ── two-way split: Admin Offices | Admin Assistant ── */}
+      <div className="org-branch2-admin">
+
+        {/* Left: Admin Offices → 3 branches */}
+        <div className="org-branch2-col">
+          <div className="org-vline" />
+          <OrgNode label="Admin Offices" variant="accent" />
+          <div className="org-vline" />
+          <div className="org-row org-row--3col">
+            {["Estb Br","Acct Br","Adm & Fee Br"].map((n) => (
+              <div className="org-col" key={n}>
+                <div className="org-vline org-vline--short" />
+                <OrgNode label={n} variant="leaf" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right: Admin Assistant → Adm JCO → Security + NCO */}
+        <div className="org-branch2-col">
+          <div className="org-vline" />
+          <OrgNode label="Admin Assistant" variant="accent" />
+          <div className="org-vline" />
+          <OrgNode label="Adm JCO" variant="tertiary" />
+
+          <div className="org-branch2-jco">
+            <div className="org-branch2-jco-col">
+              <div className="org-vline" />
+              <OrgNode label="Security Supervisor" variant="tertiary" />
+              <div className="org-vline org-vline--short" />
+              <OrgNode label="Security Staff" variant="leaf" />
+            </div>
+            <div className="org-branch2-jco-col">
+              <div className="org-vline" />
+              <OrgNode label="Adm NCO" variant="tertiary" />
+              <div className="org-vline org-vline--short" />
+              <OrgNode label="Adm Staff" variant="leaf" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   );
 }
 
-/* ── PAGE ────────────────────────────────────────────────── */
+/* ── PAGE ────────────────────────────────────────────────────── */
 export default function OrganogramPage() {
   return (
     <>
@@ -90,36 +195,36 @@ export default function OrganogramPage() {
         image={BANNER.organogram}
         crumb={[{ label: "Organogram" }]}
       />
-      <section className="sec">
+      <section className="org-section">
         <div className="wrap">
           <SectionHead eyebrow="Governance" title="One campus, two clear lines of leadership" />
           <Tabs
             items={[
               {
                 label: "Academic",
-                panel: <OrgImage src="/organogram-academics.png" alt="Academic Organogram" />,
+                panel: <AcademicOrg />,
               },
               {
                 label: "Administrative",
-                panel: <OrgImage src="/organogram-administrative.png" alt="Administrative Organogram" />,
+                panel: <AdminOrg />,
               },
             ]}
           />
-          <div className="grid g2" style={{ maxWidth: 560, marginTop: 34 }}>
-            <div className="linkcard">
-              <div className="lc-ic"><GraduationCap size={22} strokeWidth={1.8} /></div>
-              <div>
-                <h4>Academic line</h4>
-                <p>Section heads reporting through Vice Principals (APSACS &amp; APSIS).</p>
+
+          {/* Legend */}
+          <div className="org-legend">
+            {[
+              { cls: "org-node--primary",   label: "Principal" },
+              { cls: "org-node--secondary", label: "Vice Principals" },
+              { cls: "org-node--accent",    label: "Key Appointments" },
+              { cls: "org-node--tertiary",  label: "Section Heads / JCOs" },
+              { cls: "org-node--leaf",      label: "Departments / Coordinators" },
+            ].map((l) => (
+              <div className="org-legend-item" key={l.label}>
+                <span className={`org-legend-dot ${l.cls}`} />
+                <span className="org-legend-text">{l.label}</span>
               </div>
-            </div>
-            <div className="linkcard">
-              <div className="lc-ic"><Building2 size={22} strokeWidth={1.8} /></div>
-              <div>
-                <h4>Administrative line</h4>
-                <p>Support departments under Admin Offices and Admin Assistant.</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

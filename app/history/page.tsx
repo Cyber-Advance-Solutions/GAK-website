@@ -282,7 +282,7 @@ export default function HistoryPage() {
               Garrison Academy Kharian Cantonment
             </h3>
             <p className="text-lg md:text-xl text-gold-400 font-bold uppercase tracking-[0.2em]">
-              List of Principals <span className="bg-gold-300 text-green-900 px-3 py-1 rounded-full text-sm ml-2">(1972 - 2026)</span>
+              List of Principals <span className="bg-gold-300 text-green-900 px-3 py-1 rounded-full text-sm ml-2">(1970's - 2026)</span>
             </p>
           </div>
 

@@ -45,7 +45,7 @@ export default function ScholarshipsPage() {
 
       <section className="sec">
         <div className="wrap">
-          <SectionHead eyebrow="Eligibility" title="How to qualify" intro="Merit-based scholarships are open to board-class students who meet the following." />
+          <SectionHead eyebrow="Eligibility" title="How to qualify" intro="Merit-based scholarships are open to board-class students who meet the following."  />
           <div className="steps">
             {ELIGIBILITY.map(([t, d]) => (
               <div className="step" key={t}><div><h4>{t}</h4><p>{d}</p></div></div>
@@ -73,7 +73,7 @@ export default function ScholarshipsPage() {
             <tbody>{INCENTIVES.map(([a, e, b]) => (<tr key={a}><td>{a}</td><td>{e}</td><td>{b}</td></tr>))}</tbody>
           </table></div>
 
-          <SectionHead eyebrow="Board Classes" title="GAK Scholarship Policy (Classes IX-XII)" />
+          <SectionHead eyebrow="Board Classes" title="GAK Scholarship Policy (Classes IX-XII)" mw="100%" />
           <div className="tbl-wrap"><table className="tbl">
             <thead><tr><th>Criteria</th><th>Marks / Condition</th><th>Scholarship / Incentive</th></tr></thead>
             <tbody>{BOARD_INCENTIVES.map(([a, e, b]) => (<tr key={a}><td><strong>{a}</strong></td><td>{e}</td><td>{b}</td></tr>))}</tbody>

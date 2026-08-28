@@ -70,7 +70,7 @@ export default function OverviewSection() {
               grow and <span className="ov-accent">lead.</span>
             </h2>
             <p className="ov-desc">
-              Educating Kharian Cantt since 1972 — disciplined, well-rounded
+              Educating Kharian Cantt since 1970's — disciplined, well-rounded
               learning from Pre-School through the FBISE and Cambridge streams.
               We nurture every child with genuine care, strong values, and a
               commitment to academic excellence.
