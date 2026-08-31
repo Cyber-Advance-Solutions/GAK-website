@@ -15,7 +15,7 @@ function OrgNode({ label, variant = "tertiary", sub }: { label: string; variant?
   );
 }
 
-const leftHeads  = ["Pre-School", "Junior Sec", "Middle Girls"];
+const leftHeads = ["Pre-School", "Junior Sec", "Middle Girls"];
 const rightHeads = ["Middle Boys", "Senior Girls", "Senior Boys"];
 
 export default function AcademicOrganogramPage() {
@@ -32,26 +32,27 @@ export default function AcademicOrganogramPage() {
         <div className="wrap">
           <SectionHead eyebrow="Governance" title="Academic Leadership Structure" />
 
-          <div className="org-chart" aria-label="Academic Organogram">
+          <img src={'/academic-organogram.jpg'} alt="Academic Organogram" />
+          {/* <div className="org-chart" aria-label="Academic Organogram"> */}
 
-            {/* Row 0 — Principal */}
-            <div className="org-row">
+          {/* Row 0 — Principal */}
+          {/* <div className="org-row">
               <div className="org-col">
                 <OrgNode label="PRINCIPAL" variant="primary" />
               </div>
             </div>
-            <div className="org-vline" />
+            <div className="org-vline" /> */}
 
-            {/* Horizontal bar connecting Principal to 3 columns */}
-            <div className="org-h-connector">
+          {/* Horizontal bar connecting Principal to 3 columns */}
+          {/* <div className="org-h-connector">
               <div className="org-h-connector-line" />
-            </div>
+            </div> */}
 
-            {/* ── three-way split: Misc Appts | VP APSACS | VP APSIS ── */}
-            <div className="org-branch3">
+          {/* ── three-way split: Misc Appts | VP APSACS | VP APSIS ── */}
+          {/* <div className="org-branch3"> */}
 
-              {/* Left: Misc Appts + its 5 children */}
-              <div className="org-branch3-col">
+          {/* Left: Misc Appts + its 5 children */}
+          {/* <div className="org-branch3-col">
                 <div className="org-vline" />
                 <OrgNode label="Misc Appts" variant="accent" />
                 <div className="org-vline" />
@@ -64,10 +65,10 @@ export default function AcademicOrganogramPage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
-              {/* Centre: VP APSACS + 6 section heads in bracket layout */}
-              <div className="org-branch3-col org-branch3-col--center">
+          {/* Centre: VP APSACS + 6 section heads in bracket layout */}
+          {/* <div className="org-branch3-col org-branch3-col--center">
                 <div className="org-vline" />
                 <OrgNode label="Vice Principal" sub="APSACS" variant="secondary" />
                 <div className="org-vline" />
@@ -90,21 +91,21 @@ export default function AcademicOrganogramPage() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              {/* Right: VP APSIS + Sec Head APSIS */}
-              <div className="org-branch3-col">
+          {/* Right: VP APSIS + Sec Head APSIS */}
+          {/* <div className="org-branch3-col">
                 <div className="org-vline" />
                 <OrgNode label="Vice Principal" sub="APSIS" variant="secondary" />
                 <div className="org-vline" />
                 <OrgNode label="Sec Head" sub="APSIS" variant="tertiary" />
-              </div>
+              </div> */}
 
-            </div>
-          </div>
+          {/* </div> */}
+          {/* </div> */}
 
           {/* Legend */}
-          <div className="org-legend">
+          {/* <div className="org-legend">
             {[
               { cls: "org-node--primary",   label: "Principal" },
               { cls: "org-node--secondary", label: "Vice Principals" },
@@ -117,7 +118,7 @@ export default function AcademicOrganogramPage() {
                 <span className="org-legend-text">{l.label}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
     </>

@@ -29,28 +29,29 @@ export default function AdminOrganogramPage() {
         <div className="wrap">
           <SectionHead eyebrow="Governance" title="Administrative Structure" />
 
-          <div className="org-chart" aria-label="Administrative Organogram">
+          <img src={'/administrative-organogram.jpg'} alt="Administrative Organogram" />
+          {/* <div className="org-chart" aria-label="Administrative Organogram"> */}
 
-            {/* Row 0 — Principal */}
-            <div className="org-row">
+          {/* Row 0 — Principal */}
+          {/* <div className="org-row">
               <div className="org-col">
                 <OrgNode label="PRINCIPAL" variant="primary" />
               </div>
             </div>
-            <div className="org-vline" />
+            <div className="org-vline" /> */}
 
-            {/* Row 1 — Vice Principal */}
-            <div className="org-row">
+          {/* Row 1 — Vice Principal */}
+          {/* <div className="org-row">
               <div className="org-col">
                 <OrgNode label="Vice Principal" variant="secondary" />
               </div>
-            </div>
+            </div> */}
 
-            {/* ── two-way split: Admin Offices | Admin Assistant ── */}
-            <div className="org-branch2-admin">
+          {/* ── two-way split: Admin Offices | Admin Assistant ── */}
+          {/* <div className="org-branch2-admin"> */}
 
-              {/* Left: Admin Offices → 3 branches */}
-              <div className="org-branch2-col">
+          {/* Left: Admin Offices → 3 branches */}
+          {/* <div className="org-branch2-col">
                 <div className="org-vline" />
                 <OrgNode label="Admin Offices" variant="accent" />
                 <div className="org-vline" />
@@ -62,10 +63,10 @@ export default function AdminOrganogramPage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
-              {/* Right: Admin Assistant → Adm JCO → Security + NCO */}
-              <div className="org-branch2-col">
+          {/* Right: Admin Assistant → Adm JCO → Security + NCO */}
+          {/* <div className="org-branch2-col">
                 <div className="org-vline" />
                 <OrgNode label="Admin Assistant" variant="accent" />
                 <div className="org-vline" />
@@ -85,13 +86,13 @@ export default function AdminOrganogramPage() {
                     <OrgNode label="Adm Staff" variant="leaf" />
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-            </div>
-          </div>
+          {/* </div> */}
+          {/* </div> */}
 
           {/* Legend */}
-          <div className="org-legend">
+          {/* <div className="org-legend">
             {[
               { cls: "org-node--primary",   label: "Principal" },
               { cls: "org-node--secondary", label: "Vice Principal" },
@@ -104,7 +105,7 @@ export default function AdminOrganogramPage() {
                 <span className="org-legend-text">{l.label}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
     </>
