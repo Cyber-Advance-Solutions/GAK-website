@@ -14,11 +14,12 @@ export default function CodeOfConductPage() {
         intro="The values-driven code of conduct that guides students, staff and leadership across Garrison Academy Kharian Cantt."
         image={BANNER["about-code-of-conduct"]}
         crumb={[{ label: "About Us", href: "/about" }, { label: "Code of Conduct" }]}
+        
       />
 
       <section className="sec">
         <div className="wrap">
-          <SectionHead eyebrow="Our shared standard" title="The Universal Standard: Our Shared Values Code" intro="Our Core Values are a universal code. From students in classrooms and teachers in staffrooms, to leaders in offices and support staff across our campus — we hold ourselves to the exact same standards. We will not demand from students and colleagues what we do not actively model as professionals. Each value below is translated into specific, observable behaviours for every role in this institution." />
+          <SectionHead eyebrow="Our shared standard" title="The Universal Standard: Our Shared Values Code" intro="Our Core Values are a universal code. From students in classrooms and teachers in staffrooms, to leaders in offices and support staff across our campus — we hold ourselves to the exact same standards. We will not demand from students and colleagues what we do not actively model as professionals. Each value below is translated into specific, observable behaviours for every role in this institution." mw='100%'/>
 
           <div style={{ overflowX: "auto", marginTop: 24 }}>
             <table style={{ width: "100%", minWidth: 800, borderCollapse: "collapse", background: "white", fontSize: 14 }}>
