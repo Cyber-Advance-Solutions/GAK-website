@@ -43,8 +43,8 @@ export const NAV: NavItem[] = [
       {
         label: "Organogram",
         fly: [
-          { label: "Academic Structure", href: "/organogram" },
-          { label: "Administrative", href: "/organogram" },
+          { label: "Academic Structure", href: "/organogram/academic" },
+          { label: "Administrative", href: "/organogram/admin" },
         ],
       },
       { label: "Alumni", href: "/alumni" },
