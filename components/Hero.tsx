@@ -85,8 +85,6 @@ export default function Hero() {
         );
       })}
 
-      {/* ── dark cinematic gradient ── */}
-      <div className="montage-gradient" />
 
       {/* ── scan-line texture ── */}
       <div className="montage-scanlines" />
