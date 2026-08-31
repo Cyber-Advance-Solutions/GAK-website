@@ -109,11 +109,12 @@ export default function OverviewSection() {
               <X size={22} />
             </button>
             <div className="vid-modal-player">
-              {/* TODO: replace src with YouTube embed URL when available */}
-              <div className="vid-placeholder">
-                <Play size={48} fill="rgba(255,255,255,0.85)" strokeWidth={0} />
-                <p>Video coming soon</p>
-              </div>
+              <iframe 
+                src="https://www.youtube.com/embed/BDFgiFXhB5M?si=KlVRAmdlJ48U4JCM&autoplay=1" 
+                title="School overview video" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowFullScreen 
+              />
             </div>
           </div>
         </div>

@@ -1,8 +1,15 @@
 import { Info } from "lucide-react";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { BANNER } from "@/lib/images";
 
 export const metadata = { title: "APSACS Uniform — School Uniform" };
+
+const UNIFORM_IMAGES = [
+  { src: "/uniform/summer-middle.jpg", caption: "Summer Uniform — Middle Section" },
+  { src: "/uniform/winter-middle.jpg", caption: "Winter Uniform — Middle Section" },
+  { src: "/uniform/summer-college.jpg", caption: "Summer Uniform — College Section" },
+];
 
 const UNIFORM_DATA = [
   {
@@ -200,6 +207,31 @@ export default function UniformAPSACSPage() {
                 <li>APSACS Uniform (all levels) must be displayed in the School Reception Area.</li>
                 <li>Details of APSACS approved Uniform are uploaded on APSACS website.</li>
               </ul>
+            </div>
+          </div>
+
+          {/* ── Uniform Photos ── */}
+          <div style={{ marginBottom: "48px" }}>
+            <h2 className="h-md" style={{ marginBottom: "24px", color: "var(--green-900)" }}>
+              Uniform Reference Photos
+            </h2>
+            <div className="grid g3" style={{ gap: "20px" }}>
+              {UNIFORM_IMAGES.map((img) => (
+                <div key={img.src} style={{ borderRadius: "14px", overflow: "hidden", boxShadow: "var(--shadow-md)", background: "var(--paper)", border: "1px solid var(--line)" }}>
+                  <div style={{ position: "relative", width: "100%", aspectRatio: "3/4" }}>
+                    <Image
+                      src={img.src}
+                      alt={img.caption}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="(max-width: 620px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div style={{ padding: "12px 16px", background: "var(--green-900)", textAlign: "center" }}>
+                    <p style={{ color: "#e0edeb", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.03em" }}>{img.caption}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

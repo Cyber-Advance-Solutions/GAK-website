@@ -805,7 +805,7 @@ footer ul li a:hover{color:var(--gold-300);padding-left:3px}
    ============================================================ */
 
 /* ---------- PageHero: full-width banner image + teal overlay ---------- */
-.pagehero{position:relative;min-height:340px;display:flex;align-items:flex-end;overflow:hidden;color:#fff;isolation:isolate}
+.pagehero{position:relative;min-height:82vh;display:flex;align-items:flex-end;overflow:hidden;color:#fff;isolation:isolate}
 .pagehero-bg{position:absolute;inset:0;z-index:0}
 .pagehero-bg::after{content:"";position:absolute;inset:0;background:#0a2b2a;opacity:.18}
 .pagehero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(10,43,42,.95) 0%,rgba(10,43,42,.82) 36%,rgba(10,43,42,.46) 72%,rgba(10,43,42,.2) 100%)}
@@ -983,9 +983,9 @@ footer ul li a:hover{color:var(--gold-300);padding-left:3px}
    home keeps its own .home-v2 .sec-head rule which has higher specificity) */
 .sec-head{text-align:left;max-width:64ch;margin:0 0 24px}
 .maincol .sec-head{margin:0 0 18px}
-.pagehero{position:relative;min-height:340px;display:flex;align-items:flex-end;background-size:cover;background-position:center;color:#fff;overflow:hidden}
+.pagehero{position:relative;min-height:82vh;display:flex;align-items:flex-end;background-size:cover;background-position:center;color:#fff;overflow:hidden}
 .pagehero-ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,43,42,.94) 0%,rgba(10,43,42,.78) 40%,rgba(10,43,42,.45) 100%)}
-.pagehero-in{position:relative;z-index:2;padding:54px 24px 46px}
+.pagehero-in{position:relative;z-index:2;padding:54px 24px 46px; margin: auto;}
 .pagehero .eyebrow{color:var(--gold-300)}.pagehero .eyebrow::before{background:var(--gold-400)}
 .pagehero h1{color:#fff;margin:12px 0 0;max-width:18ch}
 .pagehero .ph-intro{color:rgba(255,255,255,.86);max-width:60ch;margin-top:12px;font-size:1.04rem}
