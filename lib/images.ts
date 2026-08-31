@@ -16,6 +16,20 @@ export const BANNER: Record<string, string> = {
   "student-council": "/hero3.png",
 };
 
-export const GALLERY_IMAGES = Array.from({ length: 91 }, (_, i) =>
-  `/gallery/${String(i + 1).padStart(2, "0")}.jpeg`
-);
+export const GALLERY_EVENTS = [
+  {
+    name: "14th August Mega Celebration",
+    cover: "/gallery/14th August Mega Celebration/01.jpg",
+    images: Array.from({ length: 10 }, (_, i) => `/gallery/14th August Mega Celebration/${String(i + 1).padStart(2, "0")}.jpg`),
+  },
+  {
+    name: "Azadi Walk",
+    cover: "/gallery/Azadi Walk/01.jpg",
+    images: Array.from({ length: 10 }, (_, i) => `/gallery/Azadi Walk/${String(i + 1).padStart(2, "0")}.jpg`),
+  },
+  {
+    name: "Flag Hosting",
+    cover: "/gallery/Flag Hosting/01.jpg",
+    images: Array.from({ length: 13 }, (_, i) => `/gallery/Flag Hosting/${String(i + 1).padStart(2, "0")}.jpg`),
+  },
+];

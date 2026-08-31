@@ -36,7 +36,7 @@ function OrgNode({
 function AcademicOrg() {
   const leftHeads  = ["Pre-School", "Junior Sec", "Middle Girls"];
   const rightHeads = ["Middle Boys", "Senior Girls", "Senior Boys"];
-
+ 
   return (
     <div className="org-chart" aria-label="Academic Organogram">
 
