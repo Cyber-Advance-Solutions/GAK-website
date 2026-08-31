@@ -1,6 +1,6 @@
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
-import EventsGalleryView from "@/components/EventsGalleryView";
+import EventsGalleryView, { type GalleryEvent } from "@/components/EventsGalleryView";
 import { BANNER, GALLERY_EVENTS } from "@/lib/images";
 
 export const metadata = { title: "Gallery" };
