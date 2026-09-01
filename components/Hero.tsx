@@ -14,6 +14,7 @@ const SLIDES = [
   "/hero10.png",
   "/hero11.png",
   "/hero12.png",
+  "/hero13.png",
 ];
 
 // Cinematic ken-burns motions assigned per slide
