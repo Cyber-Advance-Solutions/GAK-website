@@ -66,7 +66,7 @@ export default function HomePage() {
           <Link href="/sections/junior" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}><i className="pw-ic"><Backpack size={24} /></i><div className="pw-n">Step 02</div><h4>Junior School</h4><p>Classes I – III</p></Link>
           <Link href="/sections/middle-boys" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}><i className="pw-ic"><Layers size={24} /></i><div className="pw-n">Step 03</div><h4>Middle School</h4><p>Classes IV – VIII</p></Link>
           <Link href="/sections/senior-boys" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}><i className="pw-ic"><GraduationCap size={24} /></i><div className="pw-n">Step 04</div><h4>Senior School</h4><p>FBISE · IX – XII</p></Link>
-          <Link href="/sections/apsis" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}><i className="pw-ic"><Globe size={24} /></i><div className="pw-n">Step 05</div><h4>APSIS</h4><p>Cambridge international</p></Link>
+          {/* <Link href="/sections/apsis" className="pw" style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}><i className="pw-ic"><Globe size={24} /></i><div className="pw-n">Step 05</div><h4>APSIS</h4><p>Cambridge international</p></Link> */}
         </div>
       </div></section>
 

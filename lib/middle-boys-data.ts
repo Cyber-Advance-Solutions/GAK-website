@@ -15,39 +15,39 @@ export const HEAD: Staff = {
 };
 
 export const DEPUTY_HEADS: Staff[] = [
-  { name: "Ms. Naghmana Jabeen", role: "Deputy Section Head", qualification: "MA Pak Studies", joined: "28 Aug 2012", photo: IMG("image2.png") },
-  { name: "Ms. Tabinda Iqbal", role: "Deputy Section Head", qualification: "MSc Chemistry", joined: "23 Aug 2021", photo: IMG("image2.jpeg") },
+  { name: "Ms. Naghmana Jabeen", role: "Deputy Section Head", qualification: "MA Pak Studies", joined: "28 Aug 2012", photo: IMG("image2.jpeg") },
+  { name: "Ms. Tabinda Iqbal", role: "Deputy Section Head", qualification: "MSc Chemistry", joined: "23 Aug 2021", photo: IMG("image2.png") },
 ];
 
 export const DEPARTMENTS: { name: string; teachers: Staff[] }[] = [
   {
     name: "English Department",
     teachers: [
-      { name: "Ms. Sughra Shamim", qualification: "MA English, M.Ed", joined: "31 Mar 2016", photo: IMG("image3.jpeg") },
-      { name: "Ms. Mavrah Khan", qualification: "BS (Hons) Chemistry, B.Ed", joined: "21 Aug 2023", photo: IMG("image4.jpeg") },
-      { name: "Ms. Nashia Sajid", qualification: "BS (Hons) Zoology", joined: "26 Aug 2025", photo: IMG("image3.png") },
+      { name: "Ms. Sughra Shamim", qualification: "MA English, M.Ed", joined: "31 Mar 2016", photo: IMG("image4.jpeg") },
+      { name: "Ms. Mavrah Khan", qualification: "BS (Hons) Chemistry, B.Ed", joined: "21 Aug 2023", photo: IMG("image3.jpeg") },
+      { name: "Ms. Nashia Sajid", qualification: "BS (Hons) Zoology", joined: "26 Aug 2025", photo: IMG("image6.jpeg") },
       { name: "Ms. Fatima Abid", qualification: "MA English", joined: "10 Sep 2024", photo: IMG("image5.jpeg") },
-      { name: "Ms. Asma Ibrar", qualification: "M.Phil (EPM), MA English, M.Ed", joined: "10 Sep 2025", photo: IMG("image6.jpeg") },
+      { name: "Ms. Asma Ibrar", qualification: "M.Phil (EPM), MA English, M.Ed", joined: "10 Sep 2025", photo: IMG("image3.png") },
       { name: "Ms. Sehrish Zafar", qualification: "MA English", joined: "26 Aug 2025", photo: IMG("image7.jpeg") },
     ],
   },
   {
     name: "Urdu Department",
     teachers: [
-      { name: "Ms. Uzma Shezadi", role: "Subject Coordinator", qualification: "MA Urdu", joined: "9 Sep 2024", photo: IMG("image8.jpeg") },
-      { name: "Ms. Kalsoom Zahra", qualification: "MA Urdu, B.Ed", joined: "25 Aug 2010", photo: IMG("image9.jpeg") },
-      { name: "Ms. Asifa Naseem", qualification: "MA Islamiyat, Edu", joined: "16 Aug 2006", photo: IMG("image10.jpeg") },
+      { name: "Ms. Uzma Shezadi", role: "Subject Coordinator", qualification: "MA Urdu", joined: "9 Sep 2024", photo: IMG("image9.jpeg") },
+      { name: "Ms. Kalsoom Zahra", qualification: "MA Urdu, B.Ed", joined: "25 Aug 2010", photo: IMG("image10.jpeg") },
+      { name: "Ms. Asifa Naseem", qualification: "MA Islamiyat, Edu", joined: "16 Aug 2006", photo: IMG("image8.jpeg") },
       { name: "Ms. Iftikhar Ali", qualification: "MA Urdu, MA History", joined: "16 Aug 2006", photo: IMG("image11.jpeg") },
-      { name: "Ms. Asiha Ashraf", qualification: "MA Urdu", joined: "26 Sep 2016", photo: IMG("image12.jpeg") },
-      { name: "Ms. Farhat Yasmin", qualification: "MA History, Phy Edu", joined: "24 Mar 1992", photo: IMG("image13.jpeg") },
+      { name: "Ms. Asiha Ashraf", qualification: "MA Urdu", joined: "26 Sep 2016", photo: IMG("image13.jpeg") },
+      { name: "Ms. Farhat Yasmin", qualification: "MA History, Phy Edu", joined: "24 Mar 1992", photo: IMG("image12.jpeg") },
     ],
   },
   {
     name: "Math Department",
     teachers: [
-      { name: "Ms. Nayyer Semab", role: "Subject Coordinator", qualification: "MA Pak Studies, BSc Double Math", joined: "22 Sep 2025", photo: IMG("image14.jpeg") },
-      { name: "Mr. Manzoor Hussain", qualification: "MA Economics", joined: "15 Aug 2001", photo: IMG("image15.jpeg") },
-      { name: "Mr. Mehtab Ahmed", qualification: "MSc (Math), B.Ed, PTC", joined: "06 Aug 2016", photo: IMG("image16.jpeg") },
+      { name: "Ms. Nayyer Semab", role: "Subject Coordinator", qualification: "MA Pak Studies, BSc Double Math", joined: "22 Sep 2025", photo: IMG("image16.jpeg") },
+      { name: "Mr. Manzoor Hussain", qualification: "MA Economics", joined: "15 Aug 2001", photo: IMG("image14.jpeg") },
+      { name: "Mr. Mehtab Ahmed", qualification: "MSc (Math), B.Ed, PTC", joined: "06 Aug 2016", photo: IMG("image15.jpeg") },
       { name: "Ms. Iqra Fiaz", qualification: "BS (Hons) Computer Science", joined: "11 Nov 2025", photo: IMG("image17.jpeg") },
       { name: "Mr. Luqman Arif", qualification: "MS (Physics), B.Ed", joined: "2 May 2019", photo: IMG("image18.jpeg") },
     ],
@@ -56,9 +56,9 @@ export const DEPARTMENTS: { name: string; teachers: Staff[] }[] = [
     name: "Science Department",
     teachers: [
       { name: "Ms. Raheela Khalid", role: "Subject Coordinator", qualification: "BSc, B.Ed", joined: "2 Feb 2002", photo: IMG("image19.jpeg") },
-      { name: "Ms. Aniqa Asif", qualification: "MSc Chemistry", joined: "20 May 2003", photo: IMG("image20.jpeg") },
-      { name: "Ms. Maeeda Khan", qualification: "BS Chemistry, B.Ed", joined: "16 Sep 2021", photo: IMG("image21.jpeg") },
-      { name: "Ms. Lubna Mansoor", qualification: "BA", joined: "01 Apr 2017", photo: IMG("image22.jpeg") },
+      { name: "Ms. Aniqa Asif", qualification: "MSc Chemistry", joined: "20 May 2003", photo: IMG("image21.jpeg") },
+      { name: "Ms. Maeeda Khan", qualification: "BS Chemistry, B.Ed", joined: "16 Sep 2021", photo: IMG("image22.jpeg") },
+      { name: "Ms. Lubna Mansoor", qualification: "BA", joined: "01 Apr 2017", photo: IMG("image20.jpeg") },
     ],
   },
   {
@@ -79,9 +79,9 @@ export const DEPARTMENTS: { name: string; teachers: Staff[] }[] = [
   {
     name: "Computer Department",
     teachers: [
-      { name: "Ms. Sobia Mazhar", role: "Subject Coordinator", qualification: "MA Political Science", joined: "01 Apr 2017", photo: IMG("image28.jpeg") },
+      { name: "Ms. Sobia Mazhar", role: "Subject Coordinator", qualification: "MA Political Science", joined: "01 Apr 2017", photo: IMG("image4.png") },
       { name: "Ms. Safeera Asghar", qualification: "MSc, M.Ed", joined: "1 Aug 2022", photo: IMG("image29.jpeg") },
-      { name: "Ms. Sana Nazar", qualification: "BS (Hons) Computer Science", joined: "12 Nov 2025", photo: IMG("image4.png") },
+      { name: "Ms. Sana Nazar", qualification: "BS (Hons) Computer Science", joined: "12 Nov 2025", photo: IMG("image28.jpeg") },
     ],
   },
   {

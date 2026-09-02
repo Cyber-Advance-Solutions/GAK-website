@@ -92,12 +92,12 @@ export const MESSAGES: MessageLeader[] = [
     imageAlt: "Principal, Garrison Academy Kharian Cantt",
     initials: "AK",
     message: [
-      "Welcome to Garrison Academy Kharian",
-      "It is my privilege to welcome you to Garrison Academy Kharian, an institution where academic excellence, character, and leadership grow together with purpose and pride.",
-      "We believe that true education goes beyond textbooks and examinations. It is about shaping thoughtful, confident, and responsible individuals who are prepared to meet the challenges of a rapidly changing world with integrity, resilience, and vision. At Garrison Academy Kharian, every child is given the opportunity to learn, lead, and excel in an environment that is disciplined, caring, and intellectually stimulating.",
-      "Our dedicated faculty remains committed to high standards of teaching and learning, while our broad range of academic, co-curricular, and character-building opportunities ensures the holistic development of every student. We take pride in nurturing a culture of achievement, innovation, respect, and continuous improvement.",
-      "As Principal, I am deeply committed to ensuring that Garrison Academy Kharian continues to stand as a beacon of quality education, where young minds are inspired, values are strengthened, and futures are shaped with confidence.",
-      "I invite you to explore our website and discover the spirit, excellence, and aspirations that define our school community."
+      "Every child who enters Garrison Academy carries a future within them—full of possibilities, questions, dreams and untapped potential. Our privilege is to nurture that potential, shape their character and give them the confidence to build their own future.",
+      "As Principal, I see our school as more than classrooms, lessons and examinations. It is a community where children discover their strengths, learn to face challenges, develop confidence and build the character that will guide them through life.",
+      "We want our students to leave us with more than good grades. We want them to think independently, choose what is right, face change with courage and work with others with respect and kindness. These aspirations are reflected in our four commitments: Think Critically, Act Righteously, Adapt Bravely, and Work Together.",
+      "We believe our greatest success is not simply what our students achieve while they are with us, but the people they become when they leave us. Years from now, we hope they will be remembered not only for their achievements, but for their character, their contribution and the difference they make in the lives of others.",
+      "Every lesson, every challenge, every friendship and every act of kindness becomes part of their journey.",
+      "I invite you to explore our website and discover the learning, opportunities and people that make Garrison Academy a community we are proud to call our own."
     ],
   },
 ];

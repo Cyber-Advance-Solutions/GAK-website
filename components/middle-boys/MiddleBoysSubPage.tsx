@@ -65,7 +65,9 @@ function SectionBody({ slug }: { slug: string }) {
         <div className="classgrid">
           {CLASSES.map((c) => (
             <div className="figure" key={c.label}>
-              <div className="fimg"><Image src={c.photo} alt={c.label} fill sizes="(max-width: 820px) 100vw, 33vw" /></div>
+              <div className="fimg">
+                <Image src={c.photo} alt={c.label} fill sizes="(max-width: 820px) 100vw, 33vw" />
+              </div>
               <figcaption><GraduationCap size={15} strokeWidth={1.8} /> {c.label}</figcaption>
             </div>
           ))}
@@ -74,8 +76,65 @@ function SectionBody({ slug }: { slug: string }) {
 
     case "exam-schedule":
       return (
-        <div className="figure" style={{ background: "#fff" }}>
-          <Image src={IMG("image37.jpeg")} alt="Middle School Assessment Framework, Class IV-VIII" width={949} height={411} style={{ width: "100%", height: "auto" }} />
+        <div className="tbl-wrap">
+          <h3 style={{ textAlign: "center", marginBottom: "1rem", fontSize: "1.1rem", paddingTop: '15px' }}>
+            Middle School Assessment Framework
+            <span style={{ display: "block", fontWeight: 500, fontSize: "0.9rem", color: "var(--ink-soft)", marginTop: 4 }}>Class IV – VIII</span>
+          </h3>
+          <table className="tbl">
+            <thead>
+              <tr>
+                <th>Example</th>
+                <th style={{ textAlign: "center" }}>Continuous Assessment</th>
+                <th style={{ textAlign: "center" }}>Summative Assessment<br /><span style={{ fontWeight: 500, fontSize: "0.82rem" }}>(Centralized Assessments / Exams)</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style={{ fontWeight: 700 }}>Frequency</td>
+                <td>
+                  <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
+                    <li>Continuous</li>
+                    <li>End of unit Tests</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
+                    <li>Once at the end of each Term</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 700 }}>Nature</td>
+                <td>
+                  <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
+                    <li>40% weightage in Term Exam (Cl IV–VII)</li>
+                    <li>20% weightage in Term Exam (Cl VIII)</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
+                    <li>60% weightage in Term Exam (Cl IV–VII)</li>
+                    <li>80% weightage in Term Exam (Cl VIII)</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 700 }}>Tools</td>
+                <td>
+                  <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
+                    <li>Written Assessment</li>
+                    <li>Oral Assessment</li>
+                    <li>Skill-based Assessment (Appendix 4 of Annexure B)</li>
+                  </ul>
+                </td>
+                <td>
+                  <p style={{ margin: "0 0 6px" }}><strong>Cl IV–V:</strong> Centralized Assessments of <strong>all subjects</strong></p>
+                  <p style={{ margin: 0 }}><strong>Cl VI–VIII:</strong> Centralized exams for all subjects</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       );
 
