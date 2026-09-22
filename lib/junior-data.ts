@@ -225,10 +225,10 @@ export type JuniorSub = {
 };
 
 export const JUNIOR_SUBPAGES: JuniorSub[] = [
-  { slug: "deputy-section-heads", label: "Deputy Section Heads", eyebrow: "Leadership" },
-  { slug: "faculty-by-department", label: "Faculty by Department", eyebrow: "Our Teachers" },
-  { slug: "classes", label: "Classes", eyebrow: "Campus Life" },
-  { slug: "assessments", label: "Assessments", eyebrow: "Academics" },
+  // { slug: "deputy-section-heads", label: "Deputy Section Heads", eyebrow: "Leadership" },
+  // { slug: "faculty-by-department", label: "Faculty by Department", eyebrow: "Our Teachers" },
+  // { slug: "classes", label: "Classes", eyebrow: "Campus Life" },
+  // { slug: "assessments", label: "Assessments", eyebrow: "Academics" },
   { slug: "activities", label: "Activities", eyebrow: "Curriculum" },
   { slug: "high-achievers", label: "High Achievers Junior Section", eyebrow: "Recognition" },
 ];

@@ -206,11 +206,11 @@ export type PreSub = {
 };
 
 export const PRE_SUBPAGES: PreSub[] = [
-  { slug: "deputy-section-head", label: "Deputy Section Head", eyebrow: "Leadership" },
-  { slug: "coordinators", label: "Coordinators", eyebrow: "Leadership" },
-  { slug: "faculty-by-department", label: "Faculty by Department", eyebrow: "Our Teachers" },
-  { slug: "classes", label: "Classes", eyebrow: "Campus life" },
-  { slug: "exam-schedule", label: "Exam Schedule", eyebrow: "Assessment" },
+  // { slug: "deputy-section-head", label: "Deputy Section Head", eyebrow: "Leadership" },
+  // { slug: "coordinators", label: "Coordinators", eyebrow: "Leadership" },
+  // { slug: "faculty-by-department", label: "Faculty by Department", eyebrow: "Our Teachers" },
+  // { slug: "classes", label: "Classes", eyebrow: "Campus life" },
+  // { slug: "exam-schedule", label: "Exam Schedule", eyebrow: "Assessment" },
   { slug: "activities", label: "Activities", eyebrow: "Curriculum" },
   { slug: "high-achievers", label: "High Achievers Pre School", eyebrow: "Recognition" },
   { slug: "facilities", label: "Facilities", eyebrow: "Campus" },

@@ -28,6 +28,13 @@ export const NAV: NavItem[] = [
     fly: [
       { label: "Overview", href: "/about" },
       { label: "Facilities", href: "/about/facilities" },
+      { label: "Pre-School", href: "/sections/pre" },
+      { label: "Junior Section", href: "/sections/junior" },
+      { label: "Middle Girls Section", href: "/sections/middle-girls" },
+      { label: "Middle Boys Section", href: "/sections/middle-boys" },
+      { label: "Senior Girls Section", href: "/sections/senior-girls" },
+      { label: "Senior Boys Section", href: "/sections/senior-boys" },
+      { label: "APSIS", href: "/sections/apsis" },
     ],
   },
 

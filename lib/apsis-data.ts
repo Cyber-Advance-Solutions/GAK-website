@@ -254,15 +254,15 @@ export type APSISSub = {
 };
 
 export const APSIS_SUBPAGES: APSISSub[] = [
-  { slug: "section-head", label: "Section Head", eyebrow: "Leadership" },
-  { slug: "coordinators", label: "Coordinators", eyebrow: "Leadership" },
-  { slug: "faculty-by-department", label: "Faculty by Department", eyebrow: "Our Teachers" },
-  { slug: "classes", label: "Classes", eyebrow: "Campus life" },
-  { slug: "assessment", label: "Assessment", eyebrow: "Academics" },
+  // { slug: "section-head", label: "Section Head", eyebrow: "Leadership" },
+  // { slug: "coordinators", label: "Coordinators", eyebrow: "Leadership" },
+  // { slug: "faculty-by-department", label: "Faculty by Department", eyebrow: "Our Teachers" },
+  // { slug: "classes", label: "Classes", eyebrow: "Campus life" },
+  // { slug: "assessment", label: "Assessment", eyebrow: "Academics" },
   { slug: "activities", label: "Activities", eyebrow: "Curriculum" },
   { slug: "high-achievers", label: "High Achievers' APSIS Kharian", eyebrow: "Recognition" },
-  { slug: "upcoming-events", label: "Up-Coming Events", eyebrow: "Look ahead" },
-  { slug: "uniform", label: "Uniform", eyebrow: "Campus" },
-  { slug: "cambridge-results", label: "Cambridge Results", eyebrow: "Academics" },
+  // { slug: "upcoming-events", label: "Up-Coming Events", eyebrow: "Look ahead" },
+  // { slug: "uniform", label: "Uniform", eyebrow: "Campus" },
+  // { slug: "cambridge-results", label: "Cambridge Results", eyebrow: "Academics" },
   { slug: "facilities", label: "Facilities", eyebrow: "Campus" },
 ];

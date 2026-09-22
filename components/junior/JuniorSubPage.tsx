@@ -20,111 +20,111 @@ import {
 
 function SectionBody({ slug }: { slug: string }) {
   switch (slug) {
-    case "deputy-section-heads":
-      return (
-        <div className="staffgrid">
-          {DEPUTY_HEADS.map((s) => <StaffCard key={s.name} s={s} />)}
-        </div>
-      );
+    // case "deputy-section-heads":
+    //   return (
+    //     <div className="staffgrid">
+    //       {DEPUTY_HEADS.map((s) => <StaffCard key={s.name} s={s} />)}
+    //     </div>
+    //   );
 
-    case "faculty-by-department":
-      return (
-        <>
-          {DEPARTMENTS.map((d) => {
-            const coordinators = d.teachers.filter((s) => s.role?.toLowerCase().includes("coordinator"));
-            const teachers = d.teachers.filter((s) => !s.role?.toLowerCase().includes("coordinator"));
-            return (
-              <div className="deptblock" key={d.name} style={{ marginBottom: 34 }}>
-                <h3>{d.name}</h3>
-                {coordinators.length > 0 && (
-                  <>
-                    <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-600)", marginBottom: 10, marginTop: 4 }}>Coordinator</div>
-                    <div className="staffgrid" style={{ marginBottom: teachers.length > 0 ? 18 : 0 }}>
-                      {coordinators.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
-                    </div>
-                  </>
-                )}
-                {teachers.length > 0 && (
-                  <>
-                    {coordinators.length > 0 && <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-600)", marginBottom: 10 }}>Teachers</div>}
-                    <div className="staffgrid">
-                      {teachers.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
-                    </div>
-                  </>
-                )}
-              </div>
-            );
-          })}
-        </>
-      );
+    // case "faculty-by-department":
+    //   return (
+    //     <>
+    //       {DEPARTMENTS.map((d) => {
+    //         const coordinators = d.teachers.filter((s) => s.role?.toLowerCase().includes("coordinator"));
+    //         const teachers = d.teachers.filter((s) => !s.role?.toLowerCase().includes("coordinator"));
+    //         return (
+    //           <div className="deptblock" key={d.name} style={{ marginBottom: 34 }}>
+    //             <h3>{d.name}</h3>
+    //             {coordinators.length > 0 && (
+    //               <>
+    //                 <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-600)", marginBottom: 10, marginTop: 4 }}>Coordinator</div>
+    //                 <div className="staffgrid" style={{ marginBottom: teachers.length > 0 ? 18 : 0 }}>
+    //                   {coordinators.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
+    //                 </div>
+    //               </>
+    //             )}
+    //             {teachers.length > 0 && (
+    //               <>
+    //                 {coordinators.length > 0 && <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-600)", marginBottom: 10 }}>Teachers</div>}
+    //                 <div className="staffgrid">
+    //                   {teachers.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
+    //                 </div>
+    //               </>
+    //             )}
+    //           </div>
+    //         );
+    //       })}
+    //     </>
+    //   );
 
-    case "classes":
-      return (
-        <>
-          {CLASSES.map((c) => (
-            <div key={c.label} style={{ marginBottom: "2rem" }}>
-              <h3 style={{ marginBottom: "1rem" }}>{c.label}</h3>
-              <div className="classgrid">
-                {c.photos.map((photo, i) => (
-                  <div className="figure" key={photo}>
-                    <div className="fimg" style={{ backgroundColor: "#f0f0f0" }}>
-                      <Image src={photo} alt={`${c.label} ${i + 1}`} fill sizes="(max-width: 820px) 100vw, 33vw" style={{ objectFit: "cover" }} />
-                    </div>
-                    <figcaption><GraduationCap size={15} strokeWidth={1.8} /> {c.label}</figcaption>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </>
-      );
+    // case "classes":
+    //   return (
+    //     <>
+    //       {CLASSES.map((c) => (
+    //         <div key={c.label} style={{ marginBottom: "2rem" }}>
+    //           <h3 style={{ marginBottom: "1rem" }}>{c.label}</h3>
+    //           <div className="classgrid">
+    //             {c.photos.map((photo, i) => (
+    //               <div className="figure" key={photo}>
+    //                 <div className="fimg" style={{ backgroundColor: "#f0f0f0" }}>
+    //                   <Image src={photo} alt={`${c.label} ${i + 1}`} fill sizes="(max-width: 820px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+    //                 </div>
+    //                 <figcaption><GraduationCap size={15} strokeWidth={1.8} /> {c.label}</figcaption>
+    //               </div>
+    //             ))}
+    //           </div>
+    //         </div>
+    //       ))}
+    //     </>
+    //   );
 
-    case "assessments":
-      return (
-        <>
-          <p style={{ marginBottom: "1rem", color: "var(--ink-soft)" }}>
-            Continuous Assessments (Term Wise) — No term exams in the Junior Section for Class (I–III)
-          </p>
-          <div className="tbl-wrap">
-            <table className="tbl">
-              <thead>
-                <tr><th>Subject</th><th>Assessment Type</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>English</td>
-                  <td>
-                    2 × Written Assessments<br />
-                    1 × Reading Assessments<br />
-                    1 × Speaking Assessments<br />
-                    1 × Listening Assessments
-                  </td>
-                </tr>
-                <tr>
-                  <td>Urdu</td>
-                  <td>
-                    2 × Written Assessments<br />
-                    1 × Reading Assessments<br />
-                    1 × Speaking Assessments<br />
-                    1 × Listening Assessments
-                  </td>
-                </tr>
-                <tr>
-                  <td>Maths</td>
-                  <td>
-                    3 × Written Assessments<br />
-                    2 × Mental Maths
-                  </td>
-                </tr>
-                <tr><td>General Knowledge</td><td>2 × Oral Assessments</td></tr>
-                <tr><td>Islamiyat</td><td>2 × Oral Assessments</td></tr>
-                <tr><td>Computer</td><td>3 × Practical Assessments</td></tr>
-                <tr><td>Tajweed</td><td>2 × Hifz / Nazra Assessments</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </>
-      );
+    // case "assessments":
+    //   return (
+    //     <>
+    //       <p style={{ marginBottom: "1rem", color: "var(--ink-soft)" }}>
+    //         Continuous Assessments (Term Wise) — No term exams in the Junior Section for Class (I–III)
+    //       </p>
+    //       <div className="tbl-wrap">
+    //         <table className="tbl">
+    //           <thead>
+    //             <tr><th>Subject</th><th>Assessment Type</th></tr>
+    //           </thead>
+    //           <tbody>
+    //             <tr>
+    //               <td>English</td>
+    //               <td>
+    //                 2 × Written Assessments<br />
+    //                 1 × Reading Assessments<br />
+    //                 1 × Speaking Assessments<br />
+    //                 1 × Listening Assessments
+    //               </td>
+    //             </tr>
+    //             <tr>
+    //               <td>Urdu</td>
+    //               <td>
+    //                 2 × Written Assessments<br />
+    //                 1 × Reading Assessments<br />
+    //                 1 × Speaking Assessments<br />
+    //                 1 × Listening Assessments
+    //               </td>
+    //             </tr>
+    //             <tr>
+    //               <td>Maths</td>
+    //               <td>
+    //                 3 × Written Assessments<br />
+    //                 2 × Mental Maths
+    //               </td>
+    //             </tr>
+    //             <tr><td>General Knowledge</td><td>2 × Oral Assessments</td></tr>
+    //             <tr><td>Islamiyat</td><td>2 × Oral Assessments</td></tr>
+    //             <tr><td>Computer</td><td>3 × Practical Assessments</td></tr>
+    //             <tr><td>Tajweed</td><td>2 × Hifz / Nazra Assessments</td></tr>
+    //           </tbody>
+    //         </table>
+    //       </div>
+    //     </>
+    //   );
 
     case "activities":
       return (

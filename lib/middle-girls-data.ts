@@ -252,14 +252,14 @@ export type MiddleGirlsSub = {
 };
 
 export const MIDDLE_GIRLS_SUBPAGES: MiddleGirlsSub[] = [
-  { slug: "deputy-section-head-cca", label: "Deputy Section Head & CCA Coordinator", eyebrow: "Leadership" },
-  { slug: "subject-coordinators", label: "Subject Coordinators", eyebrow: "Leadership" },
-  { slug: "faculty-by-department", label: "Faculty by Department", eyebrow: "Our Teachers" },
-  { slug: "classes", label: "Classes", eyebrow: "Campus life" },
-  { slug: "exam-schedule", label: "Exam Schedule", eyebrow: "Assessment" },
+  // { slug: "deputy-section-head-cca", label: "Deputy Section Head & CCA Coordinator", eyebrow: "Leadership" },
+  // { slug: "subject-coordinators", label: "Subject Coordinators", eyebrow: "Leadership" },
+  // { slug: "faculty-by-department", label: "Faculty by Department", eyebrow: "Our Teachers" },
+  // { slug: "classes", label: "Classes", eyebrow: "Campus life" },
+  // { slug: "exam-schedule", label: "Exam Schedule", eyebrow: "Assessment" },
   { slug: "activities", label: "Activities", eyebrow: "Calendar" },
   { slug: "achievements", label: "Achievements", eyebrow: "Awards" },
-  { slug: "upcoming-events", label: "Upcoming Events", eyebrow: "Look Ahead" },
+  // { slug: "upcoming-events", label: "Upcoming Events", eyebrow: "Look Ahead" },
   { slug: "facilities", label: "Facilities", eyebrow: "Campus" },
-  { slug: "faqs", label: "Frequently Asked Questions", eyebrow: "Information" },
+  // { slug: "faqs", label: "Frequently Asked Questions", eyebrow: "Information" },
 ];

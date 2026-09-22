@@ -115,12 +115,12 @@ export type SeniorBoysSub = {
 };
 
 export const SENIOR_BOYS_SUBPAGES: SeniorBoysSub[] = [
-  { slug: "deputy-section-head", label: "Deputy Section Head", eyebrow: "Leadership" },
-  { slug: "faculty-by-department", label: "Faculty by Department", eyebrow: "Our Teachers" },
-  { slug: "top-students", label: "Top Students", eyebrow: "Recognition" },
-  { slug: "apsacs-academic-schedule-ix-x", label: "APSACS Academic Schedule Class IX–X", eyebrow: "Academics" },
-  { slug: "apsacs-academic-calendar-xi-xii", label: "APSACS Academic Calendar Class XI–XII", eyebrow: "Academics" },
+  // { slug: "deputy-section-head", label: "Deputy Section Head", eyebrow: "Leadership" },
+  // { slug: "faculty-by-department", label: "Faculty by Department", eyebrow: "Our Teachers" },
+  // { slug: "top-students", label: "Top Students", eyebrow: "Recognition" },
+  // { slug: "apsacs-academic-schedule-ix-x", label: "APSACS Academic Schedule Class IX–X", eyebrow: "Academics" },
+  // { slug: "apsacs-academic-calendar-xi-xii", label: "APSACS Academic Calendar Class XI–XII", eyebrow: "Academics" },
   { slug: "cca-activities", label: "CCA Activities", eyebrow: "Co-Curricular" },
-  { slug: "cca-plan", label: "CCA Plan", eyebrow: "Co-Curricular" },
+  // { slug: "cca-plan", label: "CCA Plan", eyebrow: "Co-Curricular" },
   { slug: "facilities", label: "Senior Boys Wing Facilities", eyebrow: "Campus" },
 ];

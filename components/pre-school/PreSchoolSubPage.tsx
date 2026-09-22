@@ -21,57 +21,57 @@ import {
 
 function SectionBody({ slug }: { slug: string }) {
   switch (slug) {
-    case "deputy-section-head":
-      return (
-        <div className="staffgrid">
-          {DEPUTY_HEADS.map((s) => <StaffCard key={s.name} s={s} />)}
-        </div>
-      );
+    // case "deputy-section-head":
+    //   return (
+    //     <div className="staffgrid">
+    //       {DEPUTY_HEADS.map((s) => <StaffCard key={s.name} s={s} />)}
+    //     </div>
+    //   );
 
-    case "coordinators":
-      return (
-        <div className="staffgrid">
-          {COORDINATORS.map((s) => <StaffCard key={s.name} s={s} />)}
-        </div>
-      );
+    // case "coordinators":
+    //   return (
+    //     <div className="staffgrid">
+    //       {COORDINATORS.map((s) => <StaffCard key={s.name} s={s} />)}
+    //     </div>
+    //   );
 
-    case "faculty-by-department":
-      return (
-        <>
-          {DEPARTMENTS.map((d) => (
-            <div className="deptblock" key={d.name} style={{ marginBottom: 34 }}>
-              <h3>{d.name}</h3>
-              <div className="staffgrid">
-                {d.teachers.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
-              </div>
-            </div>
-          ))}
-        </>
-      );
+    // case "faculty-by-department":
+    //   return (
+    //     <>
+    //       {DEPARTMENTS.map((d) => (
+    //         <div className="deptblock" key={d.name} style={{ marginBottom: 34 }}>
+    //           <h3>{d.name}</h3>
+    //           <div className="staffgrid">
+    //             {d.teachers.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
+    //           </div>
+    //         </div>
+    //       ))}
+    //     </>
+    //   );
 
-    case "classes":
-      return (
-        <div className="classgrid">
-          {CLASSES.map((c) => (
-            <div className="figure" key={c.label}>
-              <div className="fimg" style={{ backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src={c.photo} alt={c.label} fill sizes="(max-width: 820px) 100vw, 33vw" />
-              </div>
-              <figcaption><GraduationCap size={15} strokeWidth={1.8} /> {c.label}</figcaption>
-            </div>
-          ))}
-        </div>
-      );
+    // case "classes":
+    //   return (
+    //     <div className="classgrid">
+    //       {CLASSES.map((c) => (
+    //         <div className="figure" key={c.label}>
+    //           <div className="fimg" style={{ backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    //             <Image src={c.photo} alt={c.label} fill sizes="(max-width: 820px) 100vw, 33vw" />
+    //           </div>
+    //           <figcaption><GraduationCap size={15} strokeWidth={1.8} /> {c.label}</figcaption>
+    //         </div>
+    //       ))}
+    //     </div>
+    //   );
 
-    case "exam-schedule":
-      return (
-        <div className="prose" style={{ background: "#fff", padding: "2rem", borderRadius: "var(--r)", border: "1px solid var(--border)" }}>
-          <h3 style={{ margin: 0, textAlign: "center", color: "var(--ink)" }}>No Assessment in Pre School</h3>
-          <p style={{ textAlign: "center", marginTop: "1rem", color: "var(--ink-soft)" }}>
-            We believe in continuous evaluation through observation and play-based learning activities.
-          </p>
-        </div>
-      );
+    // case "exam-schedule":
+    //   return (
+    //     <div className="prose" style={{ background: "#fff", padding: "2rem", borderRadius: "var(--r)", border: "1px solid var(--border)" }}>
+    //       <h3 style={{ margin: 0, textAlign: "center", color: "var(--ink)" }}>No Assessment in Pre School</h3>
+    //       <p style={{ textAlign: "center", marginTop: "1rem", color: "var(--ink-soft)" }}>
+    //         We believe in continuous evaluation through observation and play-based learning activities.
+    //       </p>
+    //     </div>
+    //   );
 
     case "activities":
       return (

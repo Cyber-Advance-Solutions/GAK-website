@@ -213,12 +213,12 @@ export type MiddleBoysSub = {
 };
 
 export const MIDDLE_BOYS_SUBPAGES: MiddleBoysSub[] = [
-  { slug: "deputy-section-heads", label: "Deputy Section Heads", eyebrow: "Leadership" },
-  { slug: "faculty-by-department", label: "Faculty by Department", eyebrow: "Our Teachers" },
-  { slug: "classes", label: "Classes", eyebrow: "Campus life" },
-  { slug: "exam-schedule", label: "Exam Schedule", eyebrow: "Assessment" },
+  // { slug: "deputy-section-heads", label: "Deputy Section Heads", eyebrow: "Leadership" },
+  // { slug: "faculty-by-department", label: "Faculty by Department", eyebrow: "Our Teachers" },
+  // { slug: "classes", label: "Classes", eyebrow: "Campus life" },
+  // { slug: "exam-schedule", label: "Exam Schedule", eyebrow: "Assessment" },
   { slug: "activities", label: "Activities", eyebrow: "Academic year 2026–27" },
   { slug: "achievements", label: "Achievements", eyebrow: "Recognition" },
-  { slug: "upcoming-events", label: "Upcoming Events", eyebrow: "Look ahead" },
+  // { slug: "upcoming-events", label: "Upcoming Events", eyebrow: "Look ahead" },
   { slug: "facilities", label: "Facilities", eyebrow: "Campus" },
 ];
