@@ -6,16 +6,31 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Phone, Mail, ChevronDown, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { NAV, type NavItem, type MegaEntry, type FlyEntry } from "@/lib/data";
+import { NAV, type NavItem, type MegaEntry, type FlyEntry, type Leaf } from "@/lib/data";
 
+type DropdownItem = MegaEntry | FlyEntry | Leaf;
 
-const hasMega = (i: NavItem): i is Extract<NavItem, { mega: MegaEntry[] }> =>
-  "mega" in i;
-const hasFly = (m: MegaEntry): m is Extract<MegaEntry, { fly: unknown }> =>
-  "fly" in m;
-const hasSubFly = (f: FlyEntry): f is Extract<FlyEntry, { fly: unknown }> =>
-  "fly" in f;
-const isExternalHref = (href: string) => /^https?:\/\//.test(href);
+const hasDropdown = (
+  i: NavItem,
+): i is Extract<NavItem, { mega?: MegaEntry[]; fly?: (Leaf | FlyEntry)[] }> =>
+  Boolean(("mega" in i && i.mega) || ("fly" in i && i.fly));
+
+const getDropdownItems = (
+  i: Extract<NavItem, { mega?: MegaEntry[]; fly?: (Leaf | FlyEntry)[] }>,
+): DropdownItem[] => i.mega || i.fly || [];
+
+const hasFly = (
+  m: DropdownItem,
+): m is Extract<MegaEntry | FlyEntry, { fly: unknown }> =>
+  "fly" in m && Array.isArray((m as any).fly);
+
+const hasSubFly = (
+  f: FlyEntry | Leaf,
+): f is Extract<FlyEntry, { fly: unknown }> =>
+  "fly" in f && Array.isArray((f as any).fly);
+
+const isExternalHref = (href?: string) =>
+  href ? /^https?:\/\//.test(href) : false;
 
 export default function Header() {
   const pathname = usePathname();
@@ -43,12 +58,12 @@ export default function Header() {
             </Link>
             <span className="dot u-hide" />
             <Link className="u-hide" href="/contact">
-              <FaWhatsapp size={14} strokeWidth={1.75} aria-hidden /> 0330-4250111
+              <FaWhatsapp size={14} strokeWidth={1.75} aria-hidden />{" "}
+              0330-4250111
             </Link>
             <span className="dot u-hide" />
             <Link className="u-hide" href="/contact">
-              <Mail size={14} strokeWidth={1.75} aria-hidden />{" "}
-              gakhrn@gmail.com
+              <Mail size={14} strokeWidth={1.75} aria-hidden /> gakhrn@gmail.com
             </Link>
           </div>
           <div className="util-right">
@@ -83,7 +98,7 @@ export default function Header() {
 
           <nav className="links">
             {NAV.map((item, i) =>
-              hasMega(item) ? (
+              hasDropdown(item) ? (
                 <div
                   key={item.label}
                   className={`navitem ${openMega === i ? "open" : ""}`}
@@ -101,7 +116,7 @@ export default function Header() {
                     {item.label} <i className="caret" />
                   </button>
                   <div className={`mega ${item.alignRight ? "r" : ""}`}>
-                    {item.mega.map((m, j) =>
+                    {getDropdownItems(item).map((m, j) =>
                       hasFly(m) ? (
                         <div
                           key={m.label}
@@ -131,7 +146,9 @@ export default function Header() {
                                     onClick={(e) => {
                                       e.stopPropagation();
                                       setOpenSubFly(
-                                        openSubFly === `${i}-${j}-${k}` ? null : `${i}-${j}-${k}`,
+                                        openSubFly === `${i}-${j}-${k}`
+                                          ? null
+                                          : `${i}-${j}-${k}`,
                                       );
                                     }}
                                   >
@@ -142,8 +159,16 @@ export default function Header() {
                                       <Link
                                         key={sf.label}
                                         href={sf.href}
-                                        target={isExternalHref(sf.href) ? "_blank" : undefined}
-                                        rel={isExternalHref(sf.href) ? "noopener noreferrer" : undefined}
+                                        target={
+                                          isExternalHref(sf.href)
+                                            ? "_blank"
+                                            : undefined
+                                        }
+                                        rel={
+                                          isExternalHref(sf.href)
+                                            ? "noopener noreferrer"
+                                            : undefined
+                                        }
                                       >
                                         {sf.label}
                                       </Link>
@@ -154,8 +179,16 @@ export default function Header() {
                                 <Link
                                   key={f.label}
                                   href={f.href}
-                                  target={isExternalHref(f.href) ? "_blank" : undefined}
-                                  rel={isExternalHref(f.href) ? "noopener noreferrer" : undefined}
+                                  target={
+                                    isExternalHref(f.href)
+                                      ? "_blank"
+                                      : undefined
+                                  }
+                                  rel={
+                                    isExternalHref(f.href)
+                                      ? "noopener noreferrer"
+                                      : undefined
+                                  }
                                 >
                                   {f.label}
                                 </Link>
@@ -164,7 +197,18 @@ export default function Header() {
                           </div>
                         </div>
                       ) : (
-                        <Link key={m.label} href={m.href}>
+                        <Link
+                          key={m.label}
+                          href={m.href}
+                          target={
+                            isExternalHref(m.href) ? "_blank" : undefined
+                          }
+                          rel={
+                            isExternalHref(m.href)
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
+                        >
                           {m.label}
                         </Link>
                       ),
@@ -174,13 +218,15 @@ export default function Header() {
               ) : (
                 <div className="navitem" key={item.label}>
                   <Link
-                    href={item.href}
+                    href={"href" in item ? item.href : "/"}
                     style={
-                      pathname.startsWith(item.href) && item.href !== "/"
+                      "href" in item &&
+                        pathname.startsWith(item.href) &&
+                        item.href !== "/"
                         ? {
-                            background: "var(--green-tint)",
-                            color: "var(--green-700)",
-                          }
+                          background: "var(--green-tint)",
+                          color: "var(--green-700)",
+                        }
                         : undefined
                     }
                   >
@@ -191,9 +237,16 @@ export default function Header() {
             )}
           </nav>
 
-          <Link className="cta-apply deskonly" href="/admissions">
-            Apply for Admission
-          </Link>
+          <div className="header-ctas deskonly">
+            <Link className="cta-apply cta-job mr-2" href="/hr">
+              Apply for Job
+            </Link>
+
+            <Link className="cta-apply" href="/admissions">
+              Apply for Admission
+            </Link>
+          </div>
+
           <button
             className="burger"
             aria-label="Open menu"
@@ -244,16 +297,33 @@ export default function Header() {
               <X size={24} strokeWidth={1.75} />
             </button>
           </div>
-          <Link
-            className="cta-apply"
-            style={{ display: "block", textAlign: "center", marginBottom: 16 }}
-            href="/admissions"
-            onClick={() => setDrawer(false)}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 10,
+              marginBottom: 16,
+            }}
           >
-            Apply for Admission
-          </Link>
+            <Link
+              className="cta-apply cta-job"
+              style={{ display: "block", textAlign: "center" }}
+              href="/hr"
+              onClick={() => setDrawer(false)}
+            >
+              Apply for Job
+            </Link>
+            <Link
+              className="cta-apply"
+              style={{ display: "block", textAlign: "center" }}
+              href="/admissions"
+              onClick={() => setDrawer(false)}
+            >
+              Apply for Admission
+            </Link>
+          </div>
           {NAV.map((item, i) =>
-            hasMega(item) ? (
+            hasDropdown(item) ? (
               <div
                 className={`dgroup ${openGroups[i] ? "open" : ""}`}
                 key={item.label}
@@ -273,7 +343,7 @@ export default function Header() {
                   />
                 </button>
                 <div className="dsub">
-                  {item.mega.map((m) =>
+                  {getDropdownItems(item).map((m) =>
                     hasFly(m) ? (
                       m.fly.map((f) =>
                         hasSubFly(f) ? (
@@ -294,8 +364,14 @@ export default function Header() {
                                 href={sf.href}
                                 onClick={() => setDrawer(false)}
                                 style={{ paddingLeft: 18 }}
-                                target={isExternalHref(sf.href) ? "_blank" : undefined}
-                                rel={isExternalHref(sf.href) ? "noopener noreferrer" : undefined}
+                                target={
+                                  isExternalHref(sf.href) ? "_blank" : undefined
+                                }
+                                rel={
+                                  isExternalHref(sf.href)
+                                    ? "noopener noreferrer"
+                                    : undefined
+                                }
                               >
                                 {sf.label}
                               </Link>
@@ -306,8 +382,14 @@ export default function Header() {
                             key={f.label}
                             href={f.href}
                             onClick={() => setDrawer(false)}
-                            target={isExternalHref(f.href) ? "_blank" : undefined}
-                            rel={isExternalHref(f.href) ? "noopener noreferrer" : undefined}
+                            target={
+                              isExternalHref(f.href) ? "_blank" : undefined
+                            }
+                            rel={
+                              isExternalHref(f.href)
+                                ? "noopener noreferrer"
+                                : undefined
+                            }
                           >
                             {f.label}
                           </Link>
@@ -318,6 +400,14 @@ export default function Header() {
                         key={m.label}
                         href={m.href}
                         onClick={() => setDrawer(false)}
+                        target={
+                          isExternalHref(m.href) ? "_blank" : undefined
+                        }
+                        rel={
+                          isExternalHref(m.href)
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
                       >
                         {m.label}
                       </Link>
@@ -328,7 +418,7 @@ export default function Header() {
             ) : (
               <div className="dgroup" key={item.label}>
                 <Link
-                  href={item.href}
+                  href={"href" in item ? item.href : "/"}
                   onClick={() => setDrawer(false)}
                   style={{
                     display: "block",
