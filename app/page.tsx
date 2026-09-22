@@ -7,6 +7,7 @@ import FacilitiesSwiper from "@/components/FacilitiesSwiper";
 import { ArrowRight, Bell, CalendarDays, Download } from "lucide-react";
 import ClassroomsSwiper from "@/components/ClassroomsSwiper";
 import AcademicPathwaySection from "@/components/AcademicPathwaySection";
+import MeetOurTeam from "@/components/MeetOurTeam";
 
 export default function HomePage() {
   return (
@@ -59,6 +60,9 @@ export default function HomePage() {
         </div>
       </div>
       </section>
+
+      {/* meet our team */}
+      <MeetOurTeam />
 
       {/* academic pathway */}
       <AcademicPathwaySection />
