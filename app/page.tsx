@@ -51,7 +51,7 @@ export default function HomePage() {
         </div>
         <div className="qb-body">
           <span className="eyebrow">From the Principal&rsquo;s Desk</span>
-          <blockquote>We build character before we build careers. Discipline here is a gift, not a burden — and every child is seen, known and guided.</blockquote>
+          <blockquote>We create challenging, real-world learning experiences that develop critical thinkers, ethical decision-makers, and adaptable individuals—empowering every student, staff member, and leader to grow, contribute, and succeed together.</blockquote>
           <div className="qb-foot">
             <div className="qb-who"><div className="nm">Mrs Shahida Rehman</div><div className="rl">Principal, Garrison Academy Kharian Cantt</div></div>
             <Link className="btn-ghost dark" href="/messages/principal">Read full message</Link>
