@@ -197,6 +197,8 @@ export const NAV: NavItem[] = [
   //   ],
   // },
   { label: "Gallery", href: "/gallery" },
+  { label: "Latest", href: "/latest" },
+  { label: "Archive", href: "/archive" },
   { label: "Contact", href: "/contact" },
 ];
 

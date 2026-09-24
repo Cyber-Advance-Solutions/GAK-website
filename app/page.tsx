@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
 import OverviewSection from "@/components/OverviewSection";
 import ChatWidget from "@/components/ChatWidget";
 import FacilitiesSwiper from "@/components/FacilitiesSwiper";
@@ -13,7 +12,6 @@ export default function HomePage() {
   return (
     <div className="home-v2">
       <Hero />
-      <Marquee />
       <OverviewSection />
 
       {/* slim stat strip */}

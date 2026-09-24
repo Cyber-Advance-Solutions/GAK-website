@@ -3,6 +3,7 @@ import { Manrope, Noto_Naskh_Arabic } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Marquee from "@/components/Marquee";
 import { ToastProvider } from "@/components/Toast";
 
 const manrope = Manrope({
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${manrope.variable} ${naskh.variable}`}>
       <body>
         <ToastProvider>
+          <Marquee />
           <Header />
           <main id="main">{children}</main>
           <Footer />

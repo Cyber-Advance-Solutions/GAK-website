@@ -9,6 +9,8 @@ export const BANNER: Record<string, string> = {
   chatbot: "/hero1.png", contact: "/hero2.png", downloads: "/hero3.png",
   feedback: "/hero1.png",
   gallery: "/hero3.png",
+  latest: "/hero3.png",
+  archive: "/hero3.png",
   pre: "/hero1.png", junior: "/hero2.png",
   "middle-girls": "/hero2.png", "middle-boys": "/hero2.png",
   "senior-girls": "/hero3.png", "senior-boys": "/hero3.png",

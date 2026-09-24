@@ -238,7 +238,7 @@ export default function Header() {
           </nav>
 
           <div className="header-ctas deskonly">
-            <Link className="cta-apply cta-job mr-2" href="/hr">
+            <Link className="cta-apply cta-job" href="/hr">
               Apply for Job
             </Link>
 

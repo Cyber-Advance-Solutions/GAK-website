@@ -1,101 +1,71 @@
-// const WORDS = ["Discipline", "Knowledge", "Character", "FBISE", "Cambridge", "Leadership"];
-// export default function Marquee() {
-//   return (
-//     <div className="marquee"><div className="mq-track">
-//       {[...WORDS, ...WORDS].map((w, i) => (<span key={i}>{w}</span>))}
-//     </div></div>
-//   );
-// }
-
 const WORDS = [
-  "CCA ACTIVITIES – AUGUST & SEPTEMBER 2026",
-  "Section-Wise Activity Schedule",
-  
-  "PRE-SECTION",
-  "14 Aug – Independence Day",
-  "21 Aug – Green Colour Day",
-  "21 Aug – Singing National Song",
-  "25 Aug – 12th Rabi-ul-Awal",
-  "28 Aug – Naat & Qirat Competition",
-  "4 Sep – Pet’s Care Role Play",
-  "6 Sep – Defence Day / Youm-e-Shuhada",
-  "11 Sep – Exploring Animal Habitats Project",
-  "18 Sep – Seasons Sorting Activity",
-  "21 Sep – International Peace Day",
-  "25 Sep – Peace Train Ride",
+  // ── Header ──
+  "APSACS CALENDAR — OCT & NOV 2026",
 
-  "JUNIOR SECTION",
-  "14 Aug – Independence Day",
-  "24–28 Aug – SDGs Awareness Week",
-  "25 Aug – 12th Rabi-ul-Awal",
-  "2 Sep – Inter-House Naat & Qirat Competition",
-  "6 Sep – Defence Day / Youm-e-Shuhada",
-  "8 Sep – International Literacy Day",
-  "21 Sep – International Peace Day",
+  // ── PRE-I ──
+  "PRE-I",
+  "2 Oct – Nature Explorers",
+  "3 Oct – APSACS Foundation Day",
+  "5 Oct – World Teachers' Day",
+  "9 Oct – Stay Safe with People I Know",
+  "10 Oct – World Mental Health Day",
+  "15 Oct – Global Handwashing Day",
+  "16 Oct – World Food Day",
+  "19–23 Oct – Reinforcement",
+  "26–30 Oct – Activity Week",
+  "31 Oct – Progress Review Session",
+  "2 Nov – 2nd Term Begins",
+  "6 Nov – My Happy Place to Work",
+  "9 Nov – Iqbal Day",
+  "13 Nov – Community Helpers / Blue Colour Day",
+  "16 Nov – International Day of Tolerance",
+  "20 Nov – World Children's Day",
+  "23–29 Nov – Singing Rhymes",
 
-  "MIDDLE SECTION",
-  "14 Aug – Independence Day",
-  "24–28 Aug – SDGs Awareness Week",
-  "25 Aug – Rabi-ul-Awal",
-  "2 Sep – Inter-House Naat & Qirat Competition",
-  "6 Sep – Defence Day",
-  "8 Sep – International Literacy Day",
-  "21 Sep – International Peace Day",
+  // ── MIDDLE Class I–VIII ──
+  "MIDDLE (Class I–VIII)",
+  "28 Sep–3 Oct – Sports Competition (Class IV–VIII)",
+  "3 Oct – APSACS Foundation Day",
+  "5 Oct – World Teachers' Day",
+  "5–9 Oct – Teaching / Revision Week (IV–VIII)",
+  "10 Oct – World Mental Health Day",
+  "12–16 Oct – Revision & Assessment (IV–V)",
+  "12–23 Oct – 1st Term Exam (VI–VIII)",
+  "15 Oct – Global Handwashing Day",
+  "16 Oct – World Food Day",
+  "19–23 Oct – Revision / Centralised Assessment (I–V)",
+  "26–30 Oct – Result Preparation Week",
+  "31 Oct – Progress Review Session",
+  "2 Nov – 2nd Term Begins",
+  "9 Nov – Iqbal Day",
+  "16 Nov – International Day of Tolerance",
+  "20 Nov – World Children's Day",
+  "25 Nov – Inter-House Speech Competition (I–III) / Debate Competition (IV–VIII)",
+
+  // ── SENIOR Class XI–XII ──
+  "SENIOR (Class XI–XII)",
   "28 Sep–3 Oct – Intra-Regional Sports Competition",
-
-  "APSIS – GRADE I–V",
-  "14 Aug – Independence Day",
-  "15 Aug – Orientation Day for Parents",
-  "24–28 Aug – SDGs Awareness Week",
-  "25 Aug – 12th Rabi-ul-Awal",
-  "26–28 Aug – Election Campaign Days",
-  "31 Aug – Investiture Ceremony & Announcement of Houses",
-  "2 Sep – Inter-House Naat & Qirat Competition",
-  "6 Sep – Defence Day / Youm-e-Shuhada",
-  "8 Sep – International Literacy Day",
-  "21 Sep – International Peace Day",
-
-  "APSIS – GRADE VI–VIII",
-  "14 Aug – Independence Day",
-  "15 Aug – Orientation Day for Parents",
-  "24–28 Aug – SDGs Awareness Week",
-  "25 Aug – 12th Rabi-ul-Awal",
-  "26–28 Aug – Election Campaign Days",
-  "31 Aug – Investiture Ceremony & Announcement of Houses",
-  "2 Sep – Inter-House Naat & Qirat Competition",
-  "6 Sep – Defence Day / Youm-e-Shuhada",
-  "8 Sep – International Literacy Day",
-  "21 Sep – International Peace Day",
-  "28 Sep–3 Oct – Intra-Regional Sports Competition",
-
-  "SENIOR SECTION – GIRLS",
-  "12 Aug – International Youth Day",
-  "14 Aug – Independence Day",
-  "21–22 Aug – Literature Festival",
-  "24–28 Aug – SDGs Awareness Week",
-  "25 Aug – 12th Rabi-ul-Awal",
-  "August – Environmental Audit (School-Based)",
-  "August – Waste Segregation Activities",
-  "August – Independence Day Activities – Proud Pakistani Programme",
-  "August – Civic Awareness Activities",
-  "2 Sep – Inter-House Naat & Qirat Competition",
-  "6 Sep – Defence Day / Youm-e-Shuhada",
-  "8 Sep – International Literacy Day",
-  "21 Sep – International Peace Day",
-  "28 Sep–3 Oct – Intra-Regional Sports Competition",
-  "30 Sep – Mega Naat & Qirat Competition",
-  "September – Awareness Campaign – Solid Waste Management",
-  "September – Street Interview Activity",
-  "September – School Assembly Presentation",
-  "September – First Aid Awareness & Practice",
-  "September – Defence Day / Youm-e-Shuhada Activities – Proud Pakistani Programme",
-  "September – Civic Awareness Activities"
+  "3 Oct – APSACS Foundation Day",
+  "7 Oct – Parliamentary Style Debates",
+  "10 Oct – World Mental Health Day",
+  "15 Oct – Anti-Drugs Awareness Day",
+  "19–27 Oct – Class Assessment-2",
+  "31 Oct – PTM & Result",
+  "9 Nov – Iqbal Day",
+  "16 Nov – International Day of Tolerance",
+  "16–21 Nov – Intra-Zonal Sports Competition",
+  "23–27 Nov – Civic Awareness & Community Service Week",
+  "30 Nov–4 Dec – Revision",
 ];
+
 export default function Marquee() {
   return (
-    <div className="marquee"><div className="mq-track">
-      {[...WORDS, ...WORDS].map((w, i) => (<span key={i}>{w}</span>))}
-    </div></div>
+    <div className="marquee">
+      <div className="mq-track">
+        {[...WORDS, ...WORDS].map((w, i) => (
+          <span key={i}>{w}</span>
+        ))}
+      </div>
+    </div>
   );
 }
-
