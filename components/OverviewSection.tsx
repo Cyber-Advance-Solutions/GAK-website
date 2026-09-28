@@ -43,7 +43,7 @@ export default function OverviewSection() {
             <div className="ov-thumb" onClick={() => setModalOpen(true)} role="button" tabIndex={0}
               aria-label="Play school overview video"
               onKeyDown={(e) => e.key === "Enter" && setModalOpen(true)}>
-              <img src="/hero3.png" alt="Garrison Academy Kharian Cantt campus" className="ov-thumb-img" />
+              <img src="/hero13.png" alt="Garrison Academy Kharian Cantt campus" className="ov-thumb-img" />
               {/* subtle dark overlay */}
               <div className="ov-thumb-overlay" />
               {/* play button */}
