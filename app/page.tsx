@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import OverviewSection from "@/components/OverviewSection";
+import HighAchieversSection from "@/components/HighAchieversSection";
 import ChatWidget from "@/components/ChatWidget";
 import FacilitiesSwiper from "@/components/FacilitiesSwiper";
 import { ArrowRight, Bell, CalendarDays, Download } from "lucide-react";
@@ -13,6 +14,7 @@ export default function HomePage() {
     <div className="home-v2">
       <Hero />
       <OverviewSection />
+      <HighAchieversSection />
 
       {/* slim stat strip */}
       {/* <section className="statstrip"><div className="wrap ssrow">

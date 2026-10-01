@@ -1,7 +1,7 @@
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import EventsGalleryView from "@/components/EventsGalleryView";
-import { BANNER, GALLERY_EVENTS } from "@/lib/images";
+import { BANNER, ARCHIVE_EVENTS } from "@/lib/images";
 
 export const metadata = { title: "Archive — Garrison Academy Kharian Cantt" };
 
@@ -23,7 +23,7 @@ export default function ArchivePage() {
             title="Past Events"
             intro="Browse through archived photos from previous events and activities."
           />
-          <EventsGalleryView events={GALLERY_EVENTS} />
+          <EventsGalleryView events={ARCHIVE_EVENTS} />
         </div>
       </section>
     </>

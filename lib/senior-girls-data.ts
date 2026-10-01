@@ -7,11 +7,11 @@ export const IMG = (name: string) => `/sections/senior-girls/${name}`;
 export type { Staff };
 
 export const SECTION_HEAD: Staff = {
-  name: "Mrs. Sobia Altaf",
+  name: "Ms Shehla Naz",
   role: "Section Head Senior Girls",
   qualification: "M.Phil English Linguistics, B.Ed",
   joined: "01 April 2024",
-  photo: IMG("sobia-altaf.jpg"),
+  photo: IMG("ms-shehla-naz.png"),
 };
 
 export const DEPUTY_HEAD: Staff = {

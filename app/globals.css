@@ -1542,3 +1542,378 @@ footer ul li a:hover{color:var(--gold-300);padding-left:3px}
 .team-name{font-family:var(--display);font-weight:800;font-size:1.02rem;color:var(--green-900);letter-spacing:-.02em;line-height:1.2}
 .team-role{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-600);margin-bottom:6px}
 .team-intro{font-size:.87rem;color:var(--ink-soft);line-height:1.6;margin:0}
+
+/* ============================================================
+   HIGH ACHIEVERS SECTION & FULLSCREEN LIGHTBOX
+   ============================================================ */
+.achievers-sec {
+  background: var(--cream);
+  position: relative;
+}
+.achievers-sec .sec-head p {
+  color: var(--ink-soft);
+  margin-top: 12px;
+  font-size: 1.02rem;
+  max-width: 64ch;
+}
+
+.achievers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 980px) {
+  .achievers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+@media (max-width: 600px) {
+  .achievers-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.achiever-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+.achiever-card:hover,
+.achiever-card:focus-visible {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold-400);
+}
+
+.achiever-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  background: var(--green-tint);
+  overflow: hidden;
+}
+.achiever-img {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.achiever-card:hover .achiever-img,
+.achiever-card:focus-visible .achiever-img {
+  transform: scale(1.05);
+}
+
+/* Themed overlay on hover */
+.achiever-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 43, 42, 0.84);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+.achiever-card:hover .achiever-overlay,
+.achiever-card:focus-visible .achiever-overlay {
+  opacity: 1;
+}
+
+.achiever-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  border-radius: 8px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: all 0.22s ease;
+}
+.achiever-card:hover .achiever-view-btn {
+  background: var(--gold-500);
+  border-color: var(--gold-400);
+  transform: scale(1.04);
+}
+
+.achiever-meta {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  background: var(--paper);
+}
+.achiever-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+.achiever-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  background: rgba(192, 106, 60, 0.1);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.achiever-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--green-900);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+.achiever-sub {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Fullscreen Lightbox Modal */
+.achiever-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 24px;
+  animation: achieverFadeIn 0.22s ease-out;
+}
+@keyframes achieverFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.achiever-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 22, 21, 0.94);
+  backdrop-filter: blur(12px);
+  border: none;
+  cursor: pointer;
+}
+
+.achiever-lightbox-content {
+  position: relative;
+  z-index: 1;
+  width: min(1200px, 100%);
+  height: 100%;
+  max-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.achiever-lightbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 4px 8px;
+  pointer-events: auto;
+}
+.achiever-lightbox-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #ffffff;
+}
+.achiever-lightbox-count {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.achiever-lightbox-count b {
+  color: var(--gold-300);
+  font-weight: 800;
+}
+.achiever-lightbox-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+@media (max-width: 600px) {
+  .achiever-lightbox-title {
+    display: none;
+  }
+}
+
+.achiever-lightbox-close {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: all 0.2s ease;
+}
+.achiever-lightbox-close:hover {
+  background: var(--gold-500);
+  border-color: var(--gold-400);
+  transform: scale(1.08);
+}
+
+.achiever-lightbox-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.achiever-lightbox-nav {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(10, 43, 42, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  pointer-events: auto;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+.achiever-lightbox-nav:hover {
+  background: var(--gold-500);
+  border-color: var(--gold-400);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(192, 106, 60, 0.45);
+}
+
+.achiever-lightbox-figure {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+.achiever-lightbox-img {
+  max-width: 100%;
+  max-height: min(68vh, 720px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  background: #0a2b2a;
+}
+
+/* Bottom thumbnails strip */
+.achiever-lightbox-thumbs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  overflow-x: auto;
+  padding: 8px 4px 4px;
+  pointer-events: auto;
+}
+.achiever-thumb {
+  position: relative;
+  width: 84px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  opacity: 0.55;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: var(--green-900);
+  padding: 0;
+  transition: all 0.22s ease;
+}
+.achiever-thumb:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+.achiever-thumb.active {
+  border-color: var(--gold-400);
+  opacity: 1;
+  transform: scale(1.08);
+  box-shadow: 0 0 14px rgba(207, 128, 84, 0.65);
+}
+.achiever-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 680px) {
+  .achiever-lightbox {
+    padding: 14px 10px;
+  }
+  .achiever-lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    z-index: 10;
+  }
+  .achiever-lightbox-nav.prev {
+    left: 4px;
+  }
+  .achiever-lightbox-nav.next {
+    right: 4px;
+  }
+  .achiever-lightbox-nav:hover {
+    transform: translateY(-50%) scale(1.08);
+  }
+  .achiever-thumb {
+    width: 56px;
+    height: 38px;
+  }
+  .achiever-lightbox-img {
+    max-height: min(60vh, 520px);
+  }
+}
+

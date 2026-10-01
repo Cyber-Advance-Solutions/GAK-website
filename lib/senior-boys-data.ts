@@ -7,11 +7,11 @@ export const IMG = (name: string) => `/sections/senior-boys/${name}`;
 export type { Staff };
 
 export const SECTION_HEAD: Staff = {
-  name: "Mr. Atiq ur Rehman",
+  name: "Mr Musammad Ilyas",
   role: "Acting Section Head Senior Boys",
   qualification: "MA (Islamiat & Political Science), B.Ed",
   joined: "05 Jan 1998",
-  photo: IMG("atiq-ur-rehman.jpg"),
+  photo: IMG("mr-musammad-Ilyas.png"),
 };
 
 export const DEPUTY_HEAD: Staff = {

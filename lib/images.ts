@@ -1,7 +1,7 @@
 // Placeholder banners — replace these files in /public with real GAK photos (same names).
 export const BANNER: Record<string, string> = {
   about: "/hero13.png", "about-founder": "/hero1.png", "about-principals": "/hero2.png",
-  "about-code-of-conduct": "/hero13.png", "about-facilities": "/hero1.png",
+  "about-code-of-conduct": "/hero13.png", "about-facilities": "/facilities.jpg", facilities: "/facilities.jpg",
   messages: "/hero1.png", organogram: "/hero2.png",
   admissions: "/hero1.png", scholarships: "/hero2.png", uniform: "/hero13.png",
   alumni: "/hero1.png", activities: "/hero13.png", hr: "/hero2.png",
@@ -9,8 +9,8 @@ export const BANNER: Record<string, string> = {
   chatbot: "/hero1.png", contact: "/hero2.png", downloads: "/hero13.png",
   feedback: "/hero1.png",
   gallery: "/hero13.png",
-  latest: "/hero13.png",
-  archive: "/hero13.png",
+  latest: "/hero14.png",
+  archive: "/hero15.png",
   pre: "/hero1.png", junior: "/hero2.png",
   "middle-girls": "/hero2.png", "middle-boys": "/hero2.png",
   "senior-girls": "/hero13.png", "senior-boys": "/hero13.png",
@@ -18,8 +18,7 @@ export const BANNER: Record<string, string> = {
   "student-council": "/hero13.png",
 };
 
-
-export const GALLERY_EVENTS = [
+export const ARCHIVE_EVENTS = [
   {
     name: "1st September — Literacy Day",
     cover: "/gallery/1st September Literacy Day/01.jpg",
@@ -70,6 +69,9 @@ export const GALLERY_EVENTS = [
     cover: "/gallery/11th Sep Animal Habitat/01.jpg",
     images: Array.from({ length: 21 }, (_, i) => `/gallery/11th Sep Animal Habitat/${String(i + 1).padStart(2, "0")}.jpg`),
   },
+];
+
+export const LATEST_EVENTS = [
   {
     name: "14th September — ICATs Mathematics Preparation",
     cover: "/gallery/14th Sep ICATs Mathematics Preparation/01.jpg",
@@ -126,3 +128,5 @@ export const GALLERY_EVENTS = [
     images: Array.from({ length: 15 }, (_, i) => `/gallery/22nd Sep Healthy & Junk Food/${String(i + 1).padStart(2, "0")}.jpg`),
   },
 ];
+
+export const GALLERY_EVENTS = [...ARCHIVE_EVENTS, ...LATEST_EVENTS];

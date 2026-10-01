@@ -26,19 +26,19 @@ const TEAM: TeamMember[] = [
     initials: "BT",
   },
   {
-    name: "Mrs. Sobia Altaf",
+    name: "Ms Shehla Naz",
     role: "Section Head, Senior Girls",
     intro:
-      "Mrs. Sobia Altaf brings an M.Phil. in English Linguistics to her leadership of the Senior Girls Section. Since joining in April 2024, she has championed a culture of academic excellence, discipline, and confidence among senior female students.",
-    photo: "/sections/senior-girls/sobia-altaf.jpg",
+      "Ms Shehla Naz brings an M.Phil. in English Linguistics to her leadership of the Senior Girls Section. Since joining in April 2024, she has championed a culture of academic excellence, discipline, and confidence among senior female students.",
+    photo: "/sections/senior-girls/ms-shehla-naz.png",
     initials: "SA",
   },
   {
-    name: "Mr. Atiq ur Rehman",
+    name: "Mr Musammad Ilyas",
     role: "Section Head, Senior Boys",
     intro:
-      "Mr. Atiq ur Rehman has served GAK since 1998, bringing over two decades of experience to the Senior Boys Section. Holding an MA in Islamiat and Political Science with a B.Ed., he fosters discipline, integrity, and a strong work ethic in every student.",
-    photo: "/sections/senior-boys/atiq-ur-rehman.jpg",
+      "Mr Musammad Ilyas has served GAK since 1998, bringing over two decades of experience to the Senior Boys Section. Holding an MA in Islamiat and Political Science with a B.Ed., he fosters discipline, integrity, and a strong work ethic in every student.",
+    photo: "/sections/senior-boys/mr-musammad-Ilyas.png",
     initials: "AR",
   },
   {

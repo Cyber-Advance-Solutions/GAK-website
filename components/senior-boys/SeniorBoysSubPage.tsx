@@ -368,7 +368,7 @@ export default function SeniorBoysSubPage({ sub }: { sub: SeniorBoysSub }) {
           { label: data.name, href: "/sections/senior-boys" },
           { label: sub.label },
         ]}
-        image={SECTION_HEAD.photo}
+        image={'SECTION_HEAD.photo'}
       />
 
       <section className="sec">

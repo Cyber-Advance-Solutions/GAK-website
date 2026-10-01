@@ -67,7 +67,7 @@ export default function SeniorBoysSection() {
         eyebrow={data.sub}
         title={data.name}
         intro={data.headMsg}
-        image={IMG("atiq-ur-rehman.jpg")}
+        image={'/hero13.png'}
         crumb={[
           { label: "Quick Links", href: "/quick-links" },
           { label: data.name },

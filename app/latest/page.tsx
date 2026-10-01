@@ -1,7 +1,7 @@
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import EventsGalleryView from "@/components/EventsGalleryView";
-import { BANNER, GALLERY_EVENTS } from "@/lib/images";
+import { BANNER, LATEST_EVENTS } from "@/lib/images";
 
 export const metadata = { title: "Latest — Garrison Academy Kharian Cantt" };
 
@@ -23,7 +23,7 @@ export default function LatestPage() {
             title="Recent Events"
             intro="Highlights and snapshots from our most recent activities."
           />
-          <EventsGalleryView events={GALLERY_EVENTS} />
+          <EventsGalleryView events={LATEST_EVENTS} />
         </div>
       </section>
     </>

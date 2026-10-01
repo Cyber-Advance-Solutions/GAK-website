@@ -68,7 +68,7 @@ export default function SeniorGirlsSection() {
         eyebrow={data.sub}
         title={data.name}
         intro={data.headMsg}
-        image={IMG("sobia-altaf.jpg")}
+        image={'/hero13.png'}
         crumb={[
           { label: "Quick Links", href: "/quick-links" },
           { label: data.name },
