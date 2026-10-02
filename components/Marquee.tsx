@@ -1,4 +1,20 @@
 const WORDS = [
+  // ── Examination Results ──
+  "HSSC Result 2026",
+  "A+ Grades 92",
+  "A Grades 57",
+  "B Grades 32",
+
+  "SSC Result 2026",
+  "A+ Grades 74",
+  "A Grades 43",
+  "B Grades 18",
+
+  "Cambridge O Level Result 2026",
+  "A+ Grades 25",
+  "A Grades 18",
+  "B Grades 12",
+
   // ── Header ──
   "APSACS CALENDAR — OCT & NOV 2026",
 
