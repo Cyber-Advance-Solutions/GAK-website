@@ -65,7 +65,7 @@ export default function HomePage() {
       <MeetOurTeam />
 
       {/* academic pathway */}
-      <AcademicPathwaySection />
+      {/* <AcademicPathwaySection /> */}
 
       {/* campus gallery */}
       <section className="sec"><div className="wrap">
@@ -92,11 +92,10 @@ export default function HomePage() {
         <div className="npanel">
           <div className="np-h"><i className="np-ic"><CalendarDays size={22} /></i><div><span className="eyebrow">Upcoming</span><h3 className="h-md">Events &amp; Activities</h3></div></div>
           <ul className="eventlist">
-            <li><div className="dchip"><b>14</b><span>AUG</span></div><div className="ev"><div className="et">Independence Day 🇵🇰</div><div className="es">All Sections · Proud Pakistani Programme</div></div></li>
-            <li><div className="dchip"><b>15</b><span>AUG</span></div><div className="ev"><div className="et">Orientation Day</div><div className="es">APSIS Grade I–VIII · Parents</div></div></li>
-            <li><div className="dchip"><b>24</b><span>AUG</span></div><div className="ev"><div className="et">SDGs Awareness Week</div><div className="es">Junior, Middle &amp; Senior Sections</div></div></li>
+            <li><div className="dchip"><b>21</b><span>SEP</span></div><div className="ev"><div className="et">Reduce Reuse Recycle</div></div></li>
+            <li><div className="dchip"><b>22</b><span>SEP</span></div><div className="ev"><div className="et">Gratitude (Junior Section)</div></div></li>
+            <li><div className="dchip"><b>22</b><span>SEP</span></div><div className="ev"><div className="et">Healthy &amp; Junk Food</div></div></li>
           </ul>
-          <Link className="link-arrow" href="/activities">Full calendar <ArrowRight size={16} /></Link>
         </div>
       </div></section>
 

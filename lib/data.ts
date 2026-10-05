@@ -147,31 +147,6 @@ export const NAV: NavItem[] = [
   //     { label: "Student Council", href: "/student-council" },
   //   ],
   // },
-  {
-    label: "Admissions",
-    mega: [
-      // {
-      //   label: "Admission Request",
-      //   fly: [
-      //     { label: "Apply Online", href: "/admissions" },
-      //     { label: "Admission Process", href: "/admissions/process" },
-      //     { label: "Admission Criteria", href: "/admissions/criteria" },
-      //     { label: "Test Schedule", href: "/admissions/schedule" },
-      //     { label: "Download Form", href: "/downloads/forms" },
-      //   ],
-      // },
-      {
-        label: "Downloads",
-        fly: [
-          // { label: "Notifications", href: "/downloads/notifications" },
-          { label: "Circulars", href: "/downloads/circulars" },
-          // { label: "Past Papers", href: "/downloads/past-papers" },
-          { label: "Forms", href: "/downloads/forms" },
-        ],
-      },
-      // { label: "FAQs", href: "/faqs" },
-    ],
-  },
   // {
   //   label: "More",
   //   alignRight: true,
@@ -199,7 +174,14 @@ export const NAV: NavItem[] = [
   { label: "Gallery", href: "/gallery" },
   { label: "Latest", href: "/latest" },
   { label: "Archive", href: "/archive" },
-  { label: "Contact", href: "/contact" },
+  {
+    label: "Downloads",
+    alignRight: true,
+    fly: [
+      { label: "Circulars", href: "/downloads/circulars" },
+      { label: "Forms", href: "/downloads/forms" },
+    ],
+  },
 ];
 
 export type SectionKey =
