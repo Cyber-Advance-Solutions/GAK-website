@@ -26,7 +26,7 @@ export const NAV: NavItem[] = [
   {
     label: "About",
     fly: [
-      { label: "Overview", href: "/about" },
+      { label: "Our Team", href: "/about" },
       { label: "Facilities", href: "/about/facilities" },
       { label: "Pre-School", href: "/sections/pre" },
       { label: "Junior Section", href: "/sections/junior" },
