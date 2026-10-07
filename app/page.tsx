@@ -71,7 +71,7 @@ export default function HomePage() {
       <section className="sec"><div className="wrap">
         <div className="sec-head"><span className="eyebrow">Campus Life</span><h2 className="h-lg">Where learning feels like belonging.</h2></div>
         <div className="gallery">
-          <div className="ga big" style={{ backgroundImage: "url(/hero13.png)" }}><span className="cap">Campus &amp; grounds</span></div>
+          <div className="ga big" style={{ backgroundImage: "url(/page-banner.png)" }}><span className="cap">Campus &amp; grounds</span></div>
           <ClassroomsSwiper />
           <FacilitiesSwiper />
         </div>
