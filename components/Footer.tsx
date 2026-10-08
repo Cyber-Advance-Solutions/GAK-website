@@ -5,15 +5,10 @@ import { Facebook, Instagram, Youtube } from "@/components/Icon";
 
 const EXPLORE = [
   ["About Us", "/about"],
-  ["Messages", "/messages"],
-  ["Organogram", "/organogram"],
-  ["Alumni", "/alumni"],
   ["Activities", "/activities"],
 ];
 const PARENTS = [
   ["Admissions", "/admissions"],
-  ["School Uniform", "/uniform"],
-  ["Scholarships", "/scholarships"],
   ["Downloads", "/downloads"],
   ["FAQs", "/faqs"],
 ];

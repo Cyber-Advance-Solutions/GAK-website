@@ -2,7 +2,6 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import OverviewSection from "@/components/OverviewSection";
 import HighAchieversSection from "@/components/HighAchieversSection";
-import ChatWidget from "@/components/ChatWidget";
 import FacilitiesSwiper from "@/components/FacilitiesSwiper";
 import { ArrowRight, Bell, CalendarDays, Download } from "lucide-react";
 import ClassroomsSwiper from "@/components/ClassroomsSwiper";
@@ -391,8 +390,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <ChatWidget />
     </div>
   );
 }

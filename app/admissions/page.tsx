@@ -157,7 +157,7 @@ export default function AdmissionsPage() {
             </div>
 
             <ToastButton msg="Admission request submitted — we'll be in touch soon!" className="btn-submit">Submit application</ToastButton>
-            <p className="formnote">Prefer paper? <Link href="/downloads" style={{ color: "var(--green-700)", fontWeight: 700, textDecoration: "underline" }}>Download the registration form</Link>.</p>
+            <p className="formnote">Prefer paper? <Link href="/downloads/forms" style={{ color: "var(--green-700)", fontWeight: 700, textDecoration: "underline" }}>Download the registration form</Link>.</p>
           </div>
         </Editorial>
       </section>
