@@ -26,27 +26,27 @@ const TEAM: TeamMember[] = [
     initials: "BT",
   },
   {
-    name: "Ms Shehla Naz",
+    name: "Mrs Uzma Shaheen",
     role: "Section Head, Senior Girls",
     intro:
-      "Ms Shehla Naz brings an M.Phil. in English Linguistics to her leadership of the Senior Girls Section. Since joining in April 2024, she has championed a culture of academic excellence, discipline, and confidence among senior female students.",
-    photo: "/sections/senior-girls/ms-shehla-naz.png",
+      "Mrs Uzma Shaheen brings an M.Phil. in English Linguistics to her leadership of the Senior Girls Section. Since joining in April 2024, she has championed a culture of academic excellence, discipline, and confidence among senior female students.",
+    photo: "/sections/senior-girls/mrs-uzma-shaheen.jpg",
     initials: "SA",
   },
   {
-    name: "Mr Musammad Ilyas",
+    name: "Mrs Shehla Naz",
     role: "Section Head, Senior Boys",
     intro:
-      "Mr Musammad Ilyas has served GAK since 1998, bringing over two decades of experience to the Senior Boys Section. Holding an MA in Islamiat and Political Science with a B.Ed., he fosters discipline, integrity, and a strong work ethic in every student.",
-    photo: "/sections/senior-boys/mr-musammad-Ilyas.png",
+      "Mrs Shehla Naz has served GAK since 1998, bringing over two decades of experience to the Senior Boys Section. Holding an MA in Islamiat and Political Science with a B.Ed., he fosters discipline, integrity, and a strong work ethic in every student.",
+    photo: "/sections/senior-boys/mrs-shehla-naz.jpg",
     initials: "AR",
   },
   {
-    name: "Mrs. Qudsia Bukhari",
+    name: "Aamira Nasim",
     role: "Section Head, Middle Girls",
     intro:
-      "Mrs. Qudsia Bukhari has been part of the GAK family since 1999. With an MA in English Literature and a B.Ed., she creates an environment in the Middle Girls Section where curiosity is celebrated and every learner is encouraged to reach her potential.",
-    photo: "/sections/middle-girls/qudsia-bukhari.jpg",
+      "Aamira Nasim has been part of the GAK family since 1999. With an MA in English Literature and a B.Ed., she creates an environment in the Middle Girls Section where curiosity is celebrated and every learner is encouraged to reach her potential.",
+    photo: "/sections/middle-girls/aamira-nasim.jpg",
     initials: "QB",
   },
   {

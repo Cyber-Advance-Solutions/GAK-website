@@ -14,7 +14,7 @@ export const BANNER: Record<string, string> = {
   pre: "/hero1.png", junior: "/hero2.png",
   "middle-girls": "/hero2.png", "middle-boys": "/hero2.png",
   "senior-girls": "/page-banner.png", "senior-boys": "/page-banner.png",
-  apsis: "/apsis.jpg",apsac: "/adm-block.jpg",
+  apsis: "/apsis.jpg", apsac: "/adm-block.jpg",
   "student-council": "/page-banner.png",
 };
 
@@ -69,9 +69,6 @@ export const ARCHIVE_EVENTS = [
     cover: "/gallery/11th Sep Animal Habitat/01.jpg",
     images: Array.from({ length: 21 }, (_, i) => `/gallery/11th Sep Animal Habitat/${String(i + 1).padStart(2, "0")}.jpg`),
   },
-];
-
-export const LATEST_EVENTS = [
   {
     name: "14th September — ICATs Mathematics Preparation",
     cover: "/gallery/14th Sep ICATs Mathematics Preparation/01.jpg",
@@ -126,6 +123,39 @@ export const LATEST_EVENTS = [
     name: "22nd September — Healthy & Junk Food",
     cover: "/gallery/22nd Sep Healthy & Junk Food/01.jpg",
     images: Array.from({ length: 15 }, (_, i) => `/gallery/22nd Sep Healthy & Junk Food/${String(i + 1).padStart(2, "0")}.jpg`),
+  },
+];
+
+export const LATEST_EVENTS = [
+  {
+    name: "1st October — CP (E-VII)",
+    cover: "/latest/1st Oct CP E-VII/01.jpg",
+    images: Array.from({ length: 11 }, (_, i) => `/latest/1st Oct CP E-VII/${String(i + 1).padStart(2, "0")}.jpg`),
+  },
+  {
+    name: "1st October — Friendship Day",
+    cover: "/latest/1st Oct Friendship/01.jpg",
+    images: Array.from({ length: 9 }, (_, i) => `/latest/1st Oct Friendship/${String(i + 1).padStart(2, "0")}.jpg`),
+  },
+  {
+    name: "5th October — World Teachers' Day",
+    cover: "/latest/5th October Teachers Day/01.jpg",
+    images: Array.from({ length: 19 }, (_, i) => `/latest/5th October Teachers Day/${String(i + 1).padStart(2, "0")}.jpg`),
+  },
+  {
+    name: "6th October — APSACS Foundation Day",
+    cover: "/latest/6th Oct Apsacs Foundation Day/01.jpg",
+    images: Array.from({ length: 16 }, (_, i) => `/latest/6th Oct Apsacs Foundation Day/${String(i + 1).padStart(2, "0")}.jpg`),
+  },
+  {
+    name: "7th October — World Mental Health Day",
+    cover: "/latest/7th Oct World Mental Health Day/01.jpg",
+    images: Array.from({ length: 9 }, (_, i) => `/latest/7th Oct World Mental Health Day/${String(i + 1).padStart(2, "0")}.jpg`),
+  },
+  {
+    name: "8th October — Punctuality",
+    cover: "/latest/8th Oct Punctuality/01.jpg",
+    images: Array.from({ length: 5 }, (_, i) => `/latest/8th Oct Punctuality/${String(i + 1).padStart(2, "0")}.jpg`),
   },
 ];
 

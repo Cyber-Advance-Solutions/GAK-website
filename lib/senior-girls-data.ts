@@ -11,7 +11,7 @@ export const SECTION_HEAD: Staff = {
   role: "Section Head Senior Girls",
   qualification: "M.Phil English Linguistics, B.Ed",
   joined: "01 April 2024",
-  photo: IMG("ms-shehla-naz.png"),
+  photo: IMG("mrs-uzma-shaheen.jpg"),
 };
 
 export const DEPUTY_HEAD: Staff = {

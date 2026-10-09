@@ -15,11 +15,11 @@ export type MegaEntry = Leaf | { label: string; fly: FlyEntry[] };
 export type NavItem =
   | Leaf
   | {
-      label: string;
-      mega?: MegaEntry[];
-      fly?: (Leaf | FlyEntry)[];
-      alignRight?: boolean;
-    };
+    label: string;
+    mega?: MegaEntry[];
+    fly?: (Leaf | FlyEntry)[];
+    alignRight?: boolean;
+  };
 
 export const NAV: NavItem[] = [
   { label: "Home", href: "/" },
@@ -27,7 +27,7 @@ export const NAV: NavItem[] = [
     label: "About",
     fly: [
       { label: "Our Team", href: "/about" },
-      { label: "Facilities", href: "/about/facilities" },
+      // { label: "Facilities", href: "/about/facilities" },
       { label: "Pre-School", href: "/sections/pre" },
       { label: "Junior Section", href: "/sections/junior" },
       { label: "Middle Girls Section", href: "/sections/middle-girls" },
@@ -263,88 +263,88 @@ export const HOME_GRID: {
   icon: string;
   desc: string;
 }[] = [
-  {
-    href: "/messages",
-    label: "Messages",
-    icon: "💬",
-    desc: "Chairman, VC & Principal",
-  },
-  {
-    href: "/about",
-    label: "About Us",
-    icon: "🏛️",
-    desc: "History, founder & facilities",
-  },
-  {
-    href: "/organogram",
-    label: "Organogram",
-    icon: "🗂️",
-    desc: "Academic & admin structure",
-  },
-  {
-    href: "/quick-links",
-    label: "Quick Links",
-    icon: "🔗",
-    desc: "Section-wise information",
-  },
-  {
-    href: "/scholarships",
-    label: "Scholarships",
-    icon: "🎓",
-    desc: "Incentives & policy",
-  },
-  {
-    href: "/uniform",
-    label: "School Uniform",
-    icon: "👔",
-    desc: "Summer & winter",
-  },
-  {
-    href: "/alumni",
-    label: "Alumni",
-    icon: "🌟",
-    desc: "Ex-GAK & top holders",
-  },
-  {
-    href: "/activities",
-    label: "Activities",
-    icon: "⚽",
-    desc: "Sports & co-curricular",
-  },
-  {
-    href: "/admissions",
-    label: "Admissions",
-    icon: "✎",
-    desc: "Apply for Session 2026",
-  },
-  { href: "/hr", label: "HR & Careers", icon: "💼", desc: "Staff hiring" },
-  {
-    href: "/links",
-    label: "External Links",
-    icon: "↗",
-    desc: "LMS, FBISE, social",
-  },
-  { href: "/faqs", label: "FAQs", icon: "❓", desc: "Common questions" },
-  { href: "/chatbot", label: "Chatbot", icon: "◎", desc: "Instant answers" },
-  {
-    href: "/contact",
-    label: "Contact Us",
-    icon: "📍",
-    desc: "Numbers, email, map",
-  },
-  {
-    href: "/downloads/notifications",
-    label: "Downloads",
-    icon: "↓",
-    desc: "Forms & circulars",
-  },
-  {
-    href: "/feedback",
-    label: "Feedback",
-    icon: "✍️",
-    desc: "Complaints & suggestions",
-  },
-];
+    {
+      href: "/messages",
+      label: "Messages",
+      icon: "💬",
+      desc: "Chairman, VC & Principal",
+    },
+    {
+      href: "/about",
+      label: "About Us",
+      icon: "🏛️",
+      desc: "History, founder & facilities",
+    },
+    {
+      href: "/organogram",
+      label: "Organogram",
+      icon: "🗂️",
+      desc: "Academic & admin structure",
+    },
+    {
+      href: "/quick-links",
+      label: "Quick Links",
+      icon: "🔗",
+      desc: "Section-wise information",
+    },
+    {
+      href: "/scholarships",
+      label: "Scholarships",
+      icon: "🎓",
+      desc: "Incentives & policy",
+    },
+    {
+      href: "/uniform",
+      label: "School Uniform",
+      icon: "👔",
+      desc: "Summer & winter",
+    },
+    {
+      href: "/alumni",
+      label: "Alumni",
+      icon: "🌟",
+      desc: "Ex-GAK & top holders",
+    },
+    {
+      href: "/activities",
+      label: "Activities",
+      icon: "⚽",
+      desc: "Sports & co-curricular",
+    },
+    {
+      href: "/admissions",
+      label: "Admissions",
+      icon: "✎",
+      desc: "Apply for Session 2026",
+    },
+    { href: "/hr", label: "HR & Careers", icon: "💼", desc: "Staff hiring" },
+    {
+      href: "/links",
+      label: "External Links",
+      icon: "↗",
+      desc: "LMS, FBISE, social",
+    },
+    { href: "/faqs", label: "FAQs", icon: "❓", desc: "Common questions" },
+    { href: "/chatbot", label: "Chatbot", icon: "◎", desc: "Instant answers" },
+    {
+      href: "/contact",
+      label: "Contact Us",
+      icon: "📍",
+      desc: "Numbers, email, map",
+    },
+    {
+      href: "/downloads/notifications",
+      label: "Downloads",
+      icon: "↓",
+      desc: "Forms & circulars",
+    },
+    {
+      href: "/feedback",
+      label: "Feedback",
+      icon: "✍️",
+      desc: "Complaints & suggestions",
+    },
+  ];
 
 export const FAQ_DATA: Record<
   string,

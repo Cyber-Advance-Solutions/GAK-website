@@ -201,7 +201,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div
+          {/* <div
             style={{
               background: "rgba(34, 139, 34, 0.1)",
               borderLeft: "6px solid #228b22",
@@ -256,7 +256,7 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -334,29 +334,29 @@ export default function HomePage() {
             <ul className="eventlist">
               <li>
                 <div className="dchip">
-                  <b>21</b>
-                  <span>SEP</span>
+                  <b>05</b>
+                  <span>OCT</span>
                 </div>
                 <div className="ev">
-                  <div className="et">Reduce Reuse Recycle</div>
+                  <div className="et">World Teachers&apos; Day</div>
                 </div>
               </li>
               <li>
                 <div className="dchip">
-                  <b>22</b>
-                  <span>SEP</span>
+                  <b>06</b>
+                  <span>OCT</span>
                 </div>
                 <div className="ev">
-                  <div className="et">Gratitude (Junior Section)</div>
+                  <div className="et">APSACS Foundation Day</div>
                 </div>
               </li>
               <li>
                 <div className="dchip">
-                  <b>22</b>
-                  <span>SEP</span>
+                  <b>07</b>
+                  <span>OCT</span>
                 </div>
                 <div className="ev">
-                  <div className="et">Healthy &amp; Junk Food</div>
+                  <div className="et">World Mental Health Day</div>
                 </div>
               </li>
             </ul>

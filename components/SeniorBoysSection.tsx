@@ -81,7 +81,7 @@ export default function SeniorBoysSection() {
               <FactCard
                 title="Section facts"
                 rows={[
-                  ["Acting Section Head", SECTION_HEAD.name],
+                  ["Section Head", SECTION_HEAD.name],
                   ["Deputy Head", DEPUTY_HEAD.name],
                   ["Classes", "IX – XII (Boys)"],
                   ["Curriculum", "FBISE Board"],
@@ -125,7 +125,7 @@ export default function SeniorBoysSection() {
         >
           {/* ── Section Head Message ── */}
           <section>
-            <SectionHead eyebrow="Leadership" title="Acting Section Head" />
+            <SectionHead eyebrow="Leadership" title="Section Head" />
             <div className="quoteband" style={{ borderRadius: "var(--r)" }}>
               <div
                 className="qb"
@@ -153,7 +153,7 @@ export default function SeniorBoysSection() {
                 </div>
                 <div className="qb-body">
                   <span className="eyebrow">
-                    Message from the Acting Section Head
+                    Message from the Section Head
                   </span>
                   <blockquote
                     style={{

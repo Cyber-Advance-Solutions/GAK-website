@@ -10,7 +10,7 @@ const SLIDES = [
   "/hero6.png",
   "/hero7.png",
   "/hero8.png",
-  "/hero9.png",
+  // "/hero9.png",
   "/hero10.png",
   "/hero11.png",
   // "/hero12.jpg",

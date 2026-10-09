@@ -7,11 +7,11 @@ export const IMG = (name: string) => `/sections/middle-girls/${name}`;
 export type { Staff };
 
 export const HEAD: Staff = {
-  name: "Mrs. Qudsia Bukhari",
+  name: "Aamira Nasim",
   role: "Section Head",
   qualification: "M.A English Literature, B.Ed.",
   joined: "02 Nov 1999",
-  photo: IMG("qudsia-bukhari.jpg"),
+  photo: IMG("aamira-nasim.jpg"),
 };
 
 export const DEPUTY_HEADS: Staff[] = [
