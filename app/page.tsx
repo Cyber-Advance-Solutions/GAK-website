@@ -126,7 +126,7 @@ export default function HomePage() {
         <div className="wrap">
           <SectionHead
             eyebrow="Our Direction"
-            title="Vision, Mission & Values"
+            title="Vision, Mission"
             intro="The strategic framework that guides every decision, lesson, and interaction across our institution."
           />
 

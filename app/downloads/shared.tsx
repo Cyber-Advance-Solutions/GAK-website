@@ -6,7 +6,12 @@ export const NOTIF: [string, string][] = [
   ["Winter Vacation Notice", "18 Dec 2025"],
   ["Parent-Teacher Meeting Schedule", "02 Dec 2025"],
 ];
-export const CIRC: [string, string][] = [
+export const CIRC: [string, string, string?][] = [
+  [
+    "STUDENT CODE OF CONDUCT, DISCIPLINE AND RULES & REGULATIONS.pdf",
+    "Official Document · PDF (368 KB)",
+    "/docs/STUDENT%20CODE%20OF%20CONDUCT%2C%20DISCIPLINE%20AND%20RULES%20%26%20REGULATIONS.pdf",
+  ],
   ["Circular 18/26", "Winter Uniform Implementation"],
   ["Circular 17/26", "Sports Gala Participation"],
   ["Circular 16/26", "Fee Submission Deadline"],
@@ -22,14 +27,43 @@ export const FORMS: [string, string][] = [
   ["Fee Structure by Class", "PDF · accounts office"],
 ];
 
-export function FileRow({ name, meta }: { name: string; meta: string }) {
+export function FileRow({
+  name,
+  meta,
+  href,
+}: {
+  name: string;
+  meta: string;
+  href?: string;
+}) {
   return (
     <div className="filerow">
-      <div className="f-ic"><FileText size={20} strokeWidth={1.8} /></div>
-      <div><div className="f-nm">{name}</div><div className="f-meta">{meta}</div></div>
-      <ToastButton as="a" msg="Downloading PDF…" className="f-dl"><Download size={14} strokeWidth={1.8} /> PDF</ToastButton>
+      <div className="f-ic">
+        <FileText size={20} strokeWidth={1.8} />
+      </div>
+      <div>
+        <div className="f-nm">{name}</div>
+        <div className="f-meta">{meta}</div>
+      </div>
+      <ToastButton
+        as="a"
+        href={href}
+        download={href ? name : undefined}
+        target={href ? "_blank" : undefined}
+        rel={href ? "noopener noreferrer" : undefined}
+        msg="Downloading PDF…"
+        className="f-dl"
+      >
+        <Download size={14} strokeWidth={1.8} /> PDF
+      </ToastButton>
     </div>
   );
 }
 
-export const rows = (list: [string, string][]) => <>{list.map(([n, m]) => <FileRow key={n} name={n} meta={m} />)}</>;
+export const rows = (list: [string, string, string?][]) => (
+  <>
+    {list.map(([n, m, h]) => (
+      <FileRow key={n} name={n} meta={m} href={h} />
+    ))}
+  </>
+);
