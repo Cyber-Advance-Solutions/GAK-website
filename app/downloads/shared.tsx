@@ -21,11 +21,26 @@ export const PAPERS: [string, string][] = [
   ["Physics — Class X", "Past paper · 2025"],
   ["English — Class XI", "Past paper · 2024"],
 ];
-export const FORMS: [string, string][] = [
+export const FORMS: [string, string, string?][] = [
+  [
+    "Admission Form",
+    "PDF · admissions office",
+    "/docs/student_admission_form.pdf",
+  ],
   ["Admission Registration Form", "PDF · admissions office"],
   ["School Prospectus 2026", "PDF · downloadable"],
   ["Fee Structure by Class", "PDF · accounts office"],
 ];
+
+/** Suggested save name from a same-origin public file path. */
+function downloadFilename(href: string) {
+  const segment = href.split("/").pop()?.split(/[?#]/)[0] ?? "";
+  try {
+    return decodeURIComponent(segment) || undefined;
+  } catch {
+    return segment || undefined;
+  }
+}
 
 export function FileRow({
   name,
@@ -36,6 +51,8 @@ export function FileRow({
   meta: string;
   href?: string;
 }) {
+  const file = href ? downloadFilename(href) : undefined;
+
   return (
     <div className="filerow">
       <div className="f-ic">
@@ -48,10 +65,8 @@ export function FileRow({
       <ToastButton
         as="a"
         href={href}
-        download={href ? name : undefined}
-        target={href ? "_blank" : undefined}
-        rel={href ? "noopener noreferrer" : undefined}
-        msg="Downloading PDF…"
+        download={file}
+        msg={file ? "Downloading PDF…" : "This file will be available soon."}
         className="f-dl"
       >
         <Download size={14} strokeWidth={1.8} /> PDF
