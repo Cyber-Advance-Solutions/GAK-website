@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 export default function ClassroomsSwiper() {
-  const images = ["/adm-block.jpg", "/adm-block.jpg", "/adm-block.jpg"];
+  const images = ["/classrooms/01.jpg", "/classrooms/02.jpg", "/classrooms/03.jpg", "/classrooms/04.jpg", "/classrooms/05.jpg", "/classrooms/06.jpg", "/classrooms/07.jpg", "/classrooms/08.jpg", "/classrooms/09.jpg", "/classrooms/10.jpg"];
 
   return (
     <div className="ga classrooms-swiper" style={{ background: 'none' }}>
