@@ -20,6 +20,10 @@ export default function CampusSwiper() {
     "/campuses/camp11.png",
     "/campuses/camp12.png",
     "/campuses/camp13.png",
+    "/campuses/camp14.jpg",
+    "/campuses/camp15.jpg",
+    "/campuses/camp16.jpg",
+    "/campuses/camp17.jpg",
   ];
 
   return (
