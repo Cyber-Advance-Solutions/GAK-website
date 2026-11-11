@@ -12,63 +12,20 @@ export interface AchieverPoster {
   image: string;
 }
 
-const ACHIEVERS: AchieverPoster[] = [
-  {
-    id: "hssc-2",
-    title: "High Achievers HSSC-II",
-    badge: "FBISE 2026",
-    subtitle: "APS & C GAK Campus Kharian Cantt",
-    image: "/achievers/01.jpeg",
-  },
-  {
-    id: "ssc-2",
-    title: "High Achievers SSC-II",
-    badge: "Session 2025–26",
-    subtitle: "APS & C GAK Campus Kharian Cantt",
-    image: "/achievers/02.jpeg",
-  },
-  {
-    id: "positions",
-    title: "Top Position Holders (SSC-I & II)",
-    badge: "Board Positions",
-    subtitle: "1st, 2nd & 3rd Position Holders",
-    image: "/achievers/03.jpeg",
-  },
-  {
-    id: "ssc-1",
-    title: "High Achievers SSC-I",
-    badge: "Session 2025–26",
-    subtitle: "APS & C GAK Campus Kharian Cantt",
-    image: "/achievers/04.jpeg",
-  },
-  {
-    id: "hssc-1",
-    title: "High Achievers HSSC-I",
-    badge: "FBISE 2026",
-    subtitle: "APS & C GAK Campus Kharian Cantt",
-    image: "/achievers/05.jpeg",
-  },
-  {
-    id: "apsis-cie",
-    title: "APSIS Cambridge Stars",
-    badge: "CIE 2026",
-    subtitle: "APSIS Kharian Cantt — Shining Stars",
-    image: "/achievers/06.jpeg",
-  },
-];
-
-export default function HighAchieversSection() {
+/** `items`: published high-achiever posters in admin order (GET /high-achievers). */
+export default function HighAchieversSection({ items = [] }: { items?: AchieverPoster[] }) {
+  const ACHIEVERS = items;
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
 
   const close = useCallback(() => setActiveIdx(null), []);
 
   const prev = useCallback(() => {
     setActiveIdx((curr) => (curr === null ? null : (curr - 1 + ACHIEVERS.length) % ACHIEVERS.length));
-  }, []);
+  }, [ACHIEVERS.length]);
 
   const next = useCallback(() => {
     setActiveIdx((curr) => (curr === null ? null : (curr + 1) % ACHIEVERS.length));
-  }, []);
+  }, [ACHIEVERS.length]);
 
   useEffect(() => {
     if (activeIdx === null) return;
@@ -87,6 +44,8 @@ export default function HighAchieversSection() {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [activeIdx, close, prev, next]);
+
+  if (ACHIEVERS.length === 0) return null;
 
   return (
     <section className="sec achievers-sec" id="high-achievers">

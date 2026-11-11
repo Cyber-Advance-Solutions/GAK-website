@@ -1,21 +1,24 @@
 import PageHero from "@/components/PageHero";
 import FaqView from "@/components/FaqView";
 import { BANNER } from "@/lib/images";
+import { getFaqs } from "@/lib/mappers/faqs";
 
 export const metadata = { title: "FAQs" };
+export const dynamic = "force-dynamic";
 
-export default function FaqsPage() {
+export default async function FaqsPage() {
+  const { settings, groups } = await getFaqs();
   return (
     <>
       <PageHero
-        eyebrow="Help centre"
-        title="Frequently asked questions"
-        intro="Answers grouped by category — admissions, fees, examinations, hiring and more."
+        eyebrow={settings?.eyebrow || ""}
+        title={settings?.heading || "Frequently asked questions"}
+        intro={settings?.introText}
         image={BANNER.faqs}
         crumb={[{ label: "FAQs" }]}
       />
       <section className="sec">
-        <FaqView />
+        <FaqView groups={groups} />
       </section>
     </>
   );

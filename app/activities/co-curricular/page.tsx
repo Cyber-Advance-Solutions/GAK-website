@@ -2,19 +2,23 @@ import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import ActivityCard from "@/components/ActivityCard";
 import { BANNER } from "@/lib/images";
+import { getActivityCategory } from "@/lib/mappers/activities";
 import { CLUBS, COMPS, SPORT_IMG } from "@/lib/activities-data";
 
 export const metadata = { title: "Co-curricular — Activities" };
+export const dynamic = "force-dynamic";
 
-export default function CoCurricularActivitiesPage() {
+export default async function CoCurricularActivitiesPage() {
+  // Hero title + intro are edited in the admin (Activities page > categories)
+  const cat = await getActivityCategory("co-curricular");
   return (
     <>
       <PageHero
         eyebrow="Get involved"
-        title="Co-curricular"
-        intro="Clubs, societies and our national & international competition wins."
-        image={BANNER.activities}
-        crumb={[{ label: "Activities", href: "/activities" }, { label: "Co-curricular" }]}
+        title={cat?.title || "Co-curricular"}
+        intro={cat?.description}
+        image={cat?.imageUrl || BANNER.activities}
+        crumb={[{ label: "Activities", href: "/activities" }, { label: cat?.title || "Co-curricular" }]}
       />
 
       <section className="sec">

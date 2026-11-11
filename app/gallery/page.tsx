@@ -1,11 +1,14 @@
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
-import EventsGalleryView, { type GalleryEvent } from "@/components/EventsGalleryView";
-import { BANNER, GALLERY_EVENTS } from "@/lib/images";
+import EventsGalleryView from "@/components/EventsGalleryView";
+import { getEventAlbums } from "@/lib/mappers/events";
+import { BANNER } from "@/lib/images";
 
 export const metadata = { title: "Gallery" };
+export const dynamic = "force-dynamic";
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const events = await getEventAlbums("all");
   return (
     <>
       <PageHero
@@ -23,7 +26,11 @@ export default function GalleryPage() {
             title="Events at GAK"
             intro="Browse photos from various events and campus life."
           />
-          <EventsGalleryView events={GALLERY_EVENTS} />
+          {events.length > 0 ? (
+            <EventsGalleryView events={events} />
+          ) : (
+            <p style={{ color: "var(--ink-soft)" }}>No albums to show yet.</p>
+          )}
         </div>
       </section>
     </>

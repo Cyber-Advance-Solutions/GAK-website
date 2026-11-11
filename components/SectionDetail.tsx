@@ -3,59 +3,29 @@ import { ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { Editorial, FactCard } from "@/components/Editorial";
 import SectionHead from "@/components/SectionHead";
-import { BANNER } from "@/lib/images";
-import { SECTIONS, type SectionData, type SectionKey } from "@/lib/data";
+import { OtherSectionsCard } from "@/components/SectionParts";
+import { asList } from "@/lib/api";
+import { facts, type SectionView } from "@/lib/mappers/sections";
 
-const CURRICULUM: Record<SectionKey, string[]> = {
-  pre: [
-    "Play-based early literacy and numeracy",
-    "Phonics, storytelling and motor-skills development",
-    "Islamiat, social skills and structured free play",
-  ],
-  junior: [
-    "National curriculum foundations across core subjects",
-    "Structured literacy, numeracy and Islamiat",
-    "House activities and early co-curricular exposure",
-  ],
-  "middle-girls": [
-    "National curriculum across core subjects",
-    "Computer studies and general science",
-    "Study-skills, assessments and house activities",
-  ],
-  "middle-boys": [
-    "National curriculum across core subjects",
-    "Computer studies and general science",
-    "Study-skills, assessments and house activities",
-  ],
-  "senior-girls": [
-    "FBISE board curriculum (IX–XII)",
-    "Science, Pre-Medical, Pre-Engineering and ICS groups",
-    "Regular tests, practicals and board preparation",
-  ],
-  "senior-boys": [
-    "FBISE board curriculum (IX–XII)",
-    "Science, Pre-Medical, Pre-Engineering and ICS groups",
-    "Regular tests, practicals and board preparation",
-  ],
-  apsis: [
-    "Cambridge Lower Secondary, IGCSE and A-Level pathways",
-    "Internationally benchmarked assessment",
-    "University guidance for study at home and abroad",
-  ],
-};
-
-export default function SectionDetail({ data, slug }: { data: SectionData; slug: SectionKey }) {
-  const streamBadge = data.cambridge ? "APSIS · Cambridge" : "APSACS · FBISE";
-  const others = (Object.keys(SECTIONS) as SectionKey[]).filter((k) => k !== slug);
+/**
+ * Generic page for a section added in the admin panel that has no dedicated component
+ * (the seven existing sections use their own *Section components).
+ */
+export default function SectionDetail({ d }: { d: SectionView }) {
+  const highlights = asList<any>(d.overview.highlights)
+    .map((h) => (typeof h === "string" ? h : h?.title || h?.text || ""))
+    .filter(Boolean);
+  const paras = asList<string>(d.overview.paragraphs).filter((p) => typeof p === "string" && p);
+  const gallery = d.activities.filter((a) => a.photo).slice(0, 2);
 
   return (
     <>
       <PageHero
-        eyebrow={data.sub}
-        title={data.name}
-        intro={data.headMsg}
-        image={BANNER[slug]}
-        crumb={[{ label: "Quick Links", href: "/quick-links" }, { label: data.name }]}
+        eyebrow={d.sub}
+        title={d.name}
+        intro={d.intro}
+        image={d.banner}
+        crumb={[{ label: "Quick Links", href: "/quick-links" }, { label: d.name }]}
       />
 
       <section className="sec">
@@ -64,63 +34,62 @@ export default function SectionDetail({ data, slug }: { data: SectionData; slug:
             <>
               <FactCard
                 title="Section facts"
-                rows={[
-                  ["Section head", data.head],
-                  ["Classes", data.sub],
-                  ["Stream", streamBadge],
-                  ["Timings", "7:30 AM – 1:30 PM"],
-                ]}
+                rows={facts([
+                  ["Section head", d.head?.name ?? ""],
+                  ["Classes", d.classesRange],
+                  ["Stream", d.stream || d.curriculum],
+                  ["Timings", d.timings],
+                ])}
               />
-              <div className="factcard">
-                <h4>Other sections</h4>
-                <ul>
-                  {others.map((k) => (
-                    <li key={k} title={`${SECTIONS[k].name} - ${SECTIONS[k].sub}`} style={{ display: "block", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                      <Link href={`/sections/${k}`} style={{ color: "var(--green-700)", fontWeight: 600 }}>{SECTIONS[k].name}</Link>
-                      <span style={{ fontWeight: 500, color: "var(--ink-soft)", marginLeft: "6px" }}>- {SECTIONS[k].sub}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <OtherSectionsCard others={d.others} />
             </>
           }
         >
           <section>
-            <SectionHead eyebrow="Overview" title={`About ${data.name}`} />
+            <SectionHead eyebrow="Overview" title={`About ${d.name}`} />
             <div className="prose">
-              <p>{data.headMsg}</p>
-              {data.extra ? <p>{data.extra}</p> : null}
-              <h3>Curriculum highlights</h3>
-              <ul>
-                {CURRICULUM[slug].map((c) => <li key={c}>{c}</li>)}
-              </ul>
+              {d.intro && <p>{d.intro}</p>}
+              {paras.map((p, i) => <p key={i}>{p}</p>)}
+              {highlights.length > 0 && (
+                <>
+                  <h3>Curriculum highlights</h3>
+                  <ul>
+                    {highlights.map((c) => <li key={c}>{c}</li>)}
+                  </ul>
+                </>
+              )}
             </div>
           </section>
 
-          <section>
-            <div className="quoteband" style={{ borderRadius: "var(--r)" }}>
-              <div className="qb" style={{ padding: 32 }}>
-                <div className="qb-portrait" style={{ width: 96, height: 96 }}>
-                  <span style={{ fontSize: "1.8rem" }}>{initials(data.head)}</span>
-                </div>
-                <div className="qb-body">
-                  <span className="eyebrow">Message from the section head</span>
-                  <blockquote style={{ fontSize: "0.85rem" }}>{data.headMsg}</blockquote>
-                  <div className="qb-foot">
-                    <div className="qb-who"><div className="nm">{data.head}</div><div className="rl">Head — {data.name}</div></div>
+          {d.head && d.head.message.length > 0 && (
+            <section>
+              <div className="quoteband" style={{ borderRadius: "var(--r)" }}>
+                <div className="qb" style={{ padding: 32 }}>
+                  <div className="qb-portrait" style={{ width: 96, height: 96 }}>
+                    <span style={{ fontSize: "1.8rem" }}>{initials(d.head.name)}</span>
+                  </div>
+                  <div className="qb-body">
+                    <span className="eyebrow">{d.headEyebrow || "Message from the section head"}</span>
+                    <blockquote style={{ fontSize: "0.85rem" }}>{d.head.message.join(" ")}</blockquote>
+                    <div className="qb-foot">
+                      <div className="qb-who"><div className="nm">{d.head.name}</div><div className="rl">{d.head.role || `Head — ${d.name}`}</div></div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
 
           <section>
-            <SectionHead eyebrow="Campus life" title={`Inside ${data.name}`} />
-            <div className="gallery">
-              <div className="ga big" style={{ backgroundImage: `url(${BANNER[slug]})` }}><span className="cap">{data.name}</span></div>
-              <div className="ga" style={{ backgroundImage: "url(/hero1.png)" }}><span className="cap">Classrooms</span></div>
-              <div className="ga" style={{ backgroundImage: "url(/hero2.png)" }}><span className="cap">Library</span></div>
-            </div>
+            <SectionHead eyebrow="Campus life" title={`Inside ${d.name}`} />
+            {d.banner && (
+              <div className="gallery">
+                <div className="ga big" style={{ backgroundImage: `url(${d.banner})` }}><span className="cap">{d.name}</span></div>
+                {gallery.map((g, i) => (
+                  <div className="ga" key={g.id + i} style={{ backgroundImage: `url(${g.photo})` }}><span className="cap">{g.label}</span></div>
+                ))}
+              </div>
+            )}
             <Link className="link-arrow" href="/admissions">Apply for admission <ArrowRight size={16} /></Link>
           </section>
         </Editorial>

@@ -2,120 +2,91 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import { Editorial } from "@/components/Editorial";
-import { ToastButton } from "@/components/Toast";
+import PublicForm from "@/components/PublicForm";
 import { BANNER } from "@/lib/images";
+import { getContactSettings } from "@/lib/mappers/contact";
+import { getFormConfig } from "@/lib/mappers/careers";
 
 export const metadata = { title: "Contact Us" };
+export const dynamic = "force-dynamic";
 
-const INFO: [React.ReactNode, string, React.ReactNode][] = [
-  [
-    <Phone key="p" size={20} strokeWidth={1.8} />,
-    "Phone",
+/** "first value" + the rest as smaller lines, like the original hand-written info rows */
+function Lines({ items }: { items: string[] }) {
+  if (items.length === 0) return null;
+  return (
     <>
-      053-9240263<span>Mobile / WhatsApp: 0330-425 (GAK) 0111</span>
-    </>,
-  ],
-  [
-    <Mail key="m" size={20} strokeWidth={1.8} />,
-    "Email",
-    <>
-      <span>gakhrn@gmail.com</span>
-    </>,
-  ],
-  [
-    <MapPin key="l" size={20} strokeWidth={1.8} />,
-    "Campus",
-    <>
-      Garrison Academy, Kharian Cantt<span>Gujrat, Punjab</span>
-    </>,
-  ],
-  [
-    <Clock key="c" size={20} strokeWidth={1.8} />,
-    "Office hours",
-    <>
-      Mon – Fri, 8:00 AM – 2:00 PM<span>Saturday: by appointment</span>
-    </>,
-  ],
-];
+      {items[0]}
+      {items.slice(1).map((t) => (
+        <span key={t}>{t}</span>
+      ))}
+    </>
+  );
+}
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const [c, form] = await Promise.all([getContactSettings(), getFormConfig("contact")]);
+
+  // First entry shows plain, later ones as "Label: value"
+  const labelled = (list: { label?: string; value?: string }[], plainFirst = true) =>
+    list.filter((x) => x.value).map((x, i) => (i === 0 && plainFirst ? String(x.value) : x.label ? `${x.label}: ${x.value}` : String(x.value)));
+
+  const info: [React.ReactNode, string, string[]][] = [
+    [<Phone key="p" size={20} strokeWidth={1.8} />, c.phones[0]?.label || "Phone", labelled(c.phones)],
+    [<Mail key="m" size={20} strokeWidth={1.8} />, c.emails[0]?.label || "Email", c.emails.map((e) => e.value).filter(Boolean)],
+    [<MapPin key="l" size={20} strokeWidth={1.8} />, "Campus", c.addressLines],
+    [<Clock key="c" size={20} strokeWidth={1.8} />, "Office hours", c.officeHours.filter((h) => h.label || h.value).map((h, i) => (i === 0 ? `${h.label ?? ""}, ${h.value ?? ""}` : `${h.label ?? ""}: ${h.value ?? ""}`).replace(/^, |, $|^: |: $/g, ""))],
+  ];
+
   return (
     <>
       <PageHero
-        eyebrow="Get in touch"
-        title="Contact us"
-        intro="Reach the right department by phone or email, and find us in Kharian Cantt."
+        eyebrow={c.eyebrow || ""}
+        title={c.heading || "Contact us"}
+        intro={c.introText}
         image={BANNER.contact}
         crumb={[{ label: "Contact Us" }]}
       />
       <section className="sec">
         <div className="wrap">
-          <SectionHead eyebrow="We're here to help" title="Send us a message" />
+          <SectionHead eyebrow={c.instructions || ""} title={form?.heading || "Send us a message"} intro={form?.instructions || undefined} />
         </div>
         <Editorial
           rail={
             <div className="factcard">
-              <h4>Reach us directly</h4>
-              {INFO.map(([ic, k, v]) => (
-                <div className="inforow" key={k}>
-                  <div className="ir-ic">{ic}</div>
-                  <div>
-                    <div className="ir-k">{k}</div>
-                    <div className="ir-v">{v}</div>
+              <h4>{c.directHeading || "Reach us directly"}</h4>
+              {info
+                .filter(([, , v]) => v.length > 0)
+                .map(([ic, k, v]) => (
+                  <div className="inforow" key={k}>
+                    <div className="ir-ic">{ic}</div>
+                    <div>
+                      <div className="ir-k">{k}</div>
+                      <div className="ir-v"><Lines items={v} /></div>
+                    </div>
+                  </div>
+                ))}
+              {c.mapEmbedUrl ? (
+                <div className="mapph p-0" style={{ padding: "0px" }}>
+                  <div style={{ height: "100%" }}>
+                    <iframe
+                      src={c.mapEmbedUrl}
+                      style={{ border: "0", height: "100%", width: "100%" }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    ></iframe>
                   </div>
                 </div>
-              ))}
-              <div className="mapph p-0" style={{ padding: '0px' }}>
-                <div style={{ height: '100%' }}>
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.8612717120473!2d73.8870625!3d32.79593750000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391fa1a84b06ee73%3A0xb778b46716848759!2sAPS%26C%20Garrison%20Academy%20Kharian%20Cantt%20Campus!5e0!3m2!1sen!2s!4v1787220416663!5m2!1sen!2s"
-                    style={{ border: '0', height: '100%', width: '100%' }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                  ></iframe>
-                </div>
-              </div>
+              ) : null}
+              {c.mapLinkUrl ? (
+                <p style={{ marginTop: 10 }}>
+                  <a href={c.mapLinkUrl} target="_blank" rel="noopener noreferrer" className="dl-btn">Open in Google Maps</a>
+                </p>
+              ) : null}
             </div>
           }
         >
-          <div className="form">
-            <div className="frow">
-              <div className="field">
-                <label>
-                  Your name <span className="req">*</span>
-                </label>
-                <input placeholder="Full name" />
-              </div>
-              <div className="field">
-                <label>
-                  Contact <span className="req">*</span>
-                </label>
-                <input placeholder="Phone or email" />
-              </div>
-            </div>
-            <div className="field">
-              <label>Subject</label>
-              <select>
-                <option>General enquiry</option>
-                <option>Admissions</option>
-                <option>Accounts / fee</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div className="field">
-              <label>
-                Message <span className="req">*</span>
-              </label>
-              <textarea placeholder="How can we help?" />
-            </div>
-            <ToastButton
-              msg="Thank you — your message has been sent."
-              className="btn-submit"
-            >
-              Send message
-            </ToastButton>
-          </div>
+          <PublicForm formKey="contact" config={form} />
         </Editorial>
       </section>
     </>

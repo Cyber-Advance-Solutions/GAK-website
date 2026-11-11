@@ -13,20 +13,22 @@ export default function MessagePortrait({
   leader,
   cta = { label: "About the school", href: "/about" },
 }: Props) {
-  const lines = leader.heading.split("\n");
+  const lines = (leader.heading || "").split("\n").filter(Boolean);
 
   return (
     <div className="msgport">
       <div className="msgport-media">
         <div className="msgport-frame">
-          <Image
-            src={leader.image}
-            alt={leader.imageAlt}
-            fill
-            sizes="(max-width: 840px) 100vw, 40vw"
-            priority
-            className="msgport-img"
-          />
+          {leader.image && (
+            <Image
+              src={leader.image}
+              alt={leader.imageAlt}
+              fill
+              sizes="(max-width: 840px) 100vw, 40vw"
+              priority
+              className="msgport-img"
+            />
+          )}
         </div>
         <div className="msgport-plate">
           <Flame className="msgport-mark" size={26} strokeWidth={1.75} />
@@ -38,17 +40,19 @@ export default function MessagePortrait({
       </div>
 
       <div className="msgport-body">
-        <span className="eyebrow">{leader.eyebrow}</span>
-        <h2 className="h-md msgport-heading">
-          {lines.map((line, i) => (
-            <span key={line}>
-              {line}
-              {i < lines.length - 1 && <br />}
-            </span>
-          ))}
-        </h2>
-        {leader.message.map((para) => (
-          <p className="msgport-para" key={para.slice(0, 48)}>
+        {leader.eyebrow && <span className="eyebrow">{leader.eyebrow}</span>}
+        {lines.length > 0 && (
+          <h2 className="h-md msgport-heading">
+            {lines.map((line, i) => (
+              <span key={i}>
+                {line}
+                {i < lines.length - 1 && <br />}
+              </span>
+            ))}
+          </h2>
+        )}
+        {leader.message.map((para, i) => (
+          <p className="msgport-para" key={i}>
             {para}
           </p>
         ))}

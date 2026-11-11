@@ -1,8 +1,10 @@
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import { BANNER } from "@/lib/images";
+import { api } from "@/lib/api";
 
 export const metadata = { title: "Test Schedule" };
+export const dynamic = "force-dynamic";
 
 const DATES: [string, string, string, string][] = [
   ["15", "FEB", "Prep – V entry test", "8:30 AM · Main hall"],
@@ -10,11 +12,13 @@ const DATES: [string, string, string, string][] = [
   ["20", "FEB", "IX & XI entry test", "9:00 AM · Examination hall"],
 ];
 
-export default function SchedulePage() {
+export default async function SchedulePage() {
+  // Session label comes from the admin (Admissions settings); the content below has no backend field yet
+  const adm = await api<{ session?: string } | null>("/admissions/settings", null);
   return (
     <>
       <PageHero
-        eyebrow="Session 2026"
+        eyebrow={adm?.session ? `Session ${adm.session}` : ""}
         title="Test Schedule"
         intro="Check the admission test schedule."
         image={BANNER.admissions}

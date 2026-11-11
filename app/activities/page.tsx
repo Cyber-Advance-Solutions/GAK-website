@@ -3,45 +3,66 @@ import { ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import { BANNER } from "@/lib/images";
-import { ACTIVITIES_SUBPAGES } from "@/lib/activities-data";
+import { getActivitiesSettings } from "@/lib/mappers/activities";
 
 export const metadata = { title: "Activities" };
+export const dynamic = "force-dynamic";
 
-export default function ActivitiesPage() {
+export default async function ActivitiesPage() {
+  const s = await getActivitiesSettings();
   return (
     <>
       <PageHero
-        eyebrow="Beyond the classroom"
-        title="Activities"
-        intro="A full calendar of academic, sporting and co-curricular life at Garrison Academy Kharian Cantt."
+        eyebrow={s.eyebrow || ""}
+        title={s.heading || "Activities"}
+        intro={s.introText}
         image={BANNER.activities}
         crumb={[{ label: "Activities" }]}
       />
 
-      <section className="sec">
-        <div className="wrap">
-          <SectionHead eyebrow="Get involved" title="Life beyond lessons" />
-          <div className="linkcards">
-            {ACTIVITIES_SUBPAGES.map((p) => (
-              <Link className="linkcard" href={`/activities/${p.slug}`} key={p.slug}>
-                <div><h4>{p.label}</h4><p>{p.desc}</p></div>
-                <ArrowRight size={16} style={{ marginLeft: "auto", flexShrink: 0 }} />
-              </Link>
-            ))}
+      {s.categories.length > 0 && (
+        <section className="sec">
+          <div className="wrap">
+            <SectionHead eyebrow="Get involved" title={s.categoriesHeading || ""} />
+            <div className="linkcards">
+              {s.categories.map((p) => (
+                <Link className="linkcard" href={p.link || `/activities/${p.key}`} key={p.key}>
+                  <div><h4>{p.title}</h4>{p.description ? <p>{p.description}</p> : null}</div>
+                  <ArrowRight size={16} style={{ marginLeft: "auto", flexShrink: 0 }} />
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      <section className="sec" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <SectionHead eyebrow="Campus life" title="Moments from the year" />
-          <div className="gallery">
-            <div className="ga big" style={{ backgroundImage: "url(/hero3.jpg)" }}><span className="cap">Sports gala</span></div>
-            <div className="ga" style={{ backgroundImage: "url(/hero1.png)" }}><span className="cap">Science fair</span></div>
-            <div className="ga" style={{ backgroundImage: "url(/hero2.jpg)" }}><span className="cap">Prize day</span></div>
+      {s.moments.length > 0 && (
+        <section className="sec" style={{ paddingTop: 0 }}>
+          <div className="wrap">
+            <SectionHead eyebrow={s.momentsEyebrow || ""} title={s.momentsHeading || ""} intro={s.momentsSubtext || undefined} />
+            <div className="gallery">
+              {s.moments.map((m, i) => {
+                const tile = (
+                  <div
+                    className={i === 0 ? "ga big" : "ga"}
+                    style={m.imageUrl ? { backgroundImage: `url("${m.imageUrl}")` } : undefined}
+                    title={m.caption || undefined}
+                  >
+                    <span className="cap">{m.title}</span>
+                  </div>
+                );
+                return m.link ? (
+                  <Link key={`${m.title}-${i}`} href={m.link} style={{ display: "contents" }}>
+                    {tile}
+                  </Link>
+                ) : (
+                  <div key={`${m.title}-${i}`} style={{ display: "contents" }}>{tile}</div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 }

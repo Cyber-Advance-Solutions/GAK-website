@@ -2,8 +2,10 @@ import { PenLine, ClipboardList, Users, CheckCircle2 } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import { BANNER } from "@/lib/images";
+import { api } from "@/lib/api";
 
 export const metadata = { title: "Admission Process" };
+export const dynamic = "force-dynamic";
 
 const STEPS: [React.ReactNode, string, string, string][] = [
   [<PenLine key="1" size={24} strokeWidth={1.8} />, "Step 01", "Submit application", "Apply online or download and submit the registration form."],
@@ -12,11 +14,13 @@ const STEPS: [React.ReactNode, string, string, string][] = [
   [<CheckCircle2 key="4" size={24} strokeWidth={1.8} />, "Step 04", "Enrolment", "Confirm the seat with fee submission and documentation."],
 ];
 
-export default function ProcessPage() {
+export default async function ProcessPage() {
+  // Session label comes from the admin (Admissions settings); the content below has no backend field yet
+  const adm = await api<{ session?: string } | null>("/admissions/settings", null);
   return (
     <>
       <PageHero
-        eyebrow="Session 2026"
+        eyebrow={adm?.session ? `Session ${adm.session}` : ""}
         title="Admission Process"
         intro="Learn the step-by-step process of getting admission in GAK."
         image={BANNER.admissions}

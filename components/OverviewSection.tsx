@@ -1,10 +1,33 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { Fragment, useState, useEffect, useRef } from "react";
 import { Play, X } from "lucide-react";
 
-export default function OverviewSection() {
+/** Site-settings key "homepageVideo" (edited in the admin panel under Homepage > Video Overview) */
+export interface HomepageVideo {
+  isVisible?: boolean;
+  videoUrl?: string;
+  videoTitle?: string;
+  thumbnailUrl?: string;
+  badgeTop?: string;
+  badgeMain?: string;
+  badgeLabel?: string;
+  eyebrow?: string;
+  headline?: string;
+  headlineAccent?: string;
+  description?: string;
+  primaryButton?: { label?: string; href?: string };
+  secondaryLink?: { label?: string; href?: string };
+}
+
+/** Homepage video overview block. `video.thumbnailUrl` must already be passed through assetUrl(). */
+export default function OverviewSection({ video }: { video?: HomepageVideo | null }) {
+  const v: HomepageVideo = video || {};
+  const lines = (v.headline || "").split("\n");
+  const embed = v.videoUrl ? `${v.videoUrl}${v.videoUrl.includes("?") ? "&" : "?"}autoplay=1` : "";
+  const hidden = !video || video.isVisible === false;
+
   const [modalOpen, setModalOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -25,13 +48,15 @@ export default function OverviewSection() {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [hidden]);
 
   /* lock body scroll when modal is open */
   useEffect(() => {
     document.body.style.overflow = modalOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [modalOpen]);
+
+  if (hidden) return null;
 
   return (
     <>
@@ -41,9 +66,13 @@ export default function OverviewSection() {
           {/* ── left: video thumbnail ─────────────────────── */}
           <div className="ov-media">
             <div className="ov-thumb" onClick={() => setModalOpen(true)} role="button" tabIndex={0}
-              aria-label="Play school overview video"
+              aria-label={`Play ${v.videoTitle || "school overview video"}`}
               onKeyDown={(e) => e.key === "Enter" && setModalOpen(true)}>
-              <img src="/page-banner.png" alt="Garrison Academy Kharian Cantt campus" className="ov-thumb-img" />
+              {v.thumbnailUrl ? (
+                <img src={v.thumbnailUrl} alt={v.videoTitle || "School overview video"} className="ov-thumb-img" />
+              ) : (
+                <div className="ov-thumb-img" style={{ background: "#0d3b38", aspectRatio: "16/10" }} />
+              )}
               {/* subtle dark overlay */}
               <div className="ov-thumb-overlay" />
               {/* play button */}
@@ -55,65 +84,52 @@ export default function OverviewSection() {
               <div className="ov-ring ov-ring-2" />
             </div>
             {/* floating badge */}
-            <div className="ov-badge">
-              <span className="ov-badge-year">Est.</span>
-              <span className="ov-badge-num">1970's</span>
-              <span className="ov-badge-label">Years of Excellence</span>
-            </div>
+            {(v.badgeTop || v.badgeMain || v.badgeLabel) && (
+              <div className="ov-badge">
+                <span className="ov-badge-year">{v.badgeTop}</span>
+                <span className="ov-badge-num">{v.badgeMain}</span>
+                <span className="ov-badge-label">{v.badgeLabel}</span>
+              </div>
+            )}
           </div>
 
           {/* ── right: text content ───────────────────────── */}
           <div className="ov-body">
-            <span className="eyebrow">Army Public School &amp; College</span>
+            {v.eyebrow && <span className="eyebrow">{v.eyebrow}</span>}
             <h2 className="h-lg ov-headline">
-              A calm place to learn,<br />
-              grow and <span className="ov-accent">lead.</span>
+              {lines.map((l, i) => (
+                <Fragment key={i}>{l}{i < lines.length - 1 && <br />}</Fragment>
+              ))}
+              {v.headlineAccent && <> <span className="ov-accent">{v.headlineAccent}</span></>}
             </h2>
-            <p className="ov-desc">
-              Educating Kharian Cantt since 1970's — disciplined, well-rounded
-              learning from Pre-School through the FBISE and Cambridge streams.
-              We nurture every child with genuine care, strong values, and a
-              commitment to academic excellence.
-            </p>
-            {/* <div className="ov-stats">
-              <div className="ov-stat">
-                <div className="ov-stat-n">3,200<span>+</span></div>
-                <div className="ov-stat-l">Students enrolled</div>
-              </div>
-              <div className="ov-stat-divider" />
-              <div className="ov-stat">
-                <div className="ov-stat-n">2</div>
-                <div className="ov-stat-l">Academic streams</div>
-              </div>
-              <div className="ov-stat-divider" />
-              <div className="ov-stat">
-                <div className="ov-stat-n">98<span>%</span></div>
-                <div className="ov-stat-l">FBISE pass rate</div>
-              </div>
-            </div> */}
+            {v.description && <p className="ov-desc">{v.description}</p>}
             <div className="ov-actions">
-              <Link className="btn-primary" href="/admissions">Apply for Admission</Link>
-              <Link className="ov-link-arrow" href="/about">
-                Explore the campus <span aria-hidden="true">→</span>
-              </Link>
+              {v.primaryButton?.label && (
+                <Link className="btn-primary" href={v.primaryButton.href || "#"}>{v.primaryButton.label}</Link>
+              )}
+              {v.secondaryLink?.label && (
+                <Link className="ov-link-arrow" href={v.secondaryLink.href || "#"}>
+                  {v.secondaryLink.label} <span aria-hidden="true">→</span>
+                </Link>
+              )}
             </div>
           </div>
         </div>
       </section>
 
       {/* ── video modal ───────────────────────────────────── */}
-      {modalOpen && (
-        <div className="vid-modal-scrim" onClick={() => setModalOpen(false)} role="dialog" aria-modal="true" aria-label="School overview video">
+      {modalOpen && embed && (
+        <div className="vid-modal-scrim" onClick={() => setModalOpen(false)} role="dialog" aria-modal="true" aria-label={v.videoTitle || "School overview video"}>
           <div className="vid-modal-box" onClick={(e) => e.stopPropagation()}>
             <button className="vid-modal-close" onClick={() => setModalOpen(false)} aria-label="Close video">
               <X size={22} />
             </button>
             <div className="vid-modal-player">
-              <iframe 
-                src="https://www.youtube.com/embed/BDFgiFXhB5M?si=KlVRAmdlJ48U4JCM&autoplay=1" 
-                title="School overview video" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowFullScreen 
+              <iframe
+                src={embed}
+                title={v.videoTitle || "School overview video"}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
               />
             </div>
           </div>

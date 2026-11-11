@@ -4,10 +4,26 @@ import { useState, useEffect, useRef } from "react";
 import { MessageSquare, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Chatbot from "@/components/Chatbot";
+import { API_URL } from "@/lib/api";
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const widgetRef = useRef<HTMLDivElement>(null);
+  // WhatsApp link comes from the admin (Contact page > WhatsApp URL)
+  const [whatsappUrl, setWhatsappUrl] = useState("");
+
+  useEffect(() => {
+    let alive = true;
+    fetch(`${API_URL}/site-settings/contact`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (alive && j?.data?.whatsappUrl) setWhatsappUrl(String(j.data.whatsappUrl));
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   // Close when clicking outside
   useEffect(() => {
@@ -41,8 +57,9 @@ export default function ChatWidget() {
       
       {!isOpen && (
         <div className="">
+          {whatsappUrl ? (
           <a
-            href="https://wa.me/923304250111"
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="w-14 h-14 mb-2 bg-[#25D366] hover:bg-[#20b858] text-white rounded-full flex items-center justify-center shadow-[0_8px_28px_rgba(37,211,102,0.25)] transition-transform hover:-translate-y-1"
@@ -50,6 +67,7 @@ export default function ChatWidget() {
           >
             <FaWhatsapp size={32} />
           </a>
+          ) : null}
           <button
             onClick={() => setIsOpen(true)}
             className="w-14 h-14 bg-[#15716e] hover:bg-[#115e5c] text-white rounded-full flex items-center justify-center shadow-[0_8px_28px_rgba(10,43,42,0.15)] transition-transform hover:-translate-y-1"

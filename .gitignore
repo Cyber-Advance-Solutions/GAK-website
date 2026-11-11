@@ -9,3 +9,8 @@ next-env.d.ts
 .vercel
 /.turbo
 config.bat
+
+# Local environment files (use .env.example as the template)
+.env
+.env.local
+.env.*.local

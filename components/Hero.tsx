@@ -1,26 +1,6 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
 
-const SLIDES = [
-  "/hero1.png",
-  "/hero2.png",
-  "/hero3.png",
-  "/hero4.png",
-  "/hero5.png",
-  "/hero6.png",
-  "/hero7.png",
-  "/hero8.png",
-  // "/hero9.png",
-  "/hero10.png",
-  "/hero11.png",
-  // "/hero12.jpg",
-  // "/hero13.jpg",
-  // "/hero14.jpg",
-  // "/hero15.jpg",
-  // "/hero16.jpg",
-  // "/hero17.jpg"
-];
-
 // Cinematic ken-burns motions assigned per slide
 const MOTIONS = [
   "kb-zoom-out",
@@ -40,21 +20,25 @@ const MOTIONS = [
 const SLIDE_DURATION = 6000; // ms visible
 const FADE_DURATION  = 200;  // ms crossfade
 
-export default function Hero() {
+/** `slides`: image URLs of the enabled homepage banners, in admin order (GET /banners). */
+export default function Hero({ slides = [] }: { slides?: string[] }) {
+  const SLIDES = slides;
+  const count = SLIDES.length;
   const [cur, setCur]   = useState(0);
   const [prev, setPrev] = useState<number | null>(null);
   const timerRef        = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const advance = useCallback((from: number) => {
-    const next = (from + 1) % SLIDES.length;
+    const next = (from + 1) % count;
     setPrev(from);
     setCur(next);
-  }, []);
+  }, [count]);
 
   useEffect(() => {
+    if (count < 2) return;
     timerRef.current = setTimeout(() => advance(cur), SLIDE_DURATION);
     return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-  }, [cur, advance]);
+  }, [cur, advance, count]);
 
   // Clean up prev after fade completes
   useEffect(() => {
@@ -69,6 +53,8 @@ export default function Hero() {
     setCur(idx);
   };
 
+  if (count === 0) return null;
+
   return (
     <section className="montage-hero">
       {/* ── image layers ── */}
@@ -78,13 +64,13 @@ export default function Hero() {
         if (!isActive && !isPrev) return null;
         return (
           <div
-            key={src}
+            key={`${k}-${src}`}
             className={`montage-layer ${isActive ? "montage-in" : "montage-out"}`}
             style={{ "--fade-dur": `${FADE_DURATION}ms` } as React.CSSProperties}
           >
             <div
               className={`montage-img ${MOTIONS[k % MOTIONS.length]}`}
-              style={{ backgroundImage: `url(${src})` }}
+              style={{ backgroundImage: `url("${src}")` }}
             />
           </div>
         );

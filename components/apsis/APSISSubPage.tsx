@@ -1,251 +1,106 @@
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, GraduationCap, Building2, Monitor } from "lucide-react";
+import { ArrowRight, Building2, Monitor } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { Editorial, FactCard } from "@/components/Editorial";
 import SectionHead from "@/components/SectionHead";
 import StaffCard from "@/components/StaffCard";
-import { SECTIONS } from "@/lib/data";
+import { FacultyByDepartment, PhotoGrid, StaffGrid, SubPagesCard } from "@/components/SectionParts";
+import type { Staff } from "@/lib/staff";
 import {
-  VICE_PRINCIPAL,
-  SECTION_HEAD,
-  IMG,
-  COORDINATORS,
-  DEPARTMENTS,
-  CLASSES,
-  ACTIVITIES,
-  ACHIEVEMENTS_HRCA_ENG_SCI,
-  ACHIEVEMENTS_ICATS_MATH,
-  ACHIEVEMENTS_HRCA_MATH_GK,
-  UPCOMING,
-  FACILITIES_CAMPUS,
-  FACILITIES_TECH,
-  APSIS_SUBPAGES,
-  type APSISSub,
-} from "@/lib/apsis-data";
+  facilityGroups,
+  facts,
+  groupBy,
+  subFacilityHeading,
+  supportedSubPages,
+  type SectionSubPage,
+  type SectionView,
+} from "@/lib/mappers/sections";
 
-function SectionBody({ slug }: { slug: string }) {
+/** Sub-page slugs this component can render (others listed in the backend stay unavailable) */
+export const APSIS_SUPPORTED = ["section-head", "coordinators", "faculty-by-department", "activities", "high-achievers", "facilities"];
+
+type Extra = {
+  faculty?: { name: string; teachers: (Staff & { isCoordinator?: boolean })[] }[];
+  coordinators?: Staff[];
+};
+
+function SectionBody({ slug, d, extra }: { slug: string; d: SectionView; extra: Extra }) {
   switch (slug) {
     case "section-head":
-      return (
-        <div className="staffgrid">
-          <StaffCard s={SECTION_HEAD} />
-        </div>
-      );
+      return <StaffGrid people={d.deputies} />;
 
     case "coordinators":
-      return (
-        <div className="staffgrid">
-          {COORDINATORS.map((s) => <StaffCard key={s.name} s={s} />)}
-        </div>
-      );
+      return <StaffGrid people={extra.coordinators ?? []} />;
 
     case "faculty-by-department":
-      return (
-        <>
-          {DEPARTMENTS.map((d) => (
-            <div className="deptblock" key={d.name} style={{ marginBottom: 34 }}>
-              <h3>{d.name}</h3>
-              <div className="staffgrid">
-                {d.teachers.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
-              </div>
-            </div>
-          ))}
-        </>
-      );
-
-    case "classes":
-      return (
-        <div className="classgrid">
-          {CLASSES.map((c) => (
-            <div className="figure" key={c.label}>
-              <div className="fimg" style={{ backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src={c.photo} alt={c.label} fill sizes="(max-width: 820px) 100vw, 33vw" />
-              </div>
-              <figcaption><GraduationCap size={15} strokeWidth={1.8} /> {c.label}</figcaption>
-            </div>
-          ))}
-        </div>
-      );
-
-    case "assessment":
-      return (
-        <div style={{ position: 'relative', width: '100%', height: 'auto', minHeight: '800px', borderRadius: 'var(--r)', overflow: 'hidden', marginBottom: '2rem' }}>
-          <Image src={IMG("assessment-full.png")} alt="Assessment" fill style={{ objectFit: 'contain' }} />
-        </div>
-      );
+      return <FacultyByDepartment departments={extra.faculty ?? []} />;
 
     case "activities":
-      return (
-        <div className="classgrid">
-          {ACTIVITIES.map((a) => (
-            <div className="figure" key={a.label + a.photo}>
-              <div className="fimg" style={{ backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src={a.photo} alt={a.label} fill sizes="(max-width: 820px) 100vw, 33vw" />
-              </div>
-              <figcaption style={{ fontSize: '0.9rem', lineHeight: '1.2' }}>{a.label}</figcaption>
-            </div>
-          ))}
-        </div>
-      );
+      return <PhotoGrid items={d.activities} centered />;
 
     case "high-achievers":
       return (
         <>
-          <div style={{ marginBottom: "3rem" }}>
-            <h4 style={{ textAlign: "center", marginBottom: "1rem" }}>Co-Curricular Activities<br />HRCA English & Science Quiz Competition (2025-26)</h4>
-            <div className="staffgrid">
-              {ACHIEVEMENTS_HRCA_ENG_SCI.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
+          {groupBy(d.achievers, (a) => a.competition).map((g, gi) => (
+            <div style={{ marginBottom: "3rem" }} key={g.name + gi}>
+              <h4 style={{ textAlign: "center", marginBottom: "1rem" }}>
+                {g.items[0].category ? (
+                  <>
+                    {g.items[0].category}
+                    <br />
+                  </>
+                ) : null}
+                {g.name}
+              </h4>
+              <div className="staffgrid">
+                {g.items.map((a, i) => (
+                  <StaffCard key={a.id + i} s={{ ...a, role: a.description }} />
+                ))}
+              </div>
             </div>
-          </div>
-
-          <div style={{ marginBottom: "3rem" }}>
-            <h4 style={{ textAlign: "center", marginBottom: "1rem" }}>ICATS Mathematics Contest 2025</h4>
-            <div className="staffgrid">
-              {ACHIEVEMENTS_ICATS_MATH.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
-            </div>
-          </div>
-
-          <div style={{ marginBottom: "3rem" }}>
-            <h4 style={{ textAlign: "center", marginBottom: "1rem" }}>HRCA Math & GK Quiz Competition 2025</h4>
-            <div className="staffgrid">
-              {ACHIEVEMENTS_HRCA_MATH_GK.map((s, i) => <StaffCard key={s.name + s.photo + i} s={s} />)}
-            </div>
-          </div>
+          ))}
         </>
       );
 
-    case "upcoming-events":
-      return (
-        <div className="tbl-wrap">
-          <table className="tbl">
-            <thead><tr><th>Sr#</th><th>DATE</th><th>EVENTS</th></tr></thead>
-            <tbody>
-              {UPCOMING.map(([date, ev], i) => (
-                <tr key={i}><td>{i + 1}</td><td>{date}</td><td>{ev}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      );
-
-    case "uniform":
-      return (
-        <div className="grid g2">
-          <div>
-            <div style={{ position: 'relative', width: '100%', aspectRatio: '4/5', backgroundColor: '#f9f9f9', borderRadius: 'var(--r)', overflow: 'hidden', marginBottom: '1rem' }}>
-              <Image src={IMG("girls-uniform.jpg")} alt="APS Cambridge Girls Uniform" fill style={{ objectFit: 'contain' }} />
-            </div>
-            <h4 style={{ textAlign: "center", color: 'var(--ink)' }}>APS Cambridge Girls Uniform</h4>
-          </div>
-          <div>
-            <div style={{ position: 'relative', width: '100%', aspectRatio: '4/5', backgroundColor: '#f9f9f9', borderRadius: 'var(--r)', overflow: 'hidden', marginBottom: '1rem' }}>
-              <Image src={IMG("boys-uniform.png")} alt="APS Cambridge Boys Uniform" fill style={{ objectFit: 'contain' }} />
-            </div>
-            <h4 style={{ textAlign: "center", color: 'var(--ink)' }}>APS Cambridge Boys Uniform</h4>
-          </div>
-        </div>
-      );
-
-    case "cambridge-results":
-      return (
-        <>
-          <div style={{ marginBottom: "2rem" }}>
-            <h3 style={{ textAlign: "center", marginBottom: "1.5rem", fontSize: "1.8rem", color: "var(--ink)", fontWeight: 700 }}>Session 2024 &ndash; 2025</h3>
-
-            <div className="tbl-wrap" style={{ marginBottom: "2rem" }}>
-              <table className="tbl" style={{ textAlign: "center" }}>
-                <thead>
-                  <tr>
-                    <th style={{ textAlign: "center" }}>A*</th>
-                    <th style={{ textAlign: "center" }}>A</th>
-                    <th style={{ textAlign: "center" }}>B</th>
-                    <th style={{ textAlign: "center" }}>C</th>
-                    <th style={{ textAlign: "center" }}>D</th>
-                    <th style={{ textAlign: "center" }}>E</th>
-                    <th style={{ textAlign: "center" }}>U</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>06</td>
-                    <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>09</td>
-                    <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>14</td>
-                    <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>07</td>
-                    <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>00</td>
-                    <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>00</td>
-                    <td style={{ fontSize: "1.2rem", fontWeight: 600 }}>00</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div className="prose" style={{ maxWidth: "650px", margin: "0 auto 3rem auto" }}>
-              <ul style={{ listStyleType: "square" }}>
-                <li style={{ display: "flex", justifyContent: "space-between" }}>
-                  <span>Students Appeared in <strong>CIEs May/ June, 2024 &ndash; 2025 Class OI:</strong></span>
-                  <span style={{ fontWeight: 600 }}>03</span>
-                </li>
-                <li style={{ display: "flex", justifyContent: "space-between" }}>
-                  <span>Students Appeared in <strong>CIEs May/ June, 2024 &ndash; 2025 Class OII:</strong></span>
-                  <span style={{ fontWeight: 600 }}>04</span>
-                </li>
-                <li style={{ display: "flex", justifyContent: "space-between" }}>
-                  <span>Students Appeared in <strong>CIEs May/ June, 2024 &ndash; 2025 Class OIII:</strong></span>
-                  <span style={{ fontWeight: 600 }}>04</span>
-                </li>
-                <li style={{ display: "flex", justifyContent: "space-between", marginTop: "1rem", borderTop: "1px solid var(--border)" }}>
-                  <span>Total Number of Students Appeared:</span>
-                  <span style={{ fontWeight: 600 }}>11</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div style={{ position: 'relative', width: '100%', height: 'auto', minHeight: '400px', borderRadius: 'var(--r)', overflow: 'hidden', marginBottom: '2rem' }}>
-            <Image src={IMG("result-diagram.png")} alt="Cambridge Results Diagram" fill style={{ objectFit: 'contain' }} />
-          </div>
-        </>
-      );
-
-    case "facilities":
+    case "facilities": {
+      const groups = facilityGroups(d);
+      const icons = [Building2, Monitor];
       return (
         <>
           <div className="grid g2">
-            <div>
-              <h3 style={{ marginBottom: 12, fontSize: "1.05rem", display: "flex", alignItems: "center", gap: 8 }}>
-                <Building2 size={18} strokeWidth={1.8} /> Campus & Infrastructure
-              </h3>
-              <div className="prose"><ul>{FACILITIES_CAMPUS.map((f) => <li key={f}>{f}</li>)}</ul></div>
-            </div>
-            <div>
-              <h3 style={{ marginBottom: 12, fontSize: "1.05rem", display: "flex", alignItems: "center", gap: 8 }}>
-                <Monitor size={18} strokeWidth={1.8} /> Technology & Learning
-              </h3>
-              <div className="prose"><ul>{FACILITIES_TECH.map((f) => <li key={f}>{f}</li>)}</ul></div>
-            </div>
+            {groups.map((g, gi) => {
+              const Icon = icons[gi % icons.length];
+              return (
+                <div key={g.name + gi}>
+                  <h3 style={{ marginBottom: 12, fontSize: "1.05rem", display: "flex", alignItems: "center", gap: 8 }}>
+                    <Icon size={18} strokeWidth={1.8} /> {subFacilityHeading(d, g.name, gi, ["Campus & Infrastructure", "Technology & Learning"])}
+                  </h3>
+                  <div className="prose"><ul>{g.items.map((f) => <li key={f.id}>{f.text}</li>)}</ul></div>
+                </div>
+              );
+            })}
           </div>
           <Link className="link-arrow" href="/admissions" style={{ marginTop: "2rem", display: "flex" }}>Apply for admission <ArrowRight size={16} /></Link>
         </>
       );
+    }
 
     default:
       return null;
   }
 }
 
-export default function APSISSubPage({ sub }: { sub: APSISSub }) {
-  const data = SECTIONS["apsis"];
-
+export default function APSISSubPage({ d, sub, extra = {} }: { d: SectionView; sub: SectionSubPage; extra?: Extra }) {
+  const labels = (d.extra.factLabels || {}) as { head?: string; deputyHead?: string };
   return (
     <>
       <PageHero
         eyebrow={sub.eyebrow}
         title={sub.label}
-        image={IMG("apsis-faculty.jpg")}
+        image={d.banner}
         crumb={[
           { label: "Quick Links", href: "/quick-links" },
-          { label: data.name, href: "/sections/apsis" },
+          { label: d.name, href: `/sections/${d.slug}` },
           { label: sub.label },
         ]}
       />
@@ -256,33 +111,19 @@ export default function APSISSubPage({ sub }: { sub: APSISSub }) {
             <>
               <FactCard
                 title="Section facts"
-                rows={[
-                  ["Vice Principal", VICE_PRINCIPAL.name],
-                  ["Section Head", SECTION_HEAD.name],
-                  ["Curriculum", "Cambridge Stream"],
-                ]}
+                rows={facts([
+                  [labels.head || "Vice Principal", d.head?.name ?? ""],
+                  [labels.deputyHead || "Section Head", d.deputyName],
+                  ["Curriculum", d.curriculum],
+                ])}
               />
-              <div className="factcard">
-                <h4>APSIS pages</h4>
-                <ul>
-                  {APSIS_SUBPAGES.map((p) => (
-                    <li key={p.slug} style={{ display: "block" }}>
-                      <Link
-                        href={`/sections/apsis/${p.slug}`}
-                        style={{ color: p.slug === sub.slug ? "var(--ink)" : "var(--green-700)", fontWeight: 600 }}
-                      >
-                        {p.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <SubPagesCard title={`${d.name} pages`} base={`/sections/${d.slug}`} pages={supportedSubPages(d, APSIS_SUPPORTED)} current={sub.slug} />
             </>
           }
         >
           <section>
             <SectionHead eyebrow={sub.eyebrow} title={sub.label} />
-            <SectionBody slug={sub.slug} />
+            <SectionBody slug={sub.slug} d={d} extra={extra} />
           </section>
         </Editorial>
       </section>

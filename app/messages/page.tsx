@@ -4,11 +4,13 @@ import { ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import { BANNER } from "@/lib/images";
-import { MESSAGES } from "@/lib/messages";
+import { getLeaders } from "@/lib/mappers/messages";
 
 export const metadata = { title: "Messages" };
+export const dynamic = "force-dynamic";
 
-export default function MessagesPage() {
+export default async function MessagesPage() {
+  const leaders = await getLeaders();
   return (
     <>
       <PageHero
@@ -25,29 +27,35 @@ export default function MessagesPage() {
             title="Words from our leadership"
             intro="Read each message in full — Chairman, Vice Chairman, and Principal."
           />
-          <div className="msglinks">
-            {MESSAGES.map((m) => (
-              <Link className="msglink" href={m.href} key={m.slug}>
-                <div className="msglink-media">
-                  <Image
-                    src={m.image}
-                    alt={m.imageAlt}
-                    fill
-                    sizes="(max-width: 760px) 100vw, 33vw"
-                    className="msglink-img"
-                  />
-                </div>
-                <div className="msglink-body">
-                  <span className="eyebrow">{m.eyebrow}</span>
-                  <h3 className="h-md">{m.title}</h3>
-                  <p>{m.name} · {m.role}</p>
-                  <span className="more">
-                    Read message <ArrowRight size={15} />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {leaders.length > 0 ? (
+            <div className="msglinks">
+              {leaders.map((m) => (
+                <Link className="msglink" href={m.href} key={m.id}>
+                  <div className="msglink-media">
+                    {m.image && (
+                      <Image
+                        src={m.image}
+                        alt={m.imageAlt}
+                        fill
+                        sizes="(max-width: 760px) 100vw, 33vw"
+                        className="msglink-img"
+                      />
+                    )}
+                  </div>
+                  <div className="msglink-body">
+                    {m.eyebrow && <span className="eyebrow">{m.eyebrow}</span>}
+                    <h3 className="h-md">{m.title}</h3>
+                    <p>{[m.name, m.role].filter(Boolean).join(" · ")}</p>
+                    <span className="more">
+                      Read message <ArrowRight size={15} />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p>No messages have been published yet.</p>
+          )}
         </div>
       </section>
     </>

@@ -1,8 +1,10 @@
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import { BANNER } from "@/lib/images";
+import { api } from "@/lib/api";
 
 export const metadata = { title: "Admission Criteria" };
+export const dynamic = "force-dynamic";
 
 const CRITERIA: [string, string, string][] = [
   ["Board classes (IX–XII)", "Min. 70% in previous result + entry test & interview", "APSACS / APSIS"],
@@ -10,11 +12,13 @@ const CRITERIA: [string, string, string][] = [
   ["Pre-School", "Interaction only — no written test", "Foundation"],
 ];
 
-export default function CriteriaPage() {
+export default async function CriteriaPage() {
+  // Session label comes from the admin (Admissions settings); the content below has no backend field yet
+  const adm = await api<{ session?: string } | null>("/admissions/settings", null);
   return (
     <>
       <PageHero
-        eyebrow="Session 2026"
+        eyebrow={adm?.session ? `Session ${adm.session}` : ""}
         title="Admission Criteria"
         intro="Review the eligibility criteria for admission."
         image={BANNER.admissions}

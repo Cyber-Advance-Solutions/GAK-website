@@ -1,20 +1,20 @@
 import { notFound } from "next/navigation";
-import SeniorBoysSubPage from "@/components/senior-boys/SeniorBoysSubPage";
-import { SENIOR_BOYS_SUBPAGES } from "@/lib/senior-boys-data";
+import SeniorBoysSubPage, { SENIOR_BOYS_SUPPORTED } from "@/components/senior-boys/SeniorBoysSubPage";
+import { findSubPage, getSection, loadStaffExtras } from "@/lib/mappers/sections";
 
-export function generateStaticParams() {
-  return SENIOR_BOYS_SUBPAGES.map((p) => ({ sub: p.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ sub: string }> }) {
   const { sub } = await params;
-  const data = SENIOR_BOYS_SUBPAGES.find((p) => p.slug === sub);
-  return { title: data ? `${data.label} — Senior Boys Section` : "Senior Boys Section" };
+  const d = await getSection("senior-boys");
+  const p = findSubPage(d, sub, SENIOR_BOYS_SUPPORTED);
+  return { title: d && p ? `${p.label} — ${d.name}` : "Senior Boys Section" };
 }
 
-export default async function SeniorBoysSubRoute({ params }: { params: Promise<{ sub: string }> }) {
+export default async function SectionSubRoute({ params }: { params: Promise<{ sub: string }> }) {
   const { sub } = await params;
-  const data = SENIOR_BOYS_SUBPAGES.find((p) => p.slug === sub);
-  if (!data) notFound();
-  return <SeniorBoysSubPage sub={data} />;
+  const d = await getSection("senior-boys");
+  const p = findSubPage(d, sub, SENIOR_BOYS_SUPPORTED);
+  if (!d || !p) notFound();
+  return <SeniorBoysSubPage d={d} sub={p} extra={await loadStaffExtras(d, p.slug)} />;
 }

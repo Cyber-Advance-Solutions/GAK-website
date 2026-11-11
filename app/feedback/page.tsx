@@ -2,57 +2,64 @@ import { ShieldCheck, EyeOff, MessageSquare } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import { Editorial } from "@/components/Editorial";
-import { ToastButton } from "@/components/Toast";
+import PublicForm from "@/components/PublicForm";
 import { BANNER } from "@/lib/images";
+import { api, asList } from "@/lib/api";
+import { getFormConfig } from "@/lib/mappers/careers";
 
 export const metadata = { title: "Feedback & Complaints" };
+export const dynamic = "force-dynamic";
 
-const ASSURANCE: [React.ReactNode, string, string][] = [
-  [<EyeOff key="a" size={20} strokeWidth={1.8} />, "Stay anonymous", "Sharing your name and contact is entirely optional."],
-  [<ShieldCheck key="b" size={20} strokeWidth={1.8} />, "Reviewed confidentially", "Every submission is read by the administration in confidence."],
-  [<MessageSquare key="c" size={20} strokeWidth={1.8} />, "We follow up", "Genuine complaints get a response where contact details are given."],
-];
+/** site-settings "feedbackPage" key (admin: Feedback page) */
+type FeedbackPageSettings = {
+  eyebrow?: string;
+  heading?: string;
+  description?: string;
+  handlingHeading?: string;
+  handlingPoints?: { title: string; description?: string }[];
+};
 
-export default function FeedbackPage() {
+const ICONS = [EyeOff, ShieldCheck, MessageSquare];
+
+export default async function FeedbackPage() {
+  const [page, form] = await Promise.all([
+    api<FeedbackPageSettings | null>("/site-settings/feedbackPage", null),
+    getFormConfig("feedback"),
+  ]);
+  const points = asList<{ title: string; description?: string }>(page?.handlingPoints);
+
   return (
     <>
       <PageHero
-        eyebrow="We're listening"
-        title="Feedback & complaints"
-        intro="Share suggestions or raise a concern — about teachers, administrative staff or anything else."
+        eyebrow={page?.eyebrow || ""}
+        title={page?.heading || "Feedback & complaints"}
+        intro={page?.description}
         image={BANNER.feedback}
         crumb={[{ label: "Feedback / Complaints" }]}
       />
       <section className="sec">
         <div className="wrap">
-          <SectionHead eyebrow="Your voice matters" title="Tell us what's on your mind" />
+          <SectionHead eyebrow="Your voice matters" title={form?.heading || "Tell us what's on your mind"} intro={form?.instructions || undefined} />
         </div>
         <Editorial
           rail={
-            <div className="factcard">
-              <h4>How we handle feedback</h4>
-              {ASSURANCE.map(([ic, t, d]) => (
-                <div className="inforow" key={t}>
-                  <div className="ir-ic">{ic}</div>
-                  <div><div className="ir-v">{t}</div><div className="f-meta" style={{ marginTop: 2 }}>{d}</div></div>
-                </div>
-              ))}
-            </div>
+            points.length > 0 ? (
+              <div className="factcard">
+                <h4>{page?.handlingHeading || "How we handle feedback"}</h4>
+                {points.map((p, i) => {
+                  const Ic = ICONS[i % ICONS.length];
+                  return (
+                    <div className="inforow" key={`${p.title}-${i}`}>
+                      <div className="ir-ic"><Ic size={20} strokeWidth={1.8} /></div>
+                      <div><div className="ir-v">{p.title}</div>{p.description ? <div className="f-meta" style={{ marginTop: 2 }}>{p.description}</div> : null}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : null
           }
         >
-          {/* the Feedback form to submit to: principal.gak@gmail.com */}
-          <div className="form">
-            <div className="frow">
-              <div className="field"><label>Your name</label><input placeholder="Optional — you may stay anonymous" /></div>
-              <div className="field"><label>Contact (optional)</label><input placeholder="Phone or email" /></div>
-            </div>
-            <div className="frow">
-              <div className="field"><label>Type <span className="req">*</span></label><select><option>Complaint</option><option>Feedback</option><option>Suggestion</option></select></div>
-              <div className="field"><label>Regarding <span className="req">*</span></label><select><option>Teachers</option><option>Administrative Staff</option><option>General</option></select></div>
-            </div>
-            <div className="field"><label>Your message <span className="req">*</span></label><textarea placeholder="Describe your feedback or concern in detail…" /></div>
-            <ToastButton msg="Thank you — your submission has been received." className="btn-submit">Submit</ToastButton>
-          </div>
+          <PublicForm formKey="feedback" config={form} />
         </Editorial>
       </section>
     </>

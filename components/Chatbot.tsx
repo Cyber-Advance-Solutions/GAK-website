@@ -2,17 +2,49 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Bot, Send, MessageSquare } from "lucide-react";
-import { CHAT_QA } from "@/lib/data";
+import { API_URL } from "@/lib/api";
+import { buildFaqGroups, type FaqGroup } from "@/lib/mappers/faqs";
 
 type Msg = { from: "bot" | "user"; text: string };
 
-export default function Chatbot({ hideNote = false }: { hideNote?: boolean } = {}) {
-  const [level, setLevel] = useState<keyof typeof CHAT_QA>("general");
+/** Loads the FAQ library (admin: FAQs module) in the browser, for the floating widget */
+async function loadTopics(): Promise<FaqGroup[]> {
+  const get = (p: string) =>
+    fetch(`${API_URL}${p}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => (j && "data" in j ? j.data : null))
+      .catch(() => null);
+  const [faqs, settings] = await Promise.all([get("/faqs?published=true"), get("/site-settings/faqsPage")]);
+  return buildFaqGroups(faqs, settings);
+}
+
+/**
+ * Pre-defined Q&A assistant. Topics and questions are the FAQs managed in the admin panel.
+ * Pass `topics` from a server page; without it (e.g. the floating ChatWidget) they are fetched on mount.
+ */
+export default function Chatbot({ hideNote = false, topics: initialTopics }: { hideNote?: boolean; topics?: FaqGroup[] } = {}) {
+  const [topics, setTopics] = useState<FaqGroup[]>(initialTopics ?? []);
+  const [level, setLevel] = useState<string>(initialTopics?.[0]?.key ?? "");
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState<Msg[]>([
     { from: "bot", text: "Assalam-o-Alaikum! I'm the GAK Assistant. Pick a topic above and tap a question, or type your own below." },
   ]);
   const bodyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (initialTopics) return;
+    let alive = true;
+    loadTopics().then((t) => {
+      if (!alive) return;
+      setTopics(t);
+      setLevel((l) => (t.some((g) => g.key === l) ? l : t[0]?.key ?? ""));
+    });
+    return () => {
+      alive = false;
+    };
+  }, [initialTopics]);
+
+  const current = topics.find((t) => t.key === level) ?? topics[0];
 
   useEffect(() => {
     if (bodyRef.current) bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
@@ -42,13 +74,13 @@ export default function Chatbot({ hideNote = false }: { hideNote?: boolean } = {
         </div>
 
         <div className="lvtabs">
-          {(Object.keys(CHAT_QA) as (keyof typeof CHAT_QA)[]).map((k) => (
+          {topics.map((t) => (
             <button
-              key={k}
-              className={`lvtab ${level === k ? "active" : ""}`}
-              onClick={() => setLevel(k)}
+              key={t.key}
+              className={`lvtab ${current?.key === t.key ? "active" : ""}`}
+              onClick={() => setLevel(t.key)}
             >
-              {CHAT_QA[k].label}
+              {t.label}
             </button>
           ))}
         </div>
@@ -62,7 +94,7 @@ export default function Chatbot({ hideNote = false }: { hideNote?: boolean } = {
         </div>
 
         <div className="chips">
-          {CHAT_QA[level].qa.map(([q, a]) => (
+          {(current?.items ?? []).map(({ q, a }) => (
             <button key={q} className="chip" onClick={() => ask(q, a)}>
               {q}
             </button>

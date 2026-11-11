@@ -3,10 +3,37 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Phone, Mail, ChevronDown, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { NAV, type NavItem, type MegaEntry, type FlyEntry, type Leaf } from "@/lib/data";
+import { type NavItem, type MegaEntry, type FlyEntry, type Leaf } from "@/lib/data";
+import type { HeaderSettings, NavSetting } from "@/lib/mappers/home";
+
+/** Header CTA buttons are the navigation entries with these keys (admin: Layout settings > Header) */
+const CTA_KEYS = ["apply-job", "apply-admission"];
+
+/** site-settings header.navigation -> the NavItem shape this component renders */
+function toNav(items: NavSetting[] = []): NavItem[] {
+  const menu = items.filter((i) => i.isVisible !== false && !CTA_KEYS.includes(i.key));
+  return menu.map((item, idx): NavItem => {
+    if (item.children) {
+      const children = item.children.filter((c) => c.isVisible !== false && c.href);
+      return {
+        label: item.label,
+        fly: children.map((c) => ({ label: c.label, href: c.href as string })),
+        alignRight: idx >= Math.ceil(menu.length / 2),
+      };
+    }
+    return { label: item.label, href: item.href || "/" };
+  });
+}
+
+/** "Garrison Academy Kharian Cantt" -> ["Garrison Academy", "Kharian Cantt"] */
+function splitName(name: string): [string, string] {
+  const words = name.trim().split(/\s+/).filter(Boolean);
+  const cut = Math.ceil(words.length / 2);
+  return [words.slice(0, cut).join(" "), words.slice(cut).join(" ")];
+}
 
 type DropdownItem = MegaEntry | FlyEntry | Leaf;
 
@@ -32,7 +59,25 @@ const hasSubFly = (
 const isExternalHref = (href?: string) =>
   href ? /^https?:\/\//.test(href) : false;
 
-export default function Header() {
+/** `settings`: site-settings key "header" (logo, contacts, portals, navigation), loaded in app/layout.tsx */
+export default function Header({ settings }: { settings?: HeaderSettings | null }) {
+  const s = settings || {};
+  const NAV = toNav(s.navigation);
+  const ctas = (s.navigation || []).filter((i) => i.isVisible !== false && CTA_KEYS.includes(i.key) && i.href);
+  const logo = s.logoUrl || "";
+  const siteName = s.siteName || "";
+  const [nameTop, nameSub] = splitName(siteName);
+  const contactHref = s.contactHref || "/contact";
+  const portals = s.portals || {};
+  const portalLinks = [
+    { label: portals.teachersLabel, href: portals.teachersUrl },
+    { label: portals.studentsLabel, href: portals.studentsUrl },
+  ].filter((p): p is { label: string; href: string } => Boolean(p.label && p.href));
+  const contacts = [
+    ...(s.phones || []).map((text, i) => ({ key: `p${i}`, text, icon: i === 0 ? "phone" : "whatsapp" })),
+    ...(s.emails || []).map((text, i) => ({ key: `e${i}`, text, icon: "mail" })),
+  ];
+
   const pathname = usePathname();
   const [openMega, setOpenMega] = useState<number | null>(null);
   const [openFly, setOpenFly] = useState<string | null>(null);
@@ -47,35 +92,60 @@ export default function Header() {
     setDrawer(false);
   }, [pathname]);
 
+  // Desktop hover menus: close after a short delay instead of instantly, so the dropdown doesn't
+  // vanish while the cursor travels from the menu button to an item (re-entering cancels the close).
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const cancelClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = null;
+  };
+  const hoverOpen = (i: number) => {
+    if (window.innerWidth <= 1080) return;
+    cancelClose();
+    if (openMega !== i) {
+      setOpenFly(null);
+      setOpenSubFly(null);
+    }
+    setOpenMega(i);
+  };
+  const hoverClose = () => {
+    if (window.innerWidth <= 1080) return;
+    cancelClose();
+    closeTimer.current = setTimeout(() => {
+      setOpenMega(null);
+      setOpenFly(null);
+      setOpenSubFly(null);
+    }, 300);
+  };
+  useEffect(() => cancelClose, []);
+
   return (
     <>
       {/* utility strip */}
       <div className="util">
         <div className="wrap">
           <div className="util-left">
-            <Link className="u-hide" href="/contact">
-              <Phone size={14} strokeWidth={1.75} aria-hidden /> 053-9240263
-            </Link>
-            <span className="dot u-hide" />
-            <Link className="u-hide" href="/contact">
-              <FaWhatsapp size={14} strokeWidth={1.75} aria-hidden />{" "}
-              0330-4250111
-            </Link>
-            <span className="dot u-hide" />
-            <Link className="u-hide" href="/contact">
-              <Mail size={14} strokeWidth={1.75} aria-hidden /> gakhrn@gmail.com
-            </Link>
+            {contacts.map((c, i) => (
+              <Fragment key={c.key}>
+                {i > 0 && <span className="dot u-hide" />}
+                <Link className="u-hide" href={contactHref}>
+                  {c.icon === "phone" && <Phone size={14} strokeWidth={1.75} aria-hidden />}
+                  {c.icon === "whatsapp" && <FaWhatsapp size={14} strokeWidth={1.75} aria-hidden />}
+                  {c.icon === "mail" && <Mail size={14} strokeWidth={1.75} aria-hidden />}{" "}
+                  {c.text}
+                </Link>
+              </Fragment>
+            ))}
           </div>
           <div className="util-right">
-            <a href="https://apms.pk" target="_blank">
-              AIS Portals — Teachers
-            </a>
-            <span className="dot" />
-            <a href="https://student.apms.pk" target="_blank">
-              AIS Portals — Students
-            </a>
-            {/* <span className="dot" /> */}
-            {/* <Link href="/links">FBISE</Link> */}
+            {portalLinks.map((p, i) => (
+              <Fragment key={p.href}>
+                {i > 0 && <span className="dot" />}
+                <a href={p.href} target="_blank" rel="noopener noreferrer">
+                  {portals.label ? `${portals.label} — ${p.label}` : p.label}
+                </a>
+              </Fragment>
+            ))}
           </div>
         </div>
       </div>
@@ -84,15 +154,17 @@ export default function Header() {
       <header className="main">
         <div className="wrap nav">
           <Link className="brand" href="/">
-            <Image
-              src="/logo.png"
-              alt="APS&C GAK Campus Kharian Cantt logo"
-              width={56}
-              height={56}
-            />
+            {logo && (
+              <Image
+                src={logo}
+                alt={`${siteName || "School"} logo`}
+                width={56}
+                height={56}
+              />
+            )}
             <div className="brand-txt">
-              <div className="nm">Garrison Academy</div>
-              <div className="sub">Kharian Cantt</div>
+              <div className="nm">{nameTop}</div>
+              {nameSub && <div className="sub">{nameSub}</div>}
             </div>
           </Link>
 
@@ -102,13 +174,8 @@ export default function Header() {
                 <div
                   key={item.label}
                   className={`navitem ${openMega === i ? "open" : ""}`}
-                  onMouseEnter={() =>
-                    window.innerWidth > 1080 && setOpenMega(i)
-                  }
-                  onMouseLeave={() =>
-                    window.innerWidth > 1080 &&
-                    (setOpenMega(null), setOpenFly(null), setOpenSubFly(null))
-                  }
+                  onMouseEnter={() => hoverOpen(i)}
+                  onMouseLeave={hoverClose}
                 >
                   <button
                     onClick={() => setOpenMega(openMega === i ? null : i)}
@@ -237,15 +304,19 @@ export default function Header() {
             )}
           </nav>
 
-          <div className="header-ctas deskonly">
-            <Link className="cta-apply cta-job" href="/hr">
-              Apply for Job
-            </Link>
-
-            <Link className="cta-apply" href="/admissions">
-              Apply for Admission
-            </Link>
-          </div>
+          {ctas.length > 0 && (
+            <div className="header-ctas deskonly">
+              {ctas.map((c) => (
+                <Link
+                  key={c.key}
+                  className={`cta-apply${c.key === "apply-job" ? " cta-job" : ""}`}
+                  href={c.href as string}
+                >
+                  {c.label}
+                </Link>
+              ))}
+            </div>
+          )}
 
           <button
             className="burger"
@@ -272,16 +343,18 @@ export default function Header() {
             }}
           >
             <Link className="brand" href="/" onClick={() => setDrawer(false)}>
-              <Image
-                src="/logo.svg"
-                alt="APS&C GAK Campus Kharian Cantt logo"
-                width={42}
-                height={42}
-                style={{ width: 42, height: 42 }}
-              />
+              {logo && (
+                <Image
+                  src={logo}
+                  alt={`${siteName || "School"} logo`}
+                  width={42}
+                  height={42}
+                  style={{ width: 42, height: 42 }}
+                />
+              )}
               <div className="brand-txt">
                 <div className="nm" style={{ fontSize: ".9rem" }}>
-                  Garrison Academy Kharian Cantt
+                  {siteName}
                 </div>
               </div>
             </Link>
@@ -305,22 +378,17 @@ export default function Header() {
               marginBottom: 16,
             }}
           >
-            <Link
-              className="cta-apply cta-job"
-              style={{ display: "block", textAlign: "center" }}
-              href="/hr"
-              onClick={() => setDrawer(false)}
-            >
-              Apply for Job
-            </Link>
-            <Link
-              className="cta-apply"
-              style={{ display: "block", textAlign: "center" }}
-              href="/admissions"
-              onClick={() => setDrawer(false)}
-            >
-              Apply for Admission
-            </Link>
+            {ctas.map((c) => (
+              <Link
+                key={c.key}
+                className={`cta-apply${c.key === "apply-job" ? " cta-job" : ""}`}
+                style={{ display: "block", textAlign: "center" }}
+                href={c.href as string}
+                onClick={() => setDrawer(false)}
+              >
+                {c.label}
+              </Link>
+            ))}
           </div>
           {NAV.map((item, i) =>
             hasDropdown(item) ? (

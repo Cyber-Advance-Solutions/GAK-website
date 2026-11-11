@@ -1,216 +1,81 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, Trophy, Building2, GraduationCap } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { Editorial, FactCard } from "@/components/Editorial";
 import SectionHead from "@/components/SectionHead";
-import StaffCard from "@/components/StaffCard";
+import { FacultyByDepartment, StaffGrid, SubPagesCard } from "@/components/SectionParts";
+import { NumberedCalendarTable } from "@/components/SectionTables";
+import type { Staff } from "@/lib/staff";
 import {
-  HEAD,
-  IMG,
-  DEPUTY_HEADS,
-  DEPARTMENTS,
-  CLASSES,
-  ACTIVITIES,
-  ACHIEVEMENTS,
-  UPCOMING,
-  FACILITIES_CAMPUS,
-  FACILITIES_ACADEMIC,
-  MIDDLE_BOYS_SUBPAGES,
-  type MiddleBoysSub,
-} from "@/lib/middle-boys-data";
+  facilityGroups,
+  facts,
+  subFacilityHeading,
+  supportedSubPages,
+  type SectionSubPage,
+  type SectionView,
+} from "@/lib/mappers/sections";
 
-function SectionBody({ slug }: { slug: string }) {
+export const MIDDLE_BOYS_SUPPORTED = ["deputy-section-heads", "faculty-by-department", "activities", "achievements", "facilities"];
+
+type Extra = { faculty?: { name: string; teachers: (Staff & { isCoordinator?: boolean })[] }[] };
+
+function SectionBody({ slug, d, extra }: { slug: string; d: SectionView; extra: Extra }) {
   switch (slug) {
     case "deputy-section-heads":
-      return (
-        <div className="staffgrid">
-          {DEPUTY_HEADS.map((s) => <StaffCard key={s.name} s={s} />)}
-        </div>
-      );
+      return <StaffGrid people={d.deputies} />;
 
     case "faculty-by-department":
-      return (
-        <>
-          {DEPARTMENTS.map((d) => {
-            const coordinators = d.teachers.filter((s) => s.role?.toLowerCase().includes("coordinator"));
-            const teachers = d.teachers.filter((s) => !s.role?.toLowerCase().includes("coordinator"));
-            return (
-              <div className="deptblock" key={d.name} style={{ marginBottom: 34 }}>
-                <h3>{d.name}</h3>
-                {coordinators.length > 0 && (
-                  <>
-                    <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-600)", marginBottom: 10, marginTop: 4 }}>Coordinator</div>
-                    <div className="staffgrid" style={{ marginBottom: teachers.length > 0 ? 18 : 0 }}>
-                      {coordinators.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
-                    </div>
-                  </>
-                )}
-                {teachers.length > 0 && (
-                  <>
-                    {coordinators.length > 0 && <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-600)", marginBottom: 10 }}>Teachers</div>}
-                    <div className="staffgrid">
-                      {teachers.map((s) => <StaffCard key={s.name + s.photo} s={s} />)}
-                    </div>
-                  </>
-                )}
-              </div>
-            );
-          })}
-        </>
-      );
-
-    case "classes":
-      return (
-        <div className="classgrid">
-          {CLASSES.map((c) => (
-            <div className="figure" key={c.label}>
-              <div className="fimg">
-                <Image src={c.photo} alt={c.label} fill sizes="(max-width: 820px) 100vw, 33vw" />
-              </div>
-              <figcaption><GraduationCap size={15} strokeWidth={1.8} /> {c.label}</figcaption>
-            </div>
-          ))}
-        </div>
-      );
-
-    case "exam-schedule":
-      return (
-        <div className="tbl-wrap">
-          <h3 style={{ textAlign: "center", marginBottom: "1rem", fontSize: "1.1rem", paddingTop: '15px' }}>
-            Middle School Assessment Framework
-            <span style={{ display: "block", fontWeight: 500, fontSize: "0.9rem", color: "var(--ink-soft)", marginTop: 4 }}>Class IV – VIII</span>
-          </h3>
-          <table className="tbl">
-            <thead>
-              <tr>
-                <th>Example</th>
-                <th style={{ textAlign: "center" }}>Continuous Assessment</th>
-                <th style={{ textAlign: "center" }}>Summative Assessment<br /><span style={{ fontWeight: 500, fontSize: "0.82rem" }}>(Centralized Assessments / Exams)</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style={{ fontWeight: 700 }}>Frequency</td>
-                <td>
-                  <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
-                    <li>Continuous</li>
-                    <li>End of unit Tests</li>
-                  </ul>
-                </td>
-                <td>
-                  <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
-                    <li>Once at the end of each Term</li>
-                  </ul>
-                </td>
-              </tr>
-              <tr>
-                <td style={{ fontWeight: 700 }}>Nature</td>
-                <td>
-                  <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
-                    <li>40% weightage in Term Exam (Cl IV–VII)</li>
-                    <li>20% weightage in Term Exam (Cl VIII)</li>
-                  </ul>
-                </td>
-                <td>
-                  <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
-                    <li>60% weightage in Term Exam (Cl IV–VII)</li>
-                    <li>80% weightage in Term Exam (Cl VIII)</li>
-                  </ul>
-                </td>
-              </tr>
-              <tr>
-                <td style={{ fontWeight: 700 }}>Tools</td>
-                <td>
-                  <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
-                    <li>Written Assessment</li>
-                    <li>Oral Assessment</li>
-                    <li>Skill-based Assessment (Appendix 4 of Annexure B)</li>
-                  </ul>
-                </td>
-                <td>
-                  <p style={{ margin: "0 0 6px" }}><strong>Cl IV–V:</strong> Centralized Assessments of <strong>all subjects</strong></p>
-                  <p style={{ margin: 0 }}><strong>Cl VI–VIII:</strong> Centralized exams for all subjects</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      );
+      return <FacultyByDepartment departments={extra.faculty ?? []} splitCoordinators />;
 
     case "activities":
-      return (
-        <div className="tbl-wrap">
-          <table className="tbl">
-            <thead><tr><th>Sr.</th><th>Date</th><th>Event</th></tr></thead>
-            <tbody>
-              {ACTIVITIES.map(([date, ev], i) => (
-                <tr key={i}><td>{i + 1}</td><td>{date}</td><td>{ev}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      );
+      return <NumberedCalendarTable items={d.activities} />;
 
     case "achievements":
       return (
         <ul className="achlist">
-          {ACHIEVEMENTS.map((a) => (
-            <li key={a}><Trophy size={18} strokeWidth={1.8} /> {a}</li>
+          {d.achievers.map((a, i) => (
+            <li key={a.id + i}><Trophy size={18} strokeWidth={1.8} /> {a.name}</li>
           ))}
         </ul>
       );
 
-    case "upcoming-events":
-      return (
-        <div className="tbl-wrap">
-          <table className="tbl">
-            <thead><tr><th>Sr.</th><th>Date</th><th>Event</th></tr></thead>
-            <tbody>
-              {UPCOMING.map(([date, ev], i) => (
-                <tr key={i}><td>{i + 1}</td><td>{date}</td><td>{ev}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      );
-
-    case "facilities":
+    case "facilities": {
+      const icons = [Building2, GraduationCap];
       return (
         <>
           <div className="grid g2">
-            <div>
-              <h3 style={{ marginBottom: 12, fontSize: "1.05rem", display: "flex", alignItems: "center", gap: 8 }}>
-                <Building2 size={18} strokeWidth={1.8} /> Campus & Infrastructure
-              </h3>
-              <div className="prose"><ul>{FACILITIES_CAMPUS.map((f) => <li key={f.slice(0, 24)}>{f}</li>)}</ul></div>
-            </div>
-            <div>
-              <h3 style={{ marginBottom: 12, fontSize: "1.05rem", display: "flex", alignItems: "center", gap: 8 }}>
-                <GraduationCap size={18} strokeWidth={1.8} /> Academic & Development Framework
-              </h3>
-              <div className="prose"><ul>{FACILITIES_ACADEMIC.map((f) => <li key={f.slice(0, 24)}>{f}</li>)}</ul></div>
-            </div>
+            {facilityGroups(d).map((g, gi) => {
+              const Icon = icons[gi % icons.length];
+              return (
+                <div key={g.name + gi}>
+                  <h3 style={{ marginBottom: 12, fontSize: "1.05rem", display: "flex", alignItems: "center", gap: 8 }}>
+                    <Icon size={18} strokeWidth={1.8} /> {subFacilityHeading(d, g.name, gi, ["Campus & Infrastructure", "Academic & Development Framework"])}
+                  </h3>
+                  <div className="prose"><ul>{g.items.map((f) => <li key={f.id}>{f.text}</li>)}</ul></div>
+                </div>
+              );
+            })}
           </div>
           <Link className="link-arrow" href="/admissions">Apply for admission <ArrowRight size={16} /></Link>
         </>
       );
+    }
 
     default:
       return null;
   }
 }
 
-export default function MiddleBoysSubPage({ sub }: { sub: MiddleBoysSub }) {
+export default function MiddleBoysSubPage({ d, sub, extra = {} }: { d: SectionView; sub: SectionSubPage; extra?: Extra }) {
   return (
     <>
       <PageHero
         eyebrow={sub.eyebrow}
         title={sub.label}
-        image={CLASSES[0].photo}
+        image={d.banner}
         crumb={[
           { label: "Quick Links", href: "/quick-links" },
-          { label: "Middle Boys Section", href: "/sections/middle-boys" },
+          { label: d.name, href: `/sections/${d.slug}` },
           { label: sub.label },
         ]}
       />
@@ -221,34 +86,20 @@ export default function MiddleBoysSubPage({ sub }: { sub: MiddleBoysSub }) {
             <>
               <FactCard
                 title="Section facts"
-                rows={[
-                  ["Section head", HEAD.name],
-                  ["Classes", "IV – VIII"],
-                  ["Stream", "APSACS · FBISE"],
-                  ["Timings", "7:30 AM – 1:30 PM"],
-                ]}
+                rows={facts([
+                  ["Section head", d.head?.name ?? ""],
+                  ["Classes", d.classesRange],
+                  ["Stream", d.stream],
+                  ["Timings", d.timings],
+                ])}
               />
-              <div className="factcard">
-                <h4>Middle Boys pages</h4>
-                <ul>
-                  {MIDDLE_BOYS_SUBPAGES.map((p) => (
-                    <li key={p.slug} style={{ display: "block" }}>
-                      <Link
-                        href={`/sections/middle-boys/${p.slug}`}
-                        style={{ color: p.slug === sub.slug ? "var(--ink)" : "var(--green-700)", fontWeight: 600 }}
-                      >
-                        {p.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <SubPagesCard title="Middle Boys pages" base={`/sections/${d.slug}`} pages={supportedSubPages(d, MIDDLE_BOYS_SUPPORTED)} current={sub.slug} />
             </>
           }
         >
           <section>
             <SectionHead eyebrow={sub.eyebrow} title={sub.label} />
-            <SectionBody slug={sub.slug} />
+            <SectionBody slug={sub.slug} d={d} extra={extra} />
           </section>
         </Editorial>
       </section>

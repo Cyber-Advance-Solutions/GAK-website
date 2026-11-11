@@ -2,19 +2,23 @@ import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import ActivityCard from "@/components/ActivityCard";
 import { BANNER } from "@/lib/images";
+import { getActivityCategory } from "@/lib/mappers/activities";
 import { ACADEMIC, SPORT_IMG } from "@/lib/activities-data";
 
 export const metadata = { title: "Academics — Activities" };
+export const dynamic = "force-dynamic";
 
-export default function AcademicActivitiesPage() {
+export default async function AcademicActivitiesPage() {
+  // Hero title + intro are edited in the admin (Activities page > categories)
+  const cat = await getActivityCategory("academics");
   return (
     <>
       <PageHero
         eyebrow="Get involved"
-        title="Academics"
-        intro="Olympiads, quizzes, debates and other academic contests."
-        image={BANNER.activities}
-        crumb={[{ label: "Activities", href: "/activities" }, { label: "Academics" }]}
+        title={cat?.title || "Academics"}
+        intro={cat?.description}
+        image={cat?.imageUrl || BANNER.activities}
+        crumb={[{ label: "Activities", href: "/activities" }, { label: cat?.title || "Academics" }]}
       />
 
       <section className="sec">

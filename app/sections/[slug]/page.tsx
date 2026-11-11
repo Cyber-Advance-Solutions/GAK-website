@@ -7,28 +7,30 @@ import APSISSection from "@/components/APSISSection";
 import SeniorGirlsSection from "@/components/SeniorGirlsSection";
 import SeniorBoysSection from "@/components/SeniorBoysSection";
 import JuniorSection from "@/components/JuniorSection";
-import { SECTIONS, type SectionKey } from "@/lib/data";
+import { getSection, type SectionView } from "@/lib/mappers/sections";
 
-export function generateStaticParams() {
-  return (Object.keys(SECTIONS) as SectionKey[]).map((slug) => ({ slug }));
-}
+export const dynamic = "force-dynamic";
+
+const PAGES: Record<string, (p: { d: SectionView }) => React.ReactNode> = {
+  "middle-boys": MiddleBoysSection,
+  "middle-girls": MiddleGirlsSection,
+  pre: PreSchoolSection,
+  junior: JuniorSection,
+  apsis: APSISSection,
+  "senior-girls": SeniorGirlsSection,
+  "senior-boys": SeniorBoysSection,
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const s = SECTIONS[slug as SectionKey];
-  return { title: s ? s.name : "Section" };
+  const d = await getSection(slug);
+  return { title: d ? d.name : "Section" };
 }
 
 export default async function SectionPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const data = SECTIONS[slug as SectionKey];
-  if (!data) notFound();
-  if (slug === "middle-boys") return <MiddleBoysSection />;
-  if (slug === "middle-girls") return <MiddleGirlsSection />;
-  if (slug === "pre") return <PreSchoolSection />;
-  if (slug === "junior") return <JuniorSection />;
-  if (slug === "apsis") return <APSISSection />;
-  if (slug === "senior-girls") return <SeniorGirlsSection />;
-  if (slug === "senior-boys") return <SeniorBoysSection />;
-  return <SectionDetail data={data} slug={slug as SectionKey} />;
+  const d = await getSection(slug);
+  if (!d) notFound();
+  const Page = PAGES[slug];
+  return Page ? <Page d={d} /> : <SectionDetail d={d} />;
 }

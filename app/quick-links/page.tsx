@@ -3,20 +3,28 @@ import { Baby, BookOpen, Layers, GraduationCap, Globe } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import { BANNER } from "@/lib/images";
+import { api, asList, byOrder, isLive } from "@/lib/api";
 
 export const metadata = { title: "Quick Links" };
+export const dynamic = "force-dynamic";
 
-const CARDS: [React.ReactNode, string, string, string][] = [
-  [<Baby key="a" size={22} strokeWidth={1.8} />, "Pre-School", "Foundation years — Nursery & Prep.", "/sections/pre"],
-  [<BookOpen key="b" size={22} strokeWidth={1.8} />, "Junior Section", "Classes I to V — building early academic discipline.", "/sections/junior"],
-  [<Layers key="c" size={22} strokeWidth={1.8} />, "Middle Girls Section", "Classes VI to VIII — girls' section.", "/sections/middle-girls"],
-  [<Layers key="d" size={22} strokeWidth={1.8} />, "Middle Boys Section", "Classes VI to VIII — boys' section.", "/sections/middle-boys"],
-  [<GraduationCap key="e" size={22} strokeWidth={1.8} />, "Senior Girls Section", "FBISE board classes IX–XII — girls' section.", "/sections/senior-girls"],
-  [<GraduationCap key="f" size={22} strokeWidth={1.8} />, "Senior Boys Section", "FBISE board classes IX–XII — boys' section.", "/sections/senior-boys"],
-  [<Globe key="g" size={22} strokeWidth={1.8} />, "APSIS", "Cambridge international stream.", "/sections/apsis"],
-];
+/** Backend section key -> website route slug (/sections/<slug>) */
+const SLUG: Record<string, string> = { "pre-school": "pre", "junior-section": "junior" };
 
-export default function QuickLinksPage() {
+function iconFor(key: string) {
+  if (key.startsWith("pre")) return <Baby size={22} strokeWidth={1.8} />;
+  if (key.startsWith("junior")) return <BookOpen size={22} strokeWidth={1.8} />;
+  if (key.startsWith("middle")) return <Layers size={22} strokeWidth={1.8} />;
+  if (key.startsWith("senior")) return <GraduationCap size={22} strokeWidth={1.8} />;
+  return <Globe size={22} strokeWidth={1.8} />;
+}
+
+export default async function QuickLinksPage() {
+  // Academic sections as edited in the admin panel (GET /sections)
+  const sections = asList<any>(await api<any>("/sections", []))
+    .filter((s) => isLive(s) && s.key && s.status !== "Inactive")
+    .sort(byOrder);
+
   return (
     <>
       <PageHero
@@ -30,12 +38,20 @@ export default function QuickLinksPage() {
         <div className="wrap">
           <SectionHead eyebrow="Browse" title="Explore each academic section" />
           <div className="linkcards">
-            {CARDS.map(([ic, t, d, href]) => (
-              <Link className="linkcard" href={href} key={href}>
-                <div className="lc-ic">{ic}</div>
-                <div><h4>{t}</h4><p>{d}</p></div>
-              </Link>
-            ))}
+            {sections.length === 0 && <p>No sections are published yet.</p>}
+            {sections.map((s) => {
+              const key = String(s.key);
+              const href = `/sections/${SLUG[key] || key}`;
+              return (
+                <Link className="linkcard" href={href} key={href}>
+                  <div className="lc-ic">{iconFor(key)}</div>
+                  <div>
+                    <h4>{s.name}</h4>
+                    <p>{s.tagline || s.gradeRange || ""}</p>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

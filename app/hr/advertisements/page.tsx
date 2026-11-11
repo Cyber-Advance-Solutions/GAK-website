@@ -1,10 +1,19 @@
 import PageHero from "@/components/PageHero";
 import SectionHead from "@/components/SectionHead";
 import { BANNER } from "@/lib/images";
+import { getVacancies, parseAdvertisement } from "@/lib/mappers/careers";
+import { getContactSettings } from "@/lib/mappers/contact";
 
 export const metadata = { title: "Job Advertisements" };
+export const dynamic = "force-dynamic";
 
-export default function AdvertisementsPage() {
+export default async function AdvertisementsPage() {
+  // Advertisements are published vacancies (admin: HR & Careers) whose description holds
+  // "Subjects: ..." and "- requirement" lines; plain openings without a description show only on /hr.
+  const [vacancies, contact] = await Promise.all([getVacancies(), getContactSettings()]);
+  const ads = vacancies.filter((v) => (v.description || "").trim()).map((v) => ({ v, ...parseAdvertisement(v) }));
+  const intro = ads.find((a) => a.intro)?.intro;
+  const email = contact.emails[0]?.value;
   return (
     <>
       <PageHero
@@ -18,8 +27,11 @@ export default function AdvertisementsPage() {
         <div className="wrap">
           <SectionHead eyebrow="We are Hiring" title="Teaching Staff Advertisements" />
           <div className="prose" style={{ marginBottom: 24, textAlign: "center" }}>
-            <p><strong>For Normal &amp; Cambridge Stream</strong><br/>Applications are invited from qualified, competent and experienced educators and professionals for the following positions:</p>
+            <p>{intro ? <><strong>{intro}</strong><br/></> : null}Applications are invited from qualified, competent and experienced educators and professionals for the following positions:</p>
           </div>
+          {ads.length === 0 ? (
+            <p style={{ color: "var(--ink-soft)", textAlign: "center", marginBottom: 32 }}>There are no advertisements at the moment.</p>
+          ) : (
           <div className="tbl-wrap" style={{ marginBottom: 32 }}>
             <table className="tbl">
               <thead>
@@ -30,100 +42,31 @@ export default function AdvertisementsPage() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><strong>Pre-School</strong></td>
-                  <td>Kindergarten Class</td>
-                  <td className="prose">
-                    <ul style={{ margin: 0 }}>
-                      <li>Qualification: BS English / MA English, Montessori or ECCE qualification preferred</li>
-                      <li>Experience: Minimum 2-3 years, preferably at KG/Preschool level</li>
-                      <li>Excellent English communication and strong early-years classroom-management skills</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Junior Section</strong></td>
-                  <td>Urdu</td>
-                  <td className="prose">
-                    <ul style={{ margin: 0 }}>
-                      <li>Qualification: BS/MA Urdu</li>
-                      <li>Experience: Minimum 2-3 years of relevant teaching experience</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Middle School</strong></td>
-                  <td className="prose">
-                    <ul style={{ margin: 0 }}>
-                      <li>History</li>
-                      <li>Geography</li>
-                      <li>English</li>
-                      <li>Science</li>
-                      <li>Mathematics</li>
-                    </ul>
-                  </td>
-                  <td className="prose">
-                    <ul style={{ margin: 0 }}>
-                      <li>Qualification: BS/MA/MSc in the relevant subject;</li>
-                      <li>Experience: Minimum 3 years of relevant teaching experience</li>
-                      <li>Strong subject knowledge, classroom-management and assessment skills</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Senior School &amp; College Section</strong></td>
-                  <td className="prose">
-                    <ul style={{ margin: 0 }}>
-                      <li>English</li>
-                      <li>Mathematics</li>
-                      <li>Chemistry</li>
-                      <li>Urdu</li>
-                      <li>Computer Science</li>
-                      <li>Physics</li>
-                      <li>Biology</li>
-                    </ul>
-                  </td>
-                  <td className="prose">
-                    <ul style={{ margin: 0 }}>
-                      <li>Qualification: BS/MA/MSc/MPhil in the relevant subject</li>
-                      <li>Experience: Minimum 5 years of teaching experience at SSC/HSSC level</li>
-                      <li>FBISE teaching and examination experience will be preferred</li>
-                      <li>Strong command of SLO-based teaching, assessment and examination preparation</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>APSIS - IGCSE / O Level</strong></td>
-                  <td className="prose">
-                    <ul style={{ margin: 0 }}>
-                      <li>Mathematics</li>
-                      <li>English</li>
-                      <li>Computer Science</li>
-                    </ul>
-                  </td>
-                  <td className="prose">
-                    <ul style={{ margin: 0 }}>
-                      <li>Experience: Minimum 5 years of relevant teaching experience, preferably at IGCSE/O Level</li>
-                      <li>Cambridge teaching and examination experience will be strongly preferred</li>
-                      <li>Sound understanding of Cambridge syllabus requirements, assessment objectives and examination techniques</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>School Psychologist</strong></td>
-                  <td>Psychologist</td>
-                  <td className="prose">
-                    <ul style={{ margin: 0 }}>
-                      <li>Qualification: BS/MSc/MPhil in Psychology, preferably with specialization in Educational, School or Clinical Psychology</li>
-                      <li>Experience: Minimum 3 years of relevant experience, preferably in a school/educational setting</li>
-                      <li>Experience in student counselling, psychological assessment, behavioural support, career guidance and parent/teacher consultation will be preferred</li>
-                      <li>Excellent interpersonal, communication and professional confidentiality skills</li>
-                    </ul>
-                  </td>
-                </tr>
+                {ads.map(({ v, subjects, requirements }) => (
+                  <tr key={v.id}>
+                    <td><strong>{v.department || v.title}</strong></td>
+                    {subjects.length > 1 ? (
+                      <td className="prose">
+                        <ul style={{ margin: 0 }}>
+                          {subjects.map((x) => <li key={x}>{x}</li>)}
+                        </ul>
+                      </td>
+                    ) : (
+                      <td>{subjects[0] || v.title}</td>
+                    )}
+                    <td className="prose">
+                      {requirements.length > 0 ? (
+                        <ul style={{ margin: 0 }}>
+                          {requirements.map((r) => <li key={r}>{r}</li>)}
+                        </ul>
+                      ) : null}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
+          )}
 
           <div className="grid g2">
             <div className="card prose">
@@ -140,12 +83,16 @@ export default function AdvertisementsPage() {
             <div className="card prose">
               <h3 style={{ marginTop: 0 }}>How to Apply</h3>
               <ul>
-                <li>Interested candidates should submit their updated CV along with copies of relevant academic and experience certificates via email <strong>gakhrn@gmail.com</strong></li>
+                <li>Interested candidates should submit their updated CV along with copies of relevant academic and experience certificates via email <strong>{email}</strong></li>
                 <li>Only <strong>Short-Listed</strong> candidates will be contacted</li>
               </ul>
               <div style={{ marginTop: 24, padding: 16, background: "var(--green-tint)", borderRadius: 8 }}>
                 <strong style={{ color: "var(--green-900)" }}>Contact No:</strong>
-                <p style={{ margin: 0, marginTop: 4 }}>Landline: 053-9240263 &nbsp;|&nbsp; WhatsApp: 0330-4250111</p>
+                <p style={{ margin: 0, marginTop: 4 }}>
+                  {contact.phones.map((p, i) => (
+                    <span key={p.value}>{i > 0 ? <>&nbsp;|&nbsp;</> : null}{p.label ? `${p.label}: ` : ""}{p.value}</span>
+                  ))}
+                </p>
               </div>
             </div>
           </div>

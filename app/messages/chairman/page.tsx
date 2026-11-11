@@ -1,30 +1,16 @@
-import PageHero from "@/components/PageHero";
-import MessagePortrait from "@/components/MessagePortrait";
-import { BANNER } from "@/lib/images";
-import { getMessage } from "@/lib/messages";
+import { notFound } from "next/navigation";
+import LeaderMessageView from "@/components/LeaderMessageView";
+import { getLeader } from "@/lib/mappers/messages";
 
-const leader = getMessage("chairman");
+export const dynamic = "force-dynamic";
 
-export const metadata = { title: leader.title };
+export async function generateMetadata() {
+  const leader = await getLeader("chairman");
+  return { title: leader?.title || "Chairman" };
+}
 
-export default function ChairmanMessagePage() {
-  return (
-    <>
-      <PageHero
-        eyebrow="Leadership"
-        title={leader.title}
-        intro={leader.intro}
-        image={BANNER.messages}
-        crumb={[
-          { label: "Messages", href: "/messages" },
-          { label: "Chairman" },
-        ]}
-      />
-      <section className="sec">
-        <div className="wrap">
-          <MessagePortrait leader={leader} />
-        </div>
-      </section>
-    </>
-  );
+export default async function ChairmanMessagePage() {
+  const leader = await getLeader("chairman");
+  if (!leader) notFound();
+  return <LeaderMessageView leader={leader} crumb="Chairman" />;
 }

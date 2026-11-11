@@ -1,20 +1,20 @@
 import { notFound } from "next/navigation";
-import JuniorSubPage from "@/components/junior/JuniorSubPage";
-import { JUNIOR_SUBPAGES } from "@/lib/junior-data";
+import JuniorSubPage, { JUNIOR_SUPPORTED } from "@/components/junior/JuniorSubPage";
+import { findSubPage, getSection, loadStaffExtras } from "@/lib/mappers/sections";
 
-export function generateStaticParams() {
-  return JUNIOR_SUBPAGES.map((p) => ({ sub: p.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ sub: string }> }) {
   const { sub } = await params;
-  const data = JUNIOR_SUBPAGES.find((p) => p.slug === sub);
-  return { title: data ? `${data.label} — Junior Section` : "Junior Section" };
+  const d = await getSection("junior");
+  const p = findSubPage(d, sub, JUNIOR_SUPPORTED);
+  return { title: d && p ? `${p.label} — ${d.name}` : "Junior Section" };
 }
 
-export default async function JuniorSubRoute({ params }: { params: Promise<{ sub: string }> }) {
+export default async function SectionSubRoute({ params }: { params: Promise<{ sub: string }> }) {
   const { sub } = await params;
-  const data = JUNIOR_SUBPAGES.find((p) => p.slug === sub);
-  if (!data) notFound();
-  return <JuniorSubPage sub={data} />;
+  const d = await getSection("junior");
+  const p = findSubPage(d, sub, JUNIOR_SUPPORTED);
+  if (!d || !p) notFound();
+  return <JuniorSubPage d={d} sub={p} extra={await loadStaffExtras(d, p.slug)} />;
 }

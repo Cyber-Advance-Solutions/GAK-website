@@ -76,6 +76,11 @@ nav.links{display:flex;align-items:center;gap:4px}
 .flyout a:hover{background:var(--green-tint);color:var(--green-700)}
 .chev{width:7px;height:7px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(-45deg);opacity:.55;flex:none;margin-left:6px}
 @media(min-width:1081px){.flyparent:hover>.flyout{opacity:1;visibility:visible;transform:translateX(0)}}
+/* Hover bridges: invisible strips over the gaps between a menu button and its dropdown (and between a
+   dropdown row and its side flyout), so moving the cursor across the gap doesn't close the menu */
+.mega::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.flyout::before{content:"";position:absolute;top:0;bottom:0;left:-10px;width:10px}
+.mega.r .flyout::before{left:auto;right:-10px}
 .cta-apply{background:linear-gradient(135deg,var(--gold-500),var(--gold-600));color:#fff;padding:9px 16px;border-radius:999px;font-weight:600;font-size:.82rem;box-shadow:0 4px 14px rgba(163,86,43,.35);transition:transform .18s,box-shadow .18s;white-space:nowrap}
 .cta-apply:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(163,86,43,.45)}
 .burger{display:none;flex-direction:column;gap:5px;padding:8px}

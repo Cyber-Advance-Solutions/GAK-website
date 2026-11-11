@@ -1,27 +1,34 @@
 "use client";
 import { useState } from "react";
 import Accordion from "@/components/Accordion";
-import { FAQ_DATA } from "@/lib/data";
+import type { FaqGroup } from "@/lib/mappers/faqs";
 
-export default function FaqView() {
-  const keys = Object.keys(FAQ_DATA);
-  const [active, setActive] = useState(keys[0]);
+export default function FaqView({ groups }: { groups: FaqGroup[] }) {
+  const [active, setActive] = useState(groups[0]?.key);
+  const current = groups.find((g) => g.key === active) ?? groups[0];
+  if (!current) {
+    return (
+      <div className="wrap">
+        <p style={{ color: "var(--ink-soft)" }}>No questions have been published yet.</p>
+      </div>
+    );
+  }
   return (
     <div className="wrap editorial">
       <aside className="rail">
         <div className="factcard">
           <h4>Categories</h4>
           <div className="faqcats">
-            {keys.map((k) => (
-              <button key={k} className={`faqcat ${active === k ? "active" : ""}`} onClick={() => setActive(k)}>
-                {FAQ_DATA[k].label}
+            {groups.map((g) => (
+              <button key={g.key} className={`faqcat ${current.key === g.key ? "active" : ""}`} onClick={() => setActive(g.key)}>
+                {g.label}
               </button>
             ))}
           </div>
         </div>
       </aside>
       <div className="maincol">
-        <Accordion items={FAQ_DATA[active].items} />
+        <Accordion items={current.items} />
       </div>
     </div>
   );

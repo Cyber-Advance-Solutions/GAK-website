@@ -2,23 +2,13 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { BANNER } from "@/lib/images";
+import { getOrganograms } from "@/lib/mappers/about";
 
 export const metadata = { title: "Organogram — GAK" };
+export const dynamic = "force-dynamic";
 
-const PAGES = [
-  {
-    label: "Academic Structure",
-    desc: "Academic leadership: Principal, Vice Principals (APSACS & APSIS), and Section Heads.",
-    href: "/organogram/academic",
-  },
-  {
-    label: "Administrative Structure",
-    desc: "Administrative governance: Vice Principal, Admin Offices, JCOs and support staff.",
-    href: "/organogram/admin",
-  },
-];
-
-export default function OrganogramPage() {
+export default async function OrganogramPage() {
+  const pages = await getOrganograms();
   return (
     <div className="bg-paper min-h-screen pb-16">
       <PageHero
@@ -29,21 +19,23 @@ export default function OrganogramPage() {
         crumb={[{ label: "Organogram" }]}
       />
 
-      <section className="sec">
-        <div className="wrap">
-          <div className="linkcards">
-            {PAGES.map((p) => (
-              <Link className="linkcard" href={p.href} key={p.href}>
-                <div>
-                  <h4>{p.label}</h4>
-                  <p>{p.desc}</p>
-                </div>
-                <ArrowRight size={16} style={{ marginLeft: "auto", flexShrink: 0 }} />
-              </Link>
-            ))}
+      {pages.length > 0 && (
+        <section className="sec">
+          <div className="wrap">
+            <div className="linkcards">
+              {pages.map((p) => (
+                <Link className="linkcard" href={p.href} key={p.id}>
+                  <div>
+                    <h4>{p.title}</h4>
+                    {p.subtitle && <p>{p.subtitle}</p>}
+                  </div>
+                  <ArrowRight size={16} style={{ marginLeft: "auto", flexShrink: 0 }} />
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 }

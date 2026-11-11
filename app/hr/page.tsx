@@ -4,68 +4,84 @@ import SectionHead from "@/components/SectionHead";
 import { ToastButton } from "@/components/Toast";
 import HrApplicationForm from "@/components/HrApplicationForm";
 import { BANNER } from "@/lib/images";
+import { getCareersPage, getFormConfig, getVacancies } from "@/lib/mappers/careers";
 
 export const metadata = { title: "HR & Careers" };
+export const dynamic = "force-dynamic";
 
-const OPENINGS: [string, string, string, string][] = [
-  ["Subject Teacher — Mathematics", "Senior School", "Full-time", "g"],
-  ["Montessori Directress", "Pre-School", "Full-time", "g"],
-  ["Lab Assistant — Chemistry", "Senior School", "Contract", "b"],
-  ["Admin Officer", "Administration", "Full-time", "g"],
-];
+const STEP_ICONS = [ClipboardList, GraduationCap, CheckCircle2];
 
-const HOW: [React.ReactNode, string, string][] = [
-  [<ClipboardList key="1" size={20} strokeWidth={1.8} />, "Find a role", "Review current openings and the requirements for each post."],
-  [<GraduationCap key="2" size={20} strokeWidth={1.8} />, "Submit the form", "Complete the application form below with your academic and professional details."],
-  [<CheckCircle2 key="3" size={20} strokeWidth={1.8} />, "Demo & interview", "Shortlisted candidates are invited for a demo lesson and interview."],
-];
+export default async function HrPage() {
+  const [page, vacancies, form] = await Promise.all([getCareersPage(), getVacancies(), getFormConfig("career")]);
+  const steps = page?.steps ?? [];
 
-export default function HrPage() {
   return (
     <>
       <PageHero
         eyebrow="Join our team"
-        title="HR & careers"
-        intro="Current openings, how to apply, and recruitment advertisements at Garrison Academy Kharian Cantt."
+        title={page?.heading || "HR & careers"}
+        intro={page?.introText}
         image={BANNER.hr}
         crumb={[{ label: "HR Management" }]}
       />
 
       <section className="sec">
         <div className="wrap">
-          <SectionHead eyebrow="We're hiring" title="Current openings" />
-          <div className="grid g2">
-            {OPENINGS.map(([pos, sec, type, c]) => (
-              <div className="card" key={pos} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                <div className="lc-ic" style={{ width: 46, height: 46, flex: "none" }}><Briefcase size={22} strokeWidth={1.8} /></div>
-                <div style={{ flex: 1 }}>
-                  <h3 style={{ fontSize: "1.06rem", marginBottom: 6 }}>{pos}</h3>
-                  <p style={{ marginBottom: 12 }}>{sec} · <span className={`pill ${c}`}>{type}</span></p>
-                  <ToastButton href="#application-form" as="a" msg="Scroll down to the application form…" className="dl-btn">Apply now</ToastButton>
-                </div>
-              </div>
-            ))}
-          </div>
+          <SectionHead eyebrow="We're hiring" title={page?.openingsHeading || "Current openings"} />
+          {vacancies.length > 0 ? (
+            <div className="grid g2">
+              {vacancies.map((v) => {
+                const href = v.applyUrl || "#application-form";
+                const internal = href.startsWith("#");
+                const type = v.employmentType || "";
+                return (
+                  <div className="card" key={v.id} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                    <div className="lc-ic" style={{ width: 46, height: 46, flex: "none" }}><Briefcase size={22} strokeWidth={1.8} /></div>
+                    <div style={{ flex: 1 }}>
+                      <h3 style={{ fontSize: "1.06rem", marginBottom: 6 }}>{v.title}</h3>
+                      <p style={{ marginBottom: 12 }}>
+                        {v.department}
+                        {v.department && type ? " · " : null}
+                        {type ? <span className={`pill ${type === "Full-time" ? "g" : "b"}`}>{type}</span> : null}
+                      </p>
+                      {internal ? (
+                        <ToastButton href={href} as="a" msg="Scroll down to the application form…" className="dl-btn">Apply now</ToastButton>
+                      ) : (
+                        <a href={href} className="dl-btn" target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">Apply now</a>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p style={{ color: "var(--ink-soft)" }}>There are no openings at the moment. Please check back later.</p>
+          )}
         </div>
       </section>
 
-      <section className="sec" style={{ background: "var(--paper-2)" }}>
-        <div className="wrap">
-          <SectionHead eyebrow="The process" title="How to apply" />
-          <div className="linkcards">
-            {HOW.map(([ic, t, d]) => (
-              <div className="linkcard" key={t}><div className="lc-ic">{ic}</div><div><h4>{t}</h4><p>{d}</p></div></div>
-            ))}
+      {steps.length > 0 && (
+        <section className="sec" style={{ background: "var(--paper-2)" }}>
+          <div className="wrap">
+            <SectionHead eyebrow="The process" title={page?.howToApplyHeading || "How to apply"} intro={page?.howToApplyNotes || undefined} />
+            <div className="linkcards">
+              {steps.map((s, i) => {
+                const Ic = STEP_ICONS[i % STEP_ICONS.length];
+                return (
+                  <div className="linkcard" key={`${s.title}-${i}`}><div className="lc-ic"><Ic size={20} strokeWidth={1.8} /></div><div><h4>{s.title}</h4>{s.description ? <p>{s.description}</p> : null}</div></div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="sec" id="application-form" style={{ background: "var(--paper-2)", scrollMarginTop: 110 }}>
         <div className="wrap">
-          <SectionHead eyebrow="Quick apply" title="Send your application" intro="Complete all required fields. Our HR team will review your application and contact shortlisted candidates." />
-          <HrApplicationForm />
-        </div >
-      </section >
+          <SectionHead eyebrow="Quick apply" title={form?.heading || "Send your application"} intro={form?.instructions || undefined} />
+          <HrApplicationForm config={form} />
+        </div>
+      </section>
     </>
   );
 }
