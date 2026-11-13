@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -8,6 +9,8 @@ import 'swiper/css/pagination';
 export interface CampusSwiperProps {
   /** Image URLs (already passed through assetUrl) */
   images?: string[];
+  /** Per-photo captions, same order as images ("" = no caption for that photo) */
+  captions?: string[];
   /** Caption shown on the tile (campus-life section title) */
   caption?: string;
   /** First tile of the gallery is the large one */
@@ -20,12 +23,16 @@ export interface CampusSwiperProps {
 /** One gallery tile of the homepage "Campus Life" block (one row of GET /campus-life). */
 export default function CampusSwiper({
   images = [],
+  captions = [],
   caption = "",
   big = true,
   variant = "campus-swiper",
   delay = 3500,
 }: CampusSwiperProps) {
+  const [active, setActive] = useState(0);
   if (images.length === 0) return null;
+
+  const photoCaption = (captions[active] || "").trim();
 
   return (
     <div className={`ga${big ? ' big' : ''} ${variant}`} style={{ background: 'none' }}>
@@ -36,18 +43,26 @@ export default function CampusSwiper({
         autoplay={{ delay, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         loop={images.length > 1}
+        onSlideChange={(s) => setActive(s.realIndex)}
         className="w-full h-full absolute inset-0 z-0"
       >
         {images.map((src, index) => (
           <SwiperSlide key={index}>
             <div
+              role="img"
+              aria-label={(captions[index] || caption || "Campus photo").trim()}
               className="w-full h-full"
               style={{ backgroundImage: `url("${src}")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
             />
           </SwiperSlide>
         ))}
       </Swiper>
-      {caption && <span className="cap">{caption}</span>}
+      {(caption || photoCaption) && (
+        <span className="cap">
+          {caption}
+          {photoCaption && <span className="cap-photo" aria-live="polite">{photoCaption}</span>}
+        </span>
+      )}
 
       <style dangerouslySetInnerHTML={{__html: `
         .${variant} .swiper-pagination {

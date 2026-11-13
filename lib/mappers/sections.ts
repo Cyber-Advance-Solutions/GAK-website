@@ -18,8 +18,12 @@ const KEY_TO_SLUG: Record<string, string> = Object.fromEntries(Object.entries(SL
 export const sectionKey = (slug: string) => SLUG_TO_KEY[slug] ?? slug;
 export const sectionSlug = (key: string) => KEY_TO_SLUG[key] ?? key;
 
-/** Shown when a person/student has no photo (next/image needs a src) */
-export const PHOTO_FALLBACK = "/logo.png";
+/** Grey skeleton picture shown when a person/student has no photo (next/image needs a src) */
+export const PHOTO_FALLBACK = "/placeholders/person.webp";
+/** Grey skeleton picture shown when a page banner has no image (or its file is missing) */
+export const BANNER_FALLBACK = "/placeholders/banner.webp";
+/** Shown for Section Head fields the admin left empty */
+export const EMPTY_TEXT = "--";
 
 /** Categories the admin modals write over the original grouping when an item is saved */
 const ADMIN_DEFAULT_CATEGORIES = new Set(["facility", "activity", "academic distinction"]);
@@ -45,6 +49,8 @@ export type SectionView = {
   sub: string;
   intro: string;
   banner: string;
+  /** Top page banner (admin: Sections > Page Banner); falls back to name / tagline / overview intro */
+  hero: { title: string; classes: string; description: string; image: string };
   head: (Staff & { message: string[] }) | null;
   headEyebrow: string;
   deputyName: string;
@@ -135,15 +141,18 @@ function toView(s: any, all: any[], eyebrows: Record<string, string> = {}): Sect
   const overview = asJson<Record<string, any>>(s.overview, {}) || {};
   const extra = asJson<Record<string, any>>(s.extraData, {}) || {};
   const headRaw = asJson<any>(s.head, null);
+  // Every field of the Section Head is optional in the admin: empty ones show "--" and the
+  // grey placeholder photo. The block is only hidden when the head is switched off (isEnabled false).
+  const headMessage = paragraphs(headRaw?.messageQuote);
   const head =
-    headRaw && headRaw.isEnabled !== false && str(headRaw.name)
+    headRaw?.isEnabled !== false
       ? {
-          name: str(headRaw.name),
-          role: str(headRaw.designation),
-          qualification: str(headRaw.qualification),
-          joined: str(headRaw.joined),
-          photo: photo(headRaw.image),
-          message: paragraphs(headRaw.messageQuote),
+          name: str(headRaw?.name) || EMPTY_TEXT,
+          role: str(headRaw?.designation) || EMPTY_TEXT,
+          qualification: str(headRaw?.qualification),
+          joined: str(headRaw?.joined),
+          photo: photo(headRaw?.image),
+          message: headMessage.length ? headMessage : [EMPTY_TEXT],
         }
       : null;
 
@@ -206,6 +215,12 @@ function toView(s: any, all: any[], eyebrows: Record<string, string> = {}): Sect
     sub: str(s.tagline),
     intro: str(overview.intro),
     banner: assetUrl(str(s.bannerImage)),
+    hero: {
+      title: str(extra.banner?.title) || str(s.name),
+      classes: str(extra.banner?.classes) || str(s.tagline),
+      description: str(extra.banner?.description) || str(overview.intro),
+      image: assetUrl(str(s.bannerImage)) || BANNER_FALLBACK,
+    },
     head,
     headEyebrow: str(extra.headMessageEyebrow),
     deputyName,

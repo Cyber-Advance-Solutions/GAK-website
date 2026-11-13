@@ -42,7 +42,8 @@ export type HomeVisionMission = {
   missionHeading: string;
   missionText: string;
 };
-export type HomeCampusBlock = { id: string; key: string; caption: string; images: string[] };
+/** caption = section title; captions[i] = text for images[i] ("" when the admin left it empty) */
+export type HomeCampusBlock = { id: string; key: string; caption: string; images: string[]; captions: string[] };
 export type HomeNotice = { id: string; date: string; title: string; href: string; external: boolean };
 export type HomeEvent = { id: string; day: string; month: string; title: string };
 export type HomeAdmissions = {
@@ -174,15 +175,23 @@ export async function loadHomeData(): Promise<HomeData> {
 
     campusHeading: campusRows.find((c) => c.subtitle)?.subtitle || "",
     campus: campusRows
-      .map((c) => ({
-        id: String(c.id),
-        key: String(c.sectionKey || c.id),
-        caption: c.title || "",
-        images: asJson<any[]>(c.images, [])
-          .map((i: any) => (typeof i === "string" ? i : i?.url || ""))
-          .filter(Boolean)
-          .map(assetUrl),
-      }))
+      .map((c) => {
+        // Each photo is a URL string (old data) or { url, isEnabled, caption }; disabled photos are skipped
+        const photos = asJson<any[]>(c.images, [])
+          .map((i: any) =>
+            typeof i === "string"
+              ? { url: i, caption: "", on: true }
+              : { url: i?.url || "", caption: String(i?.caption || "").trim(), on: i?.isEnabled !== false }
+          )
+          .filter((p) => p.url && p.on);
+        return {
+          id: String(c.id),
+          key: String(c.sectionKey || c.id),
+          caption: c.title || "",
+          images: photos.map((p) => assetUrl(p.url)),
+          captions: photos.map((p) => p.caption),
+        };
+      })
       .filter((c) => c.images.length > 0),
 
     // First 4 published notices, pinned first, then admin order

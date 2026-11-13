@@ -1,8 +1,13 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, X, Eye, Award } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Eye, Award, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+
+const MIN_ZOOM = 1;
+const MAX_ZOOM = 5;
+const ZOOM_STEP = 0.5;
+const clampZoom = (z: number) => Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, Math.round(z * 100) / 100));
 
 export interface AchieverPoster {
   id: string;
@@ -16,6 +21,80 @@ export interface AchieverPoster {
 export default function HighAchieversSection({ items = [] }: { items?: AchieverPoster[] }) {
   const ACHIEVERS = items;
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
+
+  // Zoom & pan of the poster in the lightbox (so small text like student names can be read)
+  const [zoom, setZoom] = useState(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const imgRef = useRef<HTMLImageElement | null>(null);
+  const pointers = useRef(new Map<number, { x: number; y: number }>());
+  const gesture = useRef<{ dist: number; zoom: number } | null>(null);
+  const lastTap = useRef(0);
+
+  // Keep the zoomed image covering the stage: pan is limited to the overflow on each side
+  const clampPan = useCallback((x: number, y: number, z: number) => {
+    const el = imgRef.current;
+    if (!el || z <= 1) return { x: 0, y: 0 };
+    const maxX = (el.offsetWidth * (z - 1)) / 2;
+    const maxY = (el.offsetHeight * (z - 1)) / 2;
+    return { x: Math.min(maxX, Math.max(-maxX, x)), y: Math.min(maxY, Math.max(-maxY, y)) };
+  }, []);
+
+  const applyZoom = useCallback(
+    (z: number) => {
+      const nz = clampZoom(z);
+      setZoom(nz);
+      setPan((p) => clampPan(p.x, p.y, nz));
+    },
+    [clampPan]
+  );
+  const zoomIn = useCallback(() => applyZoom(zoom + ZOOM_STEP), [applyZoom, zoom]);
+  const zoomOut = useCallback(() => applyZoom(zoom - ZOOM_STEP), [applyZoom, zoom]);
+  const resetZoom = useCallback(() => {
+    setZoom(1);
+    setPan({ x: 0, y: 0 });
+  }, []);
+
+  // New poster (or lightbox closed) starts unzoomed
+  useEffect(() => {
+    resetZoom();
+  }, [activeIdx, resetZoom]);
+
+  // The page behind is already scroll-locked while the lightbox is open
+  const onWheel = (e: React.WheelEvent) => {
+    applyZoom(zoom * (e.deltaY < 0 ? 1.15 : 1 / 1.15));
+  };
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.current.size === 2) {
+      const [a, b] = [...pointers.current.values()];
+      gesture.current = { dist: Math.hypot(a.x - b.x, a.y - b.y), zoom };
+    } else if (e.pointerType !== "mouse") {
+      // Double-tap on touch screens toggles zoom
+      const now = Date.now();
+      if (now - lastTap.current < 300) zoom > 1 ? resetZoom() : applyZoom(2.5);
+      lastTap.current = now;
+    }
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    const prevPt = pointers.current.get(e.pointerId);
+    if (!prevPt) return;
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.current.size === 2 && gesture.current) {
+      const [a, b] = [...pointers.current.values()];
+      const dist = Math.hypot(a.x - b.x, a.y - b.y);
+      if (gesture.current.dist > 0) applyZoom((gesture.current.zoom * dist) / gesture.current.dist);
+      return;
+    }
+    if (zoom > 1) setPan((p) => clampPan(p.x + e.clientX - prevPt.x, p.y + e.clientY - prevPt.y, zoom));
+  };
+
+  const onPointerUp = (e: React.PointerEvent) => {
+    pointers.current.delete(e.pointerId);
+    if (pointers.current.size < 2) gesture.current = null;
+  };
 
   const close = useCallback(() => setActiveIdx(null), []);
 
@@ -33,6 +112,9 @@ export default function HighAchieversSection({ items = [] }: { items?: AchieverP
       if (e.key === "Escape") close();
       if (e.key === "ArrowLeft") prev();
       if (e.key === "ArrowRight") next();
+      if (e.key === "+" || e.key === "=") zoomIn();
+      if (e.key === "-" || e.key === "_") zoomOut();
+      if (e.key === "0") resetZoom();
     };
 
     const prevOverflow = document.body.style.overflow;
@@ -43,7 +125,7 @@ export default function HighAchieversSection({ items = [] }: { items?: AchieverP
       document.body.style.overflow = prevOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [activeIdx, close, prev, next]);
+  }, [activeIdx, close, prev, next, zoomIn, zoomOut, resetZoom]);
 
   if (ACHIEVERS.length === 0) return null;
 
@@ -141,14 +223,29 @@ export default function HighAchieversSection({ items = [] }: { items?: AchieverP
                 </span>
               </div>
 
-              <button
-                type="button"
-                className="achiever-lightbox-close"
-                onClick={close}
-                aria-label="Close"
-              >
-                <X size={22} strokeWidth={2.2} />
-              </button>
+              <div className="achiever-lightbox-tools">
+                <div className="achiever-zoom" role="group" aria-label="Zoom">
+                  <button type="button" onClick={zoomOut} disabled={zoom <= MIN_ZOOM} aria-label="Zoom out" title="Zoom out (-)">
+                    <ZoomOut size={18} strokeWidth={2.2} />
+                  </button>
+                  <span className="achiever-zoom-level" aria-live="polite">{Math.round(zoom * 100)}%</span>
+                  <button type="button" onClick={zoomIn} disabled={zoom >= MAX_ZOOM} aria-label="Zoom in" title="Zoom in (+)">
+                    <ZoomIn size={18} strokeWidth={2.2} />
+                  </button>
+                  <button type="button" onClick={resetZoom} disabled={zoom === 1} aria-label="Reset zoom" title="Reset zoom (0)">
+                    <RotateCcw size={16} strokeWidth={2.2} />
+                  </button>
+                </div>
+
+                <button
+                  type="button"
+                  className="achiever-lightbox-close"
+                  onClick={close}
+                  aria-label="Close"
+                >
+                  <X size={22} strokeWidth={2.2} />
+                </button>
+              </div>
             </div>
 
             {/* Stage: Prev Button + Main Image + Next Button */}
@@ -162,12 +259,24 @@ export default function HighAchieversSection({ items = [] }: { items?: AchieverP
                 <ChevronLeft size={30} strokeWidth={2.2} />
               </button>
 
-              <div className="achiever-lightbox-figure">
+              <div
+                className={`achiever-lightbox-figure${zoom > 1 ? " zoomed" : ""}`}
+                onWheel={onWheel}
+                onPointerDown={onPointerDown}
+                onPointerMove={onPointerMove}
+                onPointerUp={onPointerUp}
+                onPointerCancel={onPointerUp}
+                onDoubleClick={() => (zoom > 1 ? resetZoom() : applyZoom(2.5))}
+                title={zoom > 1 ? "Drag to move, double-click to reset" : "Double-click or scroll to zoom"}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
+                  ref={imgRef}
                   src={ACHIEVERS[activeIdx].image}
                   alt={ACHIEVERS[activeIdx].title}
                   className="achiever-lightbox-img"
+                  draggable={false}
+                  style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})` }}
                 />
               </div>
 

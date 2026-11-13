@@ -14,10 +14,10 @@ export default function APSISSection({ d }: { d: SectionView }) {
   return (
     <>
       <PageHero
-        eyebrow={d.sub}
-        title={d.name}
-        intro={d.intro}
-        image={d.banner}
+        eyebrow={d.hero.classes}
+        title={d.hero.title}
+        intro={d.hero.description}
+        image={d.hero.image}
         crumb={[
           { label: "Quick Links", href: "/quick-links" },
           { label: d.name },

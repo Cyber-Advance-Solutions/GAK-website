@@ -21,10 +21,10 @@ export default function SectionDetail({ d }: { d: SectionView }) {
   return (
     <>
       <PageHero
-        eyebrow={d.sub}
-        title={d.name}
-        intro={d.intro}
-        image={d.banner}
+        eyebrow={d.hero.classes}
+        title={d.hero.title}
+        intro={d.hero.description}
+        image={d.hero.image}
         crumb={[{ label: "Quick Links", href: "/quick-links" }, { label: d.name }]}
       />
 
@@ -65,9 +65,12 @@ export default function SectionDetail({ d }: { d: SectionView }) {
             <section>
               <div className="quoteband" style={{ borderRadius: "var(--r)" }}>
                 <div className="qb" style={{ padding: 32 }}>
-                  <div className="qb-portrait" style={{ width: 96, height: 96 }}>
-                    <span style={{ fontSize: "1.8rem" }}>{initials(d.head.name)}</span>
-                  </div>
+                  <div
+                    className="qb-portrait"
+                    role="img"
+                    aria-label={d.head.name}
+                    style={{ width: 96, height: 96, background: `#f0f0f0 url("${d.head.photo}") center / cover no-repeat` }}
+                  />
                   <div className="qb-body">
                     <span className="eyebrow">{d.headEyebrow || "Message from the section head"}</span>
                     <blockquote style={{ fontSize: "0.85rem" }}>{d.head.message.join(" ")}</blockquote>
@@ -96,9 +99,4 @@ export default function SectionDetail({ d }: { d: SectionView }) {
       </section>
     </>
   );
-}
-
-function initials(name: string) {
-  const parts = name.replace(/^(Mr\.|Mrs\.|Ms\.|Dr\.)\s*/, "").split(" ");
-  return (parts[0]?.[0] ?? "") + (parts[1]?.[0] ?? "");
 }

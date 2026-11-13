@@ -182,6 +182,7 @@ export default async function HomePage() {
                 <CampusSwiper
                   key={c.id}
                   images={c.images}
+                  captions={c.captions}
                   caption={c.caption}
                   big={i === 0}
                   variant={`${cssSafe(c.key)}-swiper`}

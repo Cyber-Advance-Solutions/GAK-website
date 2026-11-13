@@ -969,6 +969,9 @@ footer ul li a:hover{color:var(--gold-300);padding-left:3px}
 .ga{position:relative;border-radius:var(--r);overflow:hidden;background-size:cover;background-position:center}
 .ga::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(10,43,42,.74))}
 .ga .cap{position:absolute;z-index:2;left:16px;bottom:14px;color:#fff;font-weight:700;font-size:.95rem}
+/* Per-photo caption under the section title; leaves room for the slide dots on the right */
+.ga .cap{max-width:calc(100% - 120px)}
+.ga .cap-photo{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:3px;font-weight:500;font-size:.8rem;line-height:1.35;opacity:.92;text-shadow:0 1px 3px rgba(0,0,0,.5)}
 
 .noticegrid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 @media(max-width:820px){.noticegrid{grid-template-columns:1fr}}
@@ -1547,6 +1550,9 @@ footer ul li a:hover{color:var(--gold-300);padding-left:3px}
 .team-name{font-family:var(--display);font-weight:800;font-size:1.02rem;color:var(--green-900);letter-spacing:-.02em;line-height:1.2}
 .team-role{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-600);margin-bottom:6px}
 .team-intro{font-size:.87rem;color:var(--ink-soft);line-height:1.6;margin:0}
+.team-intro.clamped{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.team-readmore{align-self:flex-start;margin-top:4px;padding:0;background:none;border:0;cursor:pointer;font:inherit;font-size:.8rem;font-weight:700;color:var(--gold-600);text-decoration:underline;text-underline-offset:3px}
+.team-readmore:hover{color:var(--green-900)}
 
 /* ============================================================
    HIGH ACHIEVERS SECTION & FULLSCREEN LIGHTBOX
@@ -1848,6 +1854,68 @@ footer ul li a:hover{color:var(--gold-300);padding-left:3px}
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.1);
   background: #0a2b2a;
+  transform-origin: center center;
+  transition: transform 0.12s ease-out;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Zoom: the figure clips the enlarged poster; drag to pan, pinch on touch */
+.achiever-lightbox-figure {
+  overflow: hidden;
+  border-radius: 12px;
+  touch-action: none;
+  cursor: zoom-in;
+}
+.achiever-lightbox-figure.zoomed {
+  cursor: grab;
+}
+.achiever-lightbox-figure.zoomed:active {
+  cursor: grabbing;
+}
+.achiever-lightbox-figure.zoomed .achiever-lightbox-img {
+  transition: none;
+}
+.achiever-lightbox-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.achiever-zoom {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.achiever-zoom button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.achiever-zoom button:hover:not(:disabled) {
+  background: var(--gold-500);
+}
+.achiever-zoom button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.achiever-zoom-level {
+  min-width: 46px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Bottom thumbnails strip */
@@ -1919,6 +1987,13 @@ footer ul li a:hover{color:var(--gold-300);padding-left:3px}
   }
   .achiever-lightbox-img {
     max-height: min(60vh, 520px);
+  }
+  .achiever-zoom button {
+    width: 32px;
+    height: 32px;
+  }
+  .achiever-zoom-level {
+    min-width: 40px;
   }
 }
 

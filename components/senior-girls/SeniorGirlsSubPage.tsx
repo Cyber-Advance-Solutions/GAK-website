@@ -1,5 +1,5 @@
 import { SeniorSubLayout, type SeniorExtra } from "@/components/senior-boys/SeniorBoysSubPage";
-import type { SectionSubPage, SectionView } from "@/lib/mappers/sections";
+import { PHOTO_FALLBACK, type SectionSubPage, type SectionView } from "@/lib/mappers/sections";
 
 export const SENIOR_GIRLS_SUPPORTED = ["deputy-section-heads", "subject-coordinators", "faculty-by-department", "cca-activities", "facilities"];
 
@@ -11,7 +11,8 @@ export default function SeniorGirlsSubPage({ d, sub, extra = {} }: { d: SectionV
       extra={extra}
       supported={SENIOR_GIRLS_SUPPORTED}
       railTitle="Senior Girls pages"
-      heroImage={d.head?.photo || d.banner}
+      // head photo as the banner when one is uploaded; otherwise the section banner (never the grey placeholder)
+      heroImage={d.head && d.head.photo !== PHOTO_FALLBACK ? d.head.photo : d.banner}
     />
   );
 }

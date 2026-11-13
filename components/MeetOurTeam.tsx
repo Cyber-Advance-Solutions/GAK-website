@@ -1,4 +1,5 @@
 import type { TeamMember } from "@/lib/mappers/about";
+import TeamIntro from "@/components/TeamIntro";
 
 /** "Meet Our Team" grid (admin "Our Team" module → /team-members). */
 export default function MeetOurTeam({ members = [] }: { members?: TeamMember[] }) {
@@ -37,7 +38,7 @@ export default function MeetOurTeam({ members = [] }: { members?: TeamMember[] }
               <div className="team-info">
                 <div className="team-name">{member.name}</div>
                 <div className="team-role">{member.role}</div>
-                <p className="team-intro">{member.intro}</p>
+                <TeamIntro text={member.intro} />
               </div>
             </div>
           ))}

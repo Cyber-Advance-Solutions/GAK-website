@@ -1,10 +1,19 @@
 import Link from "next/link";
 
+/** Grey skeleton banner, drawn under the real image: shows when no image is set or its file is missing */
+const BANNER_FALLBACK = "/placeholders/banner.webp";
+
 type Crumb = { label: string; href?: string };
 export default function PageHero({ eyebrow, title, intro, image, crumb = [] }:
   { eyebrow: string; title: string; intro?: string; image: string; crumb?: Crumb[] }) {
   return (
-    <section className="pagehero" style={{ backgroundImage: `url(${image})` }}>
+    <section
+      className="pagehero"
+      style={{
+        backgroundImage:
+          image && image !== BANNER_FALLBACK ? `url("${image}"), url("${BANNER_FALLBACK}")` : `url("${BANNER_FALLBACK}")`,
+      }}
+    >
       <div className="pagehero-ov" />
       <div className="wrap pagehero-in">
         <nav className="crumb">
