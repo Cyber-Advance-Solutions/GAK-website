@@ -53,6 +53,8 @@ export type SectionView = {
   hero: { title: string; classes: string; description: string; image: string };
   head: (Staff & { message: string[] }) | null;
   headEyebrow: string;
+  /** Head row of the facts card: the Section Head's name, or the admin's own text once unlinked */
+  headFact: string;
   deputyName: string;
   deputies: Staff[];
   classesRange: string;
@@ -163,8 +165,14 @@ function toView(s: any, all: any[], eyebrows: Record<string, string> = {}): Sect
     joined: str(d.joined),
     photo: photo(d.image),
   }));
-  // Same precedence the admin "Facts" tab reads with
-  const deputyName = str(overview.deputyHead || extra.deputyHead || deputies[0]?.name);
+  // Facts card (admin: Sections > Facts). The head fact follows the Section Head until the admin unlinks it;
+  // the deputy fact is plain text. An empty fact shows "--".
+  const factCfg = (extra.facts || {}) as { headLinked?: boolean; head?: string; deputyHead?: string };
+  const headFact = factCfg.headLinked === false ? str(factCfg.head) : head ? head.name : "";
+  const deputyName =
+    typeof factCfg.deputyHead === "string"
+      ? str(factCfg.deputyHead)
+      : str(overview.deputyHead || extra.deputyHead || deputies[0]?.name);
 
   const activities: SectionActivity[] = live(s.studentLife).map((a) => ({
     id: str(a.id),
@@ -223,6 +231,7 @@ function toView(s: any, all: any[], eyebrows: Record<string, string> = {}): Sect
     },
     head,
     headEyebrow: str(extra.headMessageEyebrow),
+    headFact,
     deputyName,
     deputies,
     classesRange: str(s.gradeRange || overview.classesRange),
@@ -303,7 +312,9 @@ export async function getSectionCoordinators(key: string): Promise<Staff[]> {
 }
 
 /** Fact rows without empty values (a fact cleared in the admin disappears instead of showing blank) */
-export const facts = (rows: [string, string][]): [string, string][] => rows.filter(([, v]) => !!v);
+/** Facts card rows; a fact the admin left empty shows "--" */
+export const facts = (rows: [string, string][]): [string, string][] =>
+  rows.map(([label, value]) => [label, String(value ?? "").trim() || EMPTY_TEXT]);
 
 /** Category of a facility list, by index of first appearance */
 export function facilityGroups(view: SectionView) {

@@ -60,7 +60,7 @@ export default function PreSchoolSubPage({ d, sub, extra = {} }: { d: SectionVie
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  ["Section head", d.head?.name ?? ""],
+                  ["Section head", d.headFact],
                   ["Classes", d.classesRange],
                   ["Timings", d.timings],
                 ])}

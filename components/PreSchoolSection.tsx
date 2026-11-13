@@ -27,7 +27,7 @@ export default function PreSchoolSection({ d }: { d: SectionView }) {
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  ["Section Head", d.head?.name ?? ""],
+                  ["Section Head", d.headFact],
                   ["Classes", d.classesRange],
                   ["Timings", d.timings],
                 ])}

@@ -123,7 +123,7 @@ export default function MiddleGirlsSubPage({ d, sub, extra = {} }: { d: SectionV
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  ["Section head", d.head?.name ?? ""],
+                  ["Section head", d.headFact],
                   ["Classes", d.classesRange],
                   ["Timings", d.timings],
                 ])}

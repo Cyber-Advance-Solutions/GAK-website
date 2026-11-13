@@ -112,7 +112,7 @@ export default function APSISSubPage({ d, sub, extra = {} }: { d: SectionView; s
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  [labels.head || "Vice Principal", d.head?.name ?? ""],
+                  [labels.head || "Vice Principal", d.headFact],
                   [labels.deputyHead || "Section Head", d.deputyName],
                   ["Curriculum", d.curriculum],
                 ])}

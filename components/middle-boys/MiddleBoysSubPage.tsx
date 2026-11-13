@@ -87,7 +87,7 @@ export default function MiddleBoysSubPage({ d, sub, extra = {} }: { d: SectionVi
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  ["Section head", d.head?.name ?? ""],
+                  ["Section head", d.headFact],
                   ["Classes", d.classesRange],
                   ["Stream", d.stream],
                   ["Timings", d.timings],

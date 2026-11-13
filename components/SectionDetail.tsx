@@ -35,7 +35,7 @@ export default function SectionDetail({ d }: { d: SectionView }) {
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  ["Section head", d.head?.name ?? ""],
+                  ["Section head", d.headFact],
                   ["Classes", d.classesRange],
                   ["Stream", d.stream || d.curriculum],
                   ["Timings", d.timings],

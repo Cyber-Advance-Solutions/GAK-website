@@ -104,7 +104,7 @@ export function SeniorSubLayout({
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  [labels.headOnSubPages || "Section Head", d.head?.name ?? ""],
+                  [labels.headOnSubPages || "Section Head", d.headFact],
                   ["Deputy Head", d.deputyName],
                   ["Classes", d.classesRange],
                   ["Curriculum", d.curriculum],

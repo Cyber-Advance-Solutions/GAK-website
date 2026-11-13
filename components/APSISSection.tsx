@@ -31,7 +31,7 @@ export default function APSISSection({ d }: { d: SectionView }) {
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  [headLabel, d.head?.name ?? ""],
+                  [headLabel, d.headFact],
                   [labels.deputyHead || "Section Head", d.deputyName],
                   ["Curriculum", d.curriculum],
                 ])}
