@@ -26,10 +26,10 @@ export default function JuniorSection({ d }: { d: SectionView }) {
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  ["Section Head", d.headFact],
-                  ["Classes", d.classesRange],
-                  ["Curriculum", d.curriculum],
-                ])}
+                  ["Section Head", d.headFact, "head"],
+                  ["Classes", d.classesRange, "classes"],
+                  ["Curriculum", d.curriculum, "curriculum"],
+                ], d.hiddenFacts)}
               />
               <OtherSectionsCard others={d.others} />
             </>

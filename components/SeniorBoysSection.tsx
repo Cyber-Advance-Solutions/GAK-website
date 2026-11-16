@@ -28,11 +28,11 @@ export function SeniorSection({ d }: { d: SectionView }) {
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  [labels.headOnMainPage || "Section Head", d.headFact],
-                  ["Deputy Head", d.deputyName],
-                  ["Classes", d.classesRange],
-                  ["Curriculum", d.curriculum],
-                ])}
+                  [labels.headOnMainPage || "Section Head", d.headFact, "head"],
+                  ["Deputy Head", d.deputyName, "deputyHead"],
+                  ["Classes", d.classesRange, "classes"],
+                  ["Curriculum", d.curriculum, "curriculum"],
+                ], d.hiddenFacts)}
               />
               <OtherSectionsCard others={d.others} />
             </>

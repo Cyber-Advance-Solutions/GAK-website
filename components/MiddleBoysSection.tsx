@@ -27,11 +27,11 @@ export default function MiddleBoysSection({ d }: { d: SectionView }) {
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  ["Section Head", d.headFact],
-                  ["Classes", d.classesRange],
-                  ["Stream", d.stream],
-                  ["Timings", d.timings],
-                ])}
+                  ["Section Head", d.headFact, "head"],
+                  ["Classes", d.classesRange, "classes"],
+                  ["Stream", d.stream, "stream"],
+                  ["Timings", d.timings, "timings"],
+                ], d.hiddenFacts)}
               />
               <OtherSectionsCard others={d.others} />
             </>

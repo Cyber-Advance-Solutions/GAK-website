@@ -87,11 +87,11 @@ export default function MiddleBoysSubPage({ d, sub, extra = {} }: { d: SectionVi
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  ["Section head", d.headFact],
-                  ["Classes", d.classesRange],
-                  ["Stream", d.stream],
-                  ["Timings", d.timings],
-                ])}
+                  ["Section head", d.headFact, "head"],
+                  ["Classes", d.classesRange, "classes"],
+                  ["Stream", d.stream, "stream"],
+                  ["Timings", d.timings, "timings"],
+                ], d.hiddenFacts)}
               />
               <SubPagesCard title="Middle Boys pages" base={`/sections/${d.slug}`} pages={supportedSubPages(d, MIDDLE_BOYS_SUPPORTED)} current={sub.slug} />
             </>

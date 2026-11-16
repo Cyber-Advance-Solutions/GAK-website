@@ -2,6 +2,7 @@ export function Editorial({ rail, children }: { rail: React.ReactNode; children:
   return <div className="wrap editorial"><aside className="rail">{rail}</aside><div className="maincol">{children}</div></div>;
 }
 export function FactCard({ title, rows }: { title: string; rows: [string, string][] }) {
+  if (rows.length === 0) return null; // every fact switched off in the admin
   return (
     <div className="factcard">
       <h4>{title}</h4>

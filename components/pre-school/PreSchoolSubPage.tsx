@@ -60,10 +60,10 @@ export default function PreSchoolSubPage({ d, sub, extra = {} }: { d: SectionVie
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  ["Section head", d.headFact],
-                  ["Classes", d.classesRange],
-                  ["Timings", d.timings],
-                ])}
+                  ["Section head", d.headFact, "head"],
+                  ["Classes", d.classesRange, "classes"],
+                  ["Timings", d.timings, "timings"],
+                ], d.hiddenFacts)}
               />
               <SubPagesCard title={`${d.name} pages`} base={`/sections/${d.slug}`} pages={supportedSubPages(d, PRE_SUPPORTED)} current={sub.slug} />
             </>

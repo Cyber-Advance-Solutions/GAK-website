@@ -55,6 +55,8 @@ export type SectionView = {
   headEyebrow: string;
   /** Head row of the facts card: the Section Head's name, or the admin's own text once unlinked */
   headFact: string;
+  /** Fact keys the admin switched off (not shown in the facts box): head, deputyHead, classes, curriculum, stream, timings */
+  hiddenFacts: string[];
   deputyName: string;
   deputies: Staff[];
   classesRange: string;
@@ -167,8 +169,10 @@ function toView(s: any, all: any[], eyebrows: Record<string, string> = {}): Sect
   }));
   // Facts card (admin: Sections > Facts). The head fact follows the Section Head until the admin unlinks it;
   // the deputy fact is plain text. An empty fact shows "--".
-  const factCfg = (extra.facts || {}) as { headLinked?: boolean; head?: string; deputyHead?: string };
-  const headFact = factCfg.headLinked === false ? str(factCfg.head) : head ? head.name : "";
+  const factCfg = (extra.facts || {}) as { headLinked?: boolean; head?: string; deputyHead?: string; hidden?: string[] };
+  // Order: linked Our Team member (school_sections.headTeamMemberId) > custom text > the Section Head tab
+  const headMemberName = s.headTeamMemberId != null ? str(s.headMember?.name) : "";
+  const headFact = headMemberName || (factCfg.headLinked === false ? str(factCfg.head) : head ? head.name : "");
   const deputyName =
     typeof factCfg.deputyHead === "string"
       ? str(factCfg.deputyHead)
@@ -232,6 +236,7 @@ function toView(s: any, all: any[], eyebrows: Record<string, string> = {}): Sect
     head,
     headEyebrow: str(extra.headMessageEyebrow),
     headFact,
+    hiddenFacts: Array.isArray(factCfg.hidden) ? factCfg.hidden.map(String) : [],
     deputyName,
     deputies,
     classesRange: str(s.gradeRange || overview.classesRange),
@@ -312,9 +317,14 @@ export async function getSectionCoordinators(key: string): Promise<Staff[]> {
 }
 
 /** Fact rows without empty values (a fact cleared in the admin disappears instead of showing blank) */
-/** Facts card rows; a fact the admin left empty shows "--" */
-export const facts = (rows: [string, string][]): [string, string][] =>
-  rows.map(([label, value]) => [label, String(value ?? "").trim() || EMPTY_TEXT]);
+/**
+ * Facts card rows: [label, value, key]. Facts whose key the admin switched off are left out;
+ * a fact left empty shows "--".
+ */
+export const facts = (rows: [string, string, string][], hidden: string[] = []): [string, string][] =>
+  rows
+    .filter(([, , key]) => !hidden.includes(key))
+    .map(([label, value]) => [label, String(value ?? "").trim() || EMPTY_TEXT]);
 
 /** Category of a facility list, by index of first appearance */
 export function facilityGroups(view: SectionView) {

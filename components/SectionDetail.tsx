@@ -35,11 +35,11 @@ export default function SectionDetail({ d }: { d: SectionView }) {
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  ["Section head", d.headFact],
-                  ["Classes", d.classesRange],
-                  ["Stream", d.stream || d.curriculum],
-                  ["Timings", d.timings],
-                ])}
+                  ["Section head", d.headFact, "head"],
+                  ["Classes", d.classesRange, "classes"],
+                  ["Stream", d.stream || d.curriculum, "stream"],
+                  ["Timings", d.timings, "timings"],
+                ], d.hiddenFacts)}
               />
               <OtherSectionsCard others={d.others} />
             </>

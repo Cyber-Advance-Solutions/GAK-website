@@ -104,11 +104,11 @@ export function SeniorSubLayout({
               <FactCard
                 title="Section facts"
                 rows={facts([
-                  [labels.headOnSubPages || "Section Head", d.headFact],
-                  ["Deputy Head", d.deputyName],
-                  ["Classes", d.classesRange],
-                  ["Curriculum", d.curriculum],
-                ])}
+                  [labels.headOnSubPages || "Section Head", d.headFact, "head"],
+                  ["Deputy Head", d.deputyName, "deputyHead"],
+                  ["Classes", d.classesRange, "classes"],
+                  ["Curriculum", d.curriculum, "curriculum"],
+                ], d.hiddenFacts)}
               />
               <SubPagesCard title={railTitle} base={`/sections/${d.slug}`} pages={supportedSubPages(d, supported)} current={sub.slug} />
             </>

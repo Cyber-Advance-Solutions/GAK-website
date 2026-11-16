@@ -57,10 +57,10 @@ export default function CampusSwiper({
           </SwiperSlide>
         ))}
       </Swiper>
-      {(caption || photoCaption) && (
-        <span className="cap">
-          {caption}
-          {photoCaption && <span className="cap-photo" aria-live="polite">{photoCaption}</span>}
+      {/* Only the current photo's caption is shown (no section title); photos without a caption show nothing */}
+      {photoCaption && (
+        <span className="cap cap-only" aria-live="polite">
+          {photoCaption}
         </span>
       )}
 
