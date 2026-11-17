@@ -72,7 +72,7 @@ export default function AdmissionForm({ settings }: { settings: AdmissionSetting
       const v = fd.get(f.key);
       if (typeof v === "string" && v.trim() !== "") body[f.key] = v.trim();
     }
-    body.website = String(fd.get("website") || ""); // honeypot
+    body.gak_hp_trap = String(fd.get("gak_hp_trap") || ""); // spam trap (see the hidden field below)
     setBusy(true);
     try {
       const res = await postForm<{ referenceNo?: string }>("/admissions/submissions", body);
@@ -158,7 +158,12 @@ export default function AdmissionForm({ settings }: { settings: AdmissionSetting
 
   return (
     <form className="form" onSubmit={onSubmit}>
-      <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }} />
+      {/* Spam trap: people never see or fill this. Not called "website" any more: browser autofill and
+          password managers filled that name for real applicants. Fully hidden (display:none) so browsers and
+          extensions never fill it; if anything still does, the backend saves the submission as "Spam". */}
+      <div aria-hidden="true" style={{ display: "none" }}>
+        <input type="text" name="gak_hp_trap" tabIndex={-1} autoComplete="off" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" defaultValue="" />
+      </div>
       {settings.formInstructions ? <p className="formnote" style={{ marginTop: 0 }}>{settings.formInstructions}</p> : null}
       {sections.map(renderSection)}
       {error ? (

@@ -75,7 +75,7 @@ export default function PublicForm({
         const v = fd.get(o.name);
         if (typeof v === "string" && v.trim()) body[o.name] = v.trim();
       }
-      body.website = String(fd.get("website") || ""); // honeypot
+      body.gak_hp_trap = String(fd.get("gak_hp_trap") || ""); // spam trap (see the hidden field below)
       const res = await postForm<{ referenceNo?: string; confirmationMessage?: string }>(`/forms/${formKey}/submissions`, body);
       const msg = res?.confirmationMessage || config.confirmationMessage || "Thank you — your submission has been received.";
       toast(msg);
@@ -195,7 +195,12 @@ export default function PublicForm({
   return (
     <form className="form" onSubmit={onSubmit}>
       {/* Honeypot: hidden from people, bots fill it */}
-      <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }} />
+      {/* Spam trap: people never see or fill this. Not called "website" any more: browser autofill and
+          password managers filled that name for real applicants. Fully hidden (display:none) so browsers and
+          extensions never fill it; if anything still does, the backend saves the submission as "Spam". */}
+      <div aria-hidden="true" style={{ display: "none" }}>
+        <input type="text" name="gak_hp_trap" tabIndex={-1} autoComplete="off" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" defaultValue="" />
+      </div>
       {blocks.map((b, i) =>
         b.length === 2 ? (
           <div className="frow" key={i}>
