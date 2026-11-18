@@ -5,19 +5,24 @@
  * Server components call `api()` directly; client components receive the data as props
  * from their server page, or (forms) call `postForm()`.
  *
- * Config (.env.local):
- *   NEXT_PUBLIC_API_URL      URL the BROWSER uses for the API. "/api" = through this site's own domain
- *                            (next.config.mjs forwards /api and /uploads to the backend) — works locally
- *                            and behind ngrok. Default http://localhost:5000/api.
- *   NEXT_PUBLIC_BACKEND_URL  where /uploads/... files are loaded from ("" = this site's own domain).
- *                            Default: NEXT_PUBLIC_API_URL without /api.
- *   API_INTERNAL_URL         URL the Next.js SERVER uses for the API (default http://localhost:5000/api)
+ * Config (.env / .env.local) — normally only BACKEND_URL is needed:
+ *   BACKEND_PORT             backend on this same server: just its port (e.g. 5062 = http://127.0.0.1:5062)
+ *   BACKEND_URL              where GAK-Backend runs, e.g. http://localhost:5000 or https://api.example.com.
+ *                            Read when the server starts, so a built site works anywhere (no rebuild).
+ *                            The browser never calls it directly: /api and /uploads on this site are
+ *                            forwarded to it (app/api/[...path], app/uploads/[...path]).
  *   API_REVALIDATE_SECONDS   default 0 = always fresh (admin edits show on the next page load)
+ * Older, optional (build time): NEXT_PUBLIC_API_URL (default "/api"), NEXT_PUBLIC_BACKEND_URL (default ""),
+ *   API_INTERNAL_URL (same as BACKEND_URL + "/api").
  */
 
-const PUBLIC_API = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api").replace(/\/$/, "");
+const PUBLIC_API = (process.env.NEXT_PUBLIC_API_URL || "/api").replace(/\/$/, "");
+const BACKEND_PORT = (process.env.BACKEND_PORT || "").trim();
 const INTERNAL_API = (
-  process.env.API_INTERNAL_URL || (PUBLIC_API.startsWith("/") ? "http://localhost:5000/api" : PUBLIC_API)
+  (process.env.BACKEND_URL ? `${process.env.BACKEND_URL.trim().replace(/\/+$/, "").replace(/\/api$/, "")}/api` : "") ||
+  (/^\d{2,5}$/.test(BACKEND_PORT) ? `http://127.0.0.1:${BACKEND_PORT}/api` : "") ||
+  process.env.API_INTERNAL_URL ||
+  (PUBLIC_API.startsWith("/") ? "http://localhost:5000/api" : PUBLIC_API)
 ).replace(/\/$/, "");
 
 /** Server code calls the backend directly; browser code goes through PUBLIC_API (may be relative, e.g. "/api") */

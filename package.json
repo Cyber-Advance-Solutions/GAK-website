@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/dev.mjs",
-    "build": "next build",
-    "start": "next start -p 3001",
+    "dev": "node init && node scripts/dev.mjs",
+    "build": "node init && next build",
+    "start": "node init && next start -p 3001",
     "lint": "next lint",
-    "dev:fixed": "next dev -p 3001"
+    "dev:fixed": "node init && next dev -p 3001"
   },
   "dependencies": {
     "lucide-react": "^1.21.0",
